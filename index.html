@@ -1579,10 +1579,24 @@ Mình gửi link IG qua tin nhắn này giúp em là được ạ 🤍</pre>
     if(q.length < 2){ hits.classList.remove('show'); return; }
     var words = q.split(/\s+/).filter(Boolean);
     var out = [];
-    for(var i=0;i<index.length && out.length<8;i++){
-      var okAll = true;
-      for(var w=0;w<words.length;w++){ if(normIndex[i].indexOf(words[w]) === -1){ okAll = false; break; } }
-      if(okAll){ out.push(index[i]); }
+    if(words.length <= 5){
+      for(var i=0;i<index.length && out.length<8;i++){
+        var okAll = true;
+        for(var w=0;w<words.length;w++){ if(normIndex[i].indexOf(words[w]) === -1){ okAll = false; break; } }
+        if(okAll){ out.push(index[i]); }
+      }
+    } else {
+      /* dán nguyên đoạn tin nhắn: chấm điểm theo số từ khớp */
+      var keys = [];
+      for(var w=0;w<words.length;w++){ if(words[w].length >= 3 && keys.indexOf(words[w]) === -1){ keys.push(words[w]); } }
+      var scored = [];
+      for(var i=0;i<index.length;i++){
+        var sc = 0;
+        for(var k=0;k<keys.length;k++){ if(normIndex[i].indexOf(keys[k]) !== -1){ sc++; } }
+        if(sc >= 2){ scored.push([sc, index[i]]); }
+      }
+      scored.sort(function(a,b){ return b[0]-a[0]; });
+      for(var i=0;i<scored.length && i<6;i++){ out.push(scored[i][1]); }
     }
     if(!out.length){
       hits.innerHTML = '<div class="none">Không thấy — thử từ khoá khác, hoặc hỏi chị Linh để bổ sung.</div>';
