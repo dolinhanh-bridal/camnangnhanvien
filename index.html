@@ -1448,6 +1448,7 @@ Mình rất hy vọng sẽ có cơ hội được kết nối và trao đổi th
   <ul>
     <li>Tặng 01 khăn voan khi khách đánh giá trên Google hoặc chia sẻ trải nghiệm trên Threads / TikTok / Facebook.</li>
     <li>Tặng 500.000đ tiền mặt khi khách giới thiệu bạn bè đến DLA Bridal và bạn hoàn tất đặt dịch vụ.</li>
+    <li>Tặng <b>thiệp cưới online</b> thiết kế riêng, miễn phí — mời khách điền <a href="https://script.google.com/macros/s/AKfycbwVWHJMBZFw6XX7t2Haqs9AT1UTgPmdKUHLzm69Si_h7-ylKNd7HsfcwUQeI4AL-uiLVw/exec" target="_blank" rel="noopener">form thiệp</a> (mẫu tin trong chương Take care sau khi cọc).</li>
   </ul>
 
   <div class="pager">
@@ -1640,7 +1641,7 @@ Mình rất hy vọng sẽ có cơ hội được kết nối và trao đổi th
       for(var i=0;i<scored.length && i<6;i++){ out.push(scored[i][1]); }
     }
     if(!out.length){
-      hits.innerHTML = '<div class="none">Không thấy — thử từ khoá khác, hoặc hỏi chị Linh để bổ sung.</div>';
+      hits.innerHTML = '<div class="none">Chưa có trong cẩm nang. <button type="button" id="baoLinh" class="tpl-copy" style="margin-left:8px">📩 Gửi câu hỏi cho chị Linh</button></div>';
     } else {
       out.forEach(function(e){
         var a = document.createElement('a');
@@ -1658,6 +1659,16 @@ Mình rất hy vọng sẽ có cơ hội được kết nối và trao đổi th
       });
     }
     hits.classList.add('show');
+  });
+  hits.addEventListener('click', function(ev){
+    var b = ev.target.closest('#baoLinh');
+    if(!b) return;
+    b.disabled = true; b.textContent = 'Đang gửi…';
+    var em = '';
+    try{ em = localStorage.getItem('dla_syll_email') || ''; }catch(e){}
+    fetch(FORM_URL + '?hoi=' + encodeURIComponent(input.value.trim().slice(0,500)) + '&em=' + encodeURIComponent(em), {mode:'no-cors'})
+      .then(function(){ b.textContent = 'Đã gửi cho chị Linh ✓'; })
+      .catch(function(){ b.textContent = 'Lỗi mạng — bấm gửi lại'; b.disabled = false; });
   });
   document.addEventListener('click', function(ev){
     if(!ev.target.closest('.search')){ hits.classList.remove('show'); }
