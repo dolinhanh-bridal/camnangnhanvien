@@ -1,0 +1,1614 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Cẩm nang DLA</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --paper:#FFFFFF;
+  --paper-deep:#F4EAE0;
+  --blush:#F5E3DE;
+  --ink:#31232A;
+  --ink-soft:#6E5C60;
+  --rose:#9E4458;
+  --rose-deep:#7C3346;
+  --champagne:#B4677A;
+  --line:#E3D5C6;
+  --card:#FFFFFF;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.view{animation:none!important}}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Be Vietnam Pro',-apple-system,'Segoe UI',Roboto,sans-serif;
+  font-size:16px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px 80px}
+a{color:var(--rose);text-decoration-color:rgba(158,68,88,.35);text-underline-offset:3px}
+a:hover{color:var(--rose-deep)}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{outline:2px solid var(--rose);outline-offset:3px;border-radius:2px}
+
+/* ---------- shared type ---------- */
+.eyebrow{
+  font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--champagne);
+}
+h1,h2,.display{font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;font-weight:500;text-wrap:balance}
+h3{font-size:20px;font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;margin:40px 0 14px;padding-top:26px;border-top:1px solid var(--line)}
+h3:first-of-type{border-top:none;padding-top:0;margin-top:28px}
+p{margin:0 0 14px}
+b,strong{font-weight:600}
+ul,ol{padding-left:22px;margin:0 0 16px}
+li{margin-bottom:9px}
+li::marker{color:var(--champagne)}
+
+/* ---------- views ---------- */
+.view{display:none;animation:fade .35s ease}
+.view.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* ---------- topbar (chapters) ---------- */
+.topbar{
+  position:sticky;top:0;z-index:30;display:none;align-items:center;gap:14px;
+  background:rgba(251,246,239,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);padding:12px 20px;
+}
+body.in-chapter .topbar{display:flex}
+.topbar a.back{
+  font-size:13px;font-weight:600;text-decoration:none;color:var(--ink);
+  display:inline-flex;align-items:center;gap:6px;white-space:nowrap;
+}
+.topbar a.back::before{content:"←";color:var(--rose)}
+.topbar .crumb{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* ---------- cover ---------- */
+.cover{padding-top:64px;text-align:center}
+.cover .brand{font-size:12px;font-weight:600;letter-spacing:.34em;text-transform:uppercase;color:var(--ink-soft)}
+.cover .brand b{color:var(--rose);font-weight:600}
+.cover h1{font-size:clamp(46px,10vw,72px);line-height:1.04;margin:18px 0 6px}
+.cover h1 em{font-style:italic;color:var(--rose)}
+.cover .sub{max-width:52ch;margin:14px auto 0;color:var(--ink-soft);font-size:15px}
+.rule{display:flex;align-items:center;gap:12px;justify-content:center;margin:30px 0}
+.rule::before,.rule::after{content:"";height:1px;width:72px;background:var(--champagne)}
+.rule span{color:var(--champagne);font-size:13px;letter-spacing:.3em}
+
+/* search */
+.search{max-width:520px;margin:0 auto 10px;position:relative;text-align:left}
+.search input{
+  width:100%;padding:13px 18px;font:inherit;font-size:15px;color:var(--ink);
+  background:var(--card);border:1px solid var(--line);border-radius:999px;
+}
+.search input::placeholder{color:#A8988F}
+.search .hits{
+  position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:20;
+  background:var(--card);border:1px solid var(--line);border-radius:14px;
+  box-shadow:0 14px 34px rgba(49,35,42,.12);max-height:300px;overflow:auto;display:none;
+}
+.search .hits.show{display:block}
+.search .hits a{
+  display:block;padding:11px 16px;font-size:14px;text-decoration:none;color:var(--ink);
+  border-bottom:1px solid var(--paper-deep);
+}
+.search .hits a:last-child{border-bottom:none}
+.search .hits a:hover{background:var(--blush)}
+.search .hits a small{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--champagne);margin-bottom:2px}
+.search .hits .none{padding:12px 16px;font-size:14px;color:var(--ink-soft)}
+.search .hits{max-height:420px}
+.search .hits a .ans{
+  display:block;white-space:pre-line;font-size:13px;line-height:1.55;color:var(--ink-soft);
+  margin-top:6px;padding:8px 10px;background:var(--blush);border-radius:8px;
+  max-height:190px;overflow:auto;
+}
+.search .hits a:hover .ans{background:#F1D8D2}
+.search .hits a .goto{display:block;font-size:11.5px;color:var(--rose-deep);margin-top:5px}
+
+/* quick info */
+.quick{
+  margin:34px 0 8px;background:var(--card);border:1px solid var(--line);border-radius:18px;
+  padding:22px 24px;text-align:left;
+}
+.quick .qtitle{font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--champagne);margin-bottom:12px}
+.qrow{display:flex;gap:14px;padding:9px 0;border-top:1px solid var(--paper-deep);font-size:14px}
+.qrow:first-of-type{border-top:none}
+.qrow .k{flex:0 0 96px;font-weight:600;color:var(--ink-soft);font-size:12.5px;letter-spacing:.03em;padding-top:1px}
+.qrow .v{flex:1}
+.qrow .v .warn{color:var(--rose);font-weight:600}
+
+/* index of chapters */
+.toc{margin-top:36px;text-align:left}
+.toc a{
+  display:flex;align-items:baseline;gap:18px;text-decoration:none;color:var(--ink);
+  padding:20px 6px;border-top:1px solid var(--line);
+}
+.toc a:last-of-type{border-bottom:1px solid var(--line)}
+.toc a:hover .t{color:var(--rose)}
+.toc .n{
+  font-family:'Cormorant Garamond',Georgia,serif;font-size:34px;font-style:italic;
+  color:var(--champagne);flex:0 0 44px;line-height:1;
+}
+.toc .t{font-family:'Cormorant Garamond',Georgia,serif;font-size:24px;font-weight:600;line-height:1.2;transition:color .15s}
+.toc .d{display:block;font-size:13px;color:var(--ink-soft);margin-top:3px;font-family:'Be Vietnam Pro',sans-serif;font-weight:400}
+.toc .go{margin-left:auto;color:var(--champagne);font-size:18px;align-self:center}
+.foot-note{margin-top:34px;font-size:12.5px;color:var(--ink-soft);text-align:center}
+.foot-note b{color:var(--rose)}
+
+/* ---------- chapter ---------- */
+.ch-head{padding-top:44px}
+.ch-head .display{font-size:clamp(34px,7vw,50px);line-height:1.08;margin:10px 0 12px}
+.ch-head .lede{color:var(--ink-soft);max-width:58ch;font-size:15px}
+
+/* accordion */
+details.qa{
+  background:var(--card);border:1px solid var(--line);border-radius:14px;
+  margin-bottom:10px;overflow:hidden;
+}
+details.qa summary{
+  cursor:pointer;list-style:none;display:flex;gap:12px;align-items:baseline;
+  padding:15px 18px;font-weight:600;font-size:15px;
+}
+details.qa summary::-webkit-details-marker{display:none}
+details.qa summary::before{
+  content:"+";font-family:'Cormorant Garamond',serif;font-size:22px;line-height:.8;
+  color:var(--rose);flex:0 0 14px;transition:transform .2s;transform-origin:center;
+}
+details.qa[open] summary::before{transform:rotate(45deg)}
+details.qa .a{padding:0 18px 16px 44px;font-size:14.5px;color:#463A40}
+details.qa .a p{margin-bottom:10px}
+details.qa .a p:last-child{margin-bottom:0}
+.qa2{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin:10px 0}
+.qa2 .q{font-weight:600;color:var(--ink);font-size:14.5px;margin:0 0 8px}
+.qa2 .q::before{content:"“";color:var(--rose);font-weight:700;margin-right:2px}
+.qa2 .a{font-size:14.5px;color:#463A40}
+.qa2 .a p{margin-bottom:10px}
+.qa2 .a p:last-child{margin-bottom:0}
+.qa-note{font-size:13px;color:var(--ink-soft);margin:6px 0 22px}
+
+/* callouts */
+.rulebox{
+  background:var(--blush);border-radius:14px;padding:16px 20px;margin:18px 0;
+  font-size:14.5px;
+}
+.rulebox .rb-t{font-weight:700;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--rose-deep);margin-bottom:6px}
+.quote{
+  font-family:'Cormorant Garamond',Georgia,serif;font-size:21px;font-style:italic;line-height:1.45;
+  border-left:2px solid var(--champagne);padding:4px 0 4px 18px;margin:20px 0;color:var(--ink);
+}
+
+/* creed — 7 quy tắc chung */
+.creed{margin:26px 0 10px;text-align:center;display:flex;flex-direction:column;gap:20px}
+.creed .ci .vn{display:block;font-weight:600;font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+.creed .ci .en{display:block;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:15px;color:var(--ink-soft);margin-top:2px}
+
+/* welcome gate + form */
+.gate-intro{max-width:56ch;margin:0 auto;text-align:center;color:#463A40;font-size:15px}
+.gate-intro p{margin-bottom:12px}
+.syll{max-width:560px;margin:34px auto 0;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px 24px}
+.syll .f-title{font-family:'Cormorant Garamond',Georgia,serif;font-size:26px;font-weight:600;margin-bottom:4px;text-align:center}
+.syll .f-note{font-size:13px;color:var(--ink-soft);text-align:center;margin-bottom:20px}
+.syll label{display:block;font-size:12.5px;font-weight:600;letter-spacing:.04em;color:var(--rose-deep);margin:14px 0 5px}
+.syll label .req{color:var(--rose)}
+.syll input,.syll select,.syll textarea{
+  width:100%;padding:11px 14px;font:inherit;font-size:15px;color:var(--ink);
+  background:var(--paper);border:1px solid var(--line);border-radius:10px;
+}
+.syll textarea{min-height:76px;resize:vertical}
+.syll .two{display:flex;gap:12px}
+.syll .two>div{flex:1}
+@media (max-width:480px){.syll .two{flex-direction:column;gap:0}}
+.syll .btn{
+  display:block;width:100%;margin-top:22px;padding:14px;font:inherit;font-size:15px;font-weight:600;
+  color:#fff;background:var(--rose);border:none;border-radius:999px;cursor:pointer;letter-spacing:.04em;
+}
+.syll .btn:hover{background:var(--rose-deep)}
+.syll .err{display:none;margin-top:10px;font-size:13.5px;color:var(--rose-deep);text-align:center}
+.syll .err.show{display:block}
+.gate-lock{margin-top:26px;text-align:center;font-size:13px;color:var(--ink-soft)}
+.gate-skip{margin-top:10px;text-align:center;font-size:12px}
+.gate-skip a{color:var(--ink-soft);text-decoration-color:var(--line)}
+.done-box{max-width:560px;margin:34px auto 0;text-align:left;background:var(--blush);border-radius:18px;padding:24px}
+.done-box ol{margin:10px 0 0;padding-left:20px}
+.done-box textarea{width:100%;min-height:170px;margin-top:12px;padding:12px;font-size:13px;font-family:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px}
+.done-box .btn2{display:block;width:100%;margin-top:16px;padding:14px;font:inherit;font-size:15px;font-weight:600;color:#fff;background:var(--rose);border:none;border-radius:999px;cursor:pointer}
+.done-box .copied{font-size:13px;color:var(--rose-deep);font-weight:600;margin-top:8px;display:none;text-align:center}
+.done-box .copied.show{display:block}
+
+/* message template */
+.tpl{background:var(--card);border:1px dashed var(--champagne);border-radius:14px;margin:12px 0 4px;overflow:hidden}
+.tpl-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;border-bottom:1px solid var(--paper-deep)}
+.tpl-head span{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--champagne)}
+.tpl-copy{font:inherit;font-size:12.5px;font-weight:600;color:var(--rose-deep);background:var(--blush);border:none;border-radius:999px;padding:6px 14px;cursor:pointer}
+.tpl-copy:hover{background:#EED3CD}
+.tpl-body{margin:0;padding:14px 16px;font-family:inherit;font-size:13.5px;line-height:1.6;white-space:pre-wrap;word-break:break-word;color:#463A40}
+
+/* big sub-section cards */
+.bigcards{display:flex;flex-direction:column;gap:14px;margin:32px 0 10px}
+.bigcards a{display:block;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px 26px;text-decoration:none;color:var(--ink);transition:border-color .15s}
+.bigcards a:hover{border-color:var(--rose)}
+.bigcards .bc-k{font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--champagne)}
+.bigcards .bc-t{display:block;font-family:'Cormorant Garamond',Georgia,serif;font-size:30px;font-weight:600;margin:4px 0 5px;line-height:1.1}
+.bigcards .bc-t::after{content:" →";color:var(--rose)}
+.bigcards .bc-d{display:block;font-size:14px;color:var(--ink-soft)}
+
+/* steps / timeline */
+.step{display:flex;gap:16px;padding:15px 0;border-top:1px solid var(--paper-deep)}
+.step:first-of-type{border-top:1px solid var(--line)}
+.step:last-of-type{border-bottom:1px solid var(--line)}
+.step .sk{flex:0 0 128px;font-weight:600;font-size:13px;color:var(--rose-deep);padding-top:2px}
+.step .sv{flex:1;font-size:14.5px;color:#463A40}
+@media (max-width:520px){.step{flex-direction:column;gap:4px}.step .sk{flex:none}}
+
+/* clip chips */
+.clips{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 8px}
+.clips a{
+  display:inline-flex;align-items:center;gap:7px;text-decoration:none;
+  background:var(--card);border:1px solid var(--line);border-radius:999px;
+  padding:8px 15px;font-size:13px;font-weight:500;color:var(--ink);
+}
+.clips a::before{content:"▶";font-size:9px;color:var(--rose)}
+.clips a:hover{border-color:var(--rose);color:var(--rose-deep)}
+.clip-label{font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--champagne);margin-top:30px}
+
+/* horizontal flow diagram */
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0 20px}
+.flow span{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:8px 15px;font-size:13px;font-weight:500;color:var(--ink)}
+.flow span.hot{background:var(--rose);border-color:var(--rose);color:#fff;font-weight:600}
+.flow i{color:var(--champagne);font-style:normal;font-weight:700;font-size:15px}
+
+/* chuỗi trải nghiệm (sơ đồ dọc giữa trang) */
+.chain{display:flex;flex-direction:column;align-items:center;gap:7px;margin:18px 0 24px;text-align:center}
+.chain span{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:10px 22px;font-size:14.5px;color:var(--ink)}
+.chain span.hot{background:var(--rose);border-color:var(--rose);color:#fff;font-weight:600}
+.chain > i{color:var(--champagne);font-style:normal;font-weight:700;font-size:17px;line-height:1}
+.chain details{text-align:center}
+.chain summary{list-style:none;display:inline-block;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:10px 22px;font-size:14.5px;color:var(--ink);cursor:pointer}
+.chain summary::-webkit-details-marker{display:none}
+.chain summary:hover{border-color:var(--rose)}
+.chain details[open] summary{border-color:var(--rose);color:var(--rose-deep)}
+.chain details.hot summary{background:var(--rose);border-color:var(--rose);color:#fff;font-weight:600}
+.chain .gt{font-size:13.5px;color:var(--ink-soft);line-height:1.6;max-width:430px;margin:9px auto 3px;text-align:center}
+.step.doi .sk{color:var(--ink-soft);font-weight:500}
+
+/* ví dụ tình huống: sai ✕ / đúng ✓ */
+.vd{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:14px 0}
+.vd .tinh{font-weight:600;color:var(--ink);font-size:14.5px;margin-bottom:10px}
+.vd .tinh::before{content:"Tình huống";display:block;font-size:10.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--champagne);margin-bottom:3px}
+.vd .sai,.vd .dung{position:relative;font-size:13.5px;line-height:1.55;padding:7px 0 7px 23px}
+.vd .sai{color:var(--ink-soft);border-top:1px dashed var(--line)}
+.vd .sai::before{content:"✕";font-weight:700;color:#B0764C;position:absolute;left:2px;top:7px}
+.vd .dung{color:var(--ink)}
+.vd .dung::before{content:"✓";font-weight:700;color:var(--rose);position:absolute;left:1px;top:7px}
+.vd .dung b{color:var(--rose-deep)}
+.vd.brand .tinh::before{content:"Thương hiệu lớn"}
+.vd.brand p{font-size:13.5px;color:var(--ink);line-height:1.6;margin:0 0 8px}
+.vd.brand .gq{display:inline-block;background:var(--blush);color:var(--rose-deep);border-radius:999px;padding:2px 10px;font-size:11px;font-weight:600;letter-spacing:.06em;margin:0 0 8px}
+.cklist{list-style:none;margin:8px 0 4px;padding:0}
+.cklist li{position:relative;padding:4px 0 4px 27px;font-size:13.5px;line-height:1.55}
+.cklist li::before{content:"";position:absolute;left:0;top:8px;width:13px;height:13px;border:1.5px solid var(--champagne);border-radius:3px}
+details.mini{margin:9px 0 2px}
+details.mini summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:13.5px;color:var(--ink)}
+details.mini summary::-webkit-details-marker{display:none}
+details.mini summary::before{content:"+";display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;border:1px solid var(--rose);border-radius:50%;font-size:12px;line-height:1;color:var(--rose);flex:none;transition:transform .18s}
+details.mini[open] summary::before{transform:rotate(45deg)}
+details.mini summary:hover{color:var(--rose-deep)}
+details.mini.big{margin:14px 0}
+details.mini.big > summary{font-family:"Cormorant Garamond",Georgia,serif;font-size:21px;font-weight:600}
+
+/* vertical timeline (sơ đồ dọc) */
+.step.tl{display:block;position:relative;padding:14px 0 16px 38px;border:none}
+.step.tl::before{content:"";position:absolute;left:11px;top:0;bottom:0;width:2px;background:var(--line)}
+.step.tl:first-of-type{border:none}
+.step.tl:last-of-type{border:none}
+.step.tl:first-of-type::before{top:20px}
+.step.tl:last-of-type::before{bottom:calc(100% - 20px)}
+.step.tl::after{content:"";position:absolute;left:6px;top:16px;width:8px;height:8px;border-radius:50%;background:var(--rose);border:2px solid var(--paper)}
+.step.tl .sk{flex:none;display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--rose-deep);margin-bottom:4px}
+.step.tl .sv{display:block}
+
+/* pager */
+.pager{display:flex;gap:12px;margin-top:52px;border-top:1px solid var(--line);padding-top:22px}
+.pager a{
+  flex:1;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:14px;padding:14px 18px;color:var(--ink);
+}
+.pager a:hover{border-color:var(--rose)}
+.pager .lbl{display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--champagne);margin-bottom:4px}
+.pager .pt{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:600;line-height:1.2}
+.pager a.next{text-align:right}
+
+/* appendix table-ish */
+.doc-row{display:flex;gap:14px;padding:13px 0;border-top:1px solid var(--paper-deep);font-size:14.5px}
+.doc-row:first-of-type{border-top:1px solid var(--line)}
+.doc-row:last-of-type{border-bottom:1px solid var(--line)}
+.doc-row .dk{flex:1;color:#463A40}
+.doc-row .dv{flex:0 0 auto;white-space:nowrap}
+@media (max-width:560px){.doc-row{flex-direction:column;gap:3px}.doc-row .dv{white-space:normal}}
+</style>
+</head>
+<body>
+
+
+<nav class="topbar">
+  <a class="back" href="#muc-luc">Mục lục</a>
+  <span class="crumb" id="crumb"></span>
+</nav>
+
+<!-- ══════════════ WELCOME GATE ══════════════ -->
+<section class="view" id="welcome">
+<div class="wrap cover">
+  <p class="brand">DOLINHANH BRIDAL <b>×</b> NUPAKACHI</p>
+  <h1>Chào mừng bạn<br><em>về với team</em></h1>
+  <div class="rule"><span>❦</span></div>
+  <div class="gate-intro">
+    <p><b>Nupakachi Wedding</b> — hơn 15 năm chụp pre-wedding và phóng sự cưới, làm nghề theo kiểu freelancer có tâm: không chạy công nghiệp, tối đa 2 show mỗi ngày, đặt chất lượng hình ảnh lên trước hết.</p>
+    <p><b>Dolinhanh Bridal (DLA)</b> — thương hiệu váy cưới ra đời năm 2017, phát triển từ Nupakachi, theo đuổi phong cách Quiet Minimal Luxury. Mỗi chiếc váy được làm bằng sự nâng niu, trìu mến như tình yêu của mẹ dành cho con gái — private fitting 1:1, mỗi cô dâu một phòng thử và một chuyên viên riêng, tại 2 cơ sở Hà Nội &amp; TP.HCM.</p>
+    <p class="quote" style="text-align:center;border:none;padding:0;margin:18px 0">Quiet minimal luxury —<br>Crafted with Mother Love.</p>
+    <p><b>Ở DLA, mình không bán hàng — mình mang đến trải nghiệm.</b> Cô dâu không đến để mua một chiếc váy; cô dâu đến để được lắng nghe, được chăm sóc, và tìm ra <i>phiên bản đẹp nhất của chính mình</i> trong ngày cưới. Be yourself, look happy 🤍</p>
+    <p>Từ hôm nay, bạn là một phần của hành trình đó.</p>
+  </div>
+
+  <div class="syll" id="gateCard">
+    <p class="f-title">Sơ yếu lý lịch</p>
+    <p class="f-note">Trước khi bắt đầu, bạn điền sơ yếu lý lịch — thông tin tự chuyển về hệ thống DLA để chấm công, tính lương. Chuẩn bị sẵn trong điện thoại: <b>ảnh 2 mặt CCCD</b>, <b>ảnh/file CV</b>, và thông tin gia đình (bố mẹ, anh chị em — nghề nghiệp, nơi làm, SĐT).</p>
+    <a class="btn" id="btnForm" href="#" target="_blank" rel="noopener" style="text-align:center;text-decoration:none">Điền sơ yếu lý lịch →</a>
+    <label style="margin-top:22px">Đã điền xong? Nhập email bạn vừa khai trong form</label>
+    <input type="email" id="unlockEmail" placeholder="email@cua-ban.com" autocomplete="email">
+    <button type="button" class="btn" id="btnDone" style="margin-top:12px">Em đã điền xong — mở cẩm nang 🤍</button>
+    <p class="err" id="syllErr">Bạn nhập đúng email đã điền trong form nha.</p>
+  </div>
+
+  
+
+  <p class="gate-lock" id="gateLock">🔒 Các chương của cẩm nang sẽ mở sau khi bạn hoàn tất sơ yếu lý lịch.</p>
+  <p class="gate-skip"><a href="#" id="adminSkip">Quản lý mở khóa</a></p>
+  <div id="adminRow" style="display:none;max-width:320px;margin:10px auto 0">
+    <input type="password" id="adminCode" placeholder="Mã quản lý" style="width:100%;padding:10px 14px;font:inherit;font-size:14px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:999px;text-align:center">
+    <button type="button" id="adminGo" style="display:block;width:100%;margin-top:8px;padding:10px;font:inherit;font-size:13.5px;font-weight:600;color:#fff;background:var(--rose);border:none;border-radius:999px;cursor:pointer">Mở khóa</button>
+    <p id="adminErr" style="display:none;margin-top:6px;font-size:12.5px;color:var(--rose-deep);text-align:center">Mã chưa đúng.</p>
+  </div>
+</div>
+</section>
+
+<!-- ══════════════ COVER ══════════════ -->
+<section class="view" id="muc-luc">
+<div class="wrap cover">
+  <p class="brand">DOLINHANH BRIDAL <b>×</b> NUPAKACHI</p>
+  <h1>Cẩm nang<br><em>nhân viên</em></h1>
+  <p class="sub">Mọi kỹ năng, câu hỏi của khách và clip hướng dẫn — mở ra bất cứ lúc nào cần.</p>
+  <div class="rule"><span>❦</span></div>
+
+  <div class="search">
+    <input id="q" type="search" placeholder="Tìm nhanh… (vd: pass hợp đồng, phí thử váy, hashtag)" autocomplete="off" aria-label="Tìm trong cẩm nang">
+    <div class="hits" id="hits"></div>
+  </div>
+
+  <div class="toc">
+    <a href="#chuong-1"><span class="n">1</span><span><span class="t">Hình ảnh &amp; ứng xử cá nhân</span><span class="d">Giao diện · tác phong · giọng điệu và cách giao tiếp</span></span><span class="go">→</span></a>
+    <a href="#chuong-2"><span class="n">2</span><span><span class="t">Văn hóa làm việc</span><span class="d">7 quy tắc chung · với đồng nghiệp · checklist mỗi ngày</span></span><span class="go">→</span></a>
+    <a href="#chuong-3"><span class="n">3</span><span><span class="t">Tư duy phục vụ &amp; trải nghiệm khách hàng</span><span class="d">Giới thiệu Nupakachi &amp; DLA · trải nghiệm 5 giác quan · ví dụ thương hiệu lớn</span></span><span class="go">→</span></a>
+    <a href="#sale-onl"><span class="n">4</span><span><span class="t">Các bước reply khách online</span><span class="d">Kênh Page–TikTok–Zalo · các bước B1–B6 · nguyên tắc trả lời · 12 câu khách hỏi nhiều nhất</span></span><span class="go">→</span></a>
+    <a href="#trai-nghiem"><span class="n">5</span><span><span class="t">Quy trình đón tiếp khách hàng</span><span class="d">Các bước tiếp đón khi khách đến · khách phàn nàn · khách rời đi</span></span><span class="go">→</span></a>
+    <a href="#take-care"><span class="n">6</span><span><span class="t">Quy trình take care khách hàng sau khi cọc</span><span class="d">Ký HĐ → giao váy → nhận lại → feedback · khách may váy</span></span><span class="go">→</span></a>
+    <a href="#chuong-5"><span class="n">7</span><span><span class="t">Sale và take care gói chụp</span><span class="d">Pre-wedding · chụp tiệc · timeline take care đến khi giao album</span></span><span class="go">→</span></a>
+    <a href="#chuong-6"><span class="n">8</span><span><span class="t">Marketing</span><span class="d">Hệ thống kênh · cách quay clip · cách dựng clip · KOC · review</span></span><span class="go">→</span></a>
+    <a href="#phu-luc"><span class="n">❦</span><span><span class="t">Phụ lục</span><span class="d">Kho tài liệu gốc &amp; toàn bộ clip hướng dẫn</span></span><span class="go">→</span></a>
+  </div>
+
+  <p class="foot-note"><b>Tài liệu nội bộ</b> — không chia sẻ ra ngoài. Thấy sổ thiếu gì, sai gì, hoặc gặp câu khách hỏi mà sổ chưa có → báo chị Linh để cập nhật. Cập nhật 21/08/2026.</p>
+</div>
+</section>
+
+<!-- ══════════════ CHƯƠNG 1 ══════════════ -->
+<section class="view" id="chuong-1" data-title="Hình ảnh &amp; ứng xử cá nhân">
+<div class="wrap">
+  <div class="ch-head">
+    <p class="eyebrow">Chương 1</p>
+    <h2 class="display">Hình ảnh &amp; ứng xử cá nhân</h2>
+    <p class="lede">Khách chưa kịp nghe mình tư vấn thì đã nhìn thấy mình trước rồi. Đầu tóc, đồng phục, nụ cười — chính là bộ nhận diện sống của DLA.</p>
+  </div>
+
+  <h3>Giao diện cá nhân</h3>
+  <ul>
+    <li><b>Đồ gọn gàng, lịch sự</b> — áo sơ vin vào quần/váy nha.</li>
+    <li><b>Đi làm là mặc đồng phục</b> theo quy định, không tự chế.</li>
+    <li><b>Tóc búi/buộc gọn, sạch sẽ</b> — khách đứng sát mình cả buổi fitting đó.</li>
+    <li><b>Check mùi cơ thể trước giờ làm</b> (nách + hơi thở) — nghe hơi phũ nhưng cực kỳ quan trọng.</li>
+  </ul>
+
+  <h3>Tác phong làm việc</h3>
+  <ul>
+    <li><b>Đến sớm 10–15 phút</b> — vào ca là sẵn sàng luôn, không vừa chạy vừa thở.</li>
+    <li><b>Năng lượng tươi tỉnh</b> — mình uể oải là khách thấy liền.</li>
+    <li><b>Làm gì tập trung nấy</b>, đừng lơ đãng.</li>
+    <li><b>Deadline là deadline</b> — xong đúng hẹn; vướng gì thì nói sớm, đừng im.</li>
+    <li><b>Làm việc nhóm thì trao đổi rõ ràng</b> — đừng để ai phải đoán ý mình.</li>
+    <li><b>Gặp ca khó thì bình tĩnh xử</b>, kiên nhẫn thêm một nhịp.</li>
+    <li><b>Quy định đề ra là để làm theo</b> nha.</li>
+    <li><b>Nghỉ hay đến muộn: báo quản lý sớm nhất có thể</b> — được xác nhận mới tính là nghỉ. Nghỉ gấp mà im lặng là bỏ ca, cả team phải gánh phần mình hôm đó.</li>
+  </ul>
+
+  <h3>Giọng điệu và cách giao tiếp</h3>
+  <ul>
+    <li><b>Gặp ai cũng chào, cười tươi lên</b> — đồng nghiệp hay khách đều vậy.</li>
+    <li><b>"Dạ", "vâng" nói to, tròn, rõ chữ</b> — lí nhí là mất điểm oan.</li>
+    <li><b>Không dùng từ gây khó chịu, thách thức</b> — kể cả lúc đang bực.</li>
+    <li><b>Thân thiện nhưng đừng suồng sã</b> với khách kiểu bạn bè — gần gũi mà vẫn có chừng.</li>
+  </ul>
+
+  <div class="pager">
+    <a class="next" href="#chuong-2" style="margin-left:auto"><span class="lbl">Tiếp theo</span><span class="pt">Văn hóa làm việc →</span></a>
+  </div>
+</div>
+</section>
+
+<!-- ══════════════ CHƯƠNG 2 ══════════════ -->
+<section class="view" id="chuong-2" data-title="Văn hóa làm việc">
+<div class="wrap">
+  <div class="ch-head">
+    <p class="eyebrow">Chương 2</p>
+    <h2 class="display">Văn hóa làm việc</h2>
+    <p class="lede">Việc chung — cùng làm, cùng hưởng. 7 điều dưới đây không phải khẩu hiệu treo tường, mà là cách cả team đối xử với nhau mỗi ngày.</p>
+  </div>
+
+  <h3>7 quy tắc chung</h3>
+  <ul>
+    <li><b>Giữ thái độ tích cực, vui vẻ</b> — <i>Maintain a positive and cheerful attitude.</i></li>
+    <li><b>Chấp hành các quy định đề ra</b> — <i>Comply with established regulations.</i></li>
+    <li><b>Lắng nghe, hỗ trợ, tiếp thu ý kiến</b> — <i>Listen, support, and accept feedback.</i></li>
+    <li><b>Bảo ban nhau cùng cố gắng vì mục tiêu chung</b> — <i>Encourage each other to strive for common goals.</i></li>
+    <li><b>Xây dựng môi trường làm việc hợp tác, thân thiện, thẳng thắn</b> — <i>Build a cooperative, friendly, and open working environment.</i></li>
+    <li><b>Bàn giao công việc cụ thể, chi tiết</b> — <i>Detailed and specific task handover.</i></li>
+    <li><b>Không lan truyền hình ảnh phản cảm, ảnh hưởng đến uy tín của tập thể</b> — <i>Do not spread inappropriate images that may affect the reputation of the group.</i></li>
+  </ul>
+
+  <div class="rulebox">
+    <p class="rb-t">Không có việc nào là "không phải việc của em"</p>
+    <p>Quét nhà, dọn phòng váy, châm nước, gấp voan, phụ đón khách… đều là <b>việc chung của cả team</b> — showroom mình nhỏ, không có ai "chỉ làm phần mình". "Em làm tốt việc của em" là chưa đủ: khách không chấm điểm từng người, khách chấm <b>cả trải nghiệm DLA</b>. Thấy việc chung thì làm, đừng phân bì — hôm nay mình đỡ người khác, mai người khác đỡ mình.</p>
+  </div>
+
+  <h3>Với đồng nghiệp thì sao?</h3>
+  <ul>
+    <li><b>Bàn giao việc:</b> nói cho cụ thể, chốt cho kỹ. Nhận việc mà chưa rõ thì hỏi lại ngay — đừng nhận ù rồi làm sai, mất công cả hai.</li>
+    <li><b>Thấy đồng đội ngập việc thì nhảy vào đỡ</b>; được góp ý thì tiếp thu, đừng tự ái.</li>
+    <li><b>Chuyện nội bộ và hình ảnh chưa đẹp của team</b> — không mang ra ngoài kể, không đăng lên mạng.</li>
+  </ul>
+
+  <h3>Checklist mỗi ngày</h3>
+  <div class="step"><div class="sk">Đầu ngày (sale)</div><div class="sv">Check báo cáo công việc → check hotline, tin nhắn fanpage, comment → mở nhạc không lời → 15–30 phút tham khảo hình ảnh các bên → lên list việc hôm nay.</div></div>
+  <div class="step"><div class="sk">Vệ sinh</div><div class="sv">Làm theo checklist chi tiết từng phòng/từng tầng của cơ sở mình (HN: studio, phòng thử đồ + tiếp khách, phòng trưng bày váy, WC, kho · HCM: tầng 1–4 + cầu thang) — xem trang 7–11 trong <a href="https://www.canva.com/design/DAGkHidedPM/QG5Z5pxrpyaJvEm3Y3ozlA/edit" target="_blank" rel="noopener">Canva Training Sale Marketing</a>. <b>HCM: check xong chụp ảnh gửi Zalo liền, tắt hết đèn điện, máy lạnh.</b></div></div>
+
+  <div class="pager">
+    <a href="#chuong-1"><span class="lbl">Trước</span><span class="pt">← Hình ảnh &amp; ứng xử</span></a>
+    <a class="next" href="#chuong-3"><span class="lbl">Tiếp theo</span><span class="pt">Tư duy phục vụ &amp; trải nghiệm KH →</span></a>
+  </div>
+</div>
+</section>
+
+<!-- ══════════════ CHƯƠNG 3 ══════════════ -->
+<section class="view" id="chuong-3" data-title="Tư duy phục vụ &amp; trải nghiệm khách hàng">
+<div class="wrap">
+  <div class="ch-head">
+    <p class="eyebrow">Chương 3</p>
+    <h2 class="display">Tư duy phục vụ &amp; trải nghiệm khách hàng</h2>
+    <p class="lede">Hiểu mình là ai thì mới tư vấn đúng chất. Đây là phần nền cho mọi câu trả lời với khách.</p>
+  </div>
+
+  <h3>1 · Giới thiệu Nupakachi &amp; Dolinhanh</h3>
+  <ul>
+    <li><b>Nupakachi Wedding</b> — thương hiệu ảnh cưới <b>hơn 15 năm</b>, sáng lập bởi nhiếp ảnh gia <b>Đỗ Xuân Cường</b>, hơn 3 chi nhánh và dấu chân đã in qua nhiều quốc gia. Không chỉ là một cái tên — là một tinh thần sáng tạo mang tầm quốc tế.</li>
+    <li><b>Dolinhanh Bridal</b> ra đời năm <b>2017</b> — thương hiệu mang đậm dấu ấn cá nhân, tạo nên từ sự say mê với cái đẹp, sự chỉn chu trong từng chi tiết và tình yêu với hình ảnh cô dâu hạnh phúc.</li>
+    <li>Trải qua nhiều thăng trầm — từ biến cố mùa dịch đến việc đổi tên, chuyển nhượng thương hiệu — Dolinhanh vẫn giữ nguyên tinh thần ban đầu: <b>chân thành, tinh tế và đầy cảm xúc</b>.</li>
+    <li><b>Khách mục tiêu:</b> cô dâu 24–35 tuổi, thích phong cách Quiet Luxury – Minimal – Timeless – Editorial, muốn <b>được tư vấn</b> hơn là tự chọn váy.</li>
+    <li><b>Tiêu chí Nupakachi:</b> ảnh <b>tự nhiên, bắt khoảnh khắc</b>; <b>màu ảnh bền với thời gian</b> — 10 năm sau nhìn lại vẫn cảm nhận được.</li>
+    <li><b>Thiết kế DLA:</b> tập trung 4 tông hồng – ghi – vàng champagne (như các nhà couture Calla, Hacchic, Linh Nga) vì da người Việt sắc tố vàng/trung tính vàng — tông trắng quá lạnh dễ làm da tái, xỉn khi lên hình; các tông này giúp da sáng, có chiều sâu, sang và mềm mại hơn.</li>
+  </ul>
+  <p class="quote">Dolinhanh Bridal — váy cưới hạnh phúc dệt từ tình yêu của mẹ cha. DLA không chỉ cho thuê váy — DLA giúp cô dâu tìm ra phiên bản đẹp nhất của chính mình trong ngày cưới.</p>
+
+  <h3>2 · Trải nghiệm khách hàng &amp; tư duy phục vụ</h3>
+  <p>DLA không chỉ muốn khách bước vào showroom và tìm được một chiếc váy đẹp — mình muốn mỗi cô dâu khi rời DLA đều mang theo một <b>cảm giác đẹp</b>. Trải nghiệm không chỉ đến từ những gì mình nói: nó được tạo nên từ <b>tất cả những gì khách nhìn thấy, nghe thấy, ngửi thấy, nếm thấy và chạm vào</b> trong suốt thời gian ở DLA.</p>
+  <p class="quote">DLA không chỉ bán bằng sản phẩm. DLA tạo ra trải nghiệm bằng cả 5 giác quan.</p>
+
+  <p class="hint" style="text-align:center;font-size:12.5px;color:var(--ink-soft)">Bấm vào từng ô để xem giải thích 👇</p>
+  <div class="chain">
+    <details><summary>DLA tạo ra trải nghiệm bằng <b>5 giác quan</b></summary>
+      <div class="gt"><b>Mắt</b> — điều khách nhìn thấy · <b>mũi</b> — điều khách ngửi thấy · <b>tai</b> — điều khách nghe thấy · <b>miệng</b> — điều khách nếm thấy · <b>da</b> — điều khách chạm và cảm nhận. Đi sâu từng giác quan ở 5 mục ngay bên dưới sơ đồ 👇</div>
+    </details>
+    <i>↓</i>
+    <details><summary>5 giác quan tạo nên <b>cảm xúc</b></summary>
+      <div class="gt">Khách không mang 5 giác quan đó về nhà — họ mang về <b>một cảm xúc</b>: cảm giác được nâng niu, thư giãn và tin tưởng khi ở DLA.</div>
+    </details>
+    <i>↓</i>
+    <details><summary>Cảm xúc tạo nên <b>ký ức</b></summary>
+      <div class="gt">Khách có thể quên chúng ta đã nói gì, quên mình đã thử bao nhiêu chiếc váy — nhưng họ sẽ nhớ <b>cảm giác của mình khi ở DLA</b>. Cảm xúc đó dần trở thành ký ức về DLA.</div>
+    </details>
+    <i>↓</i>
+    <details class="hot"><summary>Ký ức tạo nên thương hiệu</summary>
+      <div class="gt">Sau này nhắc đến ngày cưới, khách nhớ ngay đến DLA và tự kể lại cho bạn bè. Ký ức đẹp trong lòng khách chính là thương hiệu — thứ không quảng cáo nào mua được.</div>
+    </details>
+  </div>
+
+  <p class="clip-label">Đi sâu từng giác quan</p>
+  <details class="qa"><summary>01 · Thị giác — khách nhìn thấy gì?</summary><div class="a">
+    <p>Ấn tượng đầu tiên thường bắt đầu từ những gì khách nhìn thấy. Từ lúc bước vào showroom, khách đã cảm nhận DLA qua:</p>
+    <p>• Không gian · ánh sáng · màu sắc<br>• Cách trưng bày váy<br>• Sự sạch sẽ và chỉn chu<br>• Diện mạo của nhân viên<br>• Cách mình chuẩn bị phòng thử</p>
+    <p>Showroom theo tinh thần <b>Quiet Luxury</b> không cần nhiều chi tiết để chứng minh sự sang trọng — mọi thứ vừa đủ, tinh tế và có chủ đích. Bởi trước khi nhân viên kịp nói "DLA là thương hiệu cao cấp", <b>không gian đã tự trả lời điều đó</b>.</p>
+  </div></details>
+  <details class="qa"><summary>02 · Khứu giác — khách ngửi thấy gì?</summary><div class="a">
+    <p>Mùi hương là giác quan dễ bị bỏ quên nhất, nhưng tạo ký ức lâu nhất: mùi showroom, mùi vải và váy, mùi phòng thử, mùi nước hoa của nhân viên, mùi của không gian sạch sẽ được chăm sóc.</p>
+    <p>DLA cần mùi hương <b>nhẹ, sạch, tinh tế, dễ chịu</b> — không phải để khách nhận ra ngay "ở đây có nước hoa", mà để một ngày nào đó khách vô tình gặp mùi tương tự và nhớ: <b>"Mùi này làm mình nhớ đến DLA."</b> Đó là cách trải nghiệm trở thành <b>ký ức thương hiệu</b>.</p>
+  </div></details>
+  <details class="qa"><summary>03 · Thính giác — khách nghe thấy gì?</summary><div class="a">
+    <p>Khách không chỉ nghe <em>nội dung</em> mình nói — khách còn cảm nhận <b>cách mình nói</b>: giọng nhẹ nhàng hay vội vàng, tư vấn tinh tế hay áp đặt, biết lắng nghe hay liên tục ngắt lời, nhạc vừa đủ hay quá ồn.</p>
+    <p>Đặc biệt với DLA: cách nói về <b>vóc dáng, khuyết điểm và những điều khách chưa tự tin</b> phải cân nhắc rất kỹ. Mình không làm khách thấy họ cần "sửa" bản thân để mặc được váy — mình tìm chiếc váy giúp họ <b>đẹp nhất trong chính cơ thể của mình</b>.</p>
+    <p class="quote">Không chỉ nói điều đúng. Hãy nói điều đúng theo một cách khiến khách cảm thấy được tôn trọng.</p>
+  </div></details>
+  <details class="qa"><summary>04 · Vị giác — khách nếm thấy gì?</summary><div class="a">
+    <p>Một ly nước khi khách vừa đến · một tách trà trong lúc thử váy · một món nhỏ khi khách phải chờ. Chi tiết rất nhỏ — nhưng trải nghiệm không được tạo nên bởi điều lớn lao, mà từ <b>rất nhiều chi tiết nhỏ được làm có chủ ý</b>.</p>
+    <p>Quan trọng không phải mình phục vụ thứ đắt tiền, mà là khách cảm nhận được: <b>"Ở đây, người ta đang chăm sóc mình."</b></p>
+  </div></details>
+  <details class="qa"><summary>05 · Xúc giác — khách chạm và cảm nhận gì?</summary><div class="a">
+    <p>Với bridal showroom, xúc giác đặc biệt quan trọng. Khách trực tiếp cảm nhận: độ mềm của satin · độ rũ của mikado · sự nhẹ nhàng của tulle · bề mặt của ren · chi tiết đính kết · cảm giác chiếc váy khi mặc lên cơ thể.</p>
+    <p>Nhưng không chỉ chiếc váy — <b>cách nhân viên chạm vào khách cũng là một phần của trải nghiệm</b>. Khi hỗ trợ mặc váy, chỉnh corset, kéo khóa, chỉnh ngực hay eo: mọi thao tác đều <b>nhẹ nhàng, chuyên nghiệp, tinh tế</b>.</p>
+    <p>Khách phải cảm nhận được <b>"mình đang được chăm sóc"</b> — chứ không phải "mình đang được xử lý để mặc xong một chiếc váy".</p>
+  </div></details>
+
+  <p class="quote">Chúng ta không chỉ muốn khách nói: "Váy ở DLA rất đẹp."<br>Chúng ta muốn khách cảm thấy: <b>"Ở DLA, mình được nâng niu."</b></p>
+
+  <h3>3 · Ví dụ — các thương hiệu lớn tạo trải nghiệm như thế nào?</h3>
+  <p>Không phải mình tự nghĩ ra đâu — những thương hiệu lớn nhất đều đang bán bằng 5 giác quan, và khách quay lại vì <em>cảm giác</em>, không chỉ vì sản phẩm:</p>
+
+  <details class="mini"><summary>3 ví dụ: Vincom Đồng Khởi · Lotte Mall HN · Apple Store</summary>
+  <div class="vd brand">
+    <div class="tinh">Vincom Đồng Khởi (TP.HCM)</div>
+    <span class="gq">THỊ GIÁC · KHÔNG GIAN</span>
+    <p>Bước vào là trần cao, đá bóng loáng, ánh sáng sang, không khí mát và sạch — khách <b>chưa mua gì đã thấy "chỗ này xịn"</b>. Không ai phải đứng ở cửa nói "đây là trung tâm thương mại cao cấp".</p>
+    <div class="dung">Bài học cho DLA: <b>không gian tự nói "cao cấp" trước khi nhân viên kịp nói</b> — showroom phải chỉn chu từ ánh sáng, cách treo váy tới phòng thử.</div>
+  </div>
+
+  <div class="vd brand">
+    <div class="tinh">Lotte Mall Hà Nội (Tây Hồ)</div>
+    <span class="gq">KHỨU GIÁC · THÍNH GIÁC</span>
+    <p>Nổi tiếng với <b>mùi thơm dễ chịu ngay từ sảnh</b> và nhạc nền vừa đủ — đi một vòng thấy thư giãn, tự nhiên muốn quay lại, dù chưa chắc đã mua gì hôm đó.</p>
+    <div class="dung">Bài học cho DLA: một <b>mùi hương riêng, nhẹ và tinh tế</b> làm khách nhớ đến mình rất lâu — gặp mùi tương tự ở đâu đó là nhớ "mùi này giống DLA".</div>
+  </div>
+
+  <div class="vd brand">
+    <div class="tinh">Apple Store</div>
+    <span class="gq">XÚC GIÁC · CÁCH PHỤC VỤ</span>
+    <p>Máy bày trên bàn gỗ dài, khách <b>tự cầm, tự thử thoải mái</b>; nhân viên đứng gần để hỗ trợ chứ không bám đuôi chèo kéo. Khách nhớ cảm giác được tôn trọng — và thành fan trung thành.</p>
+    <div class="dung">Bài học cho DLA: để khách <b>chạm thật, thử thật</b> — chạm chất liệu, mặc thử váy — còn nhân viên đồng hành nhẹ nhàng, không tạo áp lực chốt.</div>
+  </div>
+  </details>
+
+  <div class="pager">
+    <a href="#chuong-2"><span class="lbl">Trước</span><span class="pt">← Văn hóa làm việc</span></a>
+    <a class="next" href="#sale-onl"><span class="lbl">Tiếp theo</span><span class="pt">Các bước reply khách online →</span></a>
+  </div>
+</div>
+</section>
+
+<!-- ══════════════ CHƯƠNG 4 — TRẢI NGHIỆM KHÁCH HÀNG ══════════════ -->
+<section class="view" id="trai-nghiem" data-title="Quy trình đón tiếp khách hàng">
+<div class="wrap">
+  <div class="ch-head">
+    <p class="eyebrow">Chương 5</p>
+    <h2 class="display">Quy trình đón tiếp khách hàng</h2>
+    <p class="lede">Private fitting 1:1 — khách đặt hẹn để được chăm riêng. Từ lúc khách bước vào đến lúc ra về, mỗi bước đều có chuẩn.</p>
+  </div>
+
+  <h3>1/ Khách mới — lần đầu tới thử</h3>
+  <div class="step tl"><div class="sk">Trước giờ hẹn</div><div class="sv"><b>Check lịch thử váy đầu ca:</b> hôm nay ai tới, mấy giờ, cần chuẩn bị gì — váy khách đã chọn trước, phòng thử, nước uống. Khách bước vào là mọi thứ đã sẵn.
+    <details class="mini"><summary>6 thông tin phải nắm với từng khách có hẹn</summary>
+    <ul>
+      <li>Tên</li>
+      <li>Ngày cưới</li>
+      <li>Số váy cần</li>
+      <li>Địa điểm cưới</li>
+      <li>Đã chụp pre-wedding chưa?</li>
+      <li>Đã book chụp tiệc chưa?</li>
+    </ul>
+    </details>
+    <details class="mini"><summary>Checklist không gian đầu giờ — tick xong hết mới đón khách</summary>
+    <ul class="cklist">
+      <li>Quét / hút bụi sảnh tiếp khách / phòng thay đồ</li>
+      <li>Lau gương lớn, cửa kính (không để dấu vân tay)</li>
+      <li>Lau bàn tiếp khách, quầy lễ tân</li>
+      <li>Phủi bụi váy cưới / bục / tủ</li>
+      <li>Bồn cầu, rửa tay không vết hoen ố</li>
+      <li>Thay giấy, xà phòng đầy đủ</li>
+      <li>Đảm bảo không có vật dụng để sai vị trí</li>
+      <li>Đổ rác, thay túi rác mới</li>
+      <li>Dọn sạch ly, chén, cốc, chuẩn bị khăn, nước</li>
+      <li>Vệ sinh ghế ngồi, móc treo</li>
+      <li>Gấp và treo lại váy ngay ngắn sau khi khách thử</li>
+    </ul>
+    </details>
+  </div></div>
+  <div class="step tl"><div class="sk">Khách vừa tới</div><div class="sv">Đón khách từ cửa, lấy dép đi trong nhà cho khách. Nụ cười trước, thủ tục sau.</div></div>
+  <div class="step tl"><div class="sk">Mời ngồi</div><div class="sv">Mời khách ngồi, rót nước — để khách thở một nhịp rồi mới vào chuyện.</div></div>
+  <div class="step tl"><div class="sk">Xác nhận nhu cầu</div><div class="sv">Kiểm tra lịch hẹn, hỏi lại mong muốn hôm nay của khách: thử mẫu nào, thích dáng gì, muốn che khuyết điểm chỗ nào.</div></div>
+  <div class="step tl"><div class="sk">Đưa khách đi tham quan</div><div class="sv">Dẫn khách một vòng showroom, vừa đi vừa giới thiệu về Nupakachi &amp; DLA.
+    <details class="mini"><summary>Lời giới thiệu mẫu — bấm để mở</summary>
+    <div class="tpl">
+      <div class="tpl-head"><span>Lời giới thiệu mẫu</span><button type="button" class="tpl-copy">Copy</button></div>
+      <pre class="tpl-body">Em xin giới thiệu qua một chút về bên em nhé 🤍
+
+Dolinhanh Bridal được phát triển từ Nupakachi Wedding – thương hiệu đã có hơn 15 năm hoạt động trong lĩnh vực chụp pre-wedding và phóng sự cưới.
+
+Hiện tại, các thiết kế của Dolinhanh Bridal tập trung vào 4 tông màu chủ đạo: hồng, ghi và vàng champagne. Đây cũng là những gam màu được nhiều nhà couture hàng đầu như Calla, Hacchic Couture hay Linh Nga Bridal lựa chọn trong các bộ sưu tập của mình.
+
+Lý do là bởi những tông màu này giúp làn da cô dâu Việt trông sáng hơn, có chiều sâu hơn khi lên ảnh và mang lại cảm giác sang trọng, mềm mại hơn so với sắc trắng tinh thuần túy.</pre>
+    </div>
+    </details>
+    <div class="clips" style="margin-top:10px"><a href="https://drive.google.com/drive/folders/1-qrrNNySskKWS9KAi9ssEVyfVoPTMCuZ" target="_blank" rel="noopener">Catalogue váy</a></div>
+  </div></div>
+  <div class="step tl"><div class="sk">Thử váy</div><div class="sv">Khách chọn <b>5 mẫu</b> để thử. Sắp thứ tự thử có chủ đích: <b>mẫu đầu tiên và mẫu cuối cùng là mẫu đẹp nhất</b> — ấn tượng mở màn và ấn tượng đọng lại.
+    <details class="mini"><summary>Tư vấn váy theo dáng người (trích "60 dáng cưới phải lưu")</summary>
+  <p style="font-size:13px;color:var(--ink-soft)">Trích "Cẩm nang 60 dáng cưới phải lưu" của Nupakachi — thuộc lòng bảng này là tư vấn tự tin hẳn.</p>
+  <div class="step"><div class="sk">Đồng hồ cát</div><div class="sv"><b>Mermaid đuôi cá</b> ôm eo — khoe trọn đường cong.</div></div>
+  <div class="step"><div class="sk">Quả lê, hông nở</div><div class="sv"><b>Váy chữ A</b> xòe từ eo — tôn eo và giấu hông khéo léo.</div></div>
+  <div class="step"><div class="sk">Thẳng, ít eo</div><div class="sv"><b>Váy công chúa</b> hoặc đính <b>đai eo nổi</b> — tạo điểm thắt thị giác.</div></div>
+  <div class="step"><div class="sk">Nhỏ nhắn</div><div class="sv"><b>Váy trơn tối giản</b>, tránh bèo nhún to; <b>xẻ tà nhẹ</b> giúp chân dài hơn.</div></div>
+
+
+
+    </details>
+    <details class="mini"><summary>Báo combo trong lúc thử + quy tắc ưu đãi</summary>
+    <p style="margin:8px 0 2px"><b>Báo các combo theo nhu cầu của khách</b> (dựa trên 6 thông tin đã nắm — khách đã chụp pre chưa, đã book chụp tiệc chưa):</p>
+    <ul>
+      <li>1 váy</li>
+      <li>2 váy</li>
+      <li>Váy + chụp pre-wedding</li>
+      <li>Váy + chụp tiệc</li>
+    </ul>
+    <p style="margin:10px 0 0">⚠️ <b>Ưu đãi chỉ áp dụng cho khách tới và cọc ngay trong lần đầu thử.</b> Khách ưng nhưng chưa chốt được mẫu → mời <b>cọc giữ ưu đãi</b> là được, chốt váy sau — đừng để khách ra về tay không mất quyền lợi.<br>💳 Mọi khoản thu <b>chỉ nhận chuyển khoản</b>; khách đưa tiền mặt → báo quản lý, không giữ mang về nhà.</p>
+    </details>
+    <div class="clips" style="margin-top:10px"><a href="https://drive.google.com/file/d/1LTAARtJjtSP49d7BpylkqM2hArOdddqH/view" target="_blank" rel="noopener">Hướng dẫn cài voan</a><a href="https://drive.google.com/file/d/1s-q-AXejNhno3qfmHbbJovHpq9tS3kOM/view" target="_blank" rel="noopener">Top 3 cách cài voan lên lễ đường</a><a href="https://drive.google.com/file/d/1E6UuVjrnwSPWmcAkrjpe-WLoHlggD5Q_/view" target="_blank" rel="noopener">Các kiểu voan</a><a href="https://drive.google.com/file/d/1jt_6ALQSyMoVDJj2wCvgPUWOMajBIKdP/view" target="_blank" rel="noopener">Chất liệu váy cưới</a></div>
+  </div></div>
+  <div class="step tl"><div class="sk">Thử váy xong</div><div class="sv">
+    <ul>
+      <li><b>Gửi ngay ảnh đã chỉnh sửa</b> cho khách.</li>
+      <li>Hỏi khách <b>thích mẫu nào nhất</b>.</li>
+      <li>Khách <b>đã cọc</b> → mời khách <b>để lại feedback trên Google</b>.</li>
+      <li>Khách <b>chưa cọc</b> → hỏi khách có muốn <b>book take care</b> không? Hoặc mời <b>vẽ sketch</b> / <b>thiệp cưới online</b> — bên mình vẫn áp dụng.</li>
+    </ul>
+  </div></div>
+  <div class="step tl"><div class="sk">Trong suốt buổi</div><div class="sv">4 điều tuyệt đối không trước mặt khách: <b>không dùng điện thoại</b> · <b>không buôn chuyện cá nhân</b> · <b>không vắt chân chữ ngũ, khoanh tay</b> · <b>không kết bạn cá nhân với khách</b> — mọi trao đổi qua kênh của shop, cần gì nhắn ad/quản lý.</div></div>
+  <div class="step tl"><div class="sk">Khách phàn nàn</div><div class="sv">Nghe hết tâm tư, đừng ngắt lời. Giữ bình tĩnh, kiên nhẫn. Đừng hứa hay xử tại chỗ — nói "để em kiểm tra kỹ và phản hồi chị sớm nhất", rồi báo quản lý / chị Linh.</div></div>
+  <div class="step tl"><div class="sk">Khách về</div><div class="sv">
+    <p style="margin:0 0 8px"><b>Khách ĐÃ cọc</b> → cảm ơn, chúc mừng cô dâu 🤍 rồi chuyển tiếp sang chương <a href="#take-care"><b>Quy trình take care sau khi cọc</b></a>.</p>
+    <p style="margin:0 0 8px"><b>Khách CHƯA cọc</b> → cảm ơn thật lòng — <b>khách hôm nay chưa chốt là khách của tháng sau</b>. Lưu số điện thoại/Zalo. Ngay sau buổi, nhắn tin cảm ơn kèm <b>giá trị thật của các mẫu khách đã thử</b> + gửi hình ảnh khách thích:</p>
+    <details class="mini"><summary>Tin cảm ơn sau buổi thử (khách chưa cọc) — bấm để mở</summary>
+    <div class="tpl">
+      <div class="tpl-head"><span>Mẫu tin gửi khách</span><button type="button" class="tpl-copy">Copy</button></div>
+      <pre class="tpl-body">Dạ em cảm ơn chị hôm nay đã ghé DLA thử váy ạ 🤍
+Em gửi lại chị giá trị thật của các mẫu chị đã thử hôm nay để anh chị tiện cân nhắc nha:
+
+- Mẫu …………: giá gốc …………đ
+- Mẫu …………: giá gốc …………đ
+- Mẫu …………: giá gốc …………đ
+
+Em gửi lại báo giá để chị có thêm thông tin trước khi quyết định ạ 🤍
+Nếu anh chị quay lại vào thời gian khác thì giá thuê sẽ được tính theo giá gốc hiện tại của từng mẫu ạ. Hoặc anh chị có thể cân nhắc các gói chụp của Nupakachi để được tặng kèm váy tiệc nhé ạ.
+
+Cảm ơn anh chị nhiều ạ 🤍</pre>
+    </div>
+    </details>
+  </div></div>
+
+  <p class="clip-label">Clip hướng dẫn</p>
+  <div class="clips">
+    <a href="https://drive.google.com/file/d/1QZOQY45y2cAYcsKmgSNiX7Qh7kT6mySU/view" target="_blank" rel="noopener">Tác phong làm việc với khách hàng</a>
+    <a href="https://drive.google.com/file/d/1eJ4Lqyy_duh5ZCxAb8SzURrcOdZv3dn6/view" target="_blank" rel="noopener">Quy trình đón tiếp cô dâu</a>
+    <a href="https://drive.google.com/file/d/1T7Tv5MvTziLIOpdL0uSMIht6ShYir1qs/view" target="_blank" rel="noopener">Cô dâu cần bao nhiêu váy?</a>
+  </div>
+
+  <h3>2/ Khách fitting lại — đã chốt váy, tới thử lại</h3>
+  <p>Khách đã cọc/đã chốt váy quay lại thử — không cần giới thiệu thương hiệu hay tham quan lại, tập trung vào chiếc váy của khách:</p>
+  <div class="step tl"><div class="sk">Trước giờ hẹn</div><div class="sv">Check lịch fitting; chuẩn bị sẵn <b>váy khách đã chốt</b> (đã block riêng, không cho khách khác thử), phòng thử, nước uống.</div></div>
+  <div class="step tl"><div class="sk">Đón khách &amp; mời ngồi</div><div class="sv">Chuẩn đón tiếp như khách mới — nụ cười trước, thủ tục sau, rót nước mời khách.</div></div>
+  <div class="step tl"><div class="sk">Thử lại váy</div><div class="sv">Hỗ trợ mặc váy, chỉnh corset nhẹ nhàng, chuyên nghiệp. <b>Ghi chú rõ từng điểm cần chỉnh</b> (eo, độ dài, đệm ngực, dây váy…) để báo thợ — đọc lại cho khách nghe để hai bên cùng chốt.</div></div>
+  <div class="step tl"><div class="sk">Chốt lịch &amp; thanh toán</div><div class="sv">Xác nhận ngày sửa xong / ngày nhận váy; nhắc mốc thanh toán còn lại nếu tới hạn (theo HĐ).</div></div>
+  <div class="step tl"><div class="sk">Gợi ý thêm</div><div class="sv">Mời dịch vụ <b>Take Care ngày cưới 1.500.000đ/2 tiếng</b> (mặc váy, chỉnh váy, cài voan, theo sát cô dâu); khách chưa book chụp tiệc → giới thiệu gói chụp.</div></div>
+  <div class="step tl"><div class="sk">Tiễn khách</div><div class="sv">Cảm ơn khách; ngay sau buổi nhắn lại tóm tắt các điểm sẽ chỉnh + hẹn ngày nhận váy.</div></div>
+
+  <div class="pager">
+    <a href="#sale-onl"><span class="lbl">Trước</span><span class="pt">← Các bước reply khách online</span></a>
+    <a class="next" href="#take-care"><span class="lbl">Tiếp theo</span><span class="pt">Take care sau khi cọc →</span></a>
+  </div>
+</div>
+</section>
+
+<!-- ══════════════ CHƯƠNG 6 — TAKE CARE SAU CỌC ══════════════ -->
+<section class="view" id="take-care" data-title="Quy trình take care khách hàng sau khi cọc">
+<div class="wrap">
+  <div class="ch-head">
+    <p class="eyebrow">Chương 6</p>
+    <h2 class="display">Quy trình take care khách hàng sau khi cọc</h2>
+    <p class="lede">Cọc xong không phải là xong — chăm khách chu đáo tới tận ngày trả váy mới trọn một trải nghiệm.</p>
+  </div>
+
+  <div class="rulebox">
+    <p class="rb-t">⚠️ Quy tắc thanh toán — áp dụng MỌI khoản thu</p>
+    <p>Chỉ nhận <b>chuyển khoản ngân hàng</b>. Khách đưa tiền mặt → <b>báo quản lý ngay</b>, tuyệt đối <b>không giữ tiền mang về nhà</b>.</p>
+  </div>
+
+  <h3>Thuê váy — take care sau khi ký hợp đồng</h3>
+  <div class="step tl"><div class="sk">Điền form hợp đồng</div><div class="sv">Điền form <a href="https://docs.google.com/forms/d/e/1FAIpQLSc8PLyEM2UKvgTHfhQt_KECZzT2DivBvJZ6E4BuuebrSYJPMA/viewform?usp=sf_link" target="_blank" rel="noopener">Thu tiền - làm HĐ - sửa HĐ</a> — điền đủ: SĐT, ngày cưới, địa chỉ gửi váy, ngày gửi/trả, cọc, thanh toán lần 2 / lần cuối; in ảnh váy + voan đính kèm HĐ.</div></div>
+  <div class="step tl"><div class="sk">Gửi HĐ vào group khách</div><div class="sv">Gửi hợp đồng trong group Zalo của khách kèm tin xác nhận cọc — <b>đổi phần tiền cho đúng HĐ của khách</b>:
+    <details class="mini"><summary>Tin xác nhận đã cọc + lưu ý thuê váy — bấm để mở</summary>
+    <div class="tpl">
+      <div class="tpl-head"><span>Mẫu tin gửi khách</span><button type="button" class="tpl-copy">Copy</button></div>
+      <pre class="tpl-body">Dạ bên em xác nhận đã nhận cọc của chị ạ 🤍 Váy chị thuê có giá là ......, chị đã cọc 50% giá trị hợp đồng, số tiền cọc là ......... ạ. Bên em gửi chị hợp đồng thuê váy tại đây, chị xem giúp em nha ạ.
+
+Dạ em xin phép nhắc chị một số lưu ý nhỏ trong quá trình thuê váy để bên mình thuận tiện hỗ trợ nhau hơn nha 💌
+
+• Thời gian nhận và hoàn trả váy trong vòng 3 ngày theo giờ làm việc của studio ạ. Trường hợp phát sinh thêm thời gian thuê, bên em xin phép áp dụng phụ phí 1.000.000đ/ngày để đảm bảo lịch váy cho các cô dâu tiếp theo ạ.
+
+• Thanh toán lần 2: anh/chị vui lòng thanh toán thêm 50% giá trị thuê váy theo tiến độ giữ lịch và chuẩn bị váy của studio nha ạ.
+
+• Trước ngày nhận váy, anh/chị vui lòng thanh toán phần chi phí còn lại cùng khoản cọc thế chân 5.000.000đ. Khoản cọc này sẽ được hoàn lại sau khi studio nhận lại váy đúng thời gian và kiểm tra tình trạng váy và phụ kiện đầy đủ ạ.
+
+• Trong trường hợp váy bị rách, hư hỏng, hoặc tự ý chỉnh sửa làm sai kết cấu thiết kế ban đầu của váy, bên em xin phép áp dụng mức bồi thường theo giá trị váy mới do studio đề xuất ạ.
+
+• Trường hợp váy bị dính rượu vang (đổ bia vào tức thì), ố màu hoặc hư hỏng không thể xử lý và phục hồi như tình trạng ban đầu, bên em xin phép áp dụng mức bồi thường theo giá trị váy mới do studio quy định ạ.
+
+• Trong trường hợp anh/chị có nhu cầu xuất hóa đơn VAT, bên em xin phép cộng thêm 10% trên giá trị thuê váy và hỗ trợ xuất hóa đơn sau khi chị cung cấp thông tin cùng CCCD cho studio ạ.
+
+•  Sản phẩm không phải là váy mới/ váy may, nên có thể có một số dấu vết sử dụng rất nhỏ không ảnh hưởng đến tổng thể khi lên hình. Quý khách vui lòng kiểm tra xác nhận tình trạng váy tại thời điểm chốt váy ạ.
+
+Em cảm ơn anh/chị rất nhiều vì đã tin tưởng lựa chọn bên em đồng hành trong ngày đặc biệt ✨
+Nếu mình cần hỗ trợ thêm bất kỳ thông tin nào, chị cứ nhắn em bất cứ lúc nào nha ạ 🤍</pre>
+    </div>
+    </details>
+  </div></div>
+  <div class="step tl"><div class="sk">Sau 2 tuần – 1 tháng cọc</div><div class="sv"><b>Chủ động hẹn khách fitting lại để thu thanh toán lần 2.</b> ⚠️ Không hẹn sớm là dễ mất khách — khách cọc ít rất hay bùng. Buổi fitting lại làm theo mục <a href="#trai-nghiem"><b>Khách fitting lại</b></a> ở chương Quy trình đón tiếp.</div></div>
+  <div class="step tl"><div class="sk">Tặng thiệp cưới online</div><div class="sv">Mời khách điền <a href="https://script.google.com/macros/s/AKfycbwVWHJMBZFw6XX7t2Haqs9AT1UTgPmdKUHLzm69Si_h7-ylKNd7HsfcwUQeI4AL-uiLVw/exec" target="_blank" rel="noopener"><b>form thiệp cưới online</b></a> miễn phí (thiết kế riêng, tự động gửi link qua email) — mẫu tin gửi khách xem trong <a href="https://docs.google.com/spreadsheets/d/19cZUh4J4w-u3w4mFZVIJ4D8Qvh6ryXsFV_k8JFk5YFQ/edit" target="_blank" rel="noopener">sheet Quy trình take care</a>.
+    <details class="mini"><summary>Mẫu tin mời nhận thiệp — bấm để mở</summary>
+    <div class="tpl">
+      <div class="tpl-head"><span>Mẫu tin gửi khách</span><button type="button" class="tpl-copy">Copy</button></div>
+      <pre class="tpl-body">Anh/chị uiiii, hiện bên em có một món quà nhỏ tặng anh chị: thiệp cưới online thiết kế riêng, miễn phí ạ. Anh/chị có quan tâm để em gửi mình tham khảo nha 🤍
+
+Anh chị điền giúp em thông tin ở đây nhé, khoảng 3 phút thôi:
+https://script.google.com/macros/s/AKfycbwVWHJMBZFw6XX7t2Haqs9AT1UTgPmdKUHLzm69Si_h7-ylKNd7HsfcwUQeI4AL-uiLVw/exec
+
+Điền xong bên em gửi link thiệp vào email anh chị vừa điền. Anh chị gửi link đó cho khách mời là được ạ.
+
+Link mẫu thiệp anh chị tham khảo ở đây:
+https://dolinhanh-bridal.github.io/thiep-cuong-linh/?m=1
+
+Mỗi khách mời điền form xác nhận thành công, anh chị sẽ nhận thông báo qua email nhé ạ. Chúc anh chị 1 đám cưới trọn vẹn hạnh phúc nha ạ 🤍</pre>
+    </div>
+    </details>
+  </div></div>
+  <div class="step tl"><div class="sk">Trước nhận váy 1 tuần</div><div class="sv">Hỏi khách đến lấy hay ship; báo số tiền thanh toán lần cuối + cọc thế chân. <b>Chuẩn bị váy và đóng vali cho khách</b>: check bẩn → gửi giặt; báo đính kết check form / kết cấu; là ủi kỹ; <b>block váy</b> — không cho khách khác thử. Mời thêm dịch vụ Take Care ngày cưới 1.500.000đ/2 tiếng (mặc váy, chỉnh váy, cài voan,  theo sát cô dâu).
+    <div class="clips" style="margin-top:10px"><a href="https://drive.google.com/file/d/1WajC2djMpse1skyN-VmXH2VbXpC1sVld/view" target="_blank" rel="noopener">Chuẩn bị váy không tùng</a><a href="https://drive.google.com/file/d/18dljcZUBZaaM4kVC2t_wIAhKaJ0Z45PD/view" target="_blank" rel="noopener">Chuẩn bị váy tiệc xoè</a></div>
+    <details class="mini"><summary>Tin hỏi nhận váy + báo TTLC — bấm để mở</summary>
+    <div class="tpl">
+      <div class="tpl-head"><span>Mẫu tin gửi khách</span><button type="button" class="tpl-copy">Copy</button></div>
+      <pre class="tpl-body">Em chào chị ạ, ngày .... chị sẽ nhận váy của DOLINHANH BRIDAL. Chị muốn đến lấy váy hay bên em ship cho mình ạ? Và nếu ship đi thì chị cho em xin thời gian, địa điểm của người nhận nhé ạ. Em cảm ơn chị ạ
+
+(đợi khách xác nhận rồi nhắn tiếp:)
+
+Dạ chị ơi trước khi nhận váy, chị thanh toán giúp em THANH TOÁN LẦN CUỐI + CỌC THẾ CHÂN (5.000.000 đ) = .............. đ ạ. Sau ngày tiệc khi chị trả váy và phụ kiện, bên em sẽ hoàn cọc lại cho chị ạ.
+
+Chị muốn thanh toán luôn hôm nay hay đợi đến ngày nhận váy rồi thanh toán ạ?</pre>
+    </div>
+    </details>
+    <details class="mini"><summary>Tin mời book Take Care ngày cưới — bấm để mở</summary>
+    <div class="tpl">
+      <div class="tpl-head"><span>Mẫu tin gửi khách</span><button type="button" class="tpl-copy">Copy</button></div>
+      <pre class="tpl-body">Dạ em hỏi mình một chút ạ, mình có muốn book thêm bạn Take Care đồng hành trong ngày cưới không ạ? 🥰 Bên em đang có dịch vụ Take Care 1.500.000đ/2 tiếng (chưa bao gồm phí di chuyển). Bạn sẽ hỗ trợ mặc váy, chỉnh váy, cài voan và theo sát cô dâu để mọi thứ chỉn chu nhất trong suốt thời gian làm lễ ạ</pre>
+    </div>
+    </details>
+  </div></div>
+  <div class="step tl"><div class="sk">Ngày giao váy</div><div class="sv">Thu đủ thanh toán lần cuối + cọc thế chân <b>trước</b> khi giao. Gửi khách ảnh từng món: 1 váy, 2 voan, 4 mút ngực, 2 dây váy, 1 kim chỉ, tùng váy — khách xác nhận đúng mẫu. Sau đó gửi ảnh nội quy thuê váy.
+    <details class="mini"><summary>Chuỗi tin ngày giao váy — bấm để mở</summary>
+    <div class="tpl">
+      <div class="tpl-head"><span>Mẫu tin gửi khách</span><button type="button" class="tpl-copy">Copy</button></div>
+      <pre class="tpl-body">Dạ chị ơi bên em đã giặt và là ủi váy của chị rùi ạ, đồ team em gửi cho mình gồm có:
+- 1 váy ....... (gửi hình ảnh đính kèm)
+- 2 voan ..... (gửi hình ảnh đính kèm)
+- 4 mút ngực
+- 2 dây váy
+- 1 kim chỉ
+- Tùng váy
+Chị check lại giúp em xem đã đúng mẫu váy và voan mình chọn chưa giúp em nhé ạ
+
+(khách xác nhận đúng mẫu xong thì nhắn:)
+
+Dạ chị ơi hôm nay là ngày nhận váy của mình. Chị thanh toán giúp em THANH TOÁN LẦN CUỐI + CỌC THẾ CHÂN (5.000.000 đ) = .............. đ ạ. Sau ngày tiệc khi chị trả váy và phụ kiện, bên em sẽ hoàn cọc lại cho chị ạ
+
+(khách chuyển khoản xong, gửi ảnh nội quy thuê váy và nhắn:)
+
+Dạ em nhận được rùi ạ, em cảm ơn chị. Em gửi chị một số lưu ý quan trọng khi thuê và sử dụng váy ạ:
+
+• Thời gian thuê váy tiêu chuẩn 3 ngày; trả trễ phát sinh 1.000.000đ/ngày.
+• Khách cần thanh toán đủ & cọc trước khi nhận váy; cọc hoàn lại khi váy trả đúng hạn, đúng tình trạng.
+• Váy được bàn giao đã giặt – là, chị vui lòng kiểm tra kỹ khi nhận.
+• Khi trả váy, nếu váy bị rách, thiếu phụ kiện hoặc bẩn không xử lý sạch (trên 90%) sẽ phát sinh phí theo quy định.
+• Trong quá trình sử dụng, vui lòng tránh rượu vang, hóa chất, lửa, nến, pháo bông và không kéo rê váy trên nền nhám.
+
+Em gửi để chị nắm rõ giúp em nha ạ 🤍</pre>
+    </div>
+    </details>
+  </div></div>
+  <div class="step tl"><div class="sk">Nếu ship</div><div class="sv">Dặn khách: treo váy lên ngay khi nhận; ủi bàn ủi hơi nước nhiệt vừa; tuyệt đối không ngồi / đè lên vali (corset + gọng tùng dễ méo); mở vali check đủ đồ ngay, đừng đợi sát tiệc.
+    <details class="mini"><summary>Tin dặn dò khi ship váy — bấm để mở</summary>
+    <div class="tpl">
+      <div class="tpl-head"><span>Mẫu tin gửi khách</span><button type="button" class="tpl-copy">Copy</button></div>
+      <pre class="tpl-body">Váy sẽ gấp lại trong quá trình vận chuyển nên khi chị nhận váy, chị treo váy lên luôn chị nhé. Chị ủi thì mình vui lòng sử dụng bàn ủi hơi nước với mức nhiệt vừa phải tránh cháy/co váy chị nhé.
+
+Váy có phần corset và tùng có phần gọng sắt nên tuyệt đối tránh ngồi/đè nặng lên vali váy để tránh gãy/méo/lệch form váy và tùng chị nhé. Nếu được thì tụi em có chuẩn bị móc treo cho mình, mình treo váy cao lên là tuyệt vời ạ.
+
+Chị vui lòng mở valy check lại một lượt, xác nhận đủ đồ giúp tụi em nhé, sợ tới hồi chị chuẩn bị tiệc, chị cần gấp mà nhỡ may gọi team không được, lỡ việc của chị ạ. Chị check giúp em cho cẩn thận nha, em cảm ơn chị ạ.</pre>
+    </div>
+    </details>
+  </div></div>
+  <div class="step tl"><div class="sk">Nhận lại váy</div><div class="sv">Check tình trạng: rách / thiếu phụ kiện / bẩn không xử lý sạch trên 90% / rượu vang, hoá chất, nến, pháo bông → <b>báo chị Linh</b> tính phát sinh. Váy ổn → xin STK hoàn cọc thế chân, cảm ơn + chúc phúc.
+    <details class="mini"><summary>Chuỗi tin khi nhận lại váy — bấm để mở</summary>
+    <div class="tpl">
+      <div class="tpl-head"><span>Mẫu tin gửi khách</span><button type="button" class="tpl-copy">Copy</button></div>
+      <pre class="tpl-body">(kiểm tra váy không có vấn đề gì, đủ phụ kiện thì nhắn:)
+
+Dạ em đã nhận đủ váy và phụ kiện, và đã kiểm tra xác nhận là váy mình trả còn nguyên vẹn ạ. Chị cho em xin số tài khoản để bên em hoàn trả lại tiền cọc thế chân cho chị nha
+
+(nhận bill chuyển khoản của cô dâu thì nhắn:)
+
+E cảm ơn anh chị rất nhiều ạ. Thay mặt studio em chúc anh chị sức khoẻ bình an, hạnh phúc viên mãn ạ.
+
+(hỏi xin hình feedback:)
+
+Chị ui, khi nào chị có ảnh tiệc, chị cho tụi em xin 1 vài hình mặc váy cưới được không ạ? Chúng em rất mong chị có thể chia sẻ với bên em một vài hình ảnh chị mặc váy cưới ạ. Em cảm ơn chị ạ.</pre>
+    </div>
+    </details>
+  </div></div>
+  <div class="step tl"><div class="sk">Feedback + review</div><div class="sv">Xin ảnh khách mặc váy ngày cưới. Mời review Google / TikTok / Threads / group cưới — quà cảm ơn: 2 ảnh bàn HOẶC 1 ảnh phóng ép gỗ HOẶC 200k (khách gửi link review là set quà liền). Danh sách link review + 11 group FB trong <a href="https://docs.google.com/spreadsheets/d/19cZUh4J4w-u3w4mFZVIJ4D8Qvh6ryXsFV_k8JFk5YFQ/edit" target="_blank" rel="noopener">sheet Take care</a>.
+    <details class="mini"><summary>Tin xin review + tặng quà — bấm để mở</summary>
+    <div class="tpl">
+      <div class="tpl-head"><span>Mẫu tin gửi khách</span><button type="button" class="tpl-copy">Copy</button></div>
+      <pre class="tpl-body">Chị ơi 🤍
+
+Mình có ưng dịch vụ bên em, chị giúp tụi em 1 review ngắn trên Google & TikTok & Threads & các group cưới được không ạ? Feedback của chị rất quan trọng với tụi em 🫶
+
+Bên em xin gửi quà cảm ơn nhỏ, chị lựa giúp em nha: 2 ảnh bàn hoặc 1 ảnh phóng ép gỗ hoặc 200k tiền mặt ạ. Chị gửi link review lại giúp em là tụi em set quà liền cho chị nha ✨
+
+Em cảm ơn chị nhiều lắm ạ 🤍</pre>
+    </div>
+    </details>
+  </div></div>
+
+
+  <p class="clip-label">Clip hướng dẫn — take care váy</p>
+  <div class="clips">
+    <a href="https://drive.google.com/file/d/1pmntPeu9D-gIGt07HuCRi9gwrs30Heqx/view" target="_blank" rel="noopener">Take care váy</a>
+  </div>
+
+  <div class="pager">
+    <a href="#trai-nghiem"><span class="lbl">Trước</span><span class="pt">← Quy trình đón tiếp khách hàng</span></a>
+    <a class="next" href="#chuong-5"><span class="lbl">Tiếp theo</span><span class="pt">Sale và take care gói chụp →</span></a>
+  </div>
+</div>
+</section>
+
+
+
+<!-- ══════════════ SALE ONLINE ══════════════ -->
+<section class="view" id="sale-onl" data-title="Các bước reply khách online">
+<div class="wrap">
+  <div class="ch-head">
+    <p class="eyebrow">Chương 4</p>
+    <h2 class="display">Các bước reply khách online</h2>
+    <p class="lede">Khách nhắn ở kênh nào cũng chung một chuẩn: đọc hiểu — trả lời đúng — nhanh — và luôn kéo khách tới shop.</p>
+  </div>
+
+
+
+  <h3>1/ Các kênh cần trả lời khách</h3>
+  <ul>
+    <li><b>Page (Meta)</b> — <a href="https://business.facebook.com/latest/inbox/all/" target="_blank" rel="noopener">Meta Business Suite — hộp thư</a> · <a href="https://www.facebook.com/Dolinhanhbridalhn" target="_blank" rel="noopener">DLA Hanoi</a> · <a href="https://www.facebook.com/Dolinhanhbridalhcm/" target="_blank" rel="noopener">DLA HCM</a></li>
+    <li><b>TikTok</b> — <a href="https://www.tiktok.com/messages" target="_blank" rel="noopener">tiktok.com/messages</a> · <a href="https://www.tiktok.com/@dolinhanhbridal2019" target="_blank" rel="noopener">@dolinhanhbridal2019</a> · <a href="https://www.tiktok.com/@dolinhanh.bridal" target="_blank" rel="noopener">@dolinhanh.bridal</a></li>
+    <li><b>Zalo</b> — <a href="https://chat.zalo.me" target="_blank" rel="noopener">Zalo Web</a></li>
+  </ul>
+
+  <h3>2/ Các bước dẫn dắt trả lời</h3>
+  <div class="flow"><span>Khách hỏi tư vấn</span><i>→</i><span>Hỏi ngày tiệc · số váy · HN/HCM</span><i>→</i><span>Gửi catalogue</span><i>→</i><span>Khách xem, hỏi lại</span><i>→</i><span>Đưa đồng giá</span><i>→</i><span class="hot">Mời tới trải nghiệm trong tuần</span><i>→</i><span>Chốt hẹn: Zalo · form · xác nhận</span></div>
+  <div class="step tl"><div class="sk">B1 — Khách hỏi tư vấn</div><div class="sv">Hỏi khách 3 thông tin: <b>ngày tiệc</b> · <b>số váy cần mặc</b> · <b>địa điểm HN hay HCM</b>. (Khách chưa chốt ngày cưới → xem câu số 11 bên dưới, không mời tới vội.)</div></div>
+  <div class="step tl"><div class="sk">B2 — Đưa catalogue</div><div class="sv">Gửi catalogue đúng cơ sở, nhờ khách lựa trước ~5 mẫu ưng ý để check available.
+    <details class="mini"><summary>Mẫu tin gửi khách — bấm để mở</summary>
+    <div class="tpl">
+      <div class="tpl-head"><span>Mẫu tin gửi khách</span><button type="button" class="tpl-copy">Copy</button></div>
+      <pre class="tpl-body">Em gửi chị catalogue váy tại thời điểm hiện tại ạ. Chị xem mình ưng mẫu nào để em tư vấn cho mình nha.
+
+<a href="https://drive.google.com/drive/folders/10M6Je432MuOHhpV7nh7L1B79qHQ6JVuR" target="_blank" rel="noopener">https://drive.google.com/drive/folders/10M6Je432MuOHhpV7nh7L1B79qHQ6JVuR</a>
+
+Chị có thể tham khảo thêm các kênh social của bên em đây ạ:
+- Tiktok: <a href="https://www.tiktok.com/@dolinhanhbridal2019" target="_blank" rel="noopener">https://www.tiktok.com/@dolinhanhbridal2019</a>
+- Tiktok catalogue: <a href="https://www.tiktok.com/@dolinhanh.bridal" target="_blank" rel="noopener">https://www.tiktok.com/@dolinhanh.bridal</a>
+- IG: <a href="https://www.instagram.com/dolinhanh.bridal/" target="_blank" rel="noopener">https://www.instagram.com/dolinhanh.bridal/</a>
+- IG catalogue: <a href="https://www.instagram.com/dolinhanh_bridal/" target="_blank" rel="noopener">https://www.instagram.com/dolinhanh_bridal/</a>
+
+Chị xem mình ưng mẫu nào có thể đặt hẹn fitting để trải nghiệm form dáng và chất liệu bên em nhé ạ.</pre>
+    </div>
+    </details>
+  </div></div>
+  <div class="step tl"><div class="sk">B3 — Khách xem, hỏi lại</div><div class="sv">Trả lời đúng câu khách hỏi (dáng, chất liệu, mẫu tương tự…). Khách gửi ảnh váy sưu tầm → tìm 2–3 mẫu tương tự trong Highlights Instagram (A LINE / BALLGOWN / MERMAID) gửi kèm 1 câu so sánh.</div></div>
+  <div class="step tl"><div class="sk">B4 — Đưa đồng giá</div><div class="sv">Báo đồng giá <b>5.888.000đ kèm điều kiện trong cùng một câu</b>: áp dụng khi cô dâu thử lần đầu và cọc ngay trong buổi thử, kèm đổi mẫu 1 lần trong 2026.</div></div>
+  <div class="step tl"><div class="sk">B5 — Mời tới trải nghiệm</div><div class="sv">Mời khách tới trải nghiệm form dáng <b>ngay trong tuần</b>: "Tuần này chị sắp xếp được hôm nào để em check lịch giữ chỗ cho chị nha?" — không tự nghĩ ra khung giờ trống, khách đưa mốc rồi mới đối chiếu lịch thật; mỗi khách 1h30 trên lịch nhưng chỉ báo khách khung 1 tiếng.</div></div>
+  <div class="step tl"><div class="sk">B6 — Khách đặt hẹn fitting</div><div class="sv">
+    <ul>
+      <li><b>Add Zalo khách</b> — lưu <b>tên khách kèm SĐT bên cạnh</b>.</li>
+      <li><b>Tạo group Zalo</b> với nick <b>Hotline chị Linh</b>.</li>
+      <li><b>Điền form đặt hẹn</b> của hệ thống: <a href="https://docs.google.com/forms/d/e/1FAIpQLSeF3dEz3mocx_O5PxRjuYsOy3SktzFlXvEd-EeQ07eijImlew/viewform?usp=sf_link" target="_blank" rel="noopener">DLA - Đặt hẹn thử váy</a> — hệ thống tự lên lịch, không làm tay.</li>
+      <li><b>Gửi tin nhắn xác nhận cho khách</b> — điền form xong, <b>hệ thống tự gửi mẫu tin xác nhận về email cơ sở</b>: mở email, copy tin đó gửi khách. Không tự soạn.</li>
+    </ul>
+  </div></div>
+  <div class="rulebox">
+    <p class="rb-t">Khách im lặng — nhắc đúng 4 lần rồi dừng</p>
+    <div class="flow"><span><b>24h</b> · ngắm mẫu chưa?</span><i>→</i><span><b>3 ngày</b> · hỏi ngày cưới</span><i>→</i><span><b>7 ngày</b> · mẫu mới về</span><i>→</i><span><b>14 ngày</b> · tin chốt (gửi ngày 13)</span><i>→</i><span>Dừng hẳn</span></div>
+    <p>⛔ Tin nhắc lại <b>không nêu con số giá</b> — chỉ nhắc "có ưu đãi cho cô dâu thử lần đầu". Khách từ chối rõ → 1 câu cảm ơn tử tế rồi dừng hẳn, không nhắc thêm.</p>
+  </div>
+
+  <h3>3/ Nguyên tắc khi trả lời</h3>
+  <ol>
+    <li><b>Đọc hiểu nội dung.</b> Đọc lại toàn bộ hội thoại trước khi soạn tin: khách đang ở bước nào, câu hỏi cuối của khách đã được trả lời chưa.</li>
+    <li><b>Khách hỏi gì trả lời đó.</b> Mỗi tin 3–4 câu, không đổ giá + catalogue + link + điều kiện vào cùng một tin.</li>
+    <li><b>Không hiểu → báo quản lý.</b> Không đoán, không trả lời liều.</li>
+    <li><b>Không tự ý đưa giá, không tự ý trả lời nếu chưa thực sự hiểu.</b> Giá và chính sách chỉ nói theo cẩm nang; con số nào không có trong cẩm nang → hỏi chị Linh trước rồi trả khách một lần.</li>
+    <li><b>Trả lời nhanh nhất khi nhận được tin nhắn.</b> Khách đang cầm điện thoại — để 1–2 tiếng là khách đi chỗ khác. Khách nhắn mới luôn được ưu tiên trước mọi việc khác.</li>
+    <li><b>Luôn có call to action ở cuối tin — kết bằng một câu hỏi để khách nói tiếp.</b> Ví dụ: <i>"Ngày cưới của mình là khi nào ạ?"</i> · <i>"Chị ưng dáng váy nào để em gửi thêm mẫu ạ?"</i> · <i>"Tuần này chị ghé được hôm nào để em giữ lịch ạ?"</i> · <i>"Chị cho em xin Zalo để em gửi mẫu qua đó nha?"</i>. ⛔ Không kết bằng "chị cần hỗ trợ gì thêm không ạ" — câu đó là mời khách kết thúc hội thoại.</li>
+  </ol>
+
+  <div class="rulebox">
+    <p class="rb-t">Giọng DLA khi nhắn</p>
+    <p>Thân thiện như bạn bè nhắn nhau nhưng vẫn "dạ / ạ / chị": "chị ơiii", "nhaaa", "cháy slot", 1–2 emoji (🤍💕🥹🔥). Tránh "Quý khách", "vui lòng", "chúng tôi", "trân trọng".</p>
+  </div>
+
+  <h3>4/ Các câu hỏi của khách</h3>
+  <p class="qa-note">Bấm vào từng câu — bên trong có sẵn mẫu tin trả lời khách (nút Copy) và lưu ý nội bộ.</p>
+  <details class="qa"><summary>"Thuê váy giá bao nhiêu?"</summary><div class="a">
+    <div class="tpl">
+      <div class="tpl-head"><span>Mẫu tin gửi khách</span><button type="button" class="tpl-copy">Copy</button></div>
+      <pre class="tpl-body">Dạ chị ơi, bên em đang có chương trình đồng giá 5.888.000đ cho tất cả các mẫu váy, áp dụng khi cô dâu ghé thử lần đầu và cọc ngay trong buổi thử, kèm đổi mẫu 1 lần trong năm 2026 nha chị 🤍 Ngày cưới của mình là khi nào ạ để em tư vấn kỹ hơn cho mình?</pre>
+    </div>
+    <p style="margin-top:10px">⚠️ Bảng giá gốc theo dáng váy (10–28tr) vẫn là giá thật — đồng giá là ưu đãi có điều kiện chồng lên. <b>Không</b> nói "giá mới thay bảng giá cũ". Khách tới thử mà không cọc buổi đó → hết ưu đãi, tính giá gốc.</p>
+  </div></details>
+  <details class="qa"><summary>"Thử váy có mất phí không?"</summary><div class="a">
+    <div class="tpl">
+      <div class="tpl-head"><span>Mẫu tin gửi khách</span><button type="button" class="tpl-copy">Copy</button></div>
+      <pre class="tpl-body">Dạ thử váy bên em miễn phí 5 mẫu đầu chị nha, từ mẫu thứ 6 phụ phí 100.000đ/mẫu ạ. Chị ưng những dáng nào để em chuẩn bị sẵn trước cho mình ạ?</pre>
+    </div>
+    <p style="margin-top:10px">Khách đã cọc muốn thử thêm chốt váy thứ 2: mời bình thường, cùng quy tắc phí, váy 2 vẫn đồng giá 5.888.000đ.</p>
+  </div></details>
+  <details class="qa"><summary>"Đặt lịch thế nào?"</summary><div class="a">
+    <div class="tpl">
+      <div class="tpl-head"><span>Mẫu tin gửi khách</span><button type="button" class="tpl-copy">Copy</button></div>
+      <pre class="tpl-body">Dạ chị đặt lịch qua fanpage hoặc gọi 0359 950 588 giúp em nha. Bên em tiếp khách theo hình thức private fitting 1:1 nên mình hẹn trước để được chăm riêng ạ 🤍 Tuần này chị ghé được hôm nào để em giữ lịch cho mình ạ?</pre>
+    </div>
+    <p style="margin-top:10px">Khách chốt lịch xong: gửi lại catalogue, nhờ chọn trước ~5 mẫu để chuẩn bị sẵn.</p>
+  </div></details>
+  <details class="qa"><summary>"Giữ váy được mấy ngày?"</summary><div class="a">
+    <div class="tpl">
+      <div class="tpl-head"><span>Mẫu tin gửi khách</span><button type="button" class="tpl-copy">Copy</button></div>
+      <pre class="tpl-body">Dạ 1 váy bên em giữ 3 ngày (nhận – mặc – trả), combo 2 váy là 5 ngày chị nha. Ngày tiệc của mình là ngày nào để em tính lịch nhận – trả cho khớp ạ?</pre>
+    </div>
+    <p style="margin-top:10px">Trả trễ phụ phí 1.000.000đ/váy/ngày — nói rõ khi ký hợp đồng.</p>
+  </div></details>
+  <details class="qa"><summary>"Lỡ làm bẩn / rách thì sao?"</summary><div class="a">
+    <div class="tpl">
+      <div class="tpl-head"><span>Mẫu tin gửi khách</span><button type="button" class="tpl-copy">Copy</button></div>
+      <pre class="tpl-body">Dạ trong quá trình dùng mình tránh giúp em rượu vang, hoá chất, lửa, nến, pháo bông và không kéo rê váy trên nền nhám nha chị. Nếu váy dính rượu vang, bùn đất đỏ hoặc bị rách thì theo hợp đồng mình đền 100% giá trị váy ạ.</pre>
+    </div>
+  </div></details>
+  <details class="qa"><summary>"Váy kèm gì?"</summary><div class="a">
+    <div class="tpl">
+      <div class="tpl-head"><span>Mẫu tin gửi khách</span><button type="button" class="tpl-copy">Copy</button></div>
+      <pre class="tpl-body">Dạ mỗi bộ váy bên em kèm sẵn 1 voan chị nha. Các phụ kiện khác như vương miện, trang sức… mình thuê thêm tính phí riêng ạ. Chị cần em tư vấn phụ kiện theo mẫu váy mình chọn không ạ?</pre>
+    </div>
+  </div></details>
+  <details class="qa"><summary>"Không vừa size, sửa được không?"</summary><div class="a">
+    <div class="tpl">
+      <div class="tpl-head"><span>Mẫu tin gửi khách</span><button type="button" class="tpl-copy">Copy</button></div>
+      <pre class="tpl-body">Dạ sửa được chị nha, phí chỉnh tuỳ mức sửa nhiều hay ít ạ. Phần này bên em phải xem trực tiếp lúc chị thử mới báo chính xác được — tuần này chị ghé được hôm nào để bạn thợ đo trực tiếp cho mình ạ?</pre>
+    </div>
+    <p style="margin-top:10px">Không báo số cố định qua tin nhắn.</p>
+  </div></details>
+  <details class="qa"><summary>"Mua đứt được không?"</summary><div class="a">
+    <div class="tpl">
+      <div class="tpl-head"><span>Mẫu tin gửi khách</span><button type="button" class="tpl-copy">Copy</button></div>
+      <pre class="tpl-body">Dạ bên em có bán chị nha. Giá mua tính theo từng mẫu cụ thể ạ — chị đang ưng mẫu nào để em check giá chính xác cho mình ạ?</pre>
+    </div>
+    <p style="margin-top:10px">Giá mua = giá thuê <b>gốc</b> của đúng mẫu đó (không phải giá đồng giá) + khoảng 1/2 đến 2/3 giá thuê, tuỳ mẫu. Chốt số cuối → hỏi chị Linh.</p>
+  </div></details>
+  <details class="qa"><summary>"Em ở xa / nước ngoài"</summary><div class="a">
+    <div class="tpl">
+      <div class="tpl-head"><span>Mẫu tin gửi khách</span><button type="button" class="tpl-copy">Copy</button></div>
+      <pre class="tpl-body">Dạ không sao chị nha 🤍 Chị cho em xin số đo ngực – eo – mông – chiều cao, bên em hẹn video call tư vấn thử form từ xa cho mình ạ. Chị tiện gọi vào khung giờ nào ạ?</pre>
+    </div>
+  </div></details>
+  <details class="qa"><summary>"Đi fitting mặc gì?"</summary><div class="a">
+    <div class="tpl">
+      <div class="tpl-head"><span>Mẫu tin gửi khách</span><button type="button" class="tpl-copy">Copy</button></div>
+      <pre class="tpl-body">Dạ chị mặc áo lót không dây hoặc liền thân màu nude, quần lót liền không lộ viền nha chị — bên em có sẵn mút đệm ngực ạ. Chị cứ thoải mái, tới nơi các bạn fitting hỗ trợ mình từng bước ạ 🤍</pre>
+    </div>
+    <p style="margin-top:10px">Câu tế nhị hơn: trấn an ngắn gọn rồi chuyển chị Linh / nhân viên fitting.</p>
+  </div></details>
+  <details class="qa"><summary>Khách CHƯA chốt ngày cưới</summary><div class="a">
+    <div class="tpl">
+      <div class="tpl-head"><span>Mẫu tin gửi khách</span><button type="button" class="tpl-copy">Copy</button></div>
+      <pre class="tpl-body">Dạ chưa chốt ngày thì chị cứ đi thử vài nơi trước cho biết mình hợp form dáng nào đã nha chị 🤍 Bên em chỉ áp dụng ưu đãi cho cô dâu ghé thử lần đầu và cọc ngay trong buổi đó, nên mình để dành lượt thử bên em tới lúc đã có ngày cưới, lúc đó so sánh mới đã ạ. Khi nào chốt ngày chị nhắn em, em giữ chỗ cho mình liền nha!</pre>
+    </div>
+    <p style="margin-top:10px">⛔ <b>Không mời tới thử</b>, kể cả kiểu "ghé ngắm cho biết" — ghé sớm là cháy mất lượt ưu đãi. <i>Ngoại lệ vẫn mời:</i> đã có ngày cưới dù xa; khách ở xa chỉ về VN vài ngày; thử cho người thân; thử váy tiệc; đã cọc rồi.</p>
+  </div></details>
+  <details class="qa"><summary>"Không thuê nữa, pass hợp đồng được không?"</summary><div class="a">
+    <div class="tpl">
+      <div class="tpl-head"><span>Mẫu tin gửi khách</span><button type="button" class="tpl-copy">Copy</button></div>
+      <pre class="tpl-body">Dạ được chị nha, bên em có hỗ trợ pass hợp đồng ạ. Hợp đồng sẽ được pass ngang giá trị gói thuê hiện tại và áp dụng trong năm 2026, bên em không thu thêm phí pass nào ạ. Chị tìm được người nhận thì gửi em thông tin của bạn ấy (tên, số điện thoại, ngày cưới, cơ sở HN hay HCM) để bên em cập nhật hợp đồng nha 🤍 Trong thời gian chị tìm người nhận, bên em tạm dừng các mốc thanh toán còn lại, chị không cần lo phần này ạ.</pre>
+    </div>
+    <p style="margin-top:10px">Không hứa hoàn tiền, không hứa pass sang 2027 — khách nài → báo chị Linh, không tự quyết. Không nhận rao pass hộ. Trong lúc chờ pass: dừng mọi nhắc thanh toán.</p>
+  </div></details>
+
+  <div class="pager">
+    <a href="#chuong-3"><span class="lbl">Trước</span><span class="pt">← Tư duy phục vụ &amp; trải nghiệm KH</span></a>
+    <a class="next" href="#trai-nghiem"><span class="lbl">Tiếp theo</span><span class="pt">Quy trình đón tiếp khách hàng →</span></a>
+  </div>
+</div>
+</section>
+
+<!-- ══════════════ SALE OFFLINE ══════════════ -->
+
+
+<!-- ══════════════ CHƯƠNG 5 ══════════════ -->
+<section class="view" id="chuong-5" data-title="Sale và take care gói chụp">
+<div class="wrap">
+  <div class="ch-head">
+    <p class="eyebrow">Chương 7</p>
+    <h2 class="display">Sale và take care gói chụp</h2>
+    <p class="lede">Pre-wedding và chụp tiệc Nupakachi — từ buổi tư vấn đầu đến lúc trao album và xin review.</p>
+  </div>
+
+  <details class="mini big"><summary>1/ Khách CHƯA book — tư vấn chốt gói</summary>
+  <p class="clip-label">Quy trình tư vấn chụp Pre</p>
+  <div class="step tl"><div class="sk">B1 — Hỏi 3 câu</div><div class="sv">Mong muốn hình ảnh (cổ điển? trẻ trung? thiên nhiên?) · địa điểm muốn chụp · thời gian chụp.</div></div>
+  <div class="step tl"><div class="sk">B2 — Giới thiệu gói</div><div class="sv">Giới thiệu bằng album khách có sẵn / iPad. Báo giá theo <a href="https://www.canva.com/design/DAGfSZytnO0/spvO_UP659JvXNnFc9VS5w/edit" target="_blank" rel="noopener">Báo giá Nupakachi (Canva)</a> — gửi khách bản PDF xuất ra, không gửi link edit.</div></div>
+  <div class="step tl"><div class="sk">B3 — Gợi ý địa điểm &amp; sản phẩm mẫu</div><div class="sv"><a href="https://docs.google.com/spreadsheets/d/1jzWPCb_lSk_nUeYYo75PaTVW1RVRoe_l/edit" target="_blank" rel="noopener">Địa điểm chụp HN</a> · <a href="https://docs.google.com/spreadsheets/d/1YwofFAYpuD_Ig2k6PRqcBhTjEuqrepdV/edit" target="_blank" rel="noopener">Địa điểm chụp HCM</a> · <a href="https://www.youtube.com/@nupakachiweddingfilm/videos" target="_blank" rel="noopener">YouTube Nupakachi Wedding Film</a>.</div></div>
+  <div class="step tl"><div class="sk">B4 — Báo trước phí ngày chụp</div><div class="sv">TTL2 · phí xe di chuyển · phí phim trường/studio · phí hoa tươi · ăn trưa team 20–30k/người (tuỳ kinh phí dâu rể).</div></div>
+  <div class="step tl"><div class="sk">B5 — Chốt cọc trong ngày</div><div class="sv">"Bên em có thể giữ lịch trước cho anh chị để không trùng cặp khác — chỉ cần cọc trước 30%" + tặng vest sở hữu, thuê áo dài ngày tiệc, 1 ảnh phóng ultra HD, voucher váy tiệc 3–5tr.</div></div>
+
+  <p class="clip-label">Quy trình tư vấn chụp tiệc</p>
+  <div class="step tl"><div class="sk">B1 — Hỏi thông tin tiệc</div><div class="sv">Tiệc 1 lễ hay 2 lễ? · mấy ngày? · HN/SG hay tỉnh (tỉnh tính công di chuyển)? · quy mô bao nhiêu khách?</div></div>
+  <div class="step tl"><div class="sk">B2 — Tư vấn số máy</div><div class="sv">Dưới 200 khách → <b>1 máy chụp + 1 máy quay</b>; trên 200 khách → <b>2 máy chụp + 2 máy quay</b> (tuỳ tư vấn).</div></div>
+  <div class="step tl"><div class="sk">B3 — Báo giá &amp; quà tặng</div><div class="sv">Báo giá theo <a href="https://www.canva.com/design/DAGfSZytnO0/spvO_UP659JvXNnFc9VS5w/edit" target="_blank" rel="noopener">Báo giá Nupakachi (Canva)</a> (gửi PDF). Gói tiệc <b>2 máy chụp + 2 máy quay tặng 1 váy tiệc Dolinhanh</b>. Quà khi tư vấn chỉ tặng đồ <b>có sẵn</b> tại studio — không tặng đồ phải bỏ tiền mua về.</div></div>
+  <div class="step tl"><div class="sk">B4 — Chốt cọc giữ lịch</div><div class="sv">Cọc trước 30% để giữ lịch, không trùng cặp khác — mọi khoản thu chỉ nhận chuyển khoản.</div></div>
+
+  <p style="font-size:13.5px"><b>Học cách đọc khách:</b> video <a href="https://www.youtube.com/watch?v=XDUm9IGuKKU" target="_blank" rel="noopener">Các kiểu khách hàng thường gặp và cách chốt sale</a>.</p>
+
+  <p class="clip-label">Câu khách hay hỏi</p>
+  <details class="qa"><summary>"Chụp truyền thống với phóng sự khác gì?"</summary><div class="a"><p>TT: máy chính diện, không di chuyển, đúng backdrop, có người thân. PSC: máy di chuyển, follow khoảnh khắc cô dâu chú rể, không focus người thân.</p></div></details>
+  <details class="qa"><summary>"Tiệc bên em cần mấy máy?"</summary><div class="a"><p>Hỏi lại: tiệc 1 lễ hay 2 lễ? mấy ngày? HN/SG hay tỉnh (tỉnh tính công di chuyển)? Quy mô: dưới 200 khách → 1 máy chụp 1 máy quay; trên 200 khách → 2 máy chụp 2 máy quay (tuỳ tư vấn).</p></div></details>
+  <details class="qa"><summary>"Giá gói bao nhiêu?"</summary><div class="a"><p>Theo <a href="https://www.canva.com/design/DAGfSZytnO0/spvO_UP659JvXNnFc9VS5w/edit" target="_blank" rel="noopener">Báo giá Nupakachi (Canva)</a> — gửi khách bản PDF xuất ra, không gửi link edit.</p></div></details>
+  <details class="qa"><summary>"Ngày chụp có phí gì thêm?"</summary><div class="a"><p>Báo trước cho khách chuẩn bị: TTL2, phí xe di chuyển, phí phim trường/studio, phí hoa tươi, ăn trưa team 20–30k/người (tuỳ kinh phí dâu rể).</p></div></details>
+  <details class="qa"><summary>"Được sửa bao nhiêu ảnh / mấy lần?"</summary><div class="a"><p>Số ảnh chỉnh sửa theo HĐ; chỉnh tối đa 3 lần theo mã ảnh (màu, da, mặt, dáng, trang phục, tóc, chữ album); gói 15 layout — layout dôi thêm muốn giữ thì tính phí. Team PTS không đổi phông nền, không ghép thêm hình.</p></div></details>
+  <details class="qa"><summary>"Book tiệc có được tặng gì không?"</summary><div class="a"><p>Gói tiệc 2 máy chụp + 2 máy quay tặng 1 váy tiệc Dolinhanh.</p><p>Quà khi tư vấn chỉ tặng đồ <b>có sẵn</b> tại studio (ảnh phóng, ảnh bàn, upsize album, vest sở hữu, áo dài thuê, thêm váy, hoa tươi, thêm giờ chụp, phí làm ảnh gấp, váy tiệc) — không tặng đồ phải bỏ tiền mua về.</p></div></details>
+  <details class="qa"><summary>"Em sợ em không ăn ảnh…"</summary><div class="a"><p>Trả lời bằng triết lý của Nu (trích Cẩm nang 60 dáng cưới): <b>"Mười năm cầm máy, không có cô dâu nào 'không ăn ảnh' — chỉ có dáng chưa đúng."</b> Và: <b>dáng chỉ là 30%, 70% còn lại là người đứng sau máy</b> — người nhìn thấy tay chị đưa hơi cứng và chỉnh cho chị ngay tại chỗ.</p><p>Sau đó gửi khách ebook "60 dáng cưới phải lưu" để khách yên tâm là tới buổi chụp sẽ được dẫn dáng từng bước.</p></div></details>
+
+  <p class="clip-label">Cẩm nang "60 dáng cưới phải lưu" — nắm để tư vấn</p>
+  <p style="font-size:13.5px;color:#463A40">Ebook Nupakachi chắt từ 10 năm cầm máy, 60 dáng chia 8 nhóm: <b>Đứng cơ bản · Đi và chuyển động · Ngồi · Ôm và hôn · Voan và váy bay · Cận mặt và chi tiết · Vui nhộn tự nhiên · Chụp lẻ cô dâu, chú rể</b> — kèm phần chuẩn bị 7 ngày và checklist mang theo. Mỗi dáng có các bước cho chàng/nàng + "lỗi hay gặp". Nhân viên nắm 8 nhóm này để nói chuyện với khách cho có nghề; ekip thuộc nhóm 5 (voan và váy bay) — đặc sản ngoại cảnh của nhà Nu.</p>
+
+  </details>
+
+  <details class="mini big"><summary>2/ Khách ĐÃ book — take care đến khi giao album</summary>
+  <p>💳 Mọi khoản thu (TTL2, phí xe, phim trường, hoa…) <b>chỉ nhận chuyển khoản</b>; khách đưa tiền mặt → báo quản lý, không giữ mang về nhà.</p>
+  <div class="step tl"><div class="sk">Hẹn thử váy</div><div class="sv">Gửi ảnh Fitting rules + catalogue, nhờ khách lựa trước 5 mẫu để check available. <b>Gửi luôn ebook "60 dáng cưới phải lưu"</b> và nhờ khách chọn 10 dáng thích nhất, chụp màn hình gửi lại — ekip chuẩn bị đúng ý khách.
+    <details class="mini"><summary>Tin gửi catalogue + hướng dẫn — bấm để mở</summary>
+    <div class="tpl">
+      <div class="tpl-head"><span>Mẫu tin gửi khách</span><button type="button" class="tpl-copy">Copy</button></div>
+      <pre class="tpl-body">Em gửi chị catalogue và quy định phòng váy bên em ạ, chị lựa trước 5 mẫu để em check xem các mẫu đó có available không ạ?
+
+Em gửi anh chị một số hướng dẫn lựa váy, vest và lưu ý ngày chụp ạ. Anh chị xem tham khảo giúp em để mình có bộ hình như ý nhaaaa:
+- HƯỚNG DẪN TƯ VẤN MẪU VÁY CHỤP HÌNH: https://www.tiktok.com/@nupakachi_weddingfilm/video/7486118855291522312
+- CÔ DÂU CẦN CHUẨN BỊ GÌ TRƯỚC KHI CƯỚI: https://www.tiktok.com/@dolinhanhbridal2019/video/7488344994625948983
+- CHÚ RỂ CẦN CHUẨN BỊ GÌ TRƯỚC NGÀY CƯỚI: https://www.tiktok.com/@nupakachi_weddingfilm/video/7488715891450924293</pre>
+    </div>
+    </details>
+  </div></div>
+  <div class="step tl"><div class="sk">Ngày thử váy</div><div class="sv">B1 thử váy (theo số váy trong gói — điều hướng mẫu đơn giản, nhẹ nhàng, timeless) → B2 thử vest (phối sơ mi trắng/màu/kẻ, hạn chế vest sáng màu) → B3 đồ thường (xin khách gửi trước để check, gợi ý — đừng để mặc tùm lum xấu bộ hình) → B4 chốt layout makeup → B5 hỏi hoa.
+    <details class="mini"><summary>Tin gợi ý hoa + xác nhận timeline — bấm để mở</summary>
+    <div class="tpl">
+      <div class="tpl-head"><span>Mẫu tin gửi khách</span><button type="button" class="tpl-copy">Copy</button></div>
+      <pre class="tpl-body">Ngoài ra, chị có thể cân nhắc chuẩn bị 1 bó hoa thật đi chụp thì bộ hình của mình sẽ sinh động hơn đó ạ. Chị có thể đặt ngoài, hoặc nếu cần thì bên em có thể hỗ trợ đặt hoa cho chị ạ.
+
+Em gửi timeline chụp, anh chị xem có cần chỉnh sửa gì không ạ? Nếu không có thì anh chị xác nhận giúp em nhé.</pre>
+    </div>
+    </details>
+  </div></div>
+  <div class="step tl"><div class="sk">Sau thử váy</div><div class="sv">Update lịch Lark (ekip, leader, layout makeup, sản phẩm, timeline) · gửi timeline cho khách xác nhận · đặt xe, hoa, studio · checklist đồ đi chụp · check Zalo xem khách có yêu cầu thêm.  </div></div>
+  <div class="step tl"><div class="sk">Tuần trước chụp</div><div class="sv">Nhắc khách theo lịch <b>D-7 trong ebook 60 dáng</b>: uống đủ nước, ngủ trước 23h, không thử món lạ / nhuộm da / nặn mụn, chàng cắt tóc từ D-6, thử lại toàn bộ trang phục kèm giày. Gửi mẫu hoa lụa cầm tay cho cô dâu.
+    <details class="mini"><summary>Tin chọn hoa lụa — bấm để mở</summary>
+    <div class="tpl">
+      <div class="tpl-head"><span>Mẫu tin gửi khách</span><button type="button" class="tpl-copy">Copy</button></div>
+      <pre class="tpl-body">Chị muốn lựa bó hoa nào, bên em sẽ chuẩn bị 2 bó cho mình nhé ạ.
+
+Ngoài ra, chị có thể cân nhắc chuẩn bị 1 bó hoa thật đi chụp thì bộ hình của mình sẽ sinh động hơn đó ạ. Chị có thể đặt ngoài, hoặc nếu cần thì bên em có thể hỗ trợ đặt hoa cho chị ạ.</pre>
+    </div>
+    </details>
+  </div></div>
+  <div class="step tl"><div class="sk">Trước chụp 1 ngày</div><div class="sv">Nhắn ekip phân công + nhắn khách nghỉ ngơi, đến đúng giờ, chuẩn bị đồ và các khoản phí sau buổi chụp.
+    <details class="mini"><summary>Tin gửi KHÁCH trước ngày chụp — bấm để mở</summary>
+    <div class="tpl">
+      <div class="tpl-head"><span>Mẫu tin gửi khách</span><button type="button" class="tpl-copy">Copy</button></div>
+      <pre class="tpl-body">Ngày mai là ngày chụp hình của anh chị rồi ạ! Team em rất háo hức được đồng hành cùng anh chị trong buổi chụp quan trọng này 🥰
+
+Rất mong anh chị dành thời gian nghỉ ngơi đầy đủ để giữ tinh thần thật thoải mái và tràn đầy năng lượng cho ngày mai. Anh chị cố gắng đến đúng giờ để buổi chụp diễn ra theo đúng dự kiến. Đừng quên chuẩn bị đầy đủ những món đồ cần thiết.
+
+Team xin gửi anh chị chuẩn bị trước một số nội dung phí sau buổi chụp ngày mai như sau ạ:
+- TTL2:
+- Phí xe di chuyển:
+- Phí phim trường/ studio:
+- Phí hoa tươi:
+- Phí ăn trưa của team: 20-30k/người (tùy vào kinh phí dâu rể)
+
+Chúc anh chị có một buổi chụp ảnh thật vui vẻ, suôn sẻ và lưu giữ được những khoảnh khắc tuyệt vời nhất bên nhau!</pre>
+    </div>
+    </details>
+    <details class="mini"><summary>Tin gửi EKIP trước ngày chụp — bấm để mở</summary>
+    <div class="tpl">
+      <div class="tpl-head"><span>Mẫu tin gửi khách</span><button type="button" class="tpl-copy">Copy</button></div>
+      <pre class="tpl-body">Ekip của team mình ngày mai gồm:
+- Thợ chính:
+- Thợ phụ:
+- Makeup:
+- Quay hậu trường: (nếu có thì ghi)
+- Lái xe: (nếu gọi grab thì ai gọi)
+
+Leader team là..... Mong mọi người tới đúng giờ, mặc đồng phục đầy đủ (mặc quần tối màu), chủ động các công việc, để phục vụ khách được tốt nhất. Xin cảm ơn.
+
+Mọi người lưu ý giúp mình vào ngày chụp:
+- Makeup cần có mặt tại studio trước 20–25 phút, chuẩn bị đồ makeup sạch sẽ trên bàn.
+- Thợ chính và thợ phụ đến đúng khung giờ đã phân công, nhận checklist đồ tránh thiếu đồ. Cần là voan, là vest, váy cho phẳng.
+- Trang phục thợ: áo đồng phục + quần/chân váy dài tối màu.
+- Makeup vui lòng chỉn chu hình ảnh makeup + tóc (tránh bệt da, mốc mặt, tóc lòa xòa, mất form tóc).
+- Thợ phụ chú ý tóc chú rể, cavat, ống tay áo chú rể, trải voan cho cô dâu.
+- Khách có yêu cầu ngoài dịch vụ → báo lại studio xử lý. Không kết bạn/nhắn tin riêng với khách — nhắn cho ad trước.
+
+p/s: Với gói chụp tiệc, vui lòng chụp thời gian check in và thời gian checkout.</pre>
+    </div>
+    </details>
+  </div></div>
+  <div class="step tl"><div class="sk">Sau chụp 1 ngày</div><div class="sv">Gửi link ảnh gốc. Check kỹ số ảnh chỉnh sửa theo HĐ. Gọi khách hỏi feedback buổi chụp có vấn đề gì không.
+    <details class="mini"><summary>Tin gửi ảnh gốc — bấm để mở</summary>
+    <div class="tpl">
+      <div class="tpl-head"><span>Mẫu tin gửi khách</span><button type="button" class="tpl-copy">Copy</button></div>
+      <pre class="tpl-body">Dạ em gửi anh chị file ảnh gốc của buổi chụp ạ:
+
+Anh chị chọn giúp em … ảnh để team tiến hành gửi demo màu ạ. (file gốc sẽ auto reset sau 5 ngày, anh chị download về giúp em ạ)
+
+Mình lưu ý giúp em 1 số việc sau ạ:
+1. Chỉ gửi mã ảnh.
+2. Note rõ mã nào làm ảnh phóng, mã nào làm ảnh để bàn (có ghi tên hay ngày cưới không?)
+3. Note yêu cầu sửa cần lưu ý (nếu có)
+4. Gửi 3 bài hát 10-15p để làm slide ảnh
+
+Em xin cảm ơn.
+
+P/s: Team PTS nắn chỉnh theo góc nhìn tương đối phổ thông. Nếu anh/chị hay sử dụng app, và hiểu rõ về góc cạnh khuôn mặt/hình dáng của mình cần nắn bóp/chỉnh sửa ra sao, vui lòng note lại theo từng ảnh giúp em ạ. Team PTS không nhận thay đổi phông nền hay hiệu chỉnh ghép thêm hình ảnh khác.</pre>
+    </div>
+    </details>
+  </div></div>
+  <div class="step tl"><div class="sk">Sau 3 ngày</div><div class="sv">Nhắc khách lưu file + lựa hình sớm.
+    <details class="mini"><summary>Tin nhắc lưu file — bấm để mở</summary>
+    <div class="tpl">
+      <div class="tpl-head"><span>Mẫu tin gửi khách</span><button type="button" class="tpl-copy">Copy</button></div>
+      <pre class="tpl-body">Anh chị vui lòng lưu file giúp em nhé, và lựa hình sớm để bên em hoàn thành kịp tiến độ cho mình ạ</pre>
+    </div>
+    </details>
+  </div></div>
+  <div class="step tl"><div class="sk">Gửi màu demo</div><div class="sv">Gửi 3 mẫu file màu (đã cân sáng, đổ màu — chưa chỉnh da, nắn dáng).
+    <details class="mini"><summary>Tin gửi demo màu — bấm để mở</summary>
+    <div class="tpl">
+      <div class="tpl-head"><span>Mẫu tin gửi khách</span><button type="button" class="tpl-copy">Copy</button></div>
+      <pre class="tpl-body">Dạ em chào anh chị ạ, em xin gửi anh chị 3 mẫu file màu của mình như sau. Các file màu này, thợ dựng đã cân sáng, đổ màu, (nhưng chưa chấm chỉnh da, chưa nắn dáng).
+
+Anh chị xem và lựa cho em 1 màu ảnh mình thích hoặc có thể lựa mỗi concept 1 màu. Sau đó kỹ thuật sẽ nắn chỉnh hoàn thiện cho mình nha ạ.
+
+Anh chị lưu ý xem trên thiết bị của Apple như iPhone, iPad, Macbook vì khi in ra album màu sắc sẽ giống đến 90% ạ. Còn các thiết bị Windows sẽ có sai số lệch màu nhiều ạ.</pre>
+    </div>
+    </details>
+  </div></div>
+  <div class="step tl"><div class="sk">Chỉnh sửa ảnh lần 1, 2</div><div class="sv">Gửi link file chỉnh sửa — khách note theo từng mã ảnh.
+    <details class="mini"><summary>Tin gửi file chỉnh sửa — bấm để mở</summary>
+    <div class="tpl">
+      <div class="tpl-head"><span>Mẫu tin gửi khách</span><button type="button" class="tpl-copy">Copy</button></div>
+      <pre class="tpl-body">Em gửi anh chị file đã chỉnh sửa ạ. Anh chị vui lòng kiểm tra file và note lại các thông tin chỉnh sửa sau giúp em (theo từng MÃ ẢNH yêu cầu) ạ:
+- Màu ảnh
+- Làm sạch da: (xoá nốt ruồi, hình xăm, mụn)
+- Khuôn mặt: (nhỏ mặt, cánh mũi nhỏ, sống mũi cao)
+- Hình dáng: (tay chân thon, cân đối)
+- Trang phục: (nếp gấp)
+- Tóc: (tóc con, gọn gàng)
+- Câu chữ album:
+
+Sau 3 lần chỉnh sửa đầy đủ các nội dung trên, studio sẽ hoàn thiện sản phẩm cho mình ạ.
+
+Ngoài ra, team dựng đang làm dôi ra ... layout (trong gói sản phẩm là 15 layout) để anh chị cân nhắc thêm về cách bố trí layout ảnh. Anh chị có thể lựa ra 15 layout mình ưng ý nhất để hoàn thiện in ạ. Nếu mình muốn giữ hết số layout trên thì sẽ có tính phí phát sinh ạ.
+
+Để đảm bảo album lên đẹp và có tính thẩm mỹ hơn, bên em sẽ thiết kế theo nguyên tắc: 1 layout (2 trang) tối đa khoảng 3 ảnh. Các layout nhiều ảnh sẽ được đan xen với layout ít ảnh hoặc có khoảng trống để tạo "khoảng nghỉ" cho mắt, giúp tổng thể album nhìn sang và cảm xúc hơn ạ. Nên trong quá trình lên layout thực tế, số trang có thể phát sinh thêm so với dự kiến ban đầu để đảm bảo chất lượng thiết kế và trải nghiệm xem album của mình nha 🤍</pre>
+    </div>
+    </details>
+  </div></div>
+  <div class="step tl"><div class="sk">Chỉnh sửa lần 3</div><div class="sv">Gửi link ảnh final + mẫu bìa, mẫu thiết kế bìa (lấy trong file Canva).
+    <details class="mini"><summary>Tin chốt final + chọn bìa — bấm để mở</summary>
+    <div class="tpl">
+      <div class="tpl-head"><span>Mẫu tin gửi khách</span><button type="button" class="tpl-copy">Copy</button></div>
+      <pre class="tpl-body">Dạ anh chị chọn giúp em màu bìa và mẫu thiết kế bìa để bên em tiến hành in ấn ạ.
+
+Dạ em gửi anh chị file chỉnh sửa final của mình ạ. Anh chị kiểm tra giúp em nhé. (cho thời gian check 2 ngày)
+
+Em xin xác nhận mình không chấm sửa gì thêm, để studio gửi sản phẩm in ạ. Sản phẩm in được hoàn thành trong vòng 10 ngày ạ. Các chi tiết phát sinh sửa đổi sau in, sẽ tính phí gia tăng ạ.
+
+Xin cảm ơn anh chị ạ</pre>
+    </div>
+    </details>
+  </div></div>
+  <div class="step tl"><div class="sk">Nhận sản phẩm tại studio — check 8 điểm</div><div class="sv">① Đúng sản phẩm của khách nào, số ảnh phóng/bàn theo HĐ ② hỏi link final ③ thứ tự layout ④ màu (ngả xanh/vàng?) ⑤ vết bẩn ⑥ lỗi cắt layout ⑦ hộp album có dây Nupakachi, móp méo? ⑧ mặt sau ảnh bàn — xem clip <a href="https://drive.google.com/file/d/1bdHrtj4VjiOlNpZhYCat0cWJ1od_4p9d/view" target="_blank" rel="noopener">Kiểm tra, bọc sản phẩm</a>.
+    <details class="mini"><summary>Tin báo sản phẩm về — bấm để mở</summary>
+    <div class="tpl">
+      <div class="tpl-head"><span>Mẫu tin gửi khách</span><button type="button" class="tpl-copy">Copy</button></div>
+      <pre class="tpl-body">Sản phẩm của anh chị đã có tại studio ạ, em đã check đầy đủ và không có sai sót gì, anh chị muốn bên em ship hay anh chị trực tiếp qua lấy ạ?</pre>
+    </div>
+    </details>
+  </div></div>
+  <div class="step tl"><div class="sk">Hoàn thành sản phẩm</div><div class="sv">Cảm ơn + dặn khách download (link lưu hết tuần).
+    <details class="mini"><summary>Tin cảm ơn hoàn thành — bấm để mở</summary>
+    <div class="tpl">
+      <div class="tpl-head"><span>Mẫu tin gửi khách</span><button type="button" class="tpl-copy">Copy</button></div>
+      <pre class="tpl-body">Cảm ơn anh chị đã tin tưởng và lựa chọn Nupakachi trong hành trình lưu giữ khoảnh khắc hạnh phúc của mình ạ. Hôm nay team đã hoàn tất các sản phẩm hình ảnh cùng clip của anh chị ạ.
+
+Nếu trong quá trình sử dụng sản phẩm có điều gì cần điều chỉnh hoặc góp ý thêm, anh chị vui lòng cho tụi em biết nha ạ.
+
+Kính chúc anh chị thật nhiều sức khỏe và hạnh phúc bên nhau 🤍
+
+p/s: Anh chị vui lòng download giúp em các hình ảnh và clip, em đã gửi bên trên ạ, link drive sẽ được lưu đến hết tuần này ạ.</pre>
+    </div>
+    </details>
+  </div></div>
+  <div class="step tl"><div class="sk">Sale tiếp các gói dịch vụ</div><div class="sv">Khách hài lòng gói pre → mời book thêm gói chụp tiệc + váy tiệc.
+    <details class="mini"><summary>Tin sale tiếp gói tiệc — bấm để mở</summary>
+    <div class="tpl">
+      <div class="tpl-head"><span>Mẫu tin gửi khách</span><button type="button" class="tpl-copy">Copy</button></div>
+      <pre class="tpl-body">Anh chị uiiii, sau khi book gói pre-wedding và nếu cảm thấy hài lòng với chất lượng sản phẩm bên em, anh chị có thể cân nhắc book thêm gói chụp tiệc và váy tiệc để nhận ưu đãi đặc biệt dành riêng cho khách pre. Bên em luôn sẵn sàng hỗ trợ và đồng hành cùng anh chị trọn vẹn hơn trong ngày cưới ạ.</pre>
+    </div>
+    </details>
+  </div></div>
+  <div class="step tl"><div class="sk">Xin review các kênh</div><div class="sv">Xin review Google / TikTok / Threads / group FB (danh sách link trong sheet Take care) + tặng bộ ảnh truyền thông, xin link IG khách.
+    <details class="mini"><summary>Tin xin review + quà — bấm để mở</summary>
+    <div class="tpl">
+      <div class="tpl-head"><span>Mẫu tin gửi khách</span><button type="button" class="tpl-copy">Copy</button></div>
+      <pre class="tpl-body">Không biết trải nghiệm chụp prewedding/quay chụp phóng sự cưới tại Nupakachi có làm anh chị "ưng cái bụng" hông ạ? Được ghi lại khoảnh khắc hạnh phúc của anh chị trong ngày trọng đại là niềm vui siêu to của tụi em lun đó 🥰
+
+Nếu anh chị thấy hài lòng, cho tụi em xin vài dòng review chân thật lên Google & Tiktok & Threads & Group FB giúp tụi em nhaaa 🤍 Anh chị sử dụng kênh nào thì cho tụi em xin kênh đó nha ạ <3
+
+Team truyền thông có gửi tặng anh chị phần quà nho nhỏ là ảnh up truyền thông (layout thiết kế up IG) + clip BTS up tiktok ạ, tụi em để trong folder GIFT FROM NUPAKACHI ạ.
+
+Nupakachi xin gửi tặng anh chị 1 ảnh phóng ép gỗ/ 2 ảnh bàn/ 200k tiền mặt như là món quà nho nhỏ vì dâu rể đã tin tưởng sử dụng dịch vụ và chia sẻ cảm nhận ạ. Chúc anh chị mãi hạnh phúc, yêu thương đầy nhà nhaaa 🤍</pre>
+    </div>
+    </details>
+    <details class="mini"><summary>Tin tặng ảnh truyền thông + xin IG — bấm để mở</summary>
+    <div class="tpl">
+      <div class="tpl-head"><span>Mẫu tin gửi khách</span><button type="button" class="tpl-copy">Copy</button></div>
+      <pre class="tpl-body">Dạ mình ơi, sản phẩm của mình bên em đã hoàn thiện rồi ạ ✨
+
+Bên em xin tặng riêng mình bộ ảnh truyền thông + layout Instagram để mình tiện đăng tải hình ảnh đẹp và đồng bộ hơn ạ.
+
+Mình gửi giúp em link Instagram cá nhân để bên em chuẩn bị và tag đúng tài khoản của mình nha 🤍
+
+Ngoài ra mình follow giúp bên em 2 Instagram dưới đây để team tiện hỗ trợ và cập nhật thêm hình ảnh cho mình ạ:
+- IG váy tiệc: https://www.instagram.com/dolinhanh.bridal
+- IG ảnh pre: https://www.instagram.com/nupakachi.prewedding
+
+Mình gửi link IG qua tin nhắn này giúp em là được ạ 🤍</pre>
+    </div>
+    </details>
+  </div></div>
+
+  <p class="clip-label">Clip hướng dẫn</p>
+  <div class="clips">
+    <a href="https://drive.google.com/file/d/1vMfDehZ7E9airxKxeChGi-0buNb_Luwu/view" target="_blank" rel="noopener">Lựa váy chụp</a>
+    <a href="https://drive.google.com/file/d/1Dubge79O9QuSZnn7vF41i-Lw3XDDW4n8/view" target="_blank" rel="noopener">Địa điểm chụp Việt Nam</a>
+    <a href="https://drive.google.com/file/d/1arNjYwiYTIk8QOKeoA52EybovIGc37Zc/view" target="_blank" rel="noopener">Váy không nên mặc khi chụp outdoor</a>
+    <a href="https://drive.google.com/file/d/1n9IIgXSYFMfDjrRHvRbLa7as1JSt1OZE/view" target="_blank" rel="noopener">Chuẩn bị đồ chụp pre</a>
+    <a href="https://docs.google.com/spreadsheets/d/19cZUh4J4w-u3w4mFZVIJ4D8Qvh6ryXsFV_k8JFk5YFQ/edit" target="_blank" rel="noopener">Sheet quy trình + câu nói mẫu</a>
+    <a href="https://docs.google.com/document/d/1iEQwaIZxWh29kF9w1Th2bZCZBvNHtEUXRMxju8V8bGs/edit" target="_blank" rel="noopener">Doc thông tin tư vấn</a>
+  </div>
+
+  </details>
+
+  <div class="pager">
+    <a href="#take-care"><span class="lbl">Trước</span><span class="pt">← Take care sau khi cọc</span></a>
+    <a class="next" href="#chuong-6"><span class="lbl">Tiếp theo</span><span class="pt">Marketing →</span></a>
+  </div>
+</div>
+</section>
+
+<!-- ══════════════ CHƯƠNG 6 ══════════════ -->
+<section class="view" id="chuong-6" data-title="Marketing">
+<div class="wrap">
+  <div class="ch-head">
+    <p class="eyebrow">Chương 8</p>
+    <h2 class="display">Marketing</h2>
+    <p class="lede">Hệ thống kênh, cách up bài không sai album, chiến dịch KOC và bí quyết clip viral.</p>
+  </div>
+
+  <h3>1/ Hệ thống kênh truyền thông — liệt kê</h3>
+  <ul>
+    <li><b>TikTok</b> — <a href="https://www.tiktok.com/@nupakachi_weddingfilm" target="_blank" rel="noopener">Nupakachi chính</a> · <a href="https://www.tiktok.com/@dolinhanhbridal2019" target="_blank" rel="noopener">Dolinhanh Bridal 2019</a> · <a href="https://www.tiktok.com/@dolinhanh.bridal" target="_blank" rel="noopener">Váy cưới xinh — @dolinhanh.bridal</a> · <a href="https://www.tiktok.com/@fitting.with.doli" target="_blank" rel="noopener">Fitting with Doli</a> · <a href="https://www.tiktok.com/@postcardforus" target="_blank" rel="noopener">Postcard for us</a> · <a href="https://www.tiktok.com/@nupakachilifeeee" target="_blank" rel="noopener">Nupakachi Life</a> · <a href="https://www.tiktok.com/@kinhnghiemcuoihoi" target="_blank" rel="noopener">Kinh nghiệm cưới hỏi</a> · <a href="https://www.tiktok.com/@bts.nupakachiwedding" target="_blank" rel="noopener">BTS Nupakachi Wedding</a></li>
+    <li><b>Facebook</b> — <a href="https://www.facebook.com/Nupakachiwedding" target="_blank" rel="noopener">Nupakachi Photography (HN)</a> · <a href="https://www.facebook.com/Nupakachihochiminh" target="_blank" rel="noopener">Nupakachi HCM</a> · <a href="https://www.facebook.com/Dolinhanhbridalhn" target="_blank" rel="noopener">Dolinhanh Bridal Hanoi</a> · <a href="https://www.facebook.com/Dolinhanhbridalhcm/" target="_blank" rel="noopener">Dolinhanh Bridal HCM</a></li>
+    <li><b>Instagram</b> — <a href="https://www.instagram.com/nupakachi.prewedding/" target="_blank" rel="noopener">nupakachi.prewedding</a> · <a href="https://www.instagram.com/nupakachiweddingfilm/" target="_blank" rel="noopener">nupakachiweddingfilm</a> · <a href="https://www.instagram.com/dolinhanh.bridal/" target="_blank" rel="noopener">dolinhanh.bridal</a> · <a href="https://www.instagram.com/dolinhanh_bridal/" target="_blank" rel="noopener">dolinhanh_bridal</a></li>
+    <li><b>Threads</b> — <a href="https://www.threads.com/@nupakachiweddingfilm" target="_blank" rel="noopener">Nupakachi Wedding Film</a> · <a href="https://www.threads.com/@nupakachi.prewedding" target="_blank" rel="noopener">Nupakachi Prewedding</a> · <a href="https://www.threads.com/@dolinhanh.bridal" target="_blank" rel="noopener">Dolinhanh Bridal</a></li>
+    <li><b>YouTube</b> — <a href="https://www.youtube.com/@nupakachiweddingfilm" target="_blank" rel="noopener">Nupakachi Wedding Film</a></li>
+  </ul>
+
+  <h3>2/ Cách quay &amp; dựng clip</h3>
+  <p class="clip-label">Cách quay</p>
+  <ul>
+    <li><b>Quay dọc 9:16</b>, cảnh phải <b>tĩnh, không rung</b> — source rung là loại thẳng.</li>
+    <li><b>Quay như buổi fitting thật</b>, không phải model đứng yên: cô dâu bước vào / mặc áo choàng → stylist mang váy ra → chỉnh váy, corset, voan → cô dâu soi gương, xoay ngắm, reaction, đi lại → detail ren / corset / đuôi váy.</li>
+    <li><b>B-roll:</b> hoa, rack váy, không gian showroom — để có cảnh chêm khi dựng.</li>
+    <li><b>Cảnh quan trọng nhất:</b> khoảnh khắc cô dâu đẹp – cảm xúc nhất (mặt tươi, chính diện gương) — clip nào cũng cần vài cảnh này để mở màn và chốt.</li>
+    <li>Mỗi buổi quay <b>nhiều cô dâu / nhiều mẫu</b> càng tốt — 1 clip dựng có thể đan xen nhiều người.</li>
+  </ul>
+  <p class="clip-label">Clip mẫu tham khảo</p>
+  <div class="clips">
+    <a href="https://www.tiktok.com/@fitting.vay.cuoi/video/7667193380069231892" target="_blank" rel="noopener">Clip chuẩn: 5 tips cô dâu đi thử váy lần đầu</a>
+    <a href="https://www.tiktok.com/@fitting.vay.cuoi" target="_blank" rel="noopener">Kênh Fitting Váy Cưới</a>
+    <a href="https://www.instagram.com/p/DbYL0IFiWyg" target="_blank" rel="noopener">Lookbook tham chiếu: IDY Atelier</a>
+    <a href="https://www.instagram.com/reel/DarYyfCB9Ra" target="_blank" rel="noopener">Lookbook tham chiếu: Darlington Bridal</a>
+  </div>
+
+  <p class="clip-label">Cách dựng — đẹp &amp; content</p>
+  <p><b>Dựng đẹp:</b></p>
+  <ul>
+    <li>Cảnh <b>mở</b> và <b>kết</b> luôn là cảnh cô dâu đẹp – cảm xúc nhất; giữa clip đan xen góc rộng / góc hẹp.</li>
+    <li>Chữ to dễ đọc, đặt ở 1/3 trên khung hình — <b>tuyệt đối không đè chữ vào mặt khách</b>, canh vị trí theo từng cảnh.</li>
+    <li>Màu các cảnh phải <b>đồng đều, sáng, tự nhiên</b> — không ám tối; chuyển cảnh mượt.</li>
+    <li>Nhạc <b>vui, nhịp nhanh kiểu trending</b> — không sến, không buồn; ưu tiên add trending sound trong app khi đăng.</li>
+  </ul>
+  <p><b>Dựng content (clip cẩm nang / tips):</b></p>
+  <ul>
+    <li>Format ăn khách nhất: <b>listicle tips cho cô dâu</b> — hook câu hỏi → 3–5 tips → CTA "lưu lại".</li>
+    <li>Nhịp chuẩn: <b>Hook → tình huống → cách xử lý → câu nói mẫu → lý do → footage minh hoạ → tình huống tiếp → payoff → branding → CTA</b>. Dài ~65–70 giây là đẹp, đừng ngắn củn.</li>
+    <li>Câu chữ phải có <b>chủ thể + hành động + lý do</b> — không viết liệt kê cụt kiểu "Khen trước, chê sau".</li>
+    <li>Caption 2–3 câu storytelling nhẹ + hashtag đúng bộ của kênh.</li>
+    <li>Clip <b>lookbook khoe BST</b> thì ngược lại: cắt nhanh ~1,5s/cảnh, 1 dòng chữ giữ lâu vắt qua nhiều cảnh, <b>không đánh số / không mô tả từng mẫu</b>, không voice, kết bằng thẻ đen logo.</li>
+  </ul>
+  <p class="clip-label">Kiến thức TikTok để clip dễ viral</p>
+  <ul>
+    <li><b>Insight:</b> content đúng người đúng cảm xúc; tín hiệu viral = xem hết clip → tim → share → xem lại. Clip càng "đời", càng raw (giọng thật, khung hình rung nhẹ, biểu cảm tự nhiên) càng dễ vào đề xuất.</li>
+    <li><b>Trend &amp; hashtag:</b> nhạc trend để volume 3–5% "ăn trend âm thanh" mà vẫn giữ tiếng nói chính; đu trend lớn phải twist thành của mình; hashtag chuẩn #fyp #xh #trending #nupakachiwedding #wedding — <b>không quá 5 tag</b> (bị đánh spam); ưu tiên tag 10k–200k lượt xem, dễ leo hơn tag triệu view.</li>
+    <li><b>Hook 3 giây đầu quyết định:</b> tạo curiosity gap hoặc cảm xúc mạnh ("Mình quyết định không cưới nữa vì…", "Tránh xa studio này nếu bạn không muốn…").</li>
+    <li><b>Thuật toán:</b> khi đăng, TikTok test với 500–1000 người đầu. Không xoá clip đang chạy dù ít view; không sửa caption / nhạc sau khi up (reset vòng test).</li>
+    <li><b>Công thức clip Váy Cưới Xinh:</b> hook gây tò mò → nội dung theo từng mẫu váy (mặc váy quay trước gương, 3–4 mẫu/clip) → CTA kéo comment ("Comment dáng người của mấy bà, tui chọn cúp ngực hợp miễn phí"). Kho kịch bản mẫu trong file CÁC KÊNH TRUYỀN THÔNG.</li>
+  </ul>
+
+
+  <h3>3/ Chiến dịch KOC</h3>
+  <ul>
+    <li><b>Thư mời KOC:</b> mẫu chuẩn (tài trợ 100% gói chụp + trang phục, quyền lợi hình ảnh; mong KOC chia sẻ trên FB/IG/TikTok) — nguyên văn trong file <a href="https://drive.google.com/file/d/150BFqb0nFYx2kbA9qVeNjiJ5sB7PPt-U/view" target="_blank" rel="noopener">CÁC KÊNH TRUYỀN THÔNG.xlsx</a>.</li>
+    <li><b>Hiệu ứng khuếch đại 3 lớp</b> — 1 video KOC = 3 lớp nội dung. Ngày KOC đăng, thương hiệu <b>không</b> đăng video tương tự, chỉ share story + comment tương tác. (KOC tạo độ tin cậy → VCX kéo traffic → DLA củng cố thương hiệu.)</li>
+  </ul>
+  <div class="flow"><span><b>Ngày 1</b> · KOC đăng — mình chỉ share story</span><i>→</i><span><b>Ngày 2</b> · Váy Cưới Xinh đăng video kiến thức cùng chủ đề</span><i>→</i><span><b>Ngày 3</b> · DLA đăng BTS / cận cảnh mẫu váy trong video KOC</span></div>
+
+  <h3>4/ Chiến dịch xin feedback — không cho khách thoát</h3>
+  <ul>
+    <li>Tặng 01 khăn voan khi khách đánh giá trên Google hoặc chia sẻ trải nghiệm trên Threads / TikTok / Facebook.</li>
+    <li>Tặng 500.000đ tiền mặt khi khách giới thiệu bạn bè đến DLA Bridal và bạn hoàn tất đặt dịch vụ.</li>
+  </ul>
+
+  <div class="pager">
+    <a href="#chuong-5"><span class="lbl">Trước</span><span class="pt">← Sale và take care gói chụp</span></a>
+    <a class="next" href="#phu-luc"><span class="lbl">Tiếp theo</span><span class="pt">Phụ lục →</span></a>
+  </div>
+</div>
+</section>
+
+<!-- ══════════════ PHỤ LỤC ══════════════ -->
+<section class="view" id="phu-luc" data-title="Phụ lục">
+<div class="wrap">
+  <div class="ch-head">
+    <p class="eyebrow">Phụ lục</p>
+    <h2 class="display">Kho tài liệu gốc</h2>
+    <p class="lede">Cẩm nang này tổng hợp từ các tài liệu dưới đây — cần chi tiết nguyên văn thì mở bản gốc.</p>
+  </div>
+
+  <div class="doc-row" style="margin-top:28px"><span class="dk">Folder training tổng — chứa toàn bộ clip + tài liệu</span><span class="dv"><a href="https://drive.google.com/drive/folders/17wxLdB1lRRoCzjnTIhXkevi-T86jd7Hj" target="_blank" rel="noopener">Drive · TRAINING DLA</a></span></div>
+  <div class="doc-row"><span class="dk">Bản Google Doc của cẩm nang (bản gốc để sửa nội dung)</span><span class="dv"><a href="https://docs.google.com/document/d/1__1zJv2ZZfim5awuSKZmuiLw2tfMqHh2kJPNrmbNJHo/edit" target="_blank" rel="noopener">Sổ tay đào tạo (Doc)</a></span></div>
+  <div class="doc-row"><span class="dk">Canva: tác phong + tư duy + checklist vệ sinh (13 trang, update thường xuyên)</span><span class="dv"><a href="https://www.canva.com/design/DAGkHidedPM/QG5Z5pxrpyaJvEm3Y3ozlA/edit" target="_blank" rel="noopener">Training Sale Marketing</a></span></div>
+  <div class="doc-row"><span class="dk">Sheet quy trình take care gói chụp + váy tiệc + may váy (nguyên văn câu nói với khách)</span><span class="dv"><a href="https://docs.google.com/spreadsheets/d/19cZUh4J4w-u3w4mFZVIJ4D8Qvh6ryXsFV_k8JFk5YFQ/edit" target="_blank" rel="noopener">Quy trình take care</a></span></div>
+  <div class="doc-row"><span class="dk">Doc mục lục tư vấn (báo giá, sổ tay cưới, catalogue các cơ sở, địa điểm chụp)</span><span class="dv"><a href="https://docs.google.com/document/d/1iEQwaIZxWh29kF9w1Th2bZCZBvNHtEUXRMxju8V8bGs/edit" target="_blank" rel="noopener">Thông tin tư vấn</a></span></div>
+  <div class="doc-row"><span class="dk">JD từng vị trí + giờ làm</span><span class="dv"><a href="https://docs.google.com/spreadsheets/d/1iEvh9CJiQc6StK2Gmb7r2tI1x5LJ0_0gqhkvum3-_M0/edit" target="_blank" rel="noopener">Quy trình công ty</a></span></div>
+  <div class="doc-row"><span class="dk">Kênh truyền thông + đăng nhập + kịch bản TikTok + thư mời KOC</span><span class="dv"><a href="https://drive.google.com/file/d/150BFqb0nFYx2kbA9qVeNjiJ5sB7PPt-U/view" target="_blank" rel="noopener">Các kênh truyền thông.xlsx</a></span></div>
+  <div class="doc-row"><span class="dk">Sổ tay sale marketing bản PDF (bản in)</span><span class="dv"><a href="https://drive.google.com/file/d/13c625YjP5tpOS1vKCKgeA2LMbH96vZQ4/view" target="_blank" rel="noopener">Sổ tay Sale maketing.pdf</a></span></div>
+  <div class="doc-row"><span class="dk">Cẩm nang "60 dáng cưới phải lưu" — ebook gửi khách trước buổi chụp (60 dáng, 8 nhóm, chuẩn bị 7 ngày)</span><span class="dv"><i style="color:var(--ink-soft)">chờ chị Linh gửi link Drive</i></span></div>
+
+  <p class="foot-note" style="margin-top:40px"><b>Tài liệu nội bộ</b> — không chia sẻ ra ngoài. Sổ chỉ có giá trị khi nó luôn đúng — thấy gì lệch, báo chị Linh.</p>
+
+  <div class="pager">
+    <a href="#chuong-6"><span class="lbl">Trước</span><span class="pt">← Marketing</span></a>
+    <a class="next" href="#muc-luc"><span class="lbl">Về đầu</span><span class="pt">Mục lục →</span></a>
+  </div>
+</div>
+</section>
+
+<script>
+(function(){
+  var views = document.querySelectorAll('.view');
+  var crumb = document.getElementById('crumb');
+
+  var UNLOCK = 'dla_syll_ok';
+  function isUnlocked(){ try{ if(localStorage.getItem(UNLOCK) === '1') return true; }catch(e){} return window.__dlaOpen === true; }
+  function setUnlocked(){ try{ localStorage.setItem(UNLOCK, '1'); }catch(e){} window.__dlaOpen = true; }
+
+  function show(id){
+    var target = document.getElementById(id) || document.getElementById('muc-luc');
+    views.forEach(function(v){ v.classList.remove('on'); });
+    target.classList.add('on');
+    var isHome = target.id === 'muc-luc' || target.id === 'welcome';
+    document.body.classList.toggle('in-chapter', !isHome);
+    if(!isHome){ crumb.textContent = target.getAttribute('data-title') || ''; }
+    window.scrollTo(0,0);
+  }
+  function route(){
+    if(!isUnlocked()){ show('welcome'); return; }
+    var id = (location.hash || '#muc-luc').slice(1).split('::')[0];
+    if(id === 'welcome'){ id = 'muc-luc'; }
+    show(id);
+    var extra = (location.hash.split('::')[1]) || '';
+    if(extra){
+      var el = document.getElementById(extra);
+      if(el){
+        if(el.tagName === 'DETAILS'){ el.open = true; }
+        setTimeout(function(){ el.scrollIntoView({block:'center'}); }, 250);
+      }
+    }
+  }
+  window.addEventListener('hashchange', route);
+  route();
+
+  /* ---- welcome gate: so yeu ly lich ---- */
+  var FORM_URL = 'https://script.google.com/macros/s/AKfycbwlmpyoY3b-iCmO9ZoVeUhm0wYJb4CrQ6I9ezsadk4UhDx1JS3qAEN7MWNOL_DGgkiV/exec';
+  var KHOA_EMAIL = []; /* email nhan vien da nghi — chi Linh bao la them vao day */
+  document.getElementById('btnForm').setAttribute('href', FORM_URL);
+  function normMail(x){ return (x||'').trim().toLowerCase(); }
+  function daKhoa(em){ return KHOA_EMAIL.indexOf(normMail(em)) !== -1; }
+  function moKhoaEmail(baoLoi){
+    var em = normMail(document.getElementById('unlockEmail').value);
+    var err = document.getElementById('syllErr');
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(em)){
+      if(baoLoi){ err.textContent = 'Bạn nhập đúng email đã điền trong form nha.'; err.classList.add('show'); }
+      return false;
+    }
+    if(daKhoa(em)){
+      err.textContent = 'Email này đã bị khóa quyền xem cẩm nang — bạn liên hệ quản lý nhé.';
+      err.classList.add('show'); return false;
+    }
+    err.classList.remove('show');
+    try{ localStorage.setItem('dla_syll_email', em); }catch(e){}
+    setUnlocked(); location.hash = '#muc-luc'; route();
+    return true;
+  }
+  document.getElementById('btnDone').addEventListener('click', function(){ moKhoaEmail(true); });
+  /* gõ xong email hợp lệ là tự mở sang trang, không cần bấm nút */
+  var goTimer = null;
+  document.getElementById('unlockEmail').addEventListener('input', function(){
+    if(goTimer){ clearTimeout(goTimer); }
+    goTimer = setTimeout(function(){ moKhoaEmail(false); }, 900);
+  });
+  document.getElementById('unlockEmail').addEventListener('keydown', function(ev){
+    if(ev.key === 'Enter'){ moKhoaEmail(true); }
+  });
+  document.getElementById('adminSkip').addEventListener('click', function(ev){
+    ev.preventDefault();
+    var r = document.getElementById('adminRow');
+    r.style.display = (r.style.display === 'none') ? 'block' : 'none';
+    if(r.style.display === 'block'){ document.getElementById('adminCode').focus(); }
+  });
+  function adminThu(){
+    if(document.getElementById('adminCode').value.trim() === 'DLA888'){
+      setUnlocked(); location.hash = '#muc-luc'; route();
+    } else {
+      document.getElementById('adminErr').style.display = 'block';
+    }
+  }
+  document.getElementById('adminGo').addEventListener('click', adminThu);
+  document.getElementById('adminCode').addEventListener('keydown', function(ev){ if(ev.key === 'Enter'){ adminThu(); } });
+  /* nhân viên đã nghỉ: nếu email lưu trên máy nằm trong danh sách khóa -> khóa lại */
+  try{
+    var savedEm = normMail(localStorage.getItem('dla_syll_email'));
+    if(savedEm && daKhoa(savedEm)){ localStorage.removeItem('dla_syll_ok'); window.__dlaOpen = false; route(); }
+  }catch(e){}
+
+  /* ---- copy message templates ---- */
+  document.querySelectorAll('.tpl-copy').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var pre = btn.closest('.tpl').querySelector('.tpl-body');
+      var t = pre.innerText;
+      var ok = function(){ btn.textContent = '✓ Đã copy'; setTimeout(function(){ btn.textContent = 'Copy'; }, 2000); };
+      try{ navigator.clipboard.writeText(t).then(ok, function(){ ok(); }); }catch(e){ ok(); }
+    });
+  });
+
+  /* ---- search ---- */
+  var input = document.getElementById('q');
+  var hits = document.getElementById('hits');
+  var index = [];
+  var n = 0;
+  document.querySelectorAll('.view[data-title]').forEach(function(sec){
+    var chap = sec.getAttribute('data-title');
+    sec.querySelectorAll('h3, details.qa').forEach(function(el){
+      var label, text, node;
+      var ans = '';
+      if(el.tagName === 'H3'){ label = el.textContent.trim(); text = label; node = el; }
+      else {
+        label = el.querySelector('summary').textContent.trim(); text = label + ' ' + el.textContent; node = el;
+        var box = el.querySelector('.a');
+        if(box){
+          var parts = [];
+          box.querySelectorAll('p, li, pre').forEach(function(x){
+            var t = x.textContent.replace(/\s*\n\s*/g,'\n').trim();
+            if(t && t !== 'Copy' && t.indexOf('Mẫu tin gửi khách') !== 0){ parts.push(t); }
+          });
+          ans = parts.join('\n\n');
+        }
+      }
+      if(!node.id){ node.id = 'ix-' + (++n); }
+      index.push({label:label, text:text.toLowerCase(), chapter:chap, secId:sec.id, targetId:node.id, ans:ans});
+    });
+  });
+  function norm(s){
+    return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d');
+  }
+  var normIndex = index.map(function(e){ return norm(e.text); });
+  input.addEventListener('input', function(){
+    var q = norm(input.value.trim());
+    hits.innerHTML = '';
+    if(q.length < 2){ hits.classList.remove('show'); return; }
+    var words = q.split(/\s+/).filter(Boolean);
+    var out = [];
+    for(var i=0;i<index.length && out.length<8;i++){
+      var okAll = true;
+      for(var w=0;w<words.length;w++){ if(normIndex[i].indexOf(words[w]) === -1){ okAll = false; break; } }
+      if(okAll){ out.push(index[i]); }
+    }
+    if(!out.length){
+      hits.innerHTML = '<div class="none">Không thấy — thử từ khoá khác, hoặc hỏi chị Linh để bổ sung.</div>';
+    } else {
+      out.forEach(function(e){
+        var a = document.createElement('a');
+        a.href = '#' + e.secId + '::' + e.targetId;
+        var h = '<small>' + e.chapter + '</small><b style="display:block">' + e.label + '</b>';
+        if(e.ans){
+          var d = document.createElement('div');
+          d.textContent = e.ans;
+          h += '<span class="ans">' + d.innerHTML + '</span>';
+          h += '<span class="goto">Bấm để mở đúng mục trong cẩm nang →</span>';
+        }
+        a.innerHTML = h;
+        a.addEventListener('click', function(){ hits.classList.remove('show'); input.value=''; });
+        hits.appendChild(a);
+      });
+    }
+    hits.classList.add('show');
+  });
+  document.addEventListener('click', function(ev){
+    if(!ev.target.closest('.search')){ hits.classList.remove('show'); }
+  });
+})();
+</script>
+
+</body>
+</html>
