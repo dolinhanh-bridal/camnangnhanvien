@@ -18,6 +18,7 @@
   --champagne:#B4677A;
   --line:#E3D5C6;
   --card:#FFFFFF;
+  --link:#A87C1B;      /* vàng đồng — riêng cho đường link, phân biệt với đỏ mận */
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -30,8 +31,8 @@ body{
   -webkit-font-smoothing:antialiased;
 }
 .wrap{max-width:760px;margin:0 auto;padding:0 20px 80px}
-a{color:var(--rose);text-decoration-color:rgba(158,68,88,.35);text-underline-offset:3px}
-a:hover{color:var(--rose-deep)}
+a{color:var(--link);text-decoration-color:rgba(168,124,27,.45);text-underline-offset:3px}
+a:hover{color:#8A6413}
 a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{outline:2px solid var(--rose);outline-offset:3px;border-radius:2px}
 
 /* ---------- shared type ---------- */
@@ -122,7 +123,7 @@ body.in-chapter .topbar{display:flex}
 
 /* index of chapters */
 .toc{margin-top:36px;text-align:left}
-.toc a{
+.toc a{color:var(--ink);
   display:flex;align-items:baseline;gap:18px;text-decoration:none;color:var(--ink);
   padding:20px 6px;border-top:1px solid var(--line);
 }
@@ -245,7 +246,7 @@ details.qa .a p:last-child{margin-bottom:0}
 
 /* clip chips */
 .clips{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 8px}
-.clips a{
+.clips a{color:var(--ink);
   display:inline-flex;align-items:center;gap:7px;text-decoration:none;
   background:var(--card);border:1px solid var(--line);border-radius:999px;
   padding:8px 15px;font-size:13px;font-weight:500;color:var(--ink);
@@ -312,7 +313,7 @@ details.mini.big > summary{font-family:"Cormorant Garamond",Georgia,serif;font-s
 
 /* pager */
 .pager{display:flex;gap:12px;margin-top:52px;border-top:1px solid var(--line);padding-top:22px}
-.pager a{
+.pager a{color:var(--ink);
   flex:1;text-decoration:none;background:var(--card);border:1px solid var(--line);
   border-radius:14px;padding:14px 18px;color:var(--ink);
 }
