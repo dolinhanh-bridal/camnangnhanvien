@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0D5457">
+<title>Bạn cần làm gì?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@600&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --ground:#FAFAFB; --surface:#FFFFFF;
+  --ink:#14181C; --ink-2:#4E5964; --ink-3:#7C8794;
+  --line:#E3E7EA; --line-strong:#CFD6DB;
+  --accent:#0D5457; --accent-ink:#0D5457; --accent-wash:#E4F0EF;
+  --warn:#8A4B10; --warn-wash:#FBEEDF;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0E1114; --surface:#161A1F;
+    --ink:#E9ECEF; --ink-2:#A7B1BB; --ink-3:#7C8794;
+    --line:#262C33; --line-strong:#39424B;
+    --accent:#5FBFC0; --accent-ink:#8FD8D8; --accent-wash:#122C2D;
+    --warn:#E0A967; --warn-wash:#2C2116;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0E1114; --surface:#161A1F;
+  --ink:#E9ECEF; --ink-2:#A7B1BB; --ink-3:#7C8794;
+  --line:#262C33; --line-strong:#39424B;
+  --accent:#5FBFC0; --accent-ink:#8FD8D8; --accent-wash:#122C2D;
+  --warn:#E0A967; --warn-wash:#2C2116;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--ground);color:var(--ink);
+  font-family:"Be Vietnam Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:660px;margin:0 auto;padding:40px 18px 64px;display:flex;flex-direction:column;gap:26px}
+header{display:flex;flex-direction:column;gap:10px}
+h1{font-family:Lora,Georgia,serif;font-weight:600;font-size:clamp(28px,7vw,38px);line-height:1.15;margin:0;text-wrap:balance}
+.lede{margin:0;color:var(--ink-2);font-size:16px}
+.menu{display:flex;flex-direction:column;gap:14px}
+a.card{
+  display:block;text-decoration:none;color:inherit;
+  background:var(--surface);border:1px solid var(--line);border-radius:12px;
+  padding:20px 22px;
+}
+a.card:hover{border-color:var(--accent);box-shadow:0 1px 0 var(--accent)}
+a.card:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+a.card .t{display:block;font-weight:700;font-size:19px;line-height:1.3;color:var(--accent-ink)}
+a.card .d{display:block;margin-top:6px;color:var(--ink-2);font-size:15px}
+a.card .step{
+  display:inline-block;margin-top:12px;padding:6px 12px;border-radius:999px;
+  background:var(--accent-wash);color:var(--accent-ink);font-size:13.5px;font-weight:600;
+}
+.flag{
+  border-radius:10px;padding:13px 16px;background:var(--warn-wash);color:var(--warn);
+  font-size:14.5px;font-weight:500;
+}
+footer{border-top:1px solid var(--line-strong);padding-top:16px;color:var(--ink-3);font-size:14px}
+footer a{color:var(--accent-ink)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Bạn cần làm gì?</h1>
+    <p class="lede">Bấm đúng ô bên dưới, máy sẽ mở sẵn form cho bạn.</p>
+  </header>
+
+  <div class="menu">
+
+    <a class="card" href="https://docs.google.com/forms/d/e/1FAIpQLSeF3dEz3mocx_O5PxRjuYsOy3SktzFlXvEd-EeQ07eijImlew/viewform?usp=sf_link" target="_blank" rel="noopener">
+      <span class="t">1 · Đặt hẹn cho khách</span>
+      <span class="d">Khách chốt được giờ đến thử váy. Đổi giờ hoặc huỷ hẹn cũng vào đây.</span>
+      <span class="step">Điền xong lịch tự lên trong 5 phút</span>
+    </a>
+
+    <a class="card" href="https://docs.google.com/forms/d/e/1FAIpQLSc8PLyEM2UKvgTHfhQt_KECZzT2DivBvJZ6E4BuuebrSYJPMA/viewform?usp=sf_link" target="_blank" rel="noopener">
+      <span class="t">2 · Chốt đơn, thu tiền làm hợp đồng</span>
+      <span class="d">Khách vừa thử xong và đã cọc. Cả khách không chốt cũng điền vào đây.</span>
+      <span class="step">Vào form chọn Loại khách: Khách DLA · Khách Nupakachi · KOC</span>
+    </a>
+
+    <a class="card" href="https://docs.google.com/forms/d/e/1FAIpQLSc8PLyEM2UKvgTHfhQt_KECZzT2DivBvJZ6E4BuuebrSYJPMA/viewform?usp=sf_link" target="_blank" rel="noopener">
+      <span class="t">3 · Thu thêm tiền / đổi váy</span>
+      <span class="d">Khách cũ trả tiếp đợt 2, trả nốt, hoặc phụ thu đổi váy.</span>
+      <span class="step">Vào form chọn Loại khách: Khách cũ / khách mới – thu thêm / đổi váy</span>
+    </a>
+
+    <a class="card" href="https://docs.google.com/forms/d/e/1FAIpQLSc8PLyEM2UKvgTHfhQt_KECZzT2DivBvJZ6E4BuuebrSYJPMA/viewform?usp=sf_link" target="_blank" rel="noopener">
+      <span class="t">4 · Sửa hợp đồng đã chốt</span>
+      <span class="d">Đổi ngày nhận trả váy, đổi váy, sửa tiền, hoặc huỷ hợp đồng.</span>
+      <span class="step">Vào form chọn Loại khách: Sửa HĐ đã chốt</span>
+    </a>
+
+    <a class="card" href="https://docs.google.com/forms/d/e/1FAIpQLSfD9EbkD2KK5kf6Wst1zPdR-6EsS5vKfcoksRw-ymd8ULm9RA/viewform" target="_blank" rel="noopener">
+      <span class="t">5 · Chấm công tuần</span>
+      <span class="d">Mỗi tuần điền một lần. Hà Nội và Sài Gòn chung form, chọn cơ sở ở câu đầu.</span>
+      <span class="step">Nghỉ đột xuất nhớ ghi rõ nghỉ loại gì</span>
+    </a>
+
+  </div>
+
+  <div class="flag">Ô 2, 3, 4 cùng vào một form. Đừng điền lại từ đầu khi chỉ cần sửa hợp đồng — điền lại là máy dựng ra hợp đồng thứ hai.</div>
+
+  <footer>
+    Cần link khác (cẩm nang, catalogue, thiệp cưới, các kênh) thì mở
+    <a href="https://dolinhanh-bridal.github.io/camnangnhanvien/link.html">trang link nhân viên</a>.
+  </footer>
+
+</div>
+</body>
+</html>
