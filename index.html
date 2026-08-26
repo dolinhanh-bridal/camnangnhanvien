@@ -199,6 +199,12 @@ details.qa.kh summary{font-weight:500}
 .linkrow a{display:inline-flex;align-items:center;gap:6px;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:12.5px;font-weight:500;color:var(--ink)}
 .linkrow a::before{content:"↗";font-size:10px;color:var(--rose)}
 .linkrow a:hover{border-color:var(--rose);color:var(--rose-deep)}
+.bg{display:flex;gap:12px;align-items:baseline;justify-content:space-between;padding:10px 0;border-top:1px solid var(--paper-deep);font-size:14px;color:#463A40}
+.bg:first-of-type{border-top:1px solid var(--line)}
+.bg .dk{flex:1;min-width:0}
+.bg .dk small{display:block;font-size:12.5px;color:var(--ink-soft);margin-top:1px}
+.bg .dv{flex:0 0 auto;white-space:nowrap;font-weight:600;color:var(--rose-deep)}
+@media(max-width:560px){.bg{font-size:13.5px}.bg .dv{font-size:13.5px}}
 
 @media(max-width:560px){.day > summary{flex-wrap:wrap}.day .dn{min-width:56px;font-size:18px}.bd th:nth-child(3),.bd td:nth-child(3){display:none}}
 
@@ -808,13 +814,13 @@ details.mini.big > summary{font-family:"Cormorant Garamond",Georgia,serif;font-s
   </div></div>
   <div class="step tl"><div class="sk">Xác nhận nhu cầu</div><div class="sv">Kiểm tra lịch hẹn, hỏi lại mong muốn hôm nay của khách: thử mẫu nào, thích dáng gì, muốn che khuyết điểm chỗ nào.
     <p style="margin:8px 0 0"><b>Hỏi thêm câu quan trọng nhất:</b> <i>"Chị đã đi thử váy ở đâu chưa ạ?"</i> — để biết khách <b>đã tìm ra style mình yêu thích chưa</b> và <b>đã xác định được kiểu dáng phù hợp với mình chưa</b>. Khách đã đi thử nhiều nơi → tư vấn tập trung vào dáng khách đã ưng; khách chưa đi đâu → dẫn khách đi từ đầu, giới thiệu form dáng trước rồi mới tới mẫu.</p></div></div>
-  <div class="step tl"><div class="sk">Giới thiệu gói</div><div class="sv"><b>Luôn giới thiệu từ gói CAO xuống gói THẤP</b> — đừng báo gói rẻ trước rồi mới kéo lên.
-    <div class="doc-row" style="margin-top:12px"><span class="dk"><b>Gói cao nhất</b> — chụp pre-wedding + váy <i>hoặc</i> chụp tiệc + váy<br><span style="font-size:13px;color:var(--ink-soft)">Gói chụp tiệc chỉ áp dụng ở cơ sở HCM</span></span><span class="dv"><b>16.888.000đ</b></span></div>
-    <div class="doc-row"><span class="dk"><b>Combo 2 váy</b></span><span class="dv"><b>15.888.000đ</b></span></div>
-    <div class="doc-row"><span class="dk"><b>Combo 1 váy + vest</b></span><span class="dv"><b>6.888.000đ</b></span></div>
+  <div class="step tl"><div class="sk">Giới thiệu gói</div><div class="sv"><b>Luôn giới thiệu từ gói cao xuống gói thấp</b> — đừng báo gói rẻ trước rồi mới kéo lên.
+    <div class="bg" style="margin-top:12px"><span class="dk"><b>Gói cao nhất</b> — chụp pre + váy <i>hoặc</i> chụp tiệc + váy<small>Gói chụp tiệc chỉ áp dụng ở cơ sở HCM</small></span><span class="dv">16.888.000đ</span></div>
+    <div class="bg"><span class="dk"><b>Combo 2 váy</b></span><span class="dv">15.888.000đ</span></div>
+    <div class="bg"><span class="dk"><b>Combo 1 váy + vest</b></span><span class="dv">6.888.000đ</span></div>
     <div class="rulebox" style="margin:14px 0 0">
       <p class="rb-t">⚠️ Nhấn mạnh cùng lúc với giá</p>
-      <p>Chương trình áp dụng cho khách <b>TỚI VÀ CỌC TRẢI NGHIỆM KHÁCH HÀNG</b> + <b>ĐỔI MẪU MỚI LUÔN TRONG NĂM 2026</b>.</p>
+      <p>Chương trình áp dụng cho khách <b>tới và cọc trải nghiệm khách hàng</b> + <b>đổi mẫu mới luôn trong năm 2026</b>.</p>
       <p style="margin-top:8px">Nói điều này <b>cùng lúc với giá</b> — đừng để khách nghe giá xong mới biết điều kiện.</p>
     </div></div></div>
   <p class="clip-label">Chặng 3 — Tham quan &amp; thử váy</p>
@@ -838,8 +844,12 @@ Lý do là bởi những tông màu này giúp làn da cô dâu Việt trông s�
     <div class="flow"><span><b>1</b> · Quan sát từ chân lên đầu</span><i>→</i><span><b>2</b> · Đọc mẫu khách đưa</span><i>→</i><span class="hot"><b>3</b> · Hỏi ưu / nhược</span><i>→</i><span><b>4</b> · Chọn dáng xử lý</span></div>
     <p><b>Câu quan trọng nhất phải hỏi:</b> <i>"Chị có chỗ nào trên người mình thích khoe, hoặc chỗ nào mình muốn giấu đi một chút không ạ?"</i> — khách trả lời xong là biết chính xác phải tư vấn hướng nào. Tư vấn để <b>giải quyết nỗi đau của khách</b>, không phải để đẩy mẫu mình muốn bán.</p>
     <div class="linkrow">
-      <a href="#noi-dau">Nỗi đau khách thử váy — cách nghe ra và xử lý</a>
-      <a href="https://dolinhanh-bridal.github.io/web-thu/noi-lo-thu-vay.html" target="_blank" rel="noopener">Trang gửi khách đọc trước</a>
+      <a href="#noi-dau">Nỗi đau khách thử váy — bản mình đọc</a>
+      <a href="https://dolinhanh-bridal.github.io/web-thu/noi-lo-thu-vay.html" target="_blank" rel="noopener">Nỗi đau khách hàng — trang gửi khách</a>
+    </div>
+    <div class="tpl">
+      <div class="tpl-head"><span>Link gửi khách — bấm Copy rồi dán vào Zalo</span><button type="button" class="tpl-copy">Copy</button></div>
+      <pre class="tpl-body">https://dolinhanh-bridal.github.io/web-thu/noi-lo-thu-vay.html</pre>
     </div>
 
     <details class="mini"><summary>Bảng dáng người (trích "60 dáng cưới phải lưu")</summary>
@@ -852,11 +862,11 @@ Lý do là bởi những tông màu này giúp làn da cô dâu Việt trông s�
 
 
     </details>
-    <p class="clip-label" style="margin-top:20px">Phát sinh khi thử váy — báo khách ngay lúc thử</p>
-    <div class="doc-row"><span class="dk">Thêm tà váy (với váy đuôi cá)</span><span class="dv"><b>2.000.000đ – 3.000.000đ</b></span></div>
-    <div class="doc-row"><span class="dk">Thêm trễ vai / áo khoác</span><span class="dv"><b>1.000.000đ</b></span></div>
-    <div class="doc-row"><span class="dk">Thêm găng tay</span><span class="dv"><b>500.000đ</b></span></div>
-    <p style="margin:10px 0 0">Khách muốn thêm món nào thì báo giá ngay lúc đó, đừng để tới lúc ký hợp đồng khách mới biết.</p>
+    <p class="clip-label" style="margin-top:20px">Phát sinh khi thử váy</p>
+    <div class="bg"><span class="dk">Thêm tà váy (váy đuôi cá)</span><span class="dv">2 – 3.000.000đ</span></div>
+    <div class="bg"><span class="dk">Thêm trễ vai / áo khoác</span><span class="dv">1.000.000đ</span></div>
+    <div class="bg"><span class="dk">Thêm găng tay</span><span class="dv">500.000đ</span></div>
+    <p style="margin:10px 0 0">Báo giá ngay lúc khách muốn thêm, đừng để tới lúc ký hợp đồng khách mới biết.</p>
     <details class="mini"><summary>Báo combo trong lúc thử + quy tắc ưu đãi</summary>
     <p style="margin:8px 0 2px"><b>Báo các combo theo nhu cầu của khách</b> (dựa trên 6 thông tin đã nắm — khách đã chụp pre chưa, đã book chụp tiệc chưa):</p>
     <ul>
@@ -931,7 +941,16 @@ Cảm ơn anh chị nhiều ạ 🤍</pre>
 Ngày nhận váy của mình là .......... nha chị. Có gì cần hỗ trợ thêm chị cứ nhắn em ạ.</pre>
     </div>
     </details></div></div>
-  <div class="step tl"><div class="sk">Gợi ý thêm</div><div class="sv">Mời dịch vụ <b>Take Care ngày cưới 1.500.000đ/2 tiếng</b> (mặc váy, chỉnh váy, cài voan, theo sát cô dâu); khách chưa book chụp tiệc → giới thiệu gói chụp.</div></div>
+  <div class="step tl"><div class="sk">Gợi ý thêm</div><div class="sv">Trước khi khách về, <b>hỏi khách đã có những phần này chưa</b>:
+    <div class="flow" style="margin:10px 0 12px"><span>Makeup</span><i>·</i><span>Quay chụp pre-wedding</span><i>·</i><span>Quay chụp tiệc</span></div>
+    <p style="margin:0 0 10px">Phần nào khách <b>chưa có</b> → <b>mở ngay trên máy cho khách xem</b>, đừng chỉ nói miệng:</p>
+    <div class="linkrow">
+      <a href="https://dolinhanh-bridal.github.io/web-thu/bao-gia-v2.html" target="_blank" rel="noopener">Bảng giá Dolinhanh — mở cho khách xem</a>
+      <a href="https://www.canva.com/design/DAGfSZytnO0/spvO_UP659JvXNnFc9VS5w/edit" target="_blank" rel="noopener">Báo giá Nupakachi (Canva)</a>
+    </div>
+    <p style="margin:10px 0 0">⚠️ Báo giá Nupakachi <b>xuất ra PDF rồi mới mở cho khách</b> — không mở bản Canva đang sửa trước mặt khách.</p>
+    <p style="margin:10px 0 0">Mời thêm dịch vụ <b>Take Care ngày cưới 1.500.000đ/2 tiếng</b> — mặc váy, chỉnh váy, cài voan, theo sát cô dâu suốt buổi lễ.</p>
+  </div></div>
   <div class="step tl"><div class="sk">Tiễn khách</div><div class="sv">Cảm ơn khách; ngay sau buổi nhắn lại tóm tắt các điểm sẽ chỉnh + hẹn ngày nhận váy.</div></div>
   </details>
 
@@ -2113,6 +2132,8 @@ QUIZ[5] = [
 ["Khách CHƯA cọc ra về thì ngay sau buổi phải làm gì?",["Nhắn tin cảm ơn kèm giá trị thật của các mẫu khách đã thử và gửi hình khách thích","Không nhắn gì để khách thoải mái","Nhắn giảm giá thêm","Gọi điện thuyết phục"],0],
 ["Câu nào đúng về khách chưa chốt trong buổi thử?",["Khách hôm nay chưa chốt là khách của tháng sau","Khách chưa chốt là khách mất","Khách chưa chốt thì không cần lưu số","Khách chưa chốt thì báo giá gốc luôn"],0],
 ["Với khách fitting lại, phải ghi chú điều gì?",["Ghi rõ từng điểm cần chỉnh (eo, độ dài, đệm ngực, dây váy) và đọc lại cho khách cùng chốt","Chỉ cần nhớ trong đầu","Ghi vào sổ riêng không cần đọc lại","Để thợ tự xem"],0],
+["Trước khi khách fitting lại ra về, hỏi khách đã có những gì chưa?",["Makeup · quay chụp pre-wedding · quay chụp tiệc","Chỉ hỏi đã có makeup chưa","Chỉ hỏi đã book chụp tiệc chưa","Không cần hỏi thêm gì"],0],
+["Khách chưa có phần nào thì mình làm gì?",["Mở ngay bảng giá trên máy cho khách xem, đừng chỉ nói miệng","Nhắn qua Zalo sau","Để khách tự tìm hiểu","Hẹn buổi khác tư vấn"],0],
 ["Dịch vụ Take Care ngày cưới giá bao nhiêu?",["1.500.000đ/2 tiếng (chưa gồm phí di chuyển)","1.000.000đ/2 tiếng","2.000.000đ/buổi","500.000đ/giờ"],0],
 ["Khách muốn thêm tà váy cho váy đuôi cá thì phụ phí bao nhiêu?",["2.000.000đ – 3.000.000đ","1.000.000đ","500.000đ","Miễn phí"],0],
 ["Thêm trễ vai hoặc áo khoác tính phí bao nhiêu?",["1.000.000đ","500.000đ","2.000.000đ","Miễn phí"],0],
