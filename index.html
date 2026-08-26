@@ -475,9 +475,10 @@ details.mini.big > summary{font-family:"Cormorant Garamond",Georgia,serif;font-s
 
   <div class="rulebox">
     <p class="rb-t">Luật của lộ trình — đọc kỹ trước khi bắt đầu</p>
-    <p>① <b>Ngày nào cũng học, không bỏ ngày</b> — mỗi ngày một phần cẩm nang, làm đúng thứ tự từ Ngày 1.<br>
-    ② Trả lời hết các câu rồi bấm <b>Chấm điểm</b> — điểm và danh sách câu sai <b>tự động gửi về email quản lý</b>.<br>
-    ③ Câu nào sai sẽ hiện <b>đáp án đúng</b> để bạn đọc lại. Được làm lại để nhớ, nhưng <b>điểm chính thức là điểm lần làm đầu tiên</b> — nên đọc kỹ chương rồi hãy làm.<br>
+    <p>① <b>Vào cẩm nang bằng email CÁ NHÂN</b> đã điền trong form sơ yếu lý lịch — không dùng email cơ sở, vì kết quả gửi về sẽ không biết là của ai.<br>
+    ② <b>Ngày nào cũng học, không bỏ ngày</b> — mỗi ngày một phần cẩm nang, làm đúng thứ tự từ Ngày 1.<br>
+    ③ Trả lời hết các câu rồi bấm <b>Chấm điểm</b> — điểm và danh sách câu sai <b>tự động gửi về email quản lý</b>.<br>
+    ④ Câu nào sai sẽ hiện <b>đáp án đúng</b> để bạn đọc lại. Được làm lại để nhớ, nhưng <b>điểm chính thức là điểm lần làm đầu tiên</b> — nên đọc kỹ chương rồi hãy làm.<br>
     ④ Hết <b>26 ngày</b> (tháng đầu đi làm), <b>trung bình từ 90% trở lên → ký hợp đồng chính thức</b>.</p>
   </div>
 
@@ -2736,6 +2737,17 @@ QUIZ[26] = [
   /* ---- welcome gate: so yeu ly lich ---- */
   var FORM_URL = 'https://script.google.com/macros/s/AKfycbwlmpyoY3b-iCmO9ZoVeUhm0wYJb4CrQ6I9ezsadk4UhDx1JS3qAEN7MWNOL_DGgkiV/exec';
   var KHOA_EMAIL = []; /* email nhan vien da nghi — chi Linh bao la them vao day */
+  /* email CHUNG (co so / quan ly) — cam dung de mo cam nang & lam bai kiem tra,
+     vi ket qua gui ve se khong biet la cua ai */
+  var EMAIL_CHUNG = [
+    'nupakachi.dolinhanh.sale.hn@gmail.com',
+    'dolinhanh.bridal.hochiminh@gmail.com',
+    'media.nupakachi.dolinhanh@gmail.com',
+    'nupakachi.dolinhanh.hanoi@gmail.com',
+    'dolinhanh.bridal.hanoi@gmail.com',
+    'media@nupakachi.com'
+  ];
+  function laEmailChung(em){ return EMAIL_CHUNG.indexOf(normMail(em)) !== -1; }
   document.getElementById('btnForm').setAttribute('href', FORM_URL);
   function normMail(x){ return (x||'').trim().toLowerCase(); }
   function daKhoa(em){ return KHOA_EMAIL.indexOf(normMail(em)) !== -1; }
@@ -2748,6 +2760,10 @@ QUIZ[26] = [
     }
     if(daKhoa(em)){
       err.textContent = 'Email này đã bị khóa quyền xem cẩm nang — bạn liên hệ quản lý nhé.';
+      err.classList.add('show'); return false;
+    }
+    if(laEmailChung(em)){
+      err.textContent = 'Đây là email chung của cơ sở. Bạn dùng email CÁ NHÂN đã điền trong form sơ yếu lý lịch nha — để quản lý biết kết quả bài kiểm tra là của bạn.';
       err.classList.add('show'); return false;
     }
     err.classList.remove('show');
@@ -2783,7 +2799,7 @@ QUIZ[26] = [
   /* nhân viên đã nghỉ: nếu email lưu trên máy nằm trong danh sách khóa -> khóa lại */
   try{
     var savedEm = normMail(localStorage.getItem('dla_syll_email'));
-    if(savedEm && daKhoa(savedEm)){ localStorage.removeItem('dla_syll_ok'); window.__dlaOpen = false; route(); }
+    if(savedEm && (daKhoa(savedEm) || laEmailChung(savedEm))){ localStorage.removeItem('dla_syll_ok'); localStorage.removeItem('dla_syll_email'); window.__dlaOpen = false; route(); }
   }catch(e){}
 
   /* ---- copy message templates ---- */
