@@ -195,6 +195,11 @@ details.qa.kh summary{font-weight:500}
 .kt-cta p{font-size:14px;color:#463A40;margin-bottom:12px}
 .kt-cta a{display:inline-block;font-weight:600;font-size:14.5px;color:#fff;background:var(--rose);border-radius:999px;padding:11px 26px;text-decoration:none}
 .kt-cta a:hover{color:#fff;background:var(--rose-deep)}
+.linkrow{display:flex;flex-wrap:wrap;gap:7px;margin-top:9px}
+.linkrow a{display:inline-flex;align-items:center;gap:6px;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:12.5px;font-weight:500;color:var(--ink)}
+.linkrow a::before{content:"↗";font-size:10px;color:var(--rose)}
+.linkrow a:hover{border-color:var(--rose);color:var(--rose-deep)}
+
 @media(max-width:560px){.day > summary{flex-wrap:wrap}.day .dn{min-width:56px;font-size:18px}.bd th:nth-child(3),.bd td:nth-child(3){display:none}}
 
 details.qa .a{padding:0 18px 16px 44px;font-size:14.5px;color:#463A40}
@@ -585,45 +590,53 @@ details.mini.big > summary{font-family:"Cormorant Garamond",Georgia,serif;font-s
   <div class="flow"><span><b>1</b> · Không gian</span><i>→</i><span><b>2</b> · Việc trong sheet</span><i>→</i><span><b>3</b> · Lịch Google</span><i>→</i><span><b>4</b> · Hotline Zalo</span><i>→</i><span><b>5</b> · Tin nhắn các kênh</span></div>
 
   <h3>3 luật khi làm checklist</h3>
-  <p class="qa-note">Đọc kỹ 3 luật này trước đã — làm đúng luật thì tick mới được tính nha 🤍</p>
-  <div class="step tl"><div class="sk">Luật 1 — Ảnh xác nhận</div><div class="sv">Làm xong việc nào thì <b>chụp ảnh gửi quản lý</b> liền. <b>Quản lý xác nhận hoàn thành thì việc đó mới được tính là xong.</b><br>⛔ Tick suông trong sheet mà không có ảnh → hệ thống vẫn tính là <b>chưa làm</b> đó nha.</div></div>
-  <div class="step tl"><div class="sk">Luật 2 — Đúng khung giờ</div><div class="sv">Mỗi công việc đều có <b>thời lượng và khung giờ riêng</b> — làm đúng trong khung giờ của việc đó.<br>⛔ Đừng dồn hết tới cuối ca rồi làm cho có: vừa mệt, vừa không kịp đón khách, mà chất lượng cũng không ra gì.</div></div>
-  <div class="step tl"><div class="sk">Luật 3 — KPI 80%</div><div class="sv">Cuối tháng chốt KPI theo kiểu <b>ĐẠT / KHÔNG ĐẠT</b> — <b>từ 80% trở lên mới pass</b>.<br>Dưới 80% là chưa đạt, mình ngồi lại với quản lý xem vướng ở đâu để tháng sau gỡ nha.</div></div>
+  <p class="qa-note">Đọc kỹ 3 luật này trước đã — làm đúng luật thì tick mới được tính nha.</p>
+  <div class="step tl"><div class="sk">Luật 1 — Ảnh xác nhận</div><div class="sv">Làm xong việc nào thì chụp ảnh gửi quản lý liền. Quản lý xác nhận thì việc đó mới được tính là xong.<br>⛔ Tick suông mà không có ảnh thì hệ thống vẫn tính là chưa làm nha.</div></div>
+  <div class="step tl"><div class="sk">Luật 2 — Đúng khung giờ</div><div class="sv">Mỗi công việc đều có thời lượng và khung giờ riêng — làm đúng trong khung giờ của việc đó.<br>⛔ Đừng dồn hết tới cuối ca rồi làm cho có: vừa mệt, vừa không kịp đón khách.</div></div>
+  <div class="step tl"><div class="sk">Luật 3 — KPI 80%</div><div class="sv">Cuối tháng chốt KPI theo kiểu đạt / không đạt — <b>từ 80% trở lên mới pass</b>.<br>Dưới 80% là chưa đạt, mình ngồi lại với quản lý xem vướng ở đâu để tháng sau gỡ nha.</div></div>
 
   <h3>Các công việc mỗi ngày</h3>
-  <details class="mini"><summary>1. Không gian — checklist dọn trước khi đón khách</summary>
+  <div class="step tl"><div class="sk">Mục 1 — Không gian</div><div class="sv">Dọn và kiểm tra không gian trước khi đón khách.
+    <details class="mini"><summary>Mở checklist dọn 12 ô</summary>
     <ul class="cklist">
-      <li><b>Mở nhạc JAZZ</b> — chỉ dùng đúng 2 list này: <a href="https://www.youtube.com/watch?v=rpX6ybYSd-g&list=RDrpX6ybYSd-g&start_radio=1" target="_blank" rel="noopener">List jazz 1</a> · <a href="https://www.youtube.com/watch?v=yx7QlKMU324" target="_blank" rel="noopener">List jazz 2</a>. Âm lượng vừa đủ, mở suốt giờ đón khách.</li>
-      <li>Quét / hút bụi sảnh tiếp khách / phòng thay đồ</li>
-      <li>Lau gương lớn, cửa kính (không để dấu vân tay)</li>
+      <li>Mở nhạc jazz, âm lượng vừa đủ, mở suốt giờ đón khách</li>
+      <li>Quét / hút bụi sảnh tiếp khách, phòng thay đồ</li>
+      <li>Lau gương lớn, cửa kính — không để dấu vân tay</li>
       <li>Lau bàn tiếp khách, quầy lễ tân</li>
-      <li>Phủi bụi váy cưới / bục / tủ</li>
-      <li>Bồn cầu, rửa tay không vết hoen ố</li>
+      <li>Phủi bụi váy cưới, bục, tủ</li>
+      <li>Bồn cầu, bồn rửa tay không vết hoen ố</li>
       <li>Thay giấy, xà phòng đầy đủ</li>
-      <li>Đảm bảo không có vật dụng để sai vị trí</li>
+      <li>Không để vật dụng sai vị trí</li>
       <li>Đổ rác, thay túi rác mới</li>
-      <li>Dọn sạch ly, chén, cốc, chuẩn bị khăn, nước</li>
+      <li>Dọn sạch ly chén cốc, chuẩn bị khăn và nước</li>
       <li>Vệ sinh ghế ngồi, móc treo</li>
       <li>Gấp và treo lại váy ngay ngắn sau khi khách thử</li>
     </ul>
-    <p style="margin-top:8px;font-size:13.5px">Checklist chi tiết từng phòng/tầng của cơ sở mình: xem trang 7–11 trong <a href="https://www.canva.com/design/DAGkHidedPM/edit" target="_blank" rel="noopener">Canva Training Sale Marketing</a>. <b>HCM: check xong chụp ảnh gửi Zalo liền, tắt hết đèn điện, máy lạnh.</b></p>
-  </details>
-  <ul>
-    <li><b>2. Công việc hàng ngày:</b> DLA giao việc <b>tự động</b> vào <a href="https://docs.google.com/spreadsheets/d/1V6Ufx4MQcJQRAlQbkWgy6Njxe-pllOtJ4ozYJ4I5Ir4/edit" target="_blank" rel="noopener">Sheet giao việc &amp; checklist</a> — vào tab tên mình, làm xong tick ✓. Hệ thống <b>chấm KPI % hoàn thành</b> hằng tháng.</li>
-    <li><b>3. Check lịch Google:</b> xem lịch hẹn fitting của cơ sở trong ngày — <a href="https://calendar.google.com/" target="_blank" rel="noopener">mở Lịch Google</a>.</li>
-    <li><b>4. Check hotline Zalo</b> — <a href="https://chat.zalo.me" target="_blank" rel="noopener">mở Zalo Web</a>: trả lời khách nhắn hotline, không để khách chờ.</li>
-    <li><b>5. Check tin nhắn các kênh truyền thông</b> — <a href="https://business.facebook.com/latest/inbox/all/" target="_blank" rel="noopener">hộp thư Meta (Page + IG)</a> · <a href="https://www.tiktok.com/messages" target="_blank" rel="noopener">tin nhắn TikTok</a>.</li>
-  </ul>
-
+    <div class="linkrow">
+      <a href="https://www.youtube.com/watch?v=rpX6ybYSd-g&amp;list=RDrpX6ybYSd-g&amp;start_radio=1" target="_blank" rel="noopener">List jazz 1</a>
+      <a href="https://www.youtube.com/watch?v=yx7QlKMU324" target="_blank" rel="noopener">List jazz 2</a>
+      <a href="https://www.canva.com/design/DAGkHidedPM/edit" target="_blank" rel="noopener">Checklist từng phòng — Canva trang 7–11</a>
+    </div>
+    <p style="margin-top:10px;font-size:13.5px">Cơ sở HCM: check xong chụp ảnh gửi Zalo liền, tắt hết đèn điện và máy lạnh.</p>
+    </details>
+  </div></div>
+  <div class="step tl"><div class="sk">Mục 2 — Việc trong sheet</div><div class="sv">DLA giao việc tự động vào sheet. Vào tab tên mình, làm xong tick ✓ rồi gửi ảnh cho quản lý.
+    <div class="linkrow"><a href="https://docs.google.com/spreadsheets/d/1V6Ufx4MQcJQRAlQbkWgy6Njxe-pllOtJ4ozYJ4I5Ir4/edit" target="_blank" rel="noopener">Sheet giao việc &amp; checklist</a></div>
+  </div></div>
+  <div class="step tl"><div class="sk">Mục 3 — Lịch Google</div><div class="sv">Xem lịch hẹn fitting của cơ sở trong ngày: hôm nay ai tới, mấy giờ, cần chuẩn bị gì.
+    <div class="linkrow"><a href="https://calendar.google.com/" target="_blank" rel="noopener">Mở Lịch Google</a></div>
+  </div></div>
+  <div class="step tl"><div class="sk">Mục 4 — Hotline Zalo</div><div class="sv">Trả lời khách nhắn vào hotline, không để khách chờ.
+    <div class="linkrow"><a href="https://chat.zalo.me" target="_blank" rel="noopener">Mở Zalo Web</a></div>
+  </div></div>
+  <div class="step tl"><div class="sk">Mục 5 — Tin nhắn các kênh</div><div class="sv">Check tin nhắn khách ở tất cả các kênh truyền thông của cơ sở.
+    <div class="linkrow">
+      <a href="https://business.facebook.com/latest/inbox/all/" target="_blank" rel="noopener">Hộp thư Meta — Page + IG</a>
+      <a href="https://www.tiktok.com/messages" target="_blank" rel="noopener">Tin nhắn TikTok</a>
+    </div>
+  </div></div>
 
   <p style="font-size:13.5px;color:var(--ink-soft);margin-top:14px">📌 <i>Bảng công việc chi tiết kèm thời lượng từng việc — đang cập nhật, chờ chị Linh gửi để dán vào đây.</i></p>
-
-  <div class="rulebox">
-    <p class="rb-t">3 điều dễ quên nhất</p>
-    <p>• <b>Nhạc jazz</b> phải mở suốt giờ đón khách, âm lượng vừa đủ — chỉ dùng đúng 2 list trong mục 1.<br>
-    • Làm xong việc nào <b>tick ✓ + gửi ảnh cho quản lý ngay</b>, đừng để cuối ngày dồn — chưa có xác nhận của quản lý là chưa được tính.<br>
-    • <b>Cơ sở HCM</b>: check xong chụp ảnh gửi Zalo liền, tắt hết đèn điện và máy lạnh.</p>
-  </div>
 
   <div class="kt-cta">
     <p>Đọc xong chương này rồi — làm <b>bài kiểm tra Ngày 2</b> để ghi điểm nha 🤍</p>
