@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="googlebot" content="noindex, nofollow">
+<meta name="theme-color" content="#0D5457">
+<title>Link nhân viên Dolinhanh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600&family=Be+Vietnam+Pro:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+:root{
+  --ground:#FAFAFB; --surface:#FFFFFF; --surface-2:#F3F5F6;
+  --ink:#14181C; --ink-2:#4E5964; --ink-3:#7C8794;
+  --line:#E3E7EA; --line-strong:#CFD6DB;
+  --accent:#0D5457; --accent-ink:#0D5457; --accent-wash:#E4F0EF;
+  --warn:#8A4B10; --warn-wash:#FBEEDF;
+  --stop:#8C2F2F; --stop-wash:#F9E9E9;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0E1114; --surface:#161A1F; --surface-2:#1D2228;
+    --ink:#E9ECEF; --ink-2:#A7B1BB; --ink-3:#7C8794;
+    --line:#262C33; --line-strong:#39424B;
+    --accent:#5FBFC0; --accent-ink:#8FD8D8; --accent-wash:#122C2D;
+    --warn:#E0A967; --warn-wash:#2C2116;
+    --stop:#E08585; --stop-wash:#2C1717;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0E1114; --surface:#161A1F; --surface-2:#1D2228;
+  --ink:#E9ECEF; --ink-2:#A7B1BB; --ink-3:#7C8794;
+  --line:#262C33; --line-strong:#39424B;
+  --accent:#5FBFC0; --accent-ink:#8FD8D8; --accent-wash:#122C2D;
+  --warn:#E0A967; --warn-wash:#2C2116;
+  --stop:#E08585; --stop-wash:#2C1717;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:"Be Vietnam Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:920px;margin:0 auto;padding:44px 20px 76px;display:flex;flex-direction:column;gap:42px}
+
+header{display:flex;flex-direction:column;gap:12px}
+.kicker{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+h1{font-family:Lora,Georgia,serif;font-weight:600;font-size:clamp(28px,5vw,42px);line-height:1.15;margin:0;letter-spacing:-.01em;text-wrap:balance}
+.lede{margin:0;max-width:62ch;color:var(--ink-2);font-size:16.5px}
+
+section{display:flex;flex-direction:column;gap:16px}
+.sec-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 14px;padding-bottom:11px;border-bottom:1px solid var(--line-strong)}
+.sec-head h2{font-family:Lora,Georgia,serif;font-weight:600;font-size:21px;margin:0}
+.sec-head .who{font-size:14px;color:var(--ink-2)}
+
+.rows{display:flex;flex-direction:column;gap:12px}
+.row{
+  background:var(--surface);border:1px solid var(--line);border-radius:10px;
+  padding:16px 18px;display:grid;grid-template-columns:1fr auto;gap:6px 18px;align-items:start;
+}
+.row .name{grid-column:1;font-weight:600;font-size:17px;line-height:1.35;margin:0}
+.row .when{grid-column:1;margin:0;color:var(--ink-2);font-size:14.5px;max-width:60ch}
+.row .actions{grid-column:2;grid-row:1 / span 2;display:flex;gap:8px;align-items:center}
+.row .url{
+  grid-column:1 / -1;margin:4px 0 0;font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:11.5px;color:var(--ink-3);word-break:break-all;line-height:1.5;
+}
+.note{
+  grid-column:1 / -1;margin:8px 0 0;padding:8px 12px;border-radius:8px;
+  background:var(--warn-wash);color:var(--warn);font-size:13.5px;font-weight:500;
+}
+
+a.open{
+  display:inline-block;padding:9px 16px;border-radius:8px;background:var(--accent);
+  color:#FFFFFF;text-decoration:none;font-size:14px;font-weight:600;white-space:nowrap;border:1px solid transparent;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) a.open{color:#0E1114}
+}
+:root[data-theme="dark"] a.open{color:#0E1114}
+a.open:hover{filter:brightness(1.12)}
+a.open:focus-visible,button.copy:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+button.copy{
+  padding:9px 12px;border-radius:8px;border:1px solid var(--line-strong);
+  background:var(--surface-2);color:var(--ink-2);font-family:inherit;font-size:14px;
+  font-weight:500;cursor:pointer;white-space:nowrap;
+}
+button.copy:hover{border-color:var(--accent);color:var(--accent-ink)}
+button.copy[data-done="1"]{color:var(--accent-ink);border-color:var(--accent)}
+
+.scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:520px}
+th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:600;border-bottom:1px solid var(--line-strong)}
+td.nm{font-weight:600;white-space:nowrap}
+td .handle{display:block;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12.5px;color:var(--ink-3);font-weight:400;margin-top:3px;word-break:break-all}
+td.use{color:var(--ink-2);font-size:14.5px}
+tbody tr:last-child td{border-bottom:none}
+table a{color:var(--accent-ink);text-decoration:none;border-bottom:1px solid color-mix(in srgb, var(--accent-ink) 35%, transparent)}
+table a:hover{border-bottom-color:var(--accent-ink)}
+
+.flag{border-radius:9px;padding:12px 15px;font-size:14.5px;font-weight:500}
+.flag.warn{background:var(--warn-wash);color:var(--warn)}
+.flag.stop{background:var(--stop-wash);color:var(--stop)}
+.rules{display:flex;flex-direction:column;gap:10px}
+
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
+.fact{background:var(--surface-2);border-radius:10px;padding:16px 18px}
+.fact .lbl{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);display:block;margin-bottom:6px}
+.fact .val{font-weight:600;font-size:15.5px;line-height:1.5}
+.fact .sub{color:var(--ink-2);font-size:14px;margin-top:4px}
+
+@media (max-width:620px){
+  .row{grid-template-columns:1fr}
+  .row .actions{grid-column:1;grid-row:auto;margin-top:8px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+
+  <header>
+    <div class="kicker">Dolinhanh Bridal · Nupakachi</div>
+    <h1>Link nhân viên Dolinhanh</h1>
+    <p class="lede">Lưu trang này lại, khỏi phải hỏi lại link. Bấm <b>Mở</b> để vào, bấm <b>Chép</b> khi cần dán link cho khách.</p>
+  </header>
+
+  <section>
+    <div class="sec-head">
+      <h2>Bấm hằng ngày</h2>
+      <span class="who">Việc của mình</span>
+    </div>
+    <div class="rows">
+
+      <div class="row">
+        <p class="name">Form đặt hẹn thử váy</p>
+        <p class="when">Chốt được giờ với khách là điền ngay. Form này làm cả 3 việc: đặt hẹn mới, đổi giờ, huỷ hẹn. Điền xong lịch tự lên trong 5 phút — không phải báo ai.</p>
+        <div class="actions">
+          <a class="open" href="https://docs.google.com/forms/d/e/1FAIpQLSeF3dEz3mocx_O5PxRjuYsOy3SktzFlXvEd-EeQ07eijImlew/viewform?usp=sf_link" target="_blank" rel="noopener">Mở</a>
+          <button class="copy" type="button" data-url="https://docs.google.com/forms/d/e/1FAIpQLSeF3dEz3mocx_O5PxRjuYsOy3SktzFlXvEd-EeQ07eijImlew/viewform?usp=sf_link">Chép</button>
+        </div>
+        <p class="url">docs.google.com/forms/d/e/1FAIpQLSeF3dEz3mocx_O5PxRjuYsOy3SktzFlXvEd-EeQ07eijImlew/viewform</p>
+        <p class="note">Trước khi hẹn giờ với khách, mở lịch cơ sở soát cả ngày hôm đó đã. Chốt giờ trước rồi mới xem lịch là hay bị trùng ca.</p>
+      </div>
+
+      <div class="row">
+        <p class="name">Form chốt đơn · thu tiền · sửa hợp đồng</p>
+        <p class="when">Điền sau mỗi buổi thử váy, kể cả khách không chốt. Cũng là chỗ báo thu thêm tiền và sửa hợp đồng đã ký. Hợp đồng, mail và lịch tự chạy sau đó.</p>
+        <div class="actions">
+          <a class="open" href="https://docs.google.com/forms/d/e/1FAIpQLSc8PLyEM2UKvgTHfhQt_KECZzT2DivBvJZ6E4BuuebrSYJPMA/viewform?usp=sf_link" target="_blank" rel="noopener">Mở</a>
+          <button class="copy" type="button" data-url="https://docs.google.com/forms/d/e/1FAIpQLSc8PLyEM2UKvgTHfhQt_KECZzT2DivBvJZ6E4BuuebrSYJPMA/viewform?usp=sf_link">Chép</button>
+        </div>
+        <p class="url">docs.google.com/forms/d/e/1FAIpQLSc8PLyEM2UKvgTHfhQt_KECZzT2DivBvJZ6E4BuuebrSYJPMA/viewform</p>
+        <p class="note">Form này bắt đăng nhập một tài khoản Google bất kỳ, vì có ô tải ảnh váy. Đó là bình thường, không phải lỗi. Khách sửa đơn đã chốt thì chọn nhánh “Sửa HĐ đã chốt”, đừng điền lại từ đầu — điền lại là đẻ ra hợp đồng thứ hai.</p>
+      </div>
+
+      <div class="row">
+        <p class="name">Form chấm công tuần</p>
+        <p class="when">Mỗi tuần điền một lần. Hà Nội và Sài Gòn chung một form, chọn cơ sở ở câu đầu tiên.</p>
+        <div class="actions">
+          <a class="open" href="https://docs.google.com/forms/d/e/1FAIpQLSfD9EbkD2KK5kf6Wst1zPdR-6EsS5vKfcoksRw-ymd8ULm9RA/viewform" target="_blank" rel="noopener">Mở</a>
+          <button class="copy" type="button" data-url="https://docs.google.com/forms/d/e/1FAIpQLSfD9EbkD2KK5kf6Wst1zPdR-6EsS5vKfcoksRw-ymd8ULm9RA/viewform">Chép</button>
+        </div>
+        <p class="url">docs.google.com/forms/d/e/1FAIpQLSfD9EbkD2KK5kf6Wst1zPdR-6EsS5vKfcoksRw-ymd8ULm9RA/viewform</p>
+        <p class="note">Nghỉ đột xuất thì ghi rõ vào ô ghi chú là nghỉ loại gì — nghỉ phép, nghỉ không lương hay đổi ca. Ba loại tính lương khác nhau.</p>
+      </div>
+
+      <div class="row">
+        <p class="name">Sheet giao việc &amp; checklist</p>
+        <p class="when">Mỗi bạn một tab riêng. Tick việc trong ngày, xem việc chị Linh giao và hạn chót. Ô nào ghi “(dán link ảnh)” thì dán link ảnh làm bằng chứng, không phải ô tick.</p>
+        <div class="actions">
+          <a class="open" href="https://docs.google.com/spreadsheets/d/10Ho1xcq-OdGLhIDs5l0M7WOqg2_KojpfQBSZvgg_Npc/edit" target="_blank" rel="noopener">Mở</a>
+          <button class="copy" type="button" data-url="https://docs.google.com/spreadsheets/d/10Ho1xcq-OdGLhIDs5l0M7WOqg2_KojpfQBSZvgg_Npc/edit">Chép</button>
+        </div>
+        <p class="url">docs.google.com/spreadsheets/d/10Ho1xcq-OdGLhIDs5l0M7WOqg2_KojpfQBSZvgg_Npc/edit</p>
+        <p class="note">Chỉ tick được dòng của đúng ngày hôm nay. Mở ra mà thấy tên file có chữ “ZZ KHÔNG DÙNG” là mình đang vào nhầm file cũ — quay lại bấm link ở đây.</p>
+      </div>
+
+      <div class="row">
+        <p class="name">Cẩm nang nhân viên</p>
+        <p class="when">8 chương: quy trình đón khách, cách tư vấn, bảng giá, xử lý tình huống. Bạn mới đọc trước khi vào ca. Có ô hỏi–đáp, gõ câu hỏi vào là chị Linh nhận được.</p>
+        <div class="actions">
+          <a class="open" href="https://dolinhanh-bridal.github.io/camnangnhanvien/" target="_blank" rel="noopener">Mở</a>
+          <button class="copy" type="button" data-url="https://dolinhanh-bridal.github.io/camnangnhanvien/">Chép</button>
+        </div>
+        <p class="url">dolinhanh-bridal.github.io/camnangnhanvien</p>
+      </div>
+
+      <div class="row">
+        <p class="name">Lịch hẹn của cơ sở</p>
+        <p class="when">Xem ca fitting hôm nay và mấy ngày tới. Đăng nhập bằng mail cơ sở của mình thì mới thấy đủ 4 lịch.</p>
+        <div class="actions">
+          <a class="open" href="https://calendar.google.com/calendar/r" target="_blank" rel="noopener">Mở</a>
+          <button class="copy" type="button" data-url="https://calendar.google.com/calendar/r">Chép</button>
+        </div>
+        <p class="url">calendar.google.com/calendar/r</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <h2>Gửi thẳng cho khách</h2>
+      <span class="who">Bấm Chép rồi dán vào Zalo, Messenger</span>
+    </div>
+    <div class="rows">
+
+      <div class="row">
+        <p class="name">Catalogue váy</p>
+        <p class="when">Gửi kèm tin xác nhận lịch hẹn, dặn khách chọn trước 5 mẫu để mình chuẩn bị.</p>
+        <div class="actions">
+          <a class="open" href="https://drive.google.com/drive/folders/1-qrrNNySskKWS9KAi9ssEVyfVoPTMCuZ" target="_blank" rel="noopener">Mở</a>
+          <button class="copy" type="button" data-url="https://drive.google.com/drive/folders/1-qrrNNySskKWS9KAi9ssEVyfVoPTMCuZ">Chép</button>
+        </div>
+        <p class="url">drive.google.com/drive/folders/1-qrrNNySskKWS9KAi9ssEVyfVoPTMCuZ</p>
+      </div>
+
+      <div class="row">
+        <p class="name">Form làm thiệp cưới online</p>
+        <p class="when">Quà tặng kèm gói thuê váy, miễn phí không giới hạn. Gửi cô dâu chú rể tự điền, thiệp tự dựng và link bay về mail của khách.</p>
+        <div class="actions">
+          <a class="open" href="https://script.google.com/macros/s/AKfycbwVWHJMBZFw6XX7t2Haqs9AT1UTgPmdKUHLzm69Si_h7-ylKNd7HsfcwUQeI4AL-uiLVw/exec" target="_blank" rel="noopener">Mở</a>
+          <button class="copy" type="button" data-url="https://script.google.com/macros/s/AKfycbwVWHJMBZFw6XX7t2Haqs9AT1UTgPmdKUHLzm69Si_h7-ylKNd7HsfcwUQeI4AL-uiLVw/exec">Chép</button>
+        </div>
+        <p class="url">script.google.com/macros/s/AKfycbwVWHJMBZFw6XX7t2Haqs9AT1UTgPmdKUHLzm69Si_h7-ylKNd7HsfcwUQeI4AL-uiLVw/exec</p>
+      </div>
+
+      <div class="row">
+        <p class="name">Thiệp mẫu cho khách xem trước</p>
+        <p class="when">Gửi kèm form ở trên để khách hình dung thiệp ra sao rồi mới điền.</p>
+        <div class="actions">
+          <a class="open" href="https://dolinhanh-bridal.github.io/thiep-mau-dolinhanh/" target="_blank" rel="noopener">Mở</a>
+          <button class="copy" type="button" data-url="https://dolinhanh-bridal.github.io/thiep-mau-dolinhanh/">Chép</button>
+        </div>
+        <p class="url">dolinhanh-bridal.github.io/thiep-mau-dolinhanh</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <h2>Kênh chính thức</h2>
+      <span class="who">Bốn kênh đầu là kênh gửi khách</span>
+    </div>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Kênh</th><th>Dùng khi nào</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="nm">TikTok chính<a class="handle" href="https://www.tiktok.com/@dolinhanhbridal2019" target="_blank" rel="noopener">@dolinhanhbridal2019</a></td>
+            <td class="use">Mặt tiền thương hiệu — khách hàng thật, không khí studio.</td>
+          </tr>
+          <tr>
+            <td class="nm">TikTok catalogue<a class="handle" href="https://www.tiktok.com/@dolinhanh.bridal" target="_blank" rel="noopener">@dolinhanh.bridal</a></td>
+            <td class="use">Chuyên khoe mẫu váy. Khách hỏi “có mẫu nào” thì gửi kênh này.</td>
+          </tr>
+          <tr>
+            <td class="nm">Instagram chính<a class="handle" href="https://www.instagram.com/dolinhanh.bridal/" target="_blank" rel="noopener">@dolinhanh.bridal</a></td>
+            <td class="use">Ảnh editorial. Khách nước ngoài hay xem kênh này trước khi nhắn.</td>
+          </tr>
+          <tr>
+            <td class="nm">Instagram catalogue<a class="handle" href="https://www.instagram.com/dolinhanh_bridal/" target="_blank" rel="noopener">@dolinhanh_bridal</a></td>
+            <td class="use">Ảnh từng mẫu váy, gửi kèm khi tư vấn chọn mẫu.</td>
+          </tr>
+          <tr>
+            <td class="nm">TikTok fitting<a class="handle" href="https://www.tiktok.com/@fitting.vay.cuoi" target="_blank" rel="noopener">@fitting.vay.cuoi</a></td>
+            <td class="use">Kênh clip mẹo cho cô dâu. Dựng clip xong up Drive chờ chị Linh duyệt.</td>
+          </tr>
+          <tr>
+            <td class="nm">Fanpage Facebook<a class="handle" href="https://www.facebook.com/Dolinhanhbridalhcm/" target="_blank" rel="noopener">facebook.com/Dolinhanhbridalhcm</a></td>
+            <td class="use">Inbox khách từ quảng cáo về đây.</td>
+          </tr>
+          <tr>
+            <td class="nm">Website Nupakachi<a class="handle" href="https://nupakachi.com/" target="_blank" rel="noopener">nupakachi.com</a></td>
+            <td class="use">Khách hỏi gói chụp ảnh cưới thì gửi web này.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="flag warn">Bên mình có <strong>2 kênh TikTok và 2 kênh Instagram tên gần giống nhau</strong>, chỉ khác dấu chấm với gạch dưới. Gửi khách thì copy ở đây, đừng gõ tay.</div>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>Ba điều đừng làm</h2></div>
+    <div class="rules">
+      <div class="flag stop"><strong>Đừng tự đăng lên kênh chính thức.</strong> Clip, ảnh, bài viết làm xong thì up lên Drive để chị Linh duyệt. Trừ khi chị nói rõ là được tự up.</div>
+      <div class="flag stop"><strong>Đừng gửi link rút gọn</strong> (bit.ly, TinyURL, cutt.ly). Zalo chặn thẳng, khách bấm vào thấy màn hình đỏ báo vi phạm. Luôn gửi link gốc.</div>
+      <div class="flag stop"><strong>Đừng hứa ngày cưới hay giá cho khách khi chưa chắc.</strong> Chưa rõ thì nhắn “em kiểm tra rồi báo lại chị ngay” — sai một ngày là hỏng cả lịch váy.</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>Thông tin hay phải gửi khách</h2></div>
+    <div class="two">
+      <div class="fact">
+        <span class="lbl">Showroom Hà Nội</span>
+        <div class="val">75 Nguyễn Thị Định, Trung Hoà, Cầu Giấy</div>
+        <div class="sub">9h – 20h, khách đặt hẹn trước</div>
+      </div>
+      <div class="fact">
+        <span class="lbl">Showroom TP.HCM</span>
+        <div class="val">2 Tân Canh, Phường 1, Tân Bình</div>
+        <div class="sub">9h – 20h, khách đặt hẹn trước</div>
+      </div>
+      <div class="fact">
+        <span class="lbl">Hotline</span>
+        <div class="val">035 995 0588</div>
+        <div class="sub">Số dự phòng 038 527 9999</div>
+      </div>
+      <div class="fact">
+        <span class="lbl">Mức giá đang chạy</span>
+        <div class="val">5.888.000đ và 8.888.000đ</div>
+        <div class="sub">Luôn báo khách <strong>đủ cả hai mức</strong>, không nhắn lẻ một mức</div>
+      </div>
+      <div class="fact">
+        <span class="lbl">Mail cơ sở Hà Nội</span>
+        <div class="val" style="word-break:break-all">nupakachi.dolinhanh.sale.hn@gmail.com</div>
+      </div>
+      <div class="fact">
+        <span class="lbl">Mail cơ sở TP.HCM</span>
+        <div class="val" style="word-break:break-all">dolinhanh.bridal.hochiminh@gmail.com</div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+document.querySelectorAll("button.copy").forEach(function(btn){
+  btn.addEventListener("click", function(){
+    var url = btn.getAttribute("data-url");
+    var done = function(){
+      var old = btn.textContent;
+      btn.textContent = "Đã chép";
+      btn.setAttribute("data-done","1");
+      setTimeout(function(){ btn.textContent = old; btn.removeAttribute("data-done"); }, 1600);
+    };
+    function fallback(){
+      var ta = document.createElement("textarea");
+      ta.value = url; ta.setAttribute("readonly","");
+      ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); done(); }
+      catch(e){ btn.textContent = "Bấm giữ để chép"; }
+      document.body.removeChild(ta);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(done).catch(fallback);
+    } else { fallback(); }
+  });
+});
+</script>
+</body>
+</html>
