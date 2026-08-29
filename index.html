@@ -378,6 +378,18 @@ details.mini.big > summary{font-family:"Cormorant Garamond",Georgia,serif;font-s
 .doc-row .dk{flex:1;color:#463A40}
 .doc-row .dv{flex:0 0 auto;white-space:nowrap}
 @media (max-width:560px){.doc-row{flex-direction:column;gap:3px}.doc-row .dv{white-space:normal}}
+
+/* chao popup moi ngay */
+.chao-wrap{display:none;position:fixed;inset:0;z-index:80;background:rgba(49,35,42,.45);align-items:center;justify-content:center;padding:20px}
+.chao-box{position:relative;max-width:420px;width:100%;background:var(--paper);border-radius:20px;padding:30px 26px 24px;text-align:center;box-shadow:0 20px 60px rgba(49,35,42,.25)}
+.chao-box .chao-x{position:absolute;top:10px;right:12px;background:none;border:none;font-size:22px;color:var(--ink-soft);cursor:pointer;line-height:1;padding:6px}
+.chao-hi{font-family:'Cormorant Garamond',Georgia,serif;font-size:22px;font-weight:600;line-height:1.4;color:var(--ink)}
+.chao-loi{margin-top:14px;padding:14px 16px;background:var(--blush);border-radius:14px;font-size:13.5px;line-height:1.6;color:#463A40;text-align:left}
+.chao-loi b{color:var(--rose-deep)}
+.chao-loi ul{margin:8px 0 0;padding-left:20px}
+.chao-loi li{margin-bottom:5px}
+.chao-ok{display:inline-block;margin-top:18px;padding:11px 28px;font:inherit;font-size:14.5px;font-weight:600;color:#fff;background:var(--rose);border:none;border-radius:999px;cursor:pointer}
+.chao-ok:hover{background:var(--rose-deep)}
 </style>
 </head>
 <body>
@@ -387,6 +399,15 @@ details.mini.big > summary{font-family:"Cormorant Garamond",Georgia,serif;font-s
   <a class="back" href="#muc-luc">Mục lục</a>
   <span class="crumb" id="crumb"></span>
 </nav>
+
+<div class="chao-wrap" id="chaoWrap">
+  <div class="chao-box">
+    <button type="button" class="chao-x" id="chaoX" aria-label="Đóng">×</button>
+    <p class="chao-hi" id="chaoHi"></p>
+    <div class="chao-loi" id="chaoLoi" style="display:none"></div>
+    <button type="button" class="chao-ok" id="chaoOk">Dạ em rõ rồi 🤍</button>
+  </div>
+</div>
 
 <!-- ══════════════ WELCOME GATE ══════════════ -->
 <section class="view" id="welcome">
@@ -2864,6 +2885,17 @@ QUIZ[26] = [
       soLan: cu ? cu.soLan + 1 : 1
     };
     luu(d, moi);
+    if(sai.length){
+      try{
+        var ngayD = new Date();
+        var homNayD = ngayD.getFullYear() + '-' + (ngayD.getMonth()+1) + '-' + ngayD.getDate();
+        localStorage.setItem('dla_nhac_loi', JSON.stringify({
+          ngay: d, ten: NGAY[d-1].ten,
+          cauHoi: sai.map(function(num){ return qs[num-1][0]; }),
+          ngayLuu: homNayD, daHien: false
+        }));
+      }catch(e){}
+    }
 
     var kq = document.getElementById('kq-' + d);
     kq.innerHTML = '<div class="chotket">Ngày ' + d + ' — <b>' + dung + '/' + qs.length + ' câu đúng = ' + pt + '%</b>'
@@ -2983,9 +3015,74 @@ QUIZ[26] = [
     }
     err.classList.remove('show');
     try{ localStorage.setItem('dla_syll_email', em); }catch(e){}
-    setUnlocked(); location.hash = '#muc-luc'; route();
+    trakTen(em, function(ten){
+      if(ten){ try{ localStorage.setItem('dla_syll_name', ten); }catch(e){} }
+      setUnlocked(); location.hash = '#muc-luc'; route(); thuChaoMoiNgay();
+    });
     return true;
   }
+  /* ---- tra ten theo email (JSONP, khong dinh CORS) ---- */
+  function trakTen(email, cb){
+    var xong = false;
+    function ket(ten){ if(xong) return; xong = true; cb(ten || ''); }
+    var fn = 'dlaTraTen' + Date.now();
+    window[fn] = function(data){
+      ket(data && data.ten ? data.ten : '');
+      try{ delete window[fn]; }catch(e){}
+      if(sTag && sTag.parentNode){ sTag.parentNode.removeChild(sTag); }
+    };
+    var sTag = document.createElement('script');
+    sTag.src = FORM_URL + '?tra=' + encodeURIComponent(email) + '&cb=' + fn;
+    sTag.onerror = function(){ ket(''); };
+    document.body.appendChild(sTag);
+    setTimeout(function(){ ket(''); }, 4000);
+  }
+  /* ---- chao moi ngay + nhac cau sai bai test gan nhat ---- */
+  var LOI_CHAO = [
+    'Ngày mới đẹp trời, mood cũng phải đẹp theo nha 🌸',
+    'Dậy sớm là thắng nửa cuộc đời rồi đó, cố lên nào ✨',
+    'Hôm nay chốt vài đơn là auto vui cả tuần đó nha 💪',
+    'Năng lượng đầy bình chưa nè? Cân hết mọi ca hôm nay nào 🔋',
+    'Một ngày mới, một cơ hội để flex kỹ năng tư vấn nè 🤍',
+    'Cà phê cầm tay, mood để đó, mình bắt đầu thôi nào ☕',
+    'Đẹp — sang — chuẩn gu DLA, mood hôm nay cũng phải y chang vậy nha 💕',
+    'Nhớ cười tít mắt với khách nha, năng lượng dễ lây lắm đó 😄',
+    'Vui vẻ là mình, mà mình vui thì khách cũng vui theo liền á 🥰',
+    'Mở mắt dậy là một ngày để toả sáng rồi, đi thôi nào 🌟'
+  ];
+  function escChao(t){ var d = document.createElement('div'); d.textContent = t; return d.innerHTML; }
+  function thuChaoMoiNgay(){
+    if(!isUnlocked()) return;
+    var wrap = document.getElementById('chaoWrap');
+    if(!wrap) return;
+    var homNay; try{ var n = new Date(); homNay = n.getFullYear() + '-' + (n.getMonth()+1) + '-' + n.getDate(); }catch(e){ return; }
+    try{
+      if(localStorage.getItem('dla_chao_ngay') === homNay) return;
+      localStorage.setItem('dla_chao_ngay', homNay);
+    }catch(e){ return; }
+    var ten = ''; try{ ten = localStorage.getItem('dla_syll_name') || ''; }catch(e){}
+    var loi = LOI_CHAO[Math.floor(Math.random() * LOI_CHAO.length)];
+    document.getElementById('chaoHi').textContent = (ten ? 'Xin chào ' + ten + '! ' : 'Xin chào! ') + loi;
+    var loiEl = document.getElementById('chaoLoi');
+    var nhacHtml = '';
+    try{
+      var raw = localStorage.getItem('dla_nhac_loi');
+      if(raw){
+        var nl = JSON.parse(raw);
+        if(nl && !nl.daHien && nl.ngayLuu !== homNay && nl.cauHoi && nl.cauHoi.length){
+          nhacHtml = '<b>Hôm trước làm bài Ngày ' + nl.ngay + ' — ' + escChao(nl.ten) + '</b>, có mấy câu bị sai nè, đọc lại cho chắc, đừng để tái phạm nha 😉'
+            + '<ul>' + nl.cauHoi.map(function(c){ return '<li>' + escChao(c) + '</li>'; }).join('') + '</ul>';
+          nl.daHien = true;
+          localStorage.setItem('dla_nhac_loi', JSON.stringify(nl));
+        }
+      }
+    }catch(e){}
+    if(nhacHtml){ loiEl.innerHTML = nhacHtml; loiEl.style.display = 'block'; } else { loiEl.style.display = 'none'; }
+    wrap.style.display = 'flex';
+  }
+  document.getElementById('chaoX').addEventListener('click', function(){ document.getElementById('chaoWrap').style.display = 'none'; });
+  document.getElementById('chaoOk').addEventListener('click', function(){ document.getElementById('chaoWrap').style.display = 'none'; });
+  thuChaoMoiNgay();
   document.getElementById('btnDone').addEventListener('click', function(){ moKhoaEmail(true); });
   /* gõ xong email hợp lệ là tự mở sang trang, không cần bấm nút */
   var goTimer = null;
@@ -3004,7 +3101,7 @@ QUIZ[26] = [
   });
   function adminThu(){
     if(document.getElementById('adminCode').value.trim() === 'DLA888'){
-      setUnlocked(); location.hash = '#muc-luc'; route();
+      setUnlocked(); location.hash = '#muc-luc'; route(); thuChaoMoiNgay();
     } else {
       document.getElementById('adminErr').style.display = 'block';
     }
