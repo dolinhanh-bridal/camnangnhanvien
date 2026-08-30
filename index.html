@@ -308,6 +308,8 @@ details.qa .a p:last-child{margin-bottom:0}
 .flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0 20px}
 .flow span{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:8px 15px;font-size:13px;font-weight:500;color:var(--ink)}
 .flow span.hot{background:var(--rose);border-color:var(--rose);color:#fff;font-weight:600}
+.flow a{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:8px 15px;font-size:13px;font-weight:500;color:var(--ink);text-decoration:none;cursor:pointer}
+.flow a:hover{border-color:var(--rose);color:var(--rose-deep)}
 .flow i{color:var(--champagne);font-style:normal;font-weight:700;font-size:15px}
 
 /* chuỗi trải nghiệm (sơ đồ dọc giữa trang) */
@@ -383,6 +385,7 @@ details.mini.big > summary{font-family:"Cormorant Garamond",Georgia,serif;font-s
 .chao-wrap{display:none;position:fixed;inset:0;z-index:80;background:rgba(49,35,42,.45);align-items:center;justify-content:center;padding:20px}
 .chao-box{position:relative;max-width:420px;width:100%;background:var(--paper);border-radius:20px;padding:30px 26px 24px;text-align:center;box-shadow:0 20px 60px rgba(49,35,42,.25)}
 .chao-box .chao-x{position:absolute;top:10px;right:12px;background:none;border:none;font-size:22px;color:var(--ink-soft);cursor:pointer;line-height:1;padding:6px}
+.chao-img{width:100%;height:130px;object-fit:cover;border-radius:14px;margin-bottom:16px}
 .chao-hi{font-family:'Cormorant Garamond',Georgia,serif;font-size:22px;font-weight:600;line-height:1.4;color:var(--ink)}
 .chao-loi{margin-top:14px;padding:14px 16px;background:var(--blush);border-radius:14px;font-size:13.5px;line-height:1.6;color:#463A40;text-align:left}
 .chao-loi b{color:var(--rose-deep)}
@@ -391,6 +394,9 @@ details.mini.big > summary{font-family:"Cormorant Garamond",Georgia,serif;font-s
 .chao-ok{display:inline-block;margin-top:18px;padding:11px 28px;font:inherit;font-size:14.5px;font-weight:600;color:#fff;background:var(--rose);border:none;border-radius:999px;cursor:pointer}
 .chao-ok:hover{background:var(--rose-deep)}
 </style>
+</head>
+<body>
+
 </head>
 <body>
 
@@ -403,6 +409,7 @@ details.mini.big > summary{font-family:"Cormorant Garamond",Georgia,serif;font-s
 <div class="chao-wrap" id="chaoWrap">
   <div class="chao-box">
     <button type="button" class="chao-x" id="chaoX" aria-label="Đóng">×</button>
+    <img class="chao-img" src="https://images.unsplash.com/photo-1604391659919-0cb8c6bb0966?q=80&amp;w=600&amp;auto=format&amp;fit=crop" alt="Hoa hồng — DLA">
     <p class="chao-hi" id="chaoHi"></p>
     <div class="chao-loi" id="chaoLoi" style="display:none"></div>
     <button type="button" class="chao-ok" id="chaoOk">Dạ em rõ rồi 🤍</button>
@@ -628,7 +635,7 @@ details.mini.big > summary{font-family:"Cormorant Garamond",Georgia,serif;font-s
     <p class="lede">Ngày làm việc nào cũng chạy đúng 6 việc này, theo đúng thứ tự. Làm hết 6 mục rồi mới tính là xong ca — hệ thống chấm KPI theo đây.</p>
   </div>
 
-  <div class="flow"><span><b>1</b> · Không gian</span><i>→</i><span><b>2</b> · Việc trong sheet</span><i>→</i><span><b>3</b> · Lịch Google</span><i>→</i><span><b>4</b> · Hotline Zalo</span><i>→</i><span><b>5</b> · Tin nhắn các kênh</span><i>→</i><span><b>6</b> · Quay chụp &amp; việc thêm</span></div>
+  <div class="flow"><a href="#checklist::checklist-m1"><b>1</b> · Không gian</a><i>→</i><a href="#checklist::checklist-m2"><b>2</b> · Việc trong sheet</a><i>→</i><a href="#checklist::checklist-m3"><b>3</b> · Lịch Google</a><i>→</i><a href="#checklist::checklist-m4"><b>4</b> · Hotline Zalo</a><i>→</i><a href="#checklist::checklist-m5"><b>5</b> · Tin nhắn các kênh</a><i>→</i><a href="#checklist::checklist-m6"><b>6</b> · Quay chụp &amp; việc thêm</a></div>
 
   <h3>3 luật khi làm checklist</h3>
   <p class="qa-note">Đọc kỹ 3 luật này trước đã — làm đúng luật thì tick mới được tính nha.</p>
@@ -643,7 +650,11 @@ details.mini.big > summary{font-family:"Cormorant Garamond",Georgia,serif;font-s
     • Cơ sở HN: <b>nupakachi.dolinhanh.sale.hn@gmail.com</b><br>
     • Cơ sở HCM: <b>dolinhanh.bridal.hochiminh@gmail.com</b></p>
   </div>
-  <div class="step tl"><div class="sk">Mục 1 — Không gian</div><div class="sv">Dọn và kiểm tra không gian trước khi đón khách.
+  <div class="rulebox">
+    <p class="rb-t">⏰ Mục 1 + Mục 2: làm trong 1 tiếng 30 phút đầu ca</p>
+    <p>Vào ca là bắt tay làm luôn <b>Mục 1 — Không gian</b> và <b>Mục 2 — Việc trong sheet</b> liền nhau, dành đúng <b>1 tiếng 30 phút đầu giờ</b> để xong cả hai mục này trước rồi mới tới các mục còn lại.</p>
+  </div>
+  <div class="step tl" id="checklist-m1"><div class="sk">Mục 1 — Không gian</div><div class="sv">Dọn và kiểm tra không gian trước khi đón khách.
     <details class="mini"><summary>Mở checklist dọn 12 ô</summary>
     <ul class="cklist">
       <li>Mở nhạc jazz, âm lượng vừa đủ, mở suốt giờ đón khách</li>
@@ -667,23 +678,23 @@ details.mini.big > summary{font-family:"Cormorant Garamond",Georgia,serif;font-s
     <p style="margin-top:10px;font-size:13.5px">Cơ sở HCM: check xong chụp ảnh gửi Zalo liền, tắt hết đèn điện và máy lạnh.</p>
     </details>
   </div></div>
-  <div class="step tl"><div class="sk">Mục 2 — Việc trong sheet</div><div class="sv">DLA giao việc tự động vào sheet. Vào tab tên mình, làm xong tick ✓ rồi gửi ảnh cho quản lý.<br>⛔ <b>Chỉ tick được trong ngày hôm đó</b> — qua ngày mới tick là hệ thống tính <b>chậm deadline</b> nha.
+  <div class="step tl" id="checklist-m2"><div class="sk">Mục 2 — Việc trong sheet</div><div class="sv">DLA giao việc tự động vào sheet. Vào tab tên mình, làm xong tick ✓ rồi gửi ảnh cho quản lý.<br>⛔ <b>Chỉ tick được trong ngày hôm đó</b> — qua ngày mới tick là hệ thống tính <b>chậm deadline</b> nha.
     <div class="linkrow"><a href="https://docs.google.com/spreadsheets/d/1V6Ufx4MQcJQRAlQbkWgy6Njxe-pllOtJ4ozYJ4I5Ir4/edit" target="_blank" rel="noopener">Sheet giao việc &amp; checklist</a></div>
   </div></div>
-  <div class="step tl"><div class="sk">Mục 3 — Lịch Google</div><div class="sv">Xem lịch hẹn fitting của cơ sở trong ngày: hôm nay ai tới, mấy giờ, cần chuẩn bị gì.
+  <div class="step tl" id="checklist-m3"><div class="sk">Mục 3 — Lịch Google</div><div class="sv">Xem lịch hẹn fitting của cơ sở trong ngày: hôm nay ai tới, mấy giờ, cần chuẩn bị gì.
     <div class="linkrow"><a href="https://calendar.google.com/" target="_blank" rel="noopener">Mở Lịch Google</a></div>
   </div></div>
-  <div class="step tl"><div class="sk">Mục 4 — Hotline Zalo</div><div class="sv">Trả lời khách nhắn vào hotline, không để khách chờ.
+  <div class="step tl" id="checklist-m4"><div class="sk">Mục 4 — Hotline Zalo</div><div class="sv">Trả lời khách nhắn vào hotline, không để khách chờ.
     <div class="linkrow"><a href="https://chat.zalo.me" target="_blank" rel="noopener">Mở Zalo Web</a></div>
   </div></div>
-  <div class="step tl"><div class="sk">Mục 5 — Tin nhắn các kênh</div><div class="sv">Check tin nhắn khách ở tất cả các kênh truyền thông của cơ sở.
+  <div class="step tl" id="checklist-m5"><div class="sk">Mục 5 — Tin nhắn các kênh</div><div class="sv">Check tin nhắn khách ở tất cả các kênh truyền thông của cơ sở.
     <div class="linkrow">
       <a href="https://business.facebook.com/latest/inbox/all/" target="_blank" rel="noopener">Hộp thư Meta — Page + IG</a>
       <a href="https://www.tiktok.com/messages" target="_blank" rel="noopener">Tin nhắn TikTok</a>
     </div>
   </div></div>
 
-  <div class="step tl"><div class="sk">Mục 6 — Quay chụp &amp; việc thêm</div><div class="sv">Quay, chụp, dựng clip cho kênh của cơ sở; và làm các công việc quản lý giao thêm trong checklist ngày hôm đó.
+  <div class="step tl" id="checklist-m6"><div class="sk">Mục 6 — Quay chụp &amp; việc thêm</div><div class="sv">Quay, chụp, dựng clip cho kênh của cơ sở; và làm các công việc quản lý giao thêm trong checklist ngày hôm đó.
     <div class="linkrow"><a href="#chuong-6">Xem cách quay &amp; dựng clip</a></div>
   </div></div>
 
@@ -2267,7 +2278,8 @@ QUIZ[5] = [
 ["Tình huống: KPI checklist tháng này của mình là 75%. Nghĩa là gì?", ["Chưa đạt (dưới 80%) — ngồi lại với quản lý xem vướng ở đâu", "Đạt, vì trên 70%", "Đạt nếu tháng trước cao hơn", "Không sao, KPI chỉ để tham khảo"], 0],
 ["Tình huống: việc dọn không gian có khung giờ đầu ca, mình muốn dồn cuối ca làm một thể. Được không?", ["Không — làm đúng khung giờ; dồn cuối ca là mệt và không kịp đón khách", "Được, miễn trong ngày", "Được nếu ca vắng khách", "Tuỳ tâm trạng hôm đó"], 0],
 ["Ảnh xác nhận gửi quản lý phải là ảnh thế nào?", ["Ảnh chụp thật kết quả việc mình vừa làm xong", "Ảnh trên mạng cho đẹp", "Ảnh cũ của hôm trước", "Không cần ảnh, nhắn chữ là được"], 0],
-["Vì sao checklist cần luật “ảnh xác nhận” thay vì chỉ tin lời nhau?", ["Để “hoàn thành” là hoàn thành thật — quản lý không có mặt vẫn kiểm được chất lượng", "Vì không tin nhân viên", "Để làm khó nhau", "Cho vui thôi"], 0]
+["Vì sao checklist cần luật “ảnh xác nhận” thay vì chỉ tin lời nhau?", ["Để “hoàn thành” là hoàn thành thật — quản lý không có mặt vẫn kiểm được chất lượng", "Vì không tin nhân viên", "Để làm khó nhau", "Cho vui thôi"], 0],
+["Mục 1 — Không gian và Mục 2 — Việc trong sheet nên làm trong bao lâu, lúc nào?",["1 tiếng 30 phút đầu ca, làm liền nhau", "Rảnh lúc nào làm lúc đó trong ca", "30 phút cuối ca", "Không quy định thời lượng"],0]
 ];
 QUIZ[6] = [
 ["Nhạc mở trong showroom bắt buộc là thể loại gì?",["Jazz", "Nhạc trẻ trending", "Nhạc không lời bất kỳ", "Nhạc đám cưới"],0],
@@ -3237,6 +3249,7 @@ QUIZ[26] = [
   });
 })();
 </script>
+
 
 </body>
 </html>
