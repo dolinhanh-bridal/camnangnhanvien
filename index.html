@@ -416,6 +416,19 @@ details.mini.big > summary{font-family:"Cormorant Garamond",Georgia,serif;font-s
   </div>
 </div>
 
+<div class="chao-wrap" id="maWrap">
+  <div class="chao-box">
+    <p class="chao-hi">Chọn mã đăng nhập riêng của bạn</p>
+    <div class="chao-loi" style="display:block;text-align:center">
+      <p style="margin:0 0 12px">Đặt 1 mã gồm đúng <b>4 chữ số</b> — lần sau gõ mã này thay vì email cho nhanh. Mỗi người một mã riêng, không trùng ai.</p>
+      <input type="text" id="maChonInput" maxlength="4" inputmode="numeric" placeholder="VD: 1234" style="width:100%;padding:12px 14px;font:inherit;font-size:22px;letter-spacing:8px;text-align:center;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:10px">
+      <p class="err" id="maChonErr" style="margin-top:8px"></p>
+    </div>
+    <button type="button" class="chao-ok" id="maChonOk">Lưu mã của tôi</button>
+    <p class="gate-skip" style="margin-top:10px"><a href="#" id="maChonBoQua">Bỏ qua, lần sau dùng email</a></p>
+  </div>
+</div>
+
 <!-- ══════════════ WELCOME GATE ══════════════ -->
 <section class="view" id="welcome">
 <div class="wrap cover">
@@ -434,8 +447,8 @@ details.mini.big > summary{font-family:"Cormorant Garamond",Georgia,serif;font-s
     <p class="f-title">Sơ yếu lý lịch</p>
     <p class="f-note">Trước khi bắt đầu, bạn điền sơ yếu lý lịch — thông tin tự chuyển về hệ thống DLA để chấm công, tính lương. Chuẩn bị sẵn trong điện thoại: <b>ảnh 2 mặt CCCD</b>, <b>ảnh/file CV</b>, và thông tin gia đình (bố mẹ, anh chị em — nghề nghiệp, nơi làm, SĐT).</p>
     <a class="btn" id="btnForm" href="#" target="_blank" rel="noopener" style="text-align:center;text-decoration:none">Điền sơ yếu lý lịch →</a>
-    <label style="margin-top:22px">Đã điền xong? Nhập email bạn vừa khai trong form</label>
-    <input type="email" id="unlockEmail" placeholder="email@cua-ban.com" autocomplete="email">
+    <label style="margin-top:22px">Đã điền xong? Nhập email bạn vừa khai trong form (hoặc mã đăng nhập nếu đã có)</label>
+    <input type="text" id="unlockEmail" placeholder="email@cua-ban.com hoặc mã 4 số" autocomplete="email">
     <button type="button" class="btn" id="btnDone" style="margin-top:12px">Em đã điền xong — mở cẩm nang 🤍</button>
     <p class="err" id="syllErr">Bạn nhập đúng email đã điền trong form nha.</p>
   </div>
@@ -3065,9 +3078,24 @@ QUIZ[26] = [
   document.getElementById('btnForm').setAttribute('href', FORM_URL);
   function normMail(x){ return (x||'').trim().toLowerCase(); }
   function daKhoa(em){ return KHOA_EMAIL.indexOf(normMail(em)) !== -1; }
+  /* ---- mã đăng nhập riêng từng người: 4 số, do chính nhân viên chọn,
+     lưu trong Sheet (cột "Mã đăng nhập") — không tự sinh ---- */
+  function laMaDangNhap(x){ return /^\d{4}$/.test((x||'').trim()); }
   function moKhoaEmail(baoLoi){
-    var em = normMail(document.getElementById('unlockEmail').value);
+    var raw = document.getElementById('unlockEmail').value;
     var err = document.getElementById('syllErr');
+    if(!/[@]/.test(raw) && laMaDangNhap(raw)){
+      traTheoMa(raw.trim(), function(ten, emKQ){
+        if(!emKQ){
+          if(baoLoi){ err.textContent = 'Mã chưa đúng — bạn kiểm tra lại, hoặc dùng email cá nhân đã điền trong form.'; err.classList.add('show'); }
+          return;
+        }
+        err.classList.remove('show');
+        hoanTatDangNhap(emKQ, ten, raw.trim());
+      });
+      return true;
+    }
+    var em = normMail(raw);
     if(!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(em)){
       if(baoLoi){ err.textContent = 'Bạn nhập đúng email đã điền trong form nha.'; err.classList.add('show'); }
       return false;
@@ -3081,28 +3109,84 @@ QUIZ[26] = [
       err.classList.add('show'); return false;
     }
     err.classList.remove('show');
-    try{ localStorage.setItem('dla_syll_email', em); }catch(e){}
-    trakTen(em, function(ten){
-      if(ten){ try{ localStorage.setItem('dla_syll_name', ten); }catch(e){} }
-      setUnlocked(); location.hash = '#muc-luc'; route(); thuChaoMoiNgay();
-    });
+    trakTen(em, function(ten, ma){ hoanTatDangNhap(em, ten, ma); });
     return true;
   }
-  /* ---- tra ten theo email (JSONP, khong dinh CORS) ---- */
+  function hoanTatDangNhap(em, ten, ma){
+    try{ localStorage.setItem('dla_syll_email', em); }catch(e){}
+    if(ten){ try{ localStorage.setItem('dla_syll_name', ten); }catch(e){} }
+    if(ma){ try{ localStorage.setItem('dla_syll_ma', ma); }catch(e){} }
+    setUnlocked(); location.hash = '#muc-luc'; route();
+    if(ma){ thuChaoMoiNgay(); } else { hoiChonMa(em); }
+  }
+  /* ---- lan dau chua co ma: moi nhan vien tu chon 4 so ---- */
+  function hoiChonMa(em){
+    var wrap = document.getElementById('maWrap');
+    if(!wrap){ thuChaoMoiNgay(); return; }
+    wrap.style.display = 'flex';
+    var input = document.getElementById('maChonInput');
+    var errEl = document.getElementById('maChonErr');
+    input.value = ''; errEl.textContent = ''; errEl.classList.remove('show');
+    setTimeout(function(){ input.focus(); }, 50);
+    function dong(){ wrap.style.display = 'none'; thuChaoMoiNgay(); }
+    document.getElementById('maChonBoQua').onclick = function(ev){ ev.preventDefault(); dong(); };
+    document.getElementById('maChonOk').onclick = function(){
+      var ma = input.value.trim();
+      if(!laMaDangNhap(ma)){ errEl.textContent = 'Nhập đúng 4 chữ số nha.'; errEl.classList.add('show'); return; }
+      datMa(ma, em, function(ok, loi){
+        if(ok){ try{ localStorage.setItem('dla_syll_ma', ma); }catch(e){} dong(); }
+        else { errEl.textContent = loi || 'Có lỗi, thử mã khác nha.'; errEl.classList.add('show'); }
+      });
+    };
+    input.onkeydown = function(ev){ if(ev.key === 'Enter'){ document.getElementById('maChonOk').click(); } };
+  }
+  /* ---- tra ten (+ ma da chon, neu co) theo email (JSONP, khong dinh CORS) ---- */
   function trakTen(email, cb){
     var xong = false;
-    function ket(ten){ if(xong) return; xong = true; cb(ten || ''); }
+    function ket(ten, ma){ if(xong) return; xong = true; cb(ten || '', ma || ''); }
     var fn = 'dlaTraTen' + Date.now();
     window[fn] = function(data){
-      ket(data && data.ten ? data.ten : '');
+      ket(data && data.ten ? data.ten : '', data && data.ma ? data.ma : '');
       try{ delete window[fn]; }catch(e){}
       if(sTag && sTag.parentNode){ sTag.parentNode.removeChild(sTag); }
     };
     var sTag = document.createElement('script');
     sTag.src = FORM_URL + '?tra=' + encodeURIComponent(email) + '&cb=' + fn;
-    sTag.onerror = function(){ ket(''); };
+    sTag.onerror = function(){ ket('', ''); };
     document.body.appendChild(sTag);
-    setTimeout(function(){ ket(''); }, 4000);
+    setTimeout(function(){ ket('', ''); }, 4000);
+  }
+  /* ---- nhan vien tu dat ma dang nhap 4 so (JSONP) ---- */
+  function datMa(ma, em, cb){
+    var xong = false;
+    function ket(ok, loi){ if(xong) return; xong = true; cb(ok, loi); }
+    var fn = 'dlaDatMa' + Date.now();
+    window[fn] = function(data){
+      ket(data && data.ok === true, data && data.loi ? data.loi : '');
+      try{ delete window[fn]; }catch(e){}
+      if(sTag && sTag.parentNode){ sTag.parentNode.removeChild(sTag); }
+    };
+    var sTag = document.createElement('script');
+    sTag.src = FORM_URL + '?datma=' + encodeURIComponent(ma) + '&em=' + encodeURIComponent(em) + '&cb=' + fn;
+    sTag.onerror = function(){ ket(false, 'Lỗi mạng, thử lại nha.'); };
+    document.body.appendChild(sTag);
+    setTimeout(function(){ ket(false, 'Mạng chậm quá, thử lại nha.'); }, 4000);
+  }
+  /* ---- tra email+ten theo ma dang nhap (JSONP) ---- */
+  function traTheoMa(ma, cb){
+    var xong = false;
+    function ket(ten, em){ if(xong) return; xong = true; cb(ten || '', em || ''); }
+    var fn = 'dlaTraMa' + Date.now();
+    window[fn] = function(data){
+      ket(data && data.ten ? data.ten : '', data && data.em ? data.em : '');
+      try{ delete window[fn]; }catch(e){}
+      if(sTag && sTag.parentNode){ sTag.parentNode.removeChild(sTag); }
+    };
+    var sTag = document.createElement('script');
+    sTag.src = FORM_URL + '?ma=' + encodeURIComponent(ma) + '&cb=' + fn;
+    sTag.onerror = function(){ ket('', ''); };
+    document.body.appendChild(sTag);
+    setTimeout(function(){ ket('', ''); }, 4000);
   }
   /* ---- chao moi ngay + nhac cau sai bai test gan nhat ---- */
   var LOI_CHAO = [
@@ -3136,16 +3220,28 @@ QUIZ[26] = [
       localStorage.setItem('dla_chao_ngay', homNay);
     }catch(e){ return; }
     var ten = ''; try{ ten = localStorage.getItem('dla_syll_name') || ''; }catch(e){}
-    var loi = LOI_CHAO[Math.floor(Math.random() * LOI_CHAO.length)];
+    var emCuaToi = ''; try{ emCuaToi = localStorage.getItem('dla_syll_email') || ''; }catch(e){}
+    var maCuaToi = ''; try{ maCuaToi = localStorage.getItem('dla_syll_ma') || ''; }catch(e){}
+    /* câu chào cố định theo từng người (hash email), không xoay vòng ngẫu nhiên nữa */
+    var chiSoLoi = Math.floor(Math.random() * LOI_CHAO.length);
+    if(emCuaToi){
+      var h = 5381, s = normMail(emCuaToi);
+      for (var ci = 0; ci < s.length; ci++) { h = ((h * 33) ^ s.charCodeAt(ci)) >>> 0; }
+      chiSoLoi = h % LOI_CHAO.length;
+    }
+    var loi = LOI_CHAO[chiSoLoi];
     document.getElementById('chaoHi').textContent = (ten ? 'Xin chào ' + ten + '! ' : 'Xin chào! ') + loi;
     var loiEl = document.getElementById('chaoLoi');
     var nhacHtml = '';
+    if(maCuaToi){
+      nhacHtml += '<p style="margin-top:4px;font-size:12px;color:var(--ink-soft)">Mã đăng nhập của bạn: <b>' + escChao(maCuaToi) + '</b> — lần sau gõ mã này thay vì email.</p>';
+    }
     try{
       var raw = localStorage.getItem('dla_nhac_loi');
       if(raw){
         var nl = JSON.parse(raw);
         if(nl && !nl.daHien && nl.ngayLuu !== homNay && nl.cauHoi && nl.cauHoi.length){
-          nhacHtml = '<b>Hôm trước làm bài Ngày ' + nl.ngay + ' — ' + escChao(nl.ten) + '</b>, có mấy câu bị sai nè, đọc lại cho chắc, đừng để tái phạm nha 😉'
+          nhacHtml += '<b>Hôm trước làm bài Ngày ' + nl.ngay + ' — ' + escChao(nl.ten) + '</b>, có mấy câu bị sai nè, đọc lại cho chắc, đừng để tái phạm nha 😉'
             + '<ul>' + nl.cauHoi.map(function(c){ return '<li>' + escChao(c) + '</li>'; }).join('') + '</ul>';
           nl.daHien = true;
           localStorage.setItem('dla_nhac_loi', JSON.stringify(nl));
