@@ -447,10 +447,13 @@ details.mini.big > summary{font-family:"Cormorant Garamond",Georgia,serif;font-s
     <p class="f-title">Sơ yếu lý lịch</p>
     <p class="f-note">Trước khi bắt đầu, bạn điền sơ yếu lý lịch — thông tin tự chuyển về hệ thống DLA để chấm công, tính lương. Chuẩn bị sẵn trong điện thoại: <b>ảnh 2 mặt CCCD</b>, <b>ảnh/file CV</b>, và thông tin gia đình (bố mẹ, anh chị em — nghề nghiệp, nơi làm, SĐT).</p>
     <a class="btn" id="btnForm" href="#" target="_blank" rel="noopener" style="text-align:center;text-decoration:none">Điền sơ yếu lý lịch →</a>
-    <label style="margin-top:22px">Đã điền xong? Nhập email bạn vừa khai trong form (hoặc mã đăng nhập nếu đã có)</label>
-    <input type="text" id="unlockEmail" placeholder="email@cua-ban.com hoặc mã 4 số" autocomplete="email">
-    <button type="button" class="btn" id="btnDone" style="margin-top:12px">Em đã điền xong — mở cẩm nang 🤍</button>
+    <label style="margin-top:22px">Email cá nhân của bạn (email đã khai trong form)</label>
+    <input type="email" id="unlockEmail" placeholder="email@cua-ban.com" autocomplete="email">
+    <label>Mã riêng 4 số của bạn</label>
+    <input type="password" id="unlockMa" placeholder="••••" maxlength="4" inputmode="numeric" autocomplete="off" style="letter-spacing:10px;text-align:center;font-size:20px">
+    <button type="button" class="btn" id="btnDone" style="margin-top:12px">Mở cẩm nang 🤍</button>
     <p class="err" id="syllErr">Bạn nhập đúng email đã điền trong form nha.</p>
+    <p style="font-size:12.5px;color:var(--ink-soft);text-align:center;margin-top:12px">Lần đầu vào: nhập email rồi <b>tự nghĩ 1 mã 4 số</b> — đó thành mã riêng của bạn, những lần sau dùng đúng mã đó.</p>
   </div>
 
   
@@ -463,7 +466,7 @@ details.mini.big > summary{font-family:"Cormorant Garamond",Georgia,serif;font-s
     Học xong phần nào làm bài kiểm tra ngay phần đó. Điểm tự động gửi về cho <b>quản lý</b>.<br>
     <b>Hết tháng đầu đạt từ 90% trở lên → ký hợp đồng chính thức.</b></p>
   </div>
-  <p class="gate-lock" id="gateLock">🔒 Các chương của cẩm nang sẽ mở sau khi bạn hoàn tất sơ yếu lý lịch.</p>
+  <p class="gate-lock" id="gateLock">🔒 <b>Mỗi lần mở cẩm nang đều phải nhập email + mã riêng của bạn</b> — giống mở khoá điện thoại. Gửi link này ra ngoài thì người khác cũng không xem được.</p>
   <p class="gate-skip"><a href="#" id="adminSkip">Quản lý mở khóa</a></p>
   <div id="adminRow" style="display:none;max-width:320px;margin:10px auto 0">
     <input type="password" id="adminCode" placeholder="Mã quản lý" style="width:100%;padding:10px 14px;font:inherit;font-size:14px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:999px;text-align:center">
@@ -3081,9 +3084,10 @@ QUIZ[26] = [
   var views = document.querySelectorAll('.view');
   var crumb = document.getElementById('crumb');
 
-  var UNLOCK = 'dla_syll_ok';
-  function isUnlocked(){ try{ if(localStorage.getItem(UNLOCK) === '1') return true; }catch(e){} return window.__dlaOpen === true; }
-  function setUnlocked(){ try{ localStorage.setItem(UNLOCK, '1'); }catch(e){} window.__dlaOpen = true; }
+  /* KHONG luu quyen mo o dau ca: moi lan mo trang deu phai nhap lai email + ma (lenh chi Linh 03/09/2026) */
+  try{ localStorage.removeItem('dla_syll_ok'); localStorage.removeItem('dla_syll_ma'); }catch(e){}
+  function isUnlocked(){ return window.__dlaOpen === true; }
+  function setUnlocked(){ window.__dlaOpen = true; }
 
   function show(id){
     var target = document.getElementById(id) || document.getElementById('muc-luc');
@@ -3132,42 +3136,54 @@ QUIZ[26] = [
      lưu trong Sheet (cột "Mã đăng nhập") — không tự sinh ---- */
   function laMaDangNhap(x){ return /^\d{4}$/.test((x||'').trim()); }
   function moKhoaEmail(baoLoi){
-    var raw = document.getElementById('unlockEmail').value;
     var err = document.getElementById('syllErr');
-    if(!/[@]/.test(raw) && laMaDangNhap(raw)){
-      traTheoMa(raw.trim(), function(ten, emKQ){
-        if(!emKQ){
-          if(baoLoi){ err.textContent = 'Mã chưa đúng — bạn kiểm tra lại, hoặc dùng email cá nhân đã điền trong form.'; err.classList.add('show'); }
-          return;
-        }
-        err.classList.remove('show');
-        hoanTatDangNhap(emKQ, ten, raw.trim());
-      });
-      return true;
-    }
-    var em = normMail(raw);
+    var em = normMail(document.getElementById('unlockEmail').value);
+    var ma = (document.getElementById('unlockMa').value || '').trim();
+    function loi(t){ err.textContent = t; err.classList.add('show'); }
     if(!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(em)){
-      if(baoLoi){ err.textContent = 'Bạn nhập đúng email đã điền trong form nha.'; err.classList.add('show'); }
+      if(baoLoi){ loi('Bạn nhập đúng email đã điền trong form nha.'); }
       return false;
     }
-    if(daKhoa(em)){
-      err.textContent = 'Email này đã bị khóa quyền xem cẩm nang — bạn liên hệ quản lý nhé.';
-      err.classList.add('show'); return false;
-    }
+    if(daKhoa(em)){ loi('Email này đã bị khóa quyền xem cẩm nang — bạn liên hệ quản lý nhé.'); return false; }
     if(laEmailChung(em)){
-      err.textContent = 'Đây là email chung của cơ sở. Bạn dùng email CÁ NHÂN đã điền trong form sơ yếu lý lịch nha — để quản lý biết kết quả bài kiểm tra là của bạn.';
-      err.classList.add('show'); return false;
+      loi('Đây là email chung của cơ sở. Bạn dùng email CÁ NHÂN đã điền trong form sơ yếu lý lịch nha — để quản lý biết kết quả bài kiểm tra là của bạn.');
+      return false;
+    }
+    if(!laMaDangNhap(ma)){
+      if(baoLoi){ loi('Bạn nhập mã riêng 4 chữ số của mình nha.'); }
+      return false;
     }
     err.classList.remove('show');
-    trakTen(em, function(ten, ma){ hoanTatDangNhap(em, ten, ma); });
+    var btn = document.getElementById('btnDone');
+    btn.disabled = true; btn.textContent = 'Đang kiểm tra…';
+    function xong(){ btn.disabled = false; btn.textContent = 'Mở cẩm nang 🤍'; }
+    trakTen(em, function(ten, maSheet){
+      if(!ten && !maSheet){
+        xong();
+        loi('Không tìm thấy email này trong hệ thống (hoặc mạng đang chậm). Bạn kiểm tra lại email — chưa điền form thì bấm nút bên trên điền trước nha.');
+        return;
+      }
+      if(!maSheet){
+        /* chua co ma: lay dung ma vua nhap lam ma rieng cua ban do */
+        datMa(ma, em, function(ok, loiMa){
+          xong();
+          if(ok){ hoanTatDangNhap(em, ten); }
+          else { loi(loiMa || 'Mã này đã có người dùng rồi, bạn chọn mã 4 số khác nha.'); }
+        });
+        return;
+      }
+      xong();
+      if(String(maSheet).trim() !== ma){ loi('Mã chưa đúng — bạn kiểm tra lại mã riêng của mình nha.'); return; }
+      hoanTatDangNhap(em, ten);
+    });
     return true;
   }
-  function hoanTatDangNhap(em, ten, ma){
+  function hoanTatDangNhap(em, ten){
     try{ localStorage.setItem('dla_syll_email', em); }catch(e){}
     if(ten){ try{ localStorage.setItem('dla_syll_name', ten); }catch(e){} }
-    if(ma){ try{ localStorage.setItem('dla_syll_ma', ma); }catch(e){} }
+    try{ document.getElementById('unlockMa').value = ''; }catch(e){}
     setUnlocked(); location.hash = '#muc-luc'; route();
-    if(ma){ thuChaoMoiNgay(); } else { hoiChonMa(em); }
+    thuChaoMoiNgay();
   }
   /* ---- lan dau chua co ma: moi nhan vien tu chon 4 so ---- */
   function hoiChonMa(em){
@@ -3283,9 +3299,6 @@ QUIZ[26] = [
     document.getElementById('chaoHi').textContent = (ten ? 'Xin chào ' + ten + '! ' : 'Xin chào! ') + loi;
     var loiEl = document.getElementById('chaoLoi');
     var nhacHtml = '';
-    if(maCuaToi){
-      nhacHtml += '<p style="margin-top:4px;font-size:12px;color:var(--ink-soft)">Mã đăng nhập của bạn: <b>' + escChao(maCuaToi) + '</b> — lần sau gõ mã này thay vì email.</p>';
-    }
     try{
       var raw = localStorage.getItem('dla_nhac_loi');
       if(raw){
@@ -3305,13 +3318,10 @@ QUIZ[26] = [
   document.getElementById('chaoOk').addEventListener('click', function(){ document.getElementById('chaoWrap').style.display = 'none'; });
   thuChaoMoiNgay();
   document.getElementById('btnDone').addEventListener('click', function(){ moKhoaEmail(true); });
-  /* gõ xong email hợp lệ là tự mở sang trang, không cần bấm nút */
-  var goTimer = null;
-  document.getElementById('unlockEmail').addEventListener('input', function(){
-    if(goTimer){ clearTimeout(goTimer); }
-    goTimer = setTimeout(function(){ moKhoaEmail(false); }, 900);
-  });
   document.getElementById('unlockEmail').addEventListener('keydown', function(ev){
+    if(ev.key === 'Enter'){ document.getElementById('unlockMa').focus(); }
+  });
+  document.getElementById('unlockMa').addEventListener('keydown', function(ev){
     if(ev.key === 'Enter'){ moKhoaEmail(true); }
   });
   document.getElementById('adminSkip').addEventListener('click', function(ev){
@@ -3329,10 +3339,10 @@ QUIZ[26] = [
   }
   document.getElementById('adminGo').addEventListener('click', adminThu);
   document.getElementById('adminCode').addEventListener('keydown', function(ev){ if(ev.key === 'Enter'){ adminThu(); } });
-  /* nhân viên đã nghỉ: nếu email lưu trên máy nằm trong danh sách khóa -> khóa lại */
+  /* nhân viên đã nghỉ / email chung: xoá luôn email lưu trên máy */
   try{
     var savedEm = normMail(localStorage.getItem('dla_syll_email'));
-    if(savedEm && (daKhoa(savedEm) || laEmailChung(savedEm))){ localStorage.removeItem('dla_syll_ok'); localStorage.removeItem('dla_syll_email'); window.__dlaOpen = false; route(); }
+    if(savedEm && (daKhoa(savedEm) || laEmailChung(savedEm))){ localStorage.removeItem('dla_syll_email'); localStorage.removeItem('dla_syll_name'); window.__dlaOpen = false; route(); }
   }catch(e){}
 
   /* ---- copy message templates ---- */
