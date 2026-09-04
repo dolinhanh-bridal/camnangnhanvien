@@ -501,6 +501,7 @@ details.mini.big > summary{font-family:"Cormorant Garamond",Georgia,serif;font-s
     <a href="#phu-luc"><span class="n">❦</span><span><span class="t">Phụ lục</span><span class="d">Kho tài liệu gốc &amp; toàn bộ clip hướng dẫn</span></span><span class="go">→</span></a>
   </div>
 
+  <p class="foot-note" id="dinhKetGhiChu" style="display:none">Bạn thuộc bộ phận <b>Đính kết</b> — chỉ cần đọc <b>4 chương đầu</b> (★, 1, 2, 3, 4), các chương bán hàng/khách hàng đã ẩn bớt. Cần xem thêm thì báo quản lý nhé.</p>
   <p class="foot-note"><b>Tài liệu nội bộ</b> — không chia sẻ ra ngoài. Thấy sổ thiếu gì, sai gì, hoặc gặp câu khách hỏi mà sổ chưa có → báo quản lý để cập nhật. Cập nhật 26/08/2026.</p>
 </div>
 </section>
@@ -2912,6 +2913,10 @@ QUIZ[26] = [
   function mail(){ try{ return localStorage.getItem('dla_syll_email') || '(chưa rõ email)'; }catch(e){ return '(chưa rõ email)'; } }
   function doc(d){ try{ return JSON.parse(localStorage.getItem('dla_kt_' + d) || 'null'); }catch(e){ return null; } }
   function luu(d, o){ try{ localStorage.setItem('dla_kt_' + d, JSON.stringify(o)); }catch(e){} }
+  /* Đính kết chỉ cần đọc 4 chương đầu (Ngày 1–9) — bộ phận lấy từ form hồ sơ, tra qua ?tra= */
+  function boPhan(){ try{ return (localStorage.getItem('dla_syll_bp') || '').trim(); }catch(e){ return ''; } }
+  function laDinhKet(){ return boPhan() === 'Đính kết'; }
+  function tongNgay(){ return laDinhKet() ? 9 : NGAY.length; }
 
   /* tron dap an co dinh theo tung cau — dap an dung khong phai luc nao cung o dau */
   function tron(a, seed){
@@ -2928,8 +2933,8 @@ QUIZ[26] = [
     var box = document.getElementById('bangDiem');
     if(!box) return;
     var h = '<table class="bd"><tr><th>Ngày</th><th>Nội dung</th><th>Số lần làm</th><th>Điểm chính thức</th></tr>';
-    var xong = 0, tong = 0;
-    for(var i = 0; i < NGAY.length; i++){
+    var xong = 0, tong = 0, tn = tongNgay();
+    for(var i = 0; i < tn; i++){
       var d = NGAY[i].n, r = doc(d);
       var diem = r ? r.lanDau : null;
       if(r){ xong++; tong += r.lanDau; }
@@ -2939,9 +2944,9 @@ QUIZ[26] = [
     h += '</table>';
     var tb = xong ? Math.round(tong / xong) : 0;
     h += '<div class="chotket">';
-    h += 'Đã làm <b>' + xong + '/26 ngày</b>' + (xong ? ' — điểm trung bình <b>' + tb + '%</b>' : '') + '.<br>';
-    if(xong < 26){
-      h += 'Làm đủ 26 ngày rồi hệ thống mới chốt kết quả nha.';
+    h += 'Đã làm <b>' + xong + '/' + tn + ' ngày</b>' + (xong ? ' — điểm trung bình <b>' + tb + '%</b>' : '') + '.<br>';
+    if(xong < tn){
+      h += 'Làm đủ ' + tn + ' ngày rồi hệ thống mới chốt kết quả nha.';
     } else if(tb >= DAT){
       h += '🤍 <b>ĐẠT — từ ' + DAT + '% trở lên.</b> Bạn báo quản lý để làm thủ tục <b>ký hợp đồng chính thức</b> nhé!';
     } else {
@@ -2949,7 +2954,7 @@ QUIZ[26] = [
     }
     h += '</div>';
     box.innerHTML = h;
-    for(var i = 0; i < NGAY.length; i++){
+    for(var i = 0; i < tn; i++){
       var b = document.getElementById('badge-' + NGAY[i].n), rr = doc(NGAY[i].n);
       if(b){ b.textContent = rr ? rr.lanDau + '%' : 'chưa làm'; b.className = 'db' + (rr ? ' ok' : ''); }
     }
@@ -2960,7 +2965,7 @@ QUIZ[26] = [
     var box = document.getElementById('dsNgay');
     if(!box) return;
     var h = '';
-    for(var i = 0; i < NGAY.length; i++){
+    for(var i = 0; i < tongNgay(); i++){
       var d = NGAY[i].n;
       h += '<details class="day" id="ngay-' + d + '">'
          + '<summary><span class="dn">Ngày ' + d + '</span>'
@@ -2971,7 +2976,7 @@ QUIZ[26] = [
          + '<div id="qbody-' + d + '"></div></div></details>';
     }
     box.innerHTML = h;
-    for(var i = 0; i < NGAY.length; i++){
+    for(var i = 0; i < tongNgay(); i++){
       (function(d){
         var el = document.getElementById('ngay-' + d);
         el.addEventListener('toggle', function(){ if(el.open){ veCauHoi(d); } });
@@ -3059,18 +3064,18 @@ QUIZ[26] = [
   }
 
   function guiKetQua(d, dung, tong, pt, sai, moi){
-    var xong = 0, cong = 0;
-    for(var i = 0; i < NGAY.length; i++){ var r = doc(NGAY[i].n); if(r){ xong++; cong += r.lanDau; } }
+    var xong = 0, cong = 0, tn = tongNgay();
+    for(var i = 0; i < tn; i++){ var r = doc(NGAY[i].n); if(r){ xong++; cong += r.lanDau; } }
     var tb = xong ? Math.round(cong / xong) : 0;
-    var t = 'KẾT QUẢ KIỂM TRA 26 NGÀY HỌC VIỆC\n'
+    var t = 'KẾT QUẢ KIỂM TRA ' + tn + ' NGÀY HỌC VIỆC' + (laDinhKet() ? ' (bộ phận Đính kết)' : '') + '\n'
       + 'Nhân viên: ' + mail() + '\n'
       + 'NGÀY ' + d + ' — ' + NGAY[d - 1].ten + '\n'
       + 'Lần làm thứ: ' + moi.soLan + '\n'
       + 'Điểm lần này: ' + dung + '/' + tong + ' = ' + pt + '%\n'
       + 'Điểm chính thức (lần đầu): ' + moi.lanDau + '%\n'
       + 'Câu sai: ' + (sai.length ? sai.join(', ') : 'không có') + '\n'
-      + 'Tiến độ: đã làm ' + xong + '/26 ngày — trung bình ' + tb + '%'
-      + (xong === 26 ? (tb >= DAT ? ' — ĐẠT, đủ điều kiện ký HĐ chính thức' : ' — CHƯA ĐẠT ' + DAT + '%') : '');
+      + 'Tiến độ: đã làm ' + xong + '/' + tn + ' ngày — trung bình ' + tb + '%'
+      + (xong === tn ? (tb >= DAT ? ' — ĐẠT, đủ điều kiện ký HĐ chính thức' : ' — CHƯA ĐẠT ' + DAT + '%') : '');
     var o = document.getElementById('gui-' + d);
     fetch(FORM_URL + '?hoi=' + encodeURIComponent(t.slice(0, 900)) + '&em=' + encodeURIComponent(mail()), {mode: 'no-cors'})
       .then(function(){ if(o){ o.textContent = '✓ Đã gửi kết quả cho quản lý.'; } })
@@ -3092,6 +3097,9 @@ QUIZ[26] = [
 
   veDanhSach();
   veBangDiem();
+  /* bo phan (Sale Marketing / Đính kết) chỉ biết được SAU khi nhân viên mở khóa —
+     lúc trang vừa tải thì chưa có, phải ve lai khi co su kien nay */
+  document.addEventListener('dla-bo-phan-xong', function(){ veDanhSach(); veBangDiem(); });
 })();
 
 </script>
@@ -3115,10 +3123,22 @@ QUIZ[26] = [
     if(!isHome){ crumb.textContent = target.getAttribute('data-title') || ''; }
     window.scrollTo(0,0);
   }
+  /* Đính kết chỉ đọc 4 chương đầu — ẩn phần còn lại của mục lục + chặn vào thẳng bằng link */
+  var CHUONG_DINH_KET = ['muc-luc', 'hoc-viec', 'chuong-1', 'chuong-2', 'checklist', 'chuong-3'];
+  function apDungBoPhan(){
+    var an = laDinhKet();
+    document.querySelectorAll('.toc a[href^="#"]').forEach(function(a){
+      var id = a.getAttribute('href').slice(1);
+      a.style.display = (an && CHUONG_DINH_KET.indexOf(id) === -1) ? 'none' : '';
+    });
+    var ghiChu = document.getElementById('dinhKetGhiChu');
+    if(ghiChu){ ghiChu.style.display = an ? 'block' : 'none'; }
+  }
   function route(){
     if(!isUnlocked()){ show('welcome'); return; }
     var id = (location.hash || '#muc-luc').slice(1).split('::')[0];
     if(id === 'welcome'){ id = 'muc-luc'; }
+    if(laDinhKet() && CHUONG_DINH_KET.indexOf(id) === -1){ id = 'muc-luc'; location.hash = '#muc-luc'; }
     show(id);
     var extra = (location.hash.split('::')[1]) || '';
     if(extra){
@@ -3149,6 +3169,8 @@ QUIZ[26] = [
   document.getElementById('btnForm').setAttribute('href', FORM_URL);
   function normMail(x){ return (x||'').trim().toLowerCase(); }
   function daKhoa(em){ return KHOA_EMAIL.indexOf(normMail(em)) !== -1; }
+  /* trung voi ham cung ten trong IIFE cua bai kiem tra — file khac scope nen phai khai bao lai */
+  function laDinhKet(){ try{ return (localStorage.getItem('dla_syll_bp') || '').trim() === 'Đính kết'; }catch(e){ return false; } }
   /* ---- mã đăng nhập riêng từng người: 4 số, do chính nhân viên chọn,
      lưu trong Sheet (cột "Mã đăng nhập") — không tự sinh ---- */
   function laMaDangNhap(x){ return /^\d{4}$/.test((x||'').trim()); }
@@ -3174,7 +3196,7 @@ QUIZ[26] = [
     var btn = document.getElementById('btnDone');
     btn.disabled = true; btn.textContent = 'Đang kiểm tra…';
     function xong(){ btn.disabled = false; btn.textContent = 'Mở cẩm nang 🤍'; }
-    trakTen(em, function(ten, maSheet){
+    trakTen(em, function(ten, maSheet, bp){
       if(!ten && !maSheet){
         xong();
         loi('Không tìm thấy email này trong hệ thống (hoặc mạng đang chậm). Bạn kiểm tra lại email — chưa điền form thì bấm nút bên trên điền trước nha.');
@@ -3184,22 +3206,24 @@ QUIZ[26] = [
         /* chua co ma: lay dung ma vua nhap lam ma rieng cua ban do */
         datMa(ma, em, function(ok, loiMa){
           xong();
-          if(ok){ hoanTatDangNhap(em, ten); }
+          if(ok){ hoanTatDangNhap(em, ten, bp); }
           else { loi(loiMa || 'Mã này đã có người dùng rồi, bạn chọn mã 4 số khác nha.'); }
         });
         return;
       }
       xong();
       if(String(maSheet).trim() !== ma){ loi('Mã chưa đúng — bạn kiểm tra lại mã riêng của mình nha.'); return; }
-      hoanTatDangNhap(em, ten);
+      hoanTatDangNhap(em, ten, bp);
     });
     return true;
   }
-  function hoanTatDangNhap(em, ten){
+  function hoanTatDangNhap(em, ten, bp){
     try{ localStorage.setItem('dla_syll_email', em); }catch(e){}
     if(ten){ try{ localStorage.setItem('dla_syll_name', ten); }catch(e){} }
+    try{ localStorage.setItem('dla_syll_bp', bp || ''); }catch(e){}
     try{ document.getElementById('unlockMa').value = ''; }catch(e){}
-    setUnlocked(); location.hash = '#muc-luc'; route();
+    setUnlocked(); apDungBoPhan(); location.hash = '#muc-luc'; route();
+    document.dispatchEvent(new CustomEvent('dla-bo-phan-xong'));
     thuChaoMoiNgay();
   }
   /* ---- lan dau chua co ma: moi nhan vien tu chon 4 so ---- */
@@ -3226,18 +3250,18 @@ QUIZ[26] = [
   /* ---- tra ten (+ ma da chon, neu co) theo email (JSONP, khong dinh CORS) ---- */
   function trakTen(email, cb){
     var xong = false;
-    function ket(ten, ma){ if(xong) return; xong = true; cb(ten || '', ma || ''); }
+    function ket(ten, ma, bp){ if(xong) return; xong = true; cb(ten || '', ma || '', bp || ''); }
     var fn = 'dlaTraTen' + Date.now();
     window[fn] = function(data){
-      ket(data && data.ten ? data.ten : '', data && data.ma ? data.ma : '');
+      ket(data && data.ten ? data.ten : '', data && data.ma ? data.ma : '', data && data.bp ? data.bp : '');
       try{ delete window[fn]; }catch(e){}
       if(sTag && sTag.parentNode){ sTag.parentNode.removeChild(sTag); }
     };
     var sTag = document.createElement('script');
     sTag.src = FORM_URL + '?tra=' + encodeURIComponent(email) + '&cb=' + fn;
-    sTag.onerror = function(){ ket('', ''); };
+    sTag.onerror = function(){ ket('', '', ''); };
     document.body.appendChild(sTag);
-    setTimeout(function(){ ket('', ''); }, 4000);
+    setTimeout(function(){ ket('', '', ''); }, 4000);
   }
   /* ---- nhan vien tu dat ma dang nhap 4 so (JSONP) ---- */
   function datMa(ma, em, cb){
@@ -3349,7 +3373,10 @@ QUIZ[26] = [
   });
   function adminThu(){
     if(document.getElementById('adminCode').value.trim() === 'DLA888'){
-      setUnlocked(); location.hash = '#muc-luc'; route(); thuChaoMoiNgay();
+      try{ localStorage.setItem('dla_syll_bp', ''); }catch(e){} /* quan ly mo bang ma admin thi xem duoc full */
+      setUnlocked(); apDungBoPhan(); location.hash = '#muc-luc'; route();
+      document.dispatchEvent(new CustomEvent('dla-bo-phan-xong'));
+      thuChaoMoiNgay();
     } else {
       document.getElementById('adminErr').style.display = 'block';
     }
