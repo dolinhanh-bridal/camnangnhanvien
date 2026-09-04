@@ -336,6 +336,16 @@ details.qa .a p:last-child{margin-bottom:0}
 .vd .dung{color:var(--ink)}
 .vd .dung::before{content:"✓";font-weight:700;color:var(--rose);position:absolute;left:1px;top:7px}
 .vd .dung b{color:var(--rose-deep)}
+.vd-photo{display:flex;gap:16px;align-items:flex-start;margin:14px 0;padding:14px;border:1px solid var(--line);border-radius:10px;background:var(--paper-deep)}
+.vd-photo-img{position:relative;flex:0 0 128px;width:128px;border-radius:8px;overflow:hidden;background:#EDE2D6;line-height:0}
+.vd-photo-img svg{display:block;width:100%;height:auto}
+.vd-photo-tag{position:absolute;top:7px;left:7px;background:#C0392B;color:#fff;font-size:10px;font-weight:700;letter-spacing:.05em;padding:2px 8px;border-radius:4px}
+.vd-photo-time{position:absolute;bottom:7px;left:7px;background:rgba(20,10,12,.62);color:#fff;font-size:10.5px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;padding:3px 7px;border-radius:5px;line-height:1.25}
+.vd-photo-text{flex:1;min-width:0}
+.vd-photo-text p{font-size:13.5px;line-height:1.55;margin:0 0 10px;color:var(--ink-soft)}
+.vd-photo-text p:last-child{margin-bottom:0;color:var(--ink)}
+.vd-photo-text b{color:var(--rose-deep)}
+@media (max-width:480px){.vd-photo{flex-direction:column}.vd-photo-img{flex:0 0 auto;width:100%;max-width:180px}}
 .vd.brand .tinh::before{content:"Thương hiệu lớn"}
 .vd.brand p{font-size:13.5px;color:var(--ink);line-height:1.6;margin:0 0 8px}
 .vd.brand .gq{display:inline-block;background:var(--blush);color:var(--rose-deep);border-radius:999px;padding:2px 10px;font-size:11px;font-weight:600;letter-spacing:.06em;margin:0 0 8px}
@@ -591,9 +601,36 @@ details.mini.big > summary{font-family:"Cormorant Garamond",Georgia,serif;font-s
     <li><b>Chấm công cũng phải chỉn chu</b> — việc đầu tiên khi tới ca là thay đồng phục, chỉnh lại đầu tóc, cười tươi rồi mới chụp ảnh chấm công. Ảnh chấm công mặc đồ nhà là <b>không đạt</b>, tính như chưa chấm công.</li>
   </ul>
 
-  <div class="vd" style="margin:12px 0">
-    <div class="sai">Chấm công lúc còn mặc <b>đồ ở nhà</b> (áo phông thường, quần dài kẻ, dép lê) — chưa chỉn chu, chưa đúng đồng phục.</div>
-    <div class="dung">Chấm công khi đã <b>mặc đúng đồng phục</b>, tóc gọn, cười tươi — rồi mới bắt đầu ca.</div>
+  <div class="vd-photo">
+    <div class="vd-photo-img">
+      <span class="vd-photo-tag">SAI</span>
+      <svg viewBox="0 0 128 168" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Minh hoạ chấm công sai — mặc đồ ở nhà">
+        <rect width="128" height="168" fill="#EDE2D6"/>
+        <rect x="110" width="2" height="168" fill="#E3D5C6"/>
+        <circle cx="64" cy="40" r="18" fill="#C9A98C"/>
+        <path d="M38 76c0-13 11.5-23 26-23s26 10 26 23v10H38z" fill="#FBF4EA"/>
+        <circle cx="64" cy="66" r="8" fill="#8B5E3C"/>
+        <circle cx="57" cy="61.5" r="3" fill="#8B5E3C"/>
+        <circle cx="71" cy="61.5" r="3" fill="#8B5E3C"/>
+        <circle cx="61.5" cy="67" r="1.4" fill="#3A2A1E"/>
+        <circle cx="66.5" cy="67" r="1.4" fill="#3A2A1E"/>
+        <path d="M61 71q3 2 6 0" stroke="#3A2A1E" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+        <rect x="34" y="94" width="60" height="58" rx="5" fill="#3A3A4A"/>
+        <rect x="34" y="94" width="8" height="58" fill="#4C4C64"/>
+        <rect x="50" y="94" width="8" height="58" fill="#4C4C64"/>
+        <rect x="66" y="94" width="8" height="58" fill="#4C4C64"/>
+        <rect x="82" y="94" width="8" height="58" fill="#4C4C64"/>
+        <ellipse cx="46" cy="160" rx="11" ry="4.5" fill="#EFE7DC" stroke="#B8AFA0" stroke-width="1"/>
+        <ellipse cx="82" cy="160" rx="11" ry="4.5" fill="#EFE7DC" stroke="#B8AFA0" stroke-width="1"/>
+        <path d="M39 157q7-7 14 0" stroke="#B8AFA0" stroke-width="1.4" fill="none"/>
+        <path d="M75 157q7-7 14 0" stroke="#B8AFA0" stroke-width="1.4" fill="none"/>
+      </svg>
+      <span class="vd-photo-time">13:22 · 4/9/2026</span>
+    </div>
+    <div class="vd-photo-text">
+      <p><b>Ảnh chấm công thực tế bị nhắc:</b> mặc áo phông hoạ tiết gấu và quần dài kẻ ở nhà, đi dép lê — không phải đồng phục, chưa chỉn chu.</p>
+      <p><b>Ảnh chấm công đúng:</b> mặc đúng đồng phục quy định, tóc gọn, cười tươi — chấm xong mới bắt đầu ca.</p>
+    </div>
   </div>
 
   <details class="qa"><summary>Ảnh chấm công có cần mặc đồng phục không?</summary><div class="a">
@@ -750,7 +787,7 @@ details.mini.big > summary{font-family:"Cormorant Garamond",Georgia,serif;font-s
     <p class="rb-t">⏰ Mục 1 + Mục 2: làm trong 1 tiếng 30 phút đầu ca</p>
     <p>Vào ca là bắt tay làm luôn <b>Mục 1 — Không gian</b> và <b>Mục 2 — Việc trong sheet</b> liền nhau, dành đúng <b>1 tiếng 30 phút đầu giờ</b> để xong cả hai mục này trước rồi mới tới các mục còn lại.</p>
   </div>
-  <div class="step tl" id="checklist-m1"><div class="sk">Mục 1 — Không gian</div><div class="sv">Dọn và kiểm tra không gian trước khi đón khách.
+  <div class="step tl" id="checklist-m1"><div class="sk">Mục 1 — Không gian</div><div class="sv"><b>Việc đầu tiên khi vào ca — trước cả khi sắp xếp không gian — là chấm công</b> (đúng đồng phục, xem lại Chương 1 nếu quên). Sau đó mới dọn và kiểm tra không gian trước khi đón khách.
     <details class="mini"><summary>Mở checklist dọn 12 ô</summary>
     <ul class="cklist">
       <li>Mở nhạc jazz, âm lượng vừa đủ, mở suốt giờ đón khách</li>
@@ -2696,7 +2733,8 @@ QUIZ[5] = [
 ["Tình huống: việc dọn không gian có khung giờ đầu ca, mình muốn dồn cuối ca làm một thể. Được không?", ["Không — làm đúng khung giờ; dồn cuối ca là mệt và không kịp đón khách", "Được, miễn trong ngày", "Được nếu ca vắng khách", "Tuỳ tâm trạng hôm đó"], 0],
 ["Ảnh xác nhận gửi quản lý phải là ảnh thế nào?", ["Ảnh chụp thật kết quả việc mình vừa làm xong", "Ảnh trên mạng cho đẹp", "Ảnh cũ của hôm trước", "Không cần ảnh, nhắn chữ là được"], 0],
 ["Vì sao checklist cần luật “ảnh xác nhận” thay vì chỉ tin lời nhau?", ["Để “hoàn thành” là hoàn thành thật — quản lý không có mặt vẫn kiểm được chất lượng", "Vì không tin nhân viên", "Để làm khó nhau", "Cho vui thôi"], 0],
-["Mục 1 — Không gian và Mục 2 — Việc trong sheet nên làm trong bao lâu, lúc nào?",["1 tiếng 30 phút đầu ca, làm liền nhau", "Rảnh lúc nào làm lúc đó trong ca", "30 phút cuối ca", "Không quy định thời lượng"],0]
+["Mục 1 — Không gian và Mục 2 — Việc trong sheet nên làm trong bao lâu, lúc nào?",["1 tiếng 30 phút đầu ca, làm liền nhau", "Rảnh lúc nào làm lúc đó trong ca", "30 phút cuối ca", "Không quy định thời lượng"],0],
+["Trước khi bắt đầu dọn và sắp xếp không gian (Mục 1), việc đầu tiên phải làm là gì?",["Chấm công — đúng đồng phục, chỉn chu", "Bật nhạc jazz trước", "Kiểm tra lịch hẹn khách", "Không có việc gì trước, dọn không gian luôn"],0]
 ];
 QUIZ[6] = [
 ["Nhạc mở trong showroom bắt buộc là thể loại gì?",["Jazz", "Nhạc trẻ trending", "Nhạc không lời bất kỳ", "Nhạc đám cưới"],0],
