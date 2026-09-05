@@ -3556,6 +3556,26 @@ QUIZ[26] = [
   /* ---- mã đăng nhập riêng từng người: 4 số, do chính nhân viên chọn,
      lưu trong Sheet (cột "Mã đăng nhập") — không tự sinh ---- */
   function laMaDangNhap(x){ return /^\d{4}$/.test((x||'').trim()); }
+  /* Sheet luu ma dang so nen "0408" thanh 408 (mat so 0 dau) -> luon bu ve du 4 so truoc khi so */
+  function chuanMa(x){ var s = String(x == null ? '' : x).replace(/\D/g, ''); while(s.length < 4){ s = '0' + s; } return s.slice(-4); }
+  /* nhap sai ma -> tu bao email cho quan ly kem ma dung, de quan ly gui lai cho ban do, khong phai hoi lai (05/09/2026) */
+  function baoSaiMa(em, ten, maNhap, maSheet){
+    try{
+      var k = 'dla_bao_sai_ma_' + normMail(em), t = Date.now();
+      var truoc = parseInt(localStorage.getItem(k) || '0', 10);
+      if(truoc && t - truoc < 10 * 60 * 1000) return; /* 1 email / 10 phut / nguoi, khoi spam */
+      localStorage.setItem(k, String(t));
+    }catch(e){}
+    var luc = '';
+    try{ var n = new Date(); luc = ('0' + n.getHours()).slice(-2) + ':' + ('0' + n.getMinutes()).slice(-2) + ' ' + n.getDate() + '/' + (n.getMonth() + 1) + '/' + n.getFullYear(); }catch(e){}
+    var t2 = 'SAI MÃ ĐĂNG NHẬP CẨM NANG\n'
+      + 'Nhân viên: ' + (ten || '(chưa rõ tên)') + ' — ' + em + '\n'
+      + 'Mã bạn ấy nhập: ' + maNhap + '\n'
+      + 'MÃ ĐÚNG trong Sheet hồ sơ (cột U): ' + chuanMa(maSheet) + '\n'
+      + 'Lúc: ' + luc + '\n'
+      + '→ Chị gửi lại mã ' + chuanMa(maSheet) + ' cho bạn ấy là vào được, không cần hỏi lại em.';
+    try{ fetch(FORM_URL + '?hoi=' + encodeURIComponent(t2) + '&em=' + encodeURIComponent(em), {mode: 'no-cors'}).catch(function(){}); }catch(e){}
+  }
   function moKhoaEmail(baoLoi){
     var err = document.getElementById('syllErr');
     var em = normMail(document.getElementById('unlockEmail').value);
@@ -3594,7 +3614,11 @@ QUIZ[26] = [
         return;
       }
       xong();
-      if(String(maSheet).trim() !== ma){ loi('Mã chưa đúng — bạn kiểm tra lại mã riêng của mình nha.'); return; }
+      if(chuanMa(maSheet) !== chuanMa(ma)){
+        baoSaiMa(em, ten, ma, maSheet);
+        loi('Mã chưa đúng. Hệ thống đã báo quản lý rồi — bạn nhắn quản lý xin lại mã riêng của mình nha.');
+        return;
+      }
       hoanTatDangNhap(em, ten, bp);
     });
     return true;
