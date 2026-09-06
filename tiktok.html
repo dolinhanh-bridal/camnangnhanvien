@@ -222,8 +222,7 @@ details.more.all .grp{margin-top:16px}
   <header>
     <div class="kicker">Dolinhanh Bridal · nội bộ · cập nhật 06/09/2026 · bản 13</div>
     <h1>Bảng điều khiển TikTok</h1>
-    <p class="lede">Bốn kênh, mỗi kênh có clip mẫu để bắt chước. Quay xong tải file gốc vào thư mục <b>Nộp source</b> của kênh mình, dựng xong tải vào thư mục <b>Nộp clip hoàn thành</b>. Nút ở ngay dưới mỗi clip mẫu.</p>
-    <p class="hint">Bấm tên kênh của bạn để mở đúng kênh đó.</p>
+    <p class="lede">Mỗi ngày: <b>quay 1 clip theo mẫu</b> + <b>đăng 1 story</b>. Bấm tên kênh của bạn.</p>
     <div class="nav"><a class="n-chinh" href="#chinh" data-tab="chinh">● Kênh chính</a><a class="n-hn" href="#hn" data-tab="hn">● Vệ tinh HN</a><a class="n-hcm" href="#hcm" data-tab="hcm">● Vệ tinh HCM</a><a class="n-life" href="#life" data-tab="life">● Nupakachi Life</a><a class="n-luat" href="#luat" data-tab="luat">Luật chung</a></div>
   </header>
 
@@ -1299,7 +1298,8 @@ function ngayThu(){var d=new Date();return Math.floor((d-new Date(d.getFullYear(
 TABS.slice(0,4).forEach(function(k){
   var sec=document.getElementById(k); if(!sec)return;
   var all=[].slice.call(sec.querySelectorAll('details.all .clip'));
-  var uu=all.filter(function(c){return c.querySelector('.tag');}); var pool=uu.length>=3?uu.concat(all.filter(function(c){return !c.querySelector('.tag');})):all;
+  var g1=[].slice.call(sec.querySelectorAll('details.all .grp')); var pool=g1.length?[].slice.call(g1[0].querySelectorAll('.clip')):[];
+  all.forEach(function(c){if(pool.indexOf(c)<0&&c.querySelector('.tag'))pool.push(c);}); if(!pool.length)pool=all;
   if(pool.length){var c=pool[ngayThu()%pool.length]; var h=document.getElementById('hero-'+k); var g=c.closest('.grp'); var t=g?g.querySelector('h3').textContent:'';
     if(t)h.insertAdjacentHTML('beforebegin','<p class="gname">'+t+'</p>'); h.appendChild(c.cloneNode(true));}
   var st=[].slice.call(sec.querySelectorAll('.story-all li')); if(st.length){document.getElementById('story-'+k).innerHTML=st[ngayThu()%st.length].innerHTML;}
