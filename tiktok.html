@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow, noarchive">
 <meta name="googlebot" content="noindex, nofollow">
-<meta name="theme-color" content="#0D5457">
+<meta name="theme-color" content="#FFFFFF">
 <title>Bảng điều khiển TikTok</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -174,7 +174,7 @@ a.submit:hover{filter:brightness(1.05)}
 @media (max-width:620px){.clips{grid-template-columns:1fr}}
 .kicker,.step .n,.fact .lbl,.tag,.lb,.cstat,.stat,th{font-family:"Be Vietnam Pro",sans-serif;text-transform:none;letter-spacing:0}
 .step .n{font-size:12.5px;font-weight:700} .fact .lbl{font-size:13px;font-weight:700;color:var(--accent-ink)} .tag{font-size:11.5px;font-weight:700} .kicker{font-size:13px;color:var(--ink-3)} .cstat{font-size:12.5px} .fold .url,.row .url{font-family:"Be Vietnam Pro",sans-serif}
-/* bản 14: nhỏ lại ~12% theo ý chị Linh */
+/* bản 15: nhỏ lại ~12% theo ý chị Linh */
 body{font-size:14px}
 .wrap{padding:30px 16px 60px;gap:30px}
 h1{font-size:clamp(23px,4.2vw,32px)}
@@ -194,14 +194,14 @@ a.submit{font-size:12px;padding:6px 8px}
 .nav a{padding:7px 12px;font-size:13px}
 .fact.bio .val.mono{padding:8px 10px}
 @media (max-width:620px){body{font-size:13.5px}.wrap{padding:22px 12px 50px;gap:24px}h1{font-size:22px}.sec-head h2{font-size:17px}.clip{grid-template-columns:64px 1fr}}
-/* bản 14: chỉ dòng title có màu, chữ thân bài đậm màu đen; bấm kênh nào chỉ hiện kênh đó */
+/* bản 15: chỉ dòng title có màu, chữ thân bài đậm màu đen; bấm kênh nào chỉ hiện kênh đó */
 .rl b,.fact .val b,.flag b,.lede b,.step p b,.chow b,.gnote b{color:var(--ink);font-weight:600}
 .nav{position:sticky;top:0;z-index:9;background:var(--ground);padding:10px 0 8px;margin:0 -4px;border-bottom:1px solid var(--line)}
 .nav a{cursor:pointer} .nav a.on{background:var(--accent,#0D5457);color:#fff!important;border-color:transparent}
 .nav a.n-chinh.on{background:#0D5457}.nav a.n-hn.on{background:#7E3F52}.nav a.n-hcm.on{background:#D9548A}.nav a.n-life.on{background:#6B4FB0}.nav a.n-luat.on{background:var(--ink)}
 .tab{display:none} .tab.on{display:block} .tab.on.kenh{display:block}
 .hint{margin:0;color:var(--ink-2);font-size:13.5px}
-/* bản 14b: mỗi ngày 1 clip + 1 story, phần còn lại gập lại */
+/* bản 15b: mỗi ngày 1 clip + 1 story, phần còn lại gập lại */
 .role{margin:0;color:var(--ink-2);font-size:13.5px}
 .today{display:flex;flex-direction:column;gap:12px}
 .clips.one{grid-template-columns:1fr} .clips.one .clip{grid-template-columns:110px 1fr;background:var(--surface)} .clips.one .chow{font-size:14px}
@@ -215,7 +215,7 @@ details.more summary::-webkit-details-marker{display:none}
 details.more>*:not(summary){margin-top:10px}
 details.more.all .grp{margin-top:16px}
 @media (max-width:620px){.clips.one .clip{grid-template-columns:90px 1fr}}
-/* bản 14: không ấn định clip; nút bấm rồi đổi màu xanh, nhớ trên máy */
+/* bản 15: không ấn định clip; nút bấm rồi đổi màu xanh, nhớ trên máy */
 .cact a.did{background:#1E8E3E!important;color:#fff!important;border-color:transparent!important}
 .clip.did{border-color:#1E8E3E;box-shadow:inset 3px 0 0 #1E8E3E}
 .okx{color:#1E8E3E;font-weight:700}
@@ -223,12 +223,65 @@ details.more.all .grp{margin-top:16px}
 button.reset{background:none;border:1px solid var(--line-strong);border-radius:999px;padding:5px 10px;font:inherit;font-size:12px;color:var(--ink-3);cursor:pointer}
 .nav a.n-duyet{background:#1E8E3E;color:#fff;border-color:transparent;margin-left:auto}
 .cact.one{grid-template-columns:1fr;margin-top:8px} a.open.duyet{background:#1E8E3E!important;color:#fff!important}
+/* bản 15: nền trắng, sang — hairline, serif, màu dịu */
+:root,:root:not([data-theme="light"]),:root[data-theme="dark"]{color-scheme:light;
+  --ground:#FFFFFF;--surface:#FFFFFF;--surface-2:#FFFFFF;
+  --ink:#1F1B1A;--ink-2:#5B5350;--ink-3:#8C8480;
+  --line:#ECE6DF;--line-strong:#D8D0C6;
+  --warn:#7A5A2E;--warn-wash:#FBF7F1;--stop:#8A3B45;--stop-wash:#FBF3F3}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--ground:#FFFFFF;--surface:#FFFFFF;--surface-2:#FFFFFF;--ink:#1F1B1A;--ink-2:#5B5350;--ink-3:#8C8480;--line:#ECE6DF;--line-strong:#D8D0C6}}
+.k-chinh,:root:not([data-theme="light"]) .k-chinh,:root[data-theme="dark"] .k-chinh{--accent:#245C5A;--accent-ink:#245C5A;--accent-wash:#F1F6F5}
+.k-hn,:root:not([data-theme="light"]) .k-hn,:root[data-theme="dark"] .k-hn{--accent:#7E4457;--accent-ink:#7E4457;--accent-wash:#F8F1F3}
+.k-hcm,:root:not([data-theme="light"]) .k-hcm,:root[data-theme="dark"] .k-hcm{--accent:#C9668C;--accent-ink:#B04E76;--accent-wash:#FBF2F5}
+.k-life,:root:not([data-theme="light"]) .k-life,:root[data-theme="dark"] .k-life{--accent:#6A5A9E;--accent-ink:#5C4D8E;--accent-wash:#F4F2F9}
+body{background:#FFFFFF;color:var(--ink)}
+.wrap{max-width:960px;gap:36px}
+h1{font-weight:500;letter-spacing:-.005em}
+.lede{font-family:Lora,Georgia,serif;font-style:italic;font-size:15.5px;color:var(--ink-2)}
+.kicker{font-family:"Be Vietnam Pro",sans-serif;letter-spacing:.02em;font-size:12.5px}
+.nav{border-bottom:1px solid var(--line);background:#fff}
+.nav a{border:1px solid var(--line-strong);background:#fff;font-weight:500;color:var(--ink);padding:7px 14px}
+.nav a.n-chinh{color:#245C5A;border-color:#245C5A}.nav a.n-hn{color:#7E4457;border-color:#7E4457}.nav a.n-hcm{color:#B04E76;border-color:#C9668C}.nav a.n-life{color:#5C4D8E;border-color:#6A5A9E}
+.nav a.n-chinh.on{background:#245C5A}.nav a.n-hn.on{background:#7E4457}.nav a.n-hcm.on{background:#C9668C}.nav a.n-life.on{background:#6A5A9E}
+.nav a.n-duyet{background:#fff;color:#4C7A5E;border-color:#4C7A5E}
+.kenh{border-left:none;padding-left:0;margin-left:0}
+.sec-head{border-bottom:1px solid var(--line-strong);padding-bottom:10px}
+.sec-head h2{font-weight:500;font-size:22px}
+.sec-head.sub h2{font-size:17px;font-style:italic;font-weight:500}
+.who{color:var(--ink-3)} .role{font-family:Lora,Georgia,serif;font-style:italic;font-size:15px;color:var(--ink-2)}
+.role b{font-style:normal;color:var(--ink)}
+.kenh .dot{width:9px;height:9px}
+.fact,.kenh .fact,.fold .fact,.step{background:#fff;border:1px solid var(--line);border-top:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.fact.hero{border-top-width:1px}
+.fact .lbl,.kenh .fact .lbl{font-family:Lora,Georgia,serif;font-style:italic;font-weight:500;font-size:14.5px;color:var(--accent-ink);display:block;margin-bottom:8px}
+.step .n{font-family:Lora,Georgia,serif;font-style:italic;font-weight:500;font-size:14px;letter-spacing:0;color:var(--accent-ink,#245C5A)}
+.flag{border:1px solid var(--line);font-weight:400;color:var(--ink-2)} .flag.warn{background:var(--warn-wash)} .flag.stop{background:var(--stop-wash)}
+.flag b{color:var(--ink)}
+.rl b,.fact .val b,.chow b{font-weight:600}
+.grp h3{font-weight:500;font-size:17px}
+.gnote{color:var(--ink-3)}
+.clip{border:1px solid var(--line);border-radius:12px;background:#fff}
+.clip img,.clip .ph{border-radius:8px}
+.tag{font-family:Lora,Georgia,serif;font-style:italic;font-weight:500;font-size:12px;letter-spacing:0;text-transform:none;background:var(--accent-wash);color:var(--accent-ink)}
+.cstat{color:var(--ink-3)}
+.cact a{border-radius:999px;font-weight:500!important}
+.cact a.open{background:var(--accent-ink);color:#fff;border:1px solid var(--accent-ink)}
+a.submit{background:#fff;color:var(--ink);border:1px solid var(--line-strong)}
+a.submit.done{background:#fff;color:var(--accent-ink);border:1px solid var(--accent)}
+.cact a.did,.clip .cact a.did{background:#4C7A5E!important;border-color:#4C7A5E!important;color:#fff!important}
+.clip.did{border-color:#4C7A5E;box-shadow:inset 2px 0 0 #4C7A5E}
+.okx{color:#4C7A5E}
+a.open.duyet{background:#fff!important;color:#4C7A5E!important;border:1px solid #4C7A5E!important}
+button.copy{border-radius:999px;border:1px solid var(--line-strong);background:#fff;color:var(--ink)}
+.fact.bio .val.mono{border:1px dashed var(--line-strong);background:#fff;font-family:Lora,Georgia,serif;font-style:italic;font-size:15px}
+details.more{border-radius:12px;border-color:var(--line)} details.more summary{font-weight:500;font-family:Lora,Georgia,serif;font-style:italic;font-size:15px}
+.hint,.fact .hint{color:var(--ink-3)}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <div class="kicker">Dolinhanh Bridal · nội bộ · cập nhật 06/09/2026 · bản 14</div>
+    <div class="kicker">Dolinhanh Bridal · nội bộ · cập nhật 06/09/2026 · bản 15</div>
     <h1>Bảng điều khiển TikTok</h1>
     <p class="lede">Mỗi ngày: <b>quay 1 clip theo mẫu</b> + <b>đăng 1 story</b>. Bấm tên kênh của bạn.</p>
     <div class="nav"><a class="n-chinh" href="#chinh" data-tab="chinh">● Kênh chính</a><a class="n-hn" href="#hn" data-tab="hn">● Vệ tinh HN</a><a class="n-hcm" href="#hcm" data-tab="hcm">● Vệ tinh HCM</a><a class="n-life" href="#life" data-tab="life">● Nupakachi Life</a><a class="n-luat" href="#luat" data-tab="luat">Luật chung</a><a class="n-duyet" href="https://docs.google.com/spreadsheets/d/1lgvircnKIQE9TrOsaEIFj7bdLSTESNr8beIjP0HhxXU/edit" target="_blank" rel="noopener">Quản lý duyệt ✓</a></div>
