@@ -174,7 +174,7 @@ a.submit:hover{filter:brightness(1.05)}
 @media (max-width:620px){.clips{grid-template-columns:1fr}}
 .kicker,.step .n,.fact .lbl,.tag,.lb,.cstat,.stat,th{font-family:"Be Vietnam Pro",sans-serif;text-transform:none;letter-spacing:0}
 .step .n{font-size:12.5px;font-weight:700} .fact .lbl{font-size:13px;font-weight:700;color:var(--accent-ink)} .tag{font-size:11.5px;font-weight:700} .kicker{font-size:13px;color:var(--ink-3)} .cstat{font-size:12.5px} .fold .url,.row .url{font-family:"Be Vietnam Pro",sans-serif}
-/* bản 13: nhỏ lại ~12% theo ý chị Linh */
+/* bản 14: nhỏ lại ~12% theo ý chị Linh */
 body{font-size:14px}
 .wrap{padding:30px 16px 60px;gap:30px}
 h1{font-size:clamp(23px,4.2vw,32px)}
@@ -194,14 +194,14 @@ a.submit{font-size:12px;padding:6px 8px}
 .nav a{padding:7px 12px;font-size:13px}
 .fact.bio .val.mono{padding:8px 10px}
 @media (max-width:620px){body{font-size:13.5px}.wrap{padding:22px 12px 50px;gap:24px}h1{font-size:22px}.sec-head h2{font-size:17px}.clip{grid-template-columns:64px 1fr}}
-/* bản 13: chỉ dòng title có màu, chữ thân bài đậm màu đen; bấm kênh nào chỉ hiện kênh đó */
+/* bản 14: chỉ dòng title có màu, chữ thân bài đậm màu đen; bấm kênh nào chỉ hiện kênh đó */
 .rl b,.fact .val b,.flag b,.lede b,.step p b,.chow b,.gnote b{color:var(--ink);font-weight:600}
 .nav{position:sticky;top:0;z-index:9;background:var(--ground);padding:10px 0 8px;margin:0 -4px;border-bottom:1px solid var(--line)}
 .nav a{cursor:pointer} .nav a.on{background:var(--accent,#0D5457);color:#fff!important;border-color:transparent}
 .nav a.n-chinh.on{background:#0D5457}.nav a.n-hn.on{background:#7E3F52}.nav a.n-hcm.on{background:#D9548A}.nav a.n-life.on{background:#6B4FB0}.nav a.n-luat.on{background:var(--ink)}
 .tab{display:none} .tab.on{display:block} .tab.on.kenh{display:block}
 .hint{margin:0;color:var(--ink-2);font-size:13.5px}
-/* bản 13b: mỗi ngày 1 clip + 1 story, phần còn lại gập lại */
+/* bản 14b: mỗi ngày 1 clip + 1 story, phần còn lại gập lại */
 .role{margin:0;color:var(--ink-2);font-size:13.5px}
 .today{display:flex;flex-direction:column;gap:12px}
 .clips.one{grid-template-columns:1fr} .clips.one .clip{grid-template-columns:110px 1fr;background:var(--surface)} .clips.one .chow{font-size:14px}
@@ -215,15 +215,23 @@ details.more summary::-webkit-details-marker{display:none}
 details.more>*:not(summary){margin-top:10px}
 details.more.all .grp{margin-top:16px}
 @media (max-width:620px){.clips.one .clip{grid-template-columns:90px 1fr}}
+/* bản 14: không ấn định clip; nút bấm rồi đổi màu xanh, nhớ trên máy */
+.cact a.did{background:#1E8E3E!important;color:#fff!important;border-color:transparent!important}
+.clip.did{border-color:#1E8E3E;box-shadow:inset 3px 0 0 #1E8E3E}
+.okx{color:#1E8E3E;font-weight:700}
+.sec-head.sub{margin-top:8px} .sec-head.sub h2{font-size:16px}
+button.reset{background:none;border:1px solid var(--line-strong);border-radius:999px;padding:5px 10px;font:inherit;font-size:12px;color:var(--ink-3);cursor:pointer}
+.nav a.n-duyet{background:#1E8E3E;color:#fff;border-color:transparent;margin-left:auto}
+.cact.one{grid-template-columns:1fr;margin-top:8px} a.open.duyet{background:#1E8E3E!important;color:#fff!important}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <div class="kicker">Dolinhanh Bridal · nội bộ · cập nhật 06/09/2026 · bản 13</div>
+    <div class="kicker">Dolinhanh Bridal · nội bộ · cập nhật 06/09/2026 · bản 14</div>
     <h1>Bảng điều khiển TikTok</h1>
     <p class="lede">Mỗi ngày: <b>quay 1 clip theo mẫu</b> + <b>đăng 1 story</b>. Bấm tên kênh của bạn.</p>
-    <div class="nav"><a class="n-chinh" href="#chinh" data-tab="chinh">● Kênh chính</a><a class="n-hn" href="#hn" data-tab="hn">● Vệ tinh HN</a><a class="n-hcm" href="#hcm" data-tab="hcm">● Vệ tinh HCM</a><a class="n-life" href="#life" data-tab="life">● Nupakachi Life</a><a class="n-luat" href="#luat" data-tab="luat">Luật chung</a></div>
+    <div class="nav"><a class="n-chinh" href="#chinh" data-tab="chinh">● Kênh chính</a><a class="n-hn" href="#hn" data-tab="hn">● Vệ tinh HN</a><a class="n-hcm" href="#hcm" data-tab="hcm">● Vệ tinh HCM</a><a class="n-life" href="#life" data-tab="life">● Nupakachi Life</a><a class="n-luat" href="#luat" data-tab="luat">Luật chung</a><a class="n-duyet" href="https://docs.google.com/spreadsheets/d/1lgvircnKIQE9TrOsaEIFj7bdLSTESNr8beIjP0HhxXU/edit" target="_blank" rel="noopener">Quản lý duyệt ✓</a></div>
   </header>
 
   <div id="tab-luat" class="tab">
@@ -272,21 +280,22 @@ details.more.all .grp{margin-top:16px}
   <section id="chinh" class="kenh k-chinh tab">
   <div class="sec-head"><span class="dot"></span><h2>Kênh chính</h2><span class="who">@dolinhanhbridal2019 · 3 clip/tuần</span></div>
   <p class="role">Thương hiệu sang. Video để cô dâu <b>lưu lại</b> và <b>muốn được như thế</b>.</p>
-  <div class="today">
-    <div class="fact hero"><span class="lbl">1 · Hôm nay quay clip này</span><div class="clips one" id="hero-chinh"></div><p class="hint">Mẫu tự đổi mỗi ngày, không cần chọn. Xem clip → quay giống → bấm Nộp source.</p></div>
-    <div class="two">
-      <div class="fact"><span class="lbl">2 · Story hôm nay (1 cái, không cần dựng)</span><div class="val" id="story-chinh"></div><ul class="rl story-all" hidden><li><b>Hậu trường buổi fitting hôm nay</b>: tay chỉnh corset, cài voan, đuôi váy trải ra (không lộ mặt khách nếu chưa xin phép).</li><li><b>Cô dâu vừa chốt váy</b>: 1 ảnh đẹp + chữ “Cô dâu tháng 10 đã tìm được váy của mình”.</li><li><b>Váy mới về</b> / lịch fitting còn trống tuần này.</li><li><b>Đăng lại clip vừa lên feed</b> dưới dạng story để đẩy view 24h đầu.</li></ul></div>
-      <div class="fact bio"><span class="lbl">3 · Bio dưới avatar phải đúng câu này</span><div class="val mono">Be yourself and look happy!</div><button class="copy" type="button" data-url="Be yourself and look happy!">Chép bio</button></div>
-    </div>
+  <div class="two">
+    <div class="fact"><span class="lbl">Luật khi quay</span><ul class="rl"><li><b>Quay trong showroom thật</b>, trước gương lớn. <b>Không nền hồng studio.</b></li><li>Người mặc váy là <b>cô dâu thật đang thử</b> (xin phép quay 30 giây) hoặc nhân viên, <b>có chuyển động, không đứng yên</b>.</li><li><b>Caption 1 câu nói với cô dâu tương lai</b>, không mô tả váy. Xưng “bạn”.</li><li><b>Nhạc ballad đang lên.</b> Không nhảy trend, không chữ hồng to.</li><li><b>Giá và ngày cưới không nói trên video.</b></li></ul></div>
+    <div class="fact"><span class="lbl">Story — mỗi ngày 1 cái, chọn 1 trong đây</span><ul class="rl"><li><b>Hậu trường buổi fitting hôm nay</b>: tay chỉnh corset, cài voan, đuôi váy trải ra (không lộ mặt khách nếu chưa xin phép).</li><li><b>Cô dâu vừa chốt váy</b>: 1 ảnh đẹp + chữ “Cô dâu tháng 10 đã tìm được váy của mình”.</li><li><b>Váy mới về</b> / lịch fitting còn trống tuần này.</li><li><b>Đăng lại clip vừa lên feed</b> dưới dạng story để đẩy view 24h đầu.</li></ul></div>
   </div>
-  <details class="more" open><summary>Luật khi quay · 5 dòng</summary><ul class="rl"><li><b>Quay trong showroom thật</b>, trước gương lớn. <b>Không nền hồng studio.</b></li><li>Người mặc váy là <b>cô dâu thật đang thử</b> (xin phép quay 30 giây) hoặc nhân viên, <b>có chuyển động, không đứng yên</b>.</li><li><b>Caption 1 câu nói với cô dâu tương lai</b>, không mô tả váy. Xưng “bạn”.</li><li><b>Nhạc ballad đang lên.</b> Không nhảy trend, không chữ hồng to.</li><li><b>Giá và ngày cưới không nói trên video.</b></li></ul></details>
-  <details class="more"><summary>Thư mục nộp file · 2 thư mục</summary>
+  <div class="two">
+    <div class="fact bio"><span class="lbl">Bio dưới avatar phải đúng câu này</span><div class="val mono">Be yourself and look happy!</div><button class="copy" type="button" data-url="Be yourself and look happy!">Chép bio</button></div>
+    <div class="fact"><span class="lbl">Cách nộp</span><div class="val" style="font-weight:500">Chọn clip mẫu bên dưới → <b>Xem clip</b> → quay giống → <b>Nộp source</b> (tải file gốc vào thư mục mở ra) → dựng xong <b>Nộp clip xong</b>. Nút bấm rồi sẽ <span class="okx">✓ đổi màu xanh</span> để biết đã làm.<div class="cact one"><a class="open duyet" href="https://docs.google.com/spreadsheets/d/1lgvircnKIQE9TrOsaEIFj7bdLSTESNr8beIjP0HhxXU/edit" target="_blank" rel="noopener">Quản lý duyệt ✓ — mở bảng duyệt</a></div></div></div>
+  </div>
+  <details class="more"><summary>Thư mục nộp file của kênh · 2 thư mục</summary>
     <div class="two fold">
       <div class="fact"><span class="lbl">① Nộp source (file gốc chưa dựng)</span><div class="val">TikTok source – 1. Kênh chính DLA</div><div class="cact"><a class="open" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener">Mở thư mục</a><button class="copy" type="button" data-url="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg">Chép link</button></div></div>
       <div class="fact"><span class="lbl">② Nộp clip hoàn thành (đã dựng)</span><div class="val">1. Kênh chính DLA – clip hoàn thành</div><div class="cact"><a class="open" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener">Mở thư mục</a><button class="copy" type="button" data-url="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa">Chép link</button></div></div>
     </div>
+    <p class="hint"><button class="reset" type="button" data-k="chinh">Xoá hết dấu ✓ của kênh này trên máy này</button></p>
   </details>
-  <details class="more all"><summary>Tất cả clip mẫu · 29 clip · xem khi muốn đổi kiểu</summary>
+  <div class="sec-head sub"><h2>Clip mẫu · 29 clip · chọn cái nào cũng được</h2></div>
   <div class="grp"><h3>① Cô dâu thật + một câu cảm xúc</h3><p class="gnote">2 clip/tuần. Một váy, một người, quay cầm tay chậm, soi gương, vuốt voan.</p><div class="clips"><div class="clip">
   <img src="data:image/jpeg;base64,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" alt="" loading="lazy">
   <div class="cbody">
@@ -294,9 +303,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">820K view · 54K tim · 14K lưu · 33s</p>
     <p class="chow"><b>Học đầu tiên.</b> Một váy, cô dâu soi gương, ngồi xuống sàn. Caption một câu nói với cô dâu tương lai, không mô tả váy.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@unibridal.vn/video/7614367729193127189" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@unibridal.vn/video/7614367729193127189" target="_blank" rel="noopener" data-m="chinh|7614367729193127189|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener" data-m="chinh|7614367729193127189|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener" data-m="chinh|7614367729193127189|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -306,9 +315,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">339K view · 23K tim · 5K lưu · 28s</p>
     <p class="chow">Đứng trước gương lớn có logo, ánh sáng cửa sổ, tự cầm điện thoại quay như cô dâu thật.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@unibridal.vn/video/7657901936208923924" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@unibridal.vn/video/7657901936208923924" target="_blank" rel="noopener" data-m="chinh|7657901936208923924|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener" data-m="chinh|7657901936208923924|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener" data-m="chinh|7657901936208923924|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -318,9 +327,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">298K view · 22K tim · 5K lưu · 26s</p>
     <p class="chow">Lặp lại cùng khung hình gương + sàn gỗ để người xem nhận ra kênh.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@unibridal.vn/video/7661995854873529621" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@unibridal.vn/video/7661995854873529621" target="_blank" rel="noopener" data-m="chinh|7661995854873529621|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener" data-m="chinh|7661995854873529621|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener" data-m="chinh|7661995854873529621|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -330,9 +339,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">179K view · 29K tim · 6K lưu · 47s</p>
     <p class="chow">47 giây vẫn được nếu có người thật chuyển động trong váy.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@unibridal.vn/video/7678324851672714516" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@unibridal.vn/video/7678324851672714516" target="_blank" rel="noopener" data-m="chinh|7678324851672714516|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener" data-m="chinh|7678324851672714516|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener" data-m="chinh|7678324851672714516|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -342,9 +351,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">451K view · 22K tim · 4K lưu · 36s</p>
     <p class="chow">Cô dâu thật (không phải mẫu) mặc váy ren hạ eo, 36 giây.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@nguyenngocha2023/video/7669845493681376529" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@nguyenngocha2023/video/7669845493681376529" target="_blank" rel="noopener" data-m="chinh|7669845493681376529|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener" data-m="chinh|7669845493681376529|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener" data-m="chinh|7669845493681376529|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -354,9 +363,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">235K view · 11K tim · 1K lưu · 31s</p>
     <p class="chow">Sức mạnh ở câu caption: “Tin tôi đi, người được khoác lên mình chiếc váy này chính là bạn”.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@soha.bridal/video/7662679747842919687" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@soha.bridal/video/7662679747842919687" target="_blank" rel="noopener" data-m="chinh|7662679747842919687|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener" data-m="chinh|7662679747842919687|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener" data-m="chinh|7662679747842919687|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -366,9 +375,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">653K view · 31K tim · 3K lưu · 38s</p>
     <p class="chow">Khoảnh khắc cô dâu bước ra, mọi người quay lại nhìn. Xin cô dâu DLA quay lại khoảnh khắc này.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@thuiuu32/video/7640708294385863957" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@thuiuu32/video/7640708294385863957" target="_blank" rel="noopener" data-m="chinh|7640708294385863957|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener" data-m="chinh|7640708294385863957|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener" data-m="chinh|7640708294385863957|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div></div></div><div class="grp"><h3>② Cú “wow” ánh sáng, 8–20 giây</h3><p class="gnote">1 clip/tuần. Không kể gì, một hình ảnh khiến người ta dừng tay.</p><div class="clips"><div class="clip">
@@ -378,9 +387,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">3.5M view · 288K tim · 51K lưu · 20s</p>
     <p class="chow">Tắt đèn showroom, để 1 đèn phía sau, cô dâu bước từ chỗ tối ra, voan hiện dần. 20 giây, không chữ.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@khabibbridal/video/7383914848570101000" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@khabibbridal/video/7383914848570101000" target="_blank" rel="noopener" data-m="chinh|7383914848570101000|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener" data-m="chinh|7383914848570101000|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener" data-m="chinh|7383914848570101000|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -390,9 +399,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">1.8M view · 183K tim · 11K lưu · 8s</p>
     <p class="chow">8 giây, một cảnh voan lấp lánh dưới đèn hắt. Ngắn tối đa, làm được mỗi tuần.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@khabibbridal/video/7333055427279736082" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@khabibbridal/video/7333055427279736082" target="_blank" rel="noopener" data-m="chinh|7333055427279736082|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener" data-m="chinh|7333055427279736082|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener" data-m="chinh|7333055427279736082|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -402,9 +411,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">356K view · 25K tim · 5K lưu · 26s</p>
     <p class="chow">Cận ren + ánh sáng, 26 giây, nhạc ballad.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@khabibbridal/video/7657852389138894098" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@khabibbridal/video/7657852389138894098" target="_blank" rel="noopener" data-m="chinh|7657852389138894098|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener" data-m="chinh|7657852389138894098|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener" data-m="chinh|7657852389138894098|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div></div></div><div class="grp"><h3>③ Xen kẽ khi có dịp</h3><p class="gnote">3 váy cho một kiểu cô dâu · khoảnh khắc thật · mẹo sang.</p><div class="clips"><div class="clip">
@@ -414,9 +423,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat"></p>
     <p class="chow">3 váy cho một kiểu cô dâu (“cô dâu cổ điển”), 15 giây, chữ serif nhỏ.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@leciabridal/video/7350967662161284370" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@leciabridal/video/7350967662161284370" target="_blank" rel="noopener" data-m="chinh|7350967662161284370|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener" data-m="chinh|7350967662161284370|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener" data-m="chinh|7350967662161284370|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -426,9 +435,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">313K view · 21K tim · 1K lưu · 32s</p>
     <p class="chow">Cô dâu chú rể thật hát cho nhau trong showroom. Khoảnh khắc thật, không dàn dựng.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@unibridal.vn/video/7382567250886266130" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@unibridal.vn/video/7382567250886266130" target="_blank" rel="noopener" data-m="chinh|7382567250886266130|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener" data-m="chinh|7382567250886266130|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener" data-m="chinh|7382567250886266130|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -438,9 +447,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">427K view · 13K tim · 470 lưu · 15s</p>
     <p class="chow">Mẹo 15 giây kiểu sang: “lưu ý để tránh vấn đề này trong ngày cưới”, chữ nhỏ trên footage đẹp.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@ligimi.bridal/video/7157327727702396186" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@ligimi.bridal/video/7157327727702396186" target="_blank" rel="noopener" data-m="chinh|7157327727702396186|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener" data-m="chinh|7157327727702396186|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener" data-m="chinh|7157327727702396186|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div></div></div><div class="grp"><h3>④ Reel Instagram viral — tiệm váy Việt Nam</h3><p class="gnote">Đăng cùng clip lên cả TikTok và Instagram. Đây là các reel sang đang nổ ở VN.</p><div class="clips"><div class="clip">
@@ -450,9 +459,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">909K view · 50K tim · 15s · IG</p>
     <p class="chow"><b>908K view, 15 giây.</b> Chou Bridal: cùng một váy ren, 2 phiên bản cổ điển / hiện đại đặt cạnh nhau. Một ý tưởng, một cú so sánh.</p>
     <div class="cact">
-      <a class="open" href="https://www.instagram.com/reel/DWDwUeAAtgB/" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.instagram.com/reel/DWDwUeAAtgB/" target="_blank" rel="noopener" data-m="chinh|DWDwUeAAtgB|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener" data-m="chinh|DWDwUeAAtgB|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener" data-m="chinh|DWDwUeAAtgB|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -462,9 +471,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">587K view · 42K tim · 16s · IG</p>
     <p class="chow"><b>587K, 16 giây, 21/08/2026.</b> IDY Atelier: một váy, một mẫu, ánh sáng cửa sổ, chữ serif tên mẫu váy. Đúng gu sang của DLA.</p>
     <div class="cact">
-      <a class="open" href="https://www.instagram.com/reel/DcScJsVBRuV/" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.instagram.com/reel/DcScJsVBRuV/" target="_blank" rel="noopener" data-m="chinh|DcScJsVBRuV|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener" data-m="chinh|DcScJsVBRuV|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener" data-m="chinh|DcScJsVBRuV|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -474,9 +483,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">516K view · 31s · IG</p>
     <p class="chow"><b>516K.</b> White Peony: “cô dâu bay từ Mỹ về thử 3 váy may riêng và phản ứng của cô ấy” — câu chuyện cô dâu thật + reaction.</p>
     <div class="cact">
-      <a class="open" href="https://www.instagram.com/reel/DWu-8CHSoGf/" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.instagram.com/reel/DWu-8CHSoGf/" target="_blank" rel="noopener" data-m="chinh|DWu-8CHSoGf|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener" data-m="chinh|DWu-8CHSoGf|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener" data-m="chinh|DWu-8CHSoGf|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -486,9 +495,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">491K view · 448 tim · 47s · IG</p>
     <p class="chow"><b>490K.</b> Lecia: hậu trường đóng gói, giao váy tận tay — “Prepared with precision. Delivered with love”. Không cần mẫu.</p>
     <div class="cact">
-      <a class="open" href="https://www.instagram.com/reel/DWi0ZBNETBL/" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.instagram.com/reel/DWi0ZBNETBL/" target="_blank" rel="noopener" data-m="chinh|DWi0ZBNETBL|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener" data-m="chinh|DWi0ZBNETBL|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener" data-m="chinh|DWi0ZBNETBL|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -498,9 +507,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">364K view · 11K tim · 123s · IG</p>
     <p class="chow"><b>364K, 2 phút.</b> Lecia: cô dâu ở nước ngoài đặt váy không cần thử — kể một hành trình khách thật.</p>
     <div class="cact">
-      <a class="open" href="https://www.instagram.com/reel/DcOPy_4j0FD/" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.instagram.com/reel/DcOPy_4j0FD/" target="_blank" rel="noopener" data-m="chinh|DcOPy_4j0FD|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener" data-m="chinh|DcOPy_4j0FD|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener" data-m="chinh|DcOPy_4j0FD|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -510,9 +519,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">123K view · 871 tim · 19s · IG</p>
     <p class="chow"><b>122K, 19 giây.</b> Darlington: ra bộ sưu tập JARDIN, khung cắt từ cằm xuống, một dòng chữ giữ suốt clip.</p>
     <div class="cact">
-      <a class="open" href="https://www.instagram.com/reel/DZceB17hG98/" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.instagram.com/reel/DZceB17hG98/" target="_blank" rel="noopener" data-m="chinh|DZceB17hG98|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener" data-m="chinh|DZceB17hG98|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener" data-m="chinh|DZceB17hG98|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -522,9 +531,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">97K view · 445 tim · 32s · IG</p>
     <p class="chow"><b>97K.</b> Darlington “The Wedding Wardrobe”: 3 váy cho 3 khoảnh khắc trong ngày cưới.</p>
     <div class="cact">
-      <a class="open" href="https://www.instagram.com/reel/DcDg_Q8h4tY/" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.instagram.com/reel/DcDg_Q8h4tY/" target="_blank" rel="noopener" data-m="chinh|DcDg_Q8h4tY|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener" data-m="chinh|DcDg_Q8h4tY|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener" data-m="chinh|DcDg_Q8h4tY|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -534,9 +543,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">67K view · 148 tim · 43s · IG</p>
     <p class="chow"><b>67K, 43 giây.</b> Uni Bridal trên IG: cùng footage TikTok đăng lại, vẫn 67K. Một clip đăng 2 nơi.</p>
     <div class="cact">
-      <a class="open" href="https://www.instagram.com/reel/Db2jcjDCGMH/" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.instagram.com/reel/Db2jcjDCGMH/" target="_blank" rel="noopener" data-m="chinh|Db2jcjDCGMH|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener" data-m="chinh|Db2jcjDCGMH|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener" data-m="chinh|Db2jcjDCGMH|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div></div></div><div class="grp"><h3>⑤ Reel Instagram viral — nhà mốt quốc tế</h3><p class="gnote">8–18 giây, một ý: reaction chú rể · váy 2 trong 1 · chi tiết biến đổi · một câu thái độ.</p><div class="clips"><div class="clip">
@@ -546,9 +555,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">15.9M view · 1.5M tim · 9s · IG</p>
     <p class="chow"><b>15.9M, 9 giây.</b> Galia Lahav: “He has to cry, right?” — chú rể nhìn thấy cô dâu, khóc. Reaction là nội dung mạnh nhất thế giới cưới.</p>
     <div class="cact">
-      <a class="open" href="https://www.instagram.com/reel/C7J3gIPtX1S/" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.instagram.com/reel/C7J3gIPtX1S/" target="_blank" rel="noopener" data-m="chinh|C7J3gIPtX1S|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener" data-m="chinh|C7J3gIPtX1S|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener" data-m="chinh|C7J3gIPtX1S|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -558,9 +567,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">48.3M view · 250K tim · 8s · IG</p>
     <p class="chow"><b>48M, 8 giây.</b> Milla Nova: váy 2 trong 1 — khoác thêm áo choàng mikado là thành váy khác. Biến hình trong 1 cú cắt.</p>
     <div class="cact">
-      <a class="open" href="https://www.instagram.com/reel/DBrVi7iOCGd/" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.instagram.com/reel/DBrVi7iOCGd/" target="_blank" rel="noopener" data-m="chinh|DBrVi7iOCGd|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener" data-m="chinh|DBrVi7iOCGd|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener" data-m="chinh|DBrVi7iOCGd|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -570,9 +579,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">15.1M view · 1.0M tim · 18s · IG</p>
     <p class="chow"><b>15.1M, 18 giây.</b> Galia Lahav: “Sound on for the moment you find THE ONE” — khoảnh khắc cô dâu tìm được váy, có tiếng thật.</p>
     <div class="cact">
-      <a class="open" href="https://www.instagram.com/reel/C6MDpaXtVbm/" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.instagram.com/reel/C6MDpaXtVbm/" target="_blank" rel="noopener" data-m="chinh|C6MDpaXtVbm|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener" data-m="chinh|C6MDpaXtVbm|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener" data-m="chinh|C6MDpaXtVbm|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -582,9 +591,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">15.0M view · 769K tim · 9s · IG</p>
     <p class="chow"><b>15M, 9 giây.</b> Milla Nova: câu chuyện “cô dâu thế kỷ 21 bận rộn” + váy. Một câu, một váy.</p>
     <div class="cact">
-      <a class="open" href="https://www.instagram.com/reel/C8cgx4SsQZW/" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.instagram.com/reel/C8cgx4SsQZW/" target="_blank" rel="noopener" data-m="chinh|C8cgx4SsQZW|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener" data-m="chinh|C8cgx4SsQZW|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener" data-m="chinh|C8cgx4SsQZW|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -594,9 +603,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">23.0M view · 247K tim · 11s · IG</p>
     <p class="chow"><b>23M, 11 giây.</b> Milla Nova: “Revenge is a dish best served cold” — thái độ, hài nhẹ, váy đẹp. Kênh sang vẫn được đùa.</p>
     <div class="cact">
-      <a class="open" href="https://www.instagram.com/reel/DO_x-H1DjZX/" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.instagram.com/reel/DO_x-H1DjZX/" target="_blank" rel="noopener" data-m="chinh|DO_x-H1DjZX|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener" data-m="chinh|DO_x-H1DjZX|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener" data-m="chinh|DO_x-H1DjZX|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -606,9 +615,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">8.7M view · 808K tim · 8s · IG</p>
     <p class="chow"><b>8.7M, 8 giây.</b> Galia Lahav: tay áo tháo rời — một chi tiết có thể biến đổi.</p>
     <div class="cact">
-      <a class="open" href="https://www.instagram.com/reel/C0COxDbooO5/" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.instagram.com/reel/C0COxDbooO5/" target="_blank" rel="noopener" data-m="chinh|C0COxDbooO5|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener" data-m="chinh|C0COxDbooO5|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener" data-m="chinh|C0COxDbooO5|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -618,9 +627,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">1.0M view · 12K tim · 8s · IG</p>
     <p class="chow"><b>1M, 8 giây, 24/08/2026.</b> Galia Lahav: “a little drama, a lot of glamour” — đính kết dưới ánh sáng.</p>
     <div class="cact">
-      <a class="open" href="https://www.instagram.com/reel/DcbUzV5oj_k/" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.instagram.com/reel/DcbUzV5oj_k/" target="_blank" rel="noopener" data-m="chinh|DcbUzV5oj_k|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener" data-m="chinh|DcbUzV5oj_k|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener" data-m="chinh|DcbUzV5oj_k|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -630,32 +639,32 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">66K view · 717 tim · 13s · IG</p>
     <p class="chow"><b>66K, 13 giây.</b> Eva Lendel: BST “Less Is More” — tối giản, đúng chữ Quiet Minimal Luxury của DLA.</p>
     <div class="cact">
-      <a class="open" href="https://www.instagram.com/reel/DclXsodIcca/" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.instagram.com/reel/DclXsodIcca/" target="_blank" rel="noopener" data-m="chinh|DclXsodIcca|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1oiHj7hOlwjYV3rfxzm0TYxIJ7NFlAmNg" target="_blank" rel="noopener" data-m="chinh|DclXsodIcca|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1kay7tg3oWlWJkqmnrPP8qxzTQwODYTMa" target="_blank" rel="noopener" data-m="chinh|DclXsodIcca|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div></div></div>
-  </details>
 </section>
   <section id="hn" class="kenh k-hn tab">
   <div class="sec-head"><span class="dot"></span><h2>Vệ tinh HN</h2><span class="who">@fitting.vay.cuoi · 3 clip/tuần</span></div>
   <p class="role"><b>“Cẩm nang cô dâu”</b>. Mẹo, checklist, trả lời nỗi lo. <b>Không nhắc tên DLA trên hình</b>, ai hỏi tiệm thì trả lời trong comment.</p>
-  <div class="today">
-    <div class="fact hero"><span class="lbl">1 · Hôm nay quay clip này</span><div class="clips one" id="hero-hn"></div><p class="hint">Mẫu tự đổi mỗi ngày, không cần chọn. Xem clip → quay giống → bấm Nộp source.</p></div>
-    <div class="two">
-      <div class="fact"><span class="lbl">2 · Story hôm nay (1 cái, không cần dựng)</span><div class="val" id="story-hn"></div><ul class="rl story-all" hidden><li><b>Sticker hỏi đáp</b>: “Bạn sắp cưới tháng mấy? Đang lo nhất chuyện gì về váy?” — <b>câu trả lời là đề bài cho clip tuần sau</b>.</li><li><b>1 mẹo 1 câu trên ảnh fitting</b>: “Đi thử váy nhớ mang giày cao đúng đôi sẽ đi ngày cưới”.</li><li><b>Poll 2 lựa chọn</b>: “Ren hay satin?”, “Đuôi cá hay xoè?”.</li><li><b>Đăng lại clip mới lên story.</b></li></ul></div>
-      <div class="fact bio"><span class="lbl">3 · Bio dưới avatar phải đúng câu này</span><div class="val mono">Quiet Minimal Luxury – Váy cưới</div><button class="copy" type="button" data-url="Quiet Minimal Luxury – Váy cưới">Chép bio</button></div>
-    </div>
+  <div class="two">
+    <div class="fact"><span class="lbl">Luật khi quay</span><ul class="rl"><li>Dùng <b>kho footage fitting thật</b> đã có, <b>không cần ai lộ mặt</b>.</li><li><b>3 giây đầu là một câu hỏi hoặc nỗi lo của cô dâu, chữ to.</b></li><li>Giữ <b>chữ pastel + giọng đọc</b> đang có.</li><li>Bấm <b>“Trả lời bằng video”</b> vào comment thật của khách.</li><li><b>Đăng đều: thứ 2 · thứ 4 · thứ 6.</b></li></ul></div>
+    <div class="fact"><span class="lbl">Story — mỗi ngày 1 cái, chọn 1 trong đây</span><ul class="rl"><li><b>Sticker hỏi đáp</b>: “Bạn sắp cưới tháng mấy? Đang lo nhất chuyện gì về váy?” — <b>câu trả lời là đề bài cho clip tuần sau</b>.</li><li><b>1 mẹo 1 câu trên ảnh fitting</b>: “Đi thử váy nhớ mang giày cao đúng đôi sẽ đi ngày cưới”.</li><li><b>Poll 2 lựa chọn</b>: “Ren hay satin?”, “Đuôi cá hay xoè?”.</li><li><b>Đăng lại clip mới lên story.</b></li></ul></div>
   </div>
-  <details class="more" open><summary>Luật khi quay · 5 dòng</summary><ul class="rl"><li>Dùng <b>kho footage fitting thật</b> đã có, <b>không cần ai lộ mặt</b>.</li><li><b>3 giây đầu là một câu hỏi hoặc nỗi lo của cô dâu, chữ to.</b></li><li>Giữ <b>chữ pastel + giọng đọc</b> đang có.</li><li>Bấm <b>“Trả lời bằng video”</b> vào comment thật của khách.</li><li><b>Đăng đều: thứ 2 · thứ 4 · thứ 6.</b></li></ul></details>
-  <details class="more"><summary>Thư mục nộp file · 2 thư mục</summary>
+  <div class="two">
+    <div class="fact bio"><span class="lbl">Bio dưới avatar phải đúng câu này</span><div class="val mono">Quiet Minimal Luxury – Váy cưới</div><button class="copy" type="button" data-url="Quiet Minimal Luxury – Váy cưới">Chép bio</button></div>
+    <div class="fact"><span class="lbl">Cách nộp</span><div class="val" style="font-weight:500">Chọn clip mẫu bên dưới → <b>Xem clip</b> → quay giống → <b>Nộp source</b> (tải file gốc vào thư mục mở ra) → dựng xong <b>Nộp clip xong</b>. Nút bấm rồi sẽ <span class="okx">✓ đổi màu xanh</span> để biết đã làm.<div class="cact one"><a class="open duyet" href="https://docs.google.com/spreadsheets/d/1lgvircnKIQE9TrOsaEIFj7bdLSTESNr8beIjP0HhxXU/edit" target="_blank" rel="noopener">Quản lý duyệt ✓ — mở bảng duyệt</a></div></div></div>
+  </div>
+  <details class="more"><summary>Thư mục nộp file của kênh · 2 thư mục</summary>
     <div class="two fold">
       <div class="fact"><span class="lbl">① Nộp source (file gốc chưa dựng)</span><div class="val">TikTok source – 2. Fitting Váy Cưới (HN)</div><div class="cact"><a class="open" href="https://drive.google.com/drive/folders/1wB_Hjhq7sHrZklXdECGUC6hrocvJnyxt" target="_blank" rel="noopener">Mở thư mục</a><button class="copy" type="button" data-url="https://drive.google.com/drive/folders/1wB_Hjhq7sHrZklXdECGUC6hrocvJnyxt">Chép link</button></div></div>
       <div class="fact"><span class="lbl">② Nộp clip hoàn thành (đã dựng)</span><div class="val">2. Fitting Váy Cưới (HN) – clip hoàn thành</div><div class="cact"><a class="open" href="https://drive.google.com/drive/folders/1yS-iaPjpxxl6JSmjsNOqOhKa0fHMBYaJ" target="_blank" rel="noopener">Mở thư mục</a><button class="copy" type="button" data-url="https://drive.google.com/drive/folders/1yS-iaPjpxxl6JSmjsNOqOhKa0fHMBYaJ">Chép link</button></div></div>
     </div>
+    <p class="hint"><button class="reset" type="button" data-k="hn">Xoá hết dấu ✓ của kênh này trên máy này</button></p>
   </details>
-  <details class="more all"><summary>Tất cả clip mẫu · 15 clip · xem khi muốn đổi kiểu</summary>
+  <div class="sec-head sub"><h2>Clip mẫu · 15 clip · chọn cái nào cũng được</h2></div>
   <div class="grp"><h3>① Mẹo / checklist để lưu</h3><p class="gnote">2 clip/tuần. Ngắn, chữ to, đánh số, câu mở kêu gọi lưu lại.</p><div class="clips"><div class="clip">
   <img src="data:image/jpeg;base64,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" alt="" loading="lazy">
   <div class="cbody">
@@ -663,9 +672,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">987K view · 73K tim · 17K lưu · 11s</p>
     <p class="chow"><b>Học đầu tiên.</b> 11 giây, một lời nhắc chữ to “Cô dâu tương lai nhớ kĩ nhé” → 17K lưu. Ngắn tối đa, làm được mỗi ngày.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@gao.wedding.decoration/video/7672575693607210258" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1wB_Hjhq7sHrZklXdECGUC6hrocvJnyxt" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1yS-iaPjpxxl6JSmjsNOqOhKa0fHMBYaJ" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@gao.wedding.decoration/video/7672575693607210258" target="_blank" rel="noopener" data-m="hn|7672575693607210258|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1wB_Hjhq7sHrZklXdECGUC6hrocvJnyxt" target="_blank" rel="noopener" data-m="hn|7672575693607210258|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1yS-iaPjpxxl6JSmjsNOqOhKa0fHMBYaJ" target="_blank" rel="noopener" data-m="hn|7672575693607210258|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -675,9 +684,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">136K view · 6K tim · 4K lưu · 111s</p>
     <p class="chow">Tiệm váy cưới làm: “Top 7 điều nên hỏi khi đi thử váy”, đánh số 1–7 trên footage fitting → 4K lưu.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@hanhtrinhcungcodau/video/7663347406322371860" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1wB_Hjhq7sHrZklXdECGUC6hrocvJnyxt" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1yS-iaPjpxxl6JSmjsNOqOhKa0fHMBYaJ" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@hanhtrinhcungcodau/video/7663347406322371860" target="_blank" rel="noopener" data-m="hn|7663347406322371860|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1wB_Hjhq7sHrZklXdECGUC6hrocvJnyxt" target="_blank" rel="noopener" data-m="hn|7663347406322371860|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1yS-iaPjpxxl6JSmjsNOqOhKa0fHMBYaJ" target="_blank" rel="noopener" data-m="hn|7663347406322371860|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -687,9 +696,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">114K view · 6K tim · 4K lưu · 74s</p>
     <p class="chow">“7 điều nhất định phải hỏi khi đi thử váy cưới” — cùng dạng, chữ to từng điều.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@khangweddinghd/video/7595068791214738709" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1wB_Hjhq7sHrZklXdECGUC6hrocvJnyxt" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1yS-iaPjpxxl6JSmjsNOqOhKa0fHMBYaJ" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@khangweddinghd/video/7595068791214738709" target="_blank" rel="noopener" data-m="hn|7595068791214738709|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1wB_Hjhq7sHrZklXdECGUC6hrocvJnyxt" target="_blank" rel="noopener" data-m="hn|7595068791214738709|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1yS-iaPjpxxl6JSmjsNOqOhKa0fHMBYaJ" target="_blank" rel="noopener" data-m="hn|7595068791214738709|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -699,9 +708,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">146K view · 6K tim · 3K lưu · 121s</p>
     <p class="chow">Tiệm váy làm: “Chị nào chuẩn bị đi thử váy lưu video này lại” — câu mở kêu gọi lưu.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@mimosawedding.daily/video/7666052469788642568" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1wB_Hjhq7sHrZklXdECGUC6hrocvJnyxt" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1yS-iaPjpxxl6JSmjsNOqOhKa0fHMBYaJ" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@mimosawedding.daily/video/7666052469788642568" target="_blank" rel="noopener" data-m="hn|7666052469788642568|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1wB_Hjhq7sHrZklXdECGUC6hrocvJnyxt" target="_blank" rel="noopener" data-m="hn|7666052469788642568|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1yS-iaPjpxxl6JSmjsNOqOhKa0fHMBYaJ" target="_blank" rel="noopener" data-m="hn|7666052469788642568|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -711,9 +720,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">733K view · 25K tim · 12K lưu · 339s</p>
     <p class="chow">Cô dâu tự kể “kinh nghiệm đo thử váy siêu chi tiết” — dài 5 phút vẫn 12K lưu vì đúng nỗi lo.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@duyninhcouple/video/7510802351414906119" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1wB_Hjhq7sHrZklXdECGUC6hrocvJnyxt" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1yS-iaPjpxxl6JSmjsNOqOhKa0fHMBYaJ" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@duyninhcouple/video/7510802351414906119" target="_blank" rel="noopener" data-m="hn|7510802351414906119|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1wB_Hjhq7sHrZklXdECGUC6hrocvJnyxt" target="_blank" rel="noopener" data-m="hn|7510802351414906119|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1yS-iaPjpxxl6JSmjsNOqOhKa0fHMBYaJ" target="_blank" rel="noopener" data-m="hn|7510802351414906119|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -723,9 +732,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">782K view · 62K tim · 5K lưu · 65s</p>
     <p class="chow">“Lên kế hoạch làm đẹp 3–6 tháng trước cưới” — checklist theo mốc thời gian, dễ lưu.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@sabrina.uyenluu/video/7374751267899411730" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1wB_Hjhq7sHrZklXdECGUC6hrocvJnyxt" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1yS-iaPjpxxl6JSmjsNOqOhKa0fHMBYaJ" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@sabrina.uyenluu/video/7374751267899411730" target="_blank" rel="noopener" data-m="hn|7374751267899411730|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1wB_Hjhq7sHrZklXdECGUC6hrocvJnyxt" target="_blank" rel="noopener" data-m="hn|7374751267899411730|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1yS-iaPjpxxl6JSmjsNOqOhKa0fHMBYaJ" target="_blank" rel="noopener" data-m="hn|7374751267899411730|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div></div></div><div class="grp"><h3>② Hỏi-đáp nỗi lo cô dâu</h3><p class="gnote">1 clip/tuần. Lấy câu khách hay inbox: cọc bao nhiêu, thử váy mất phí không, 1m50 mặc đuôi cá được không, trùng ngày cưới thì sao.</p><div class="clips"><div class="clip">
@@ -735,9 +744,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">2.9M view · 156K tim · 1K lưu · 38s</p>
     <p class="chow">Bấm “Trả lời bằng video” vào comment thật: “Thuê váy sợ người ta lấy mất váy không?” Chữ to, trả lời thẳng.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@miituu.bridal/video/7006679687967640859" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1wB_Hjhq7sHrZklXdECGUC6hrocvJnyxt" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1yS-iaPjpxxl6JSmjsNOqOhKa0fHMBYaJ" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@miituu.bridal/video/7006679687967640859" target="_blank" rel="noopener" data-m="hn|7006679687967640859|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1wB_Hjhq7sHrZklXdECGUC6hrocvJnyxt" target="_blank" rel="noopener" data-m="hn|7006679687967640859|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1yS-iaPjpxxl6JSmjsNOqOhKa0fHMBYaJ" target="_blank" rel="noopener" data-m="hn|7006679687967640859|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -747,9 +756,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">1.4M view · 56K tim · 2K lưu · 51s</p>
     <p class="chow">Kể chuyện hậu trường 51 giây, nhân viên cầm tùng che mặt.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@miituu.bridal/video/7340289387336322312" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1wB_Hjhq7sHrZklXdECGUC6hrocvJnyxt" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1yS-iaPjpxxl6JSmjsNOqOhKa0fHMBYaJ" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@miituu.bridal/video/7340289387336322312" target="_blank" rel="noopener" data-m="hn|7340289387336322312|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1wB_Hjhq7sHrZklXdECGUC6hrocvJnyxt" target="_blank" rel="noopener" data-m="hn|7340289387336322312|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1yS-iaPjpxxl6JSmjsNOqOhKa0fHMBYaJ" target="_blank" rel="noopener" data-m="hn|7340289387336322312|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -759,9 +768,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">505K view · 18K tim · 3K lưu · 32s</p>
     <p class="chow">Tiệm váy nói với CHÚ RỂ: “đi thử đồ cùng vợ lưu ý nhé” — đổi góc nhìn, 505K view.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@hieubridal/video/7670154411754163463" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1wB_Hjhq7sHrZklXdECGUC6hrocvJnyxt" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1yS-iaPjpxxl6JSmjsNOqOhKa0fHMBYaJ" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@hieubridal/video/7670154411754163463" target="_blank" rel="noopener" data-m="hn|7670154411754163463|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1wB_Hjhq7sHrZklXdECGUC6hrocvJnyxt" target="_blank" rel="noopener" data-m="hn|7670154411754163463|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1yS-iaPjpxxl6JSmjsNOqOhKa0fHMBYaJ" target="_blank" rel="noopener" data-m="hn|7670154411754163463|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -771,9 +780,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">130K view · 3K tim · 425 lưu · 96s</p>
     <p class="chow">Dạy 3 cách mặc váy cưới rồi hỏi ngược người xem. Quay bằng footage fitting.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@mariebridal.hcm/video/7479440475812941063" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1wB_Hjhq7sHrZklXdECGUC6hrocvJnyxt" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1yS-iaPjpxxl6JSmjsNOqOhKa0fHMBYaJ" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@mariebridal.hcm/video/7479440475812941063" target="_blank" rel="noopener" data-m="hn|7479440475812941063|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1wB_Hjhq7sHrZklXdECGUC6hrocvJnyxt" target="_blank" rel="noopener" data-m="hn|7479440475812941063|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1yS-iaPjpxxl6JSmjsNOqOhKa0fHMBYaJ" target="_blank" rel="noopener" data-m="hn|7479440475812941063|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div></div></div><div class="grp"><h3>③ Kể chuyện hành trình cô dâu</h3><p class="gnote">Khi có chuyện hay từ buổi fitting.</p><div class="clips"><div class="clip">
@@ -783,9 +792,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">2.2M view · 110K tim · 9K lưu · 134s</p>
     <p class="chow"><b>2.2M view.</b> Cô dâu kể “kinh nghiệm cho mấy bà chuẩn bị cưới”, nói thẳng vào máy như bạn bè, 134 giây.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@linhbeo1m49/video/7168404492948360474" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1wB_Hjhq7sHrZklXdECGUC6hrocvJnyxt" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1yS-iaPjpxxl6JSmjsNOqOhKa0fHMBYaJ" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@linhbeo1m49/video/7168404492948360474" target="_blank" rel="noopener" data-m="hn|7168404492948360474|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1wB_Hjhq7sHrZklXdECGUC6hrocvJnyxt" target="_blank" rel="noopener" data-m="hn|7168404492948360474|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1yS-iaPjpxxl6JSmjsNOqOhKa0fHMBYaJ" target="_blank" rel="noopener" data-m="hn|7168404492948360474|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -795,9 +804,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">672K view · 45K tim · 5K lưu · 237s</p>
     <p class="chow">Cô dâu chia sẻ content “tâm huyết” sau đám cưới, 4 phút vẫn 672K. Kênh HN kể lại bằng giọng đọc + footage.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@meootraidat/video/7674599461254892818" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1wB_Hjhq7sHrZklXdECGUC6hrocvJnyxt" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1yS-iaPjpxxl6JSmjsNOqOhKa0fHMBYaJ" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@meootraidat/video/7674599461254892818" target="_blank" rel="noopener" data-m="hn|7674599461254892818|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1wB_Hjhq7sHrZklXdECGUC6hrocvJnyxt" target="_blank" rel="noopener" data-m="hn|7674599461254892818|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1yS-iaPjpxxl6JSmjsNOqOhKa0fHMBYaJ" target="_blank" rel="noopener" data-m="hn|7674599461254892818|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -807,9 +816,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">756K view · 18K tim · 1K lưu · 88s</p>
     <p class="chow">“Đi thử váy cưới cùng gia đình thì sẽ như thế này” — chuyện có mẹ, có chị em → 756K.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@ductrangdiary9/video/7635972233147469076" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1wB_Hjhq7sHrZklXdECGUC6hrocvJnyxt" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1yS-iaPjpxxl6JSmjsNOqOhKa0fHMBYaJ" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@ductrangdiary9/video/7635972233147469076" target="_blank" rel="noopener" data-m="hn|7635972233147469076|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1wB_Hjhq7sHrZklXdECGUC6hrocvJnyxt" target="_blank" rel="noopener" data-m="hn|7635972233147469076|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1yS-iaPjpxxl6JSmjsNOqOhKa0fHMBYaJ" target="_blank" rel="noopener" data-m="hn|7635972233147469076|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -819,9 +828,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">251K view · 13K tim · 4K lưu · 129s</p>
     <p class="chow">Kể hành trình một cô dâu đi tìm váy, 129 giây. Kênh HN kể lại chuyện cô dâu thật đến thử.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@uye.li/video/7660454156842372373" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1wB_Hjhq7sHrZklXdECGUC6hrocvJnyxt" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1yS-iaPjpxxl6JSmjsNOqOhKa0fHMBYaJ" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@uye.li/video/7660454156842372373" target="_blank" rel="noopener" data-m="hn|7660454156842372373|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1wB_Hjhq7sHrZklXdECGUC6hrocvJnyxt" target="_blank" rel="noopener" data-m="hn|7660454156842372373|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1yS-iaPjpxxl6JSmjsNOqOhKa0fHMBYaJ" target="_blank" rel="noopener" data-m="hn|7660454156842372373|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -831,32 +840,32 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">330K view · 26K tim · 3K lưu · 77s</p>
     <p class="chow">Đặt câu hỏi để comment đổ về: “váy cưới thiết kế còn bên nào không?”</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@sangtranglangthang/video/7656324138813918482" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1wB_Hjhq7sHrZklXdECGUC6hrocvJnyxt" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1yS-iaPjpxxl6JSmjsNOqOhKa0fHMBYaJ" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@sangtranglangthang/video/7656324138813918482" target="_blank" rel="noopener" data-m="hn|7656324138813918482|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1wB_Hjhq7sHrZklXdECGUC6hrocvJnyxt" target="_blank" rel="noopener" data-m="hn|7656324138813918482|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1yS-iaPjpxxl6JSmjsNOqOhKa0fHMBYaJ" target="_blank" rel="noopener" data-m="hn|7656324138813918482|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div></div></div>
-  </details>
 </section>
   <section id="hcm" class="kenh k-hcm tab">
   <div class="sec-head"><span class="dot"></span><h2>Vệ tinh HCM</h2><span class="who">@dolinhanh.bridal “váy cưới xinh” · 1 clip/ngày</span></div>
   <p class="role">Đóng vai <b>“một cô gái sắp cưới đi thử váy”</b>. <b>Không nhắc tên DLA trên hình</b>, ai hỏi tiệm thì trả lời trong comment.</p>
-  <div class="today">
-    <div class="fact hero"><span class="lbl">1 · Hôm nay quay clip này</span><div class="clips one" id="hero-hcm"></div><p class="hint">Mẫu tự đổi mỗi ngày, không cần chọn. Xem clip → quay giống → bấm Nộp source.</p></div>
-    <div class="two">
-      <div class="fact"><span class="lbl">2 · Story hôm nay (1 cái, không cần dựng)</span><div class="val" id="story-hcm"></div><ul class="rl story-all" hidden><li><b>“Hôm nay thử váy gì”</b> — 1 ảnh gương từ cằm xuống + <b>poll “1 hay 2?”</b>.</li><li><b>Kể chuyện như bạn bè</b>: “mẹ chồng thích váy xoè, mình thích đuôi cá, mấy bà chọn giúp”.</li><li><b>Ảnh chi tiết</b>: ren, đá, voan, cận tay vuốt váy.</li><li><b>Đăng lại clip mới lên story</b>, thêm sticker hỏi “váy nào hợp mình nhất?”.</li></ul></div>
-      <div class="fact bio"><span class="lbl">3 · Bio dưới avatar phải đúng câu này</span><div class="val mono">Nơi mỗi cô dâu tìm thấy phiên bản đẹp nhất của mình</div><button class="copy" type="button" data-url="Nơi mỗi cô dâu tìm thấy phiên bản đẹp nhất của mình">Chép bio</button></div>
-    </div>
+  <div class="two">
+    <div class="fact"><span class="lbl">Luật khi quay</span><ul class="rl"><li><b>Tripod cố định trước gương showroom</b>, né logo. <b>Bỏ rèm vàng.</b></li><li><b>Giấu mặt theo 5 cách ở mục ②</b> — <b>không cầm điện thoại che mặt</b>.</li><li><b>Mỗi clip 3 váy × 7 giây</b>, tiêu đề <b>“Series đi thử váy cưới của mình · Tập N”</b>.</li><li><b>Kết bằng câu hỏi</b>: “váy nào hợp mình nhất?”, “chọn giúp mình 1 hay 2?”. Xưng “mình”.</li><li><b>Quay gộp 1 buổi 30 phút = 5 clip cho 5 ngày.</b> Chọn bạn có <b>dáng đẹp nhất, không cần mặt</b>.</li></ul></div>
+    <div class="fact"><span class="lbl">Story — mỗi ngày 1 cái, chọn 1 trong đây</span><ul class="rl"><li><b>“Hôm nay thử váy gì”</b> — 1 ảnh gương từ cằm xuống + <b>poll “1 hay 2?”</b>.</li><li><b>Kể chuyện như bạn bè</b>: “mẹ chồng thích váy xoè, mình thích đuôi cá, mấy bà chọn giúp”.</li><li><b>Ảnh chi tiết</b>: ren, đá, voan, cận tay vuốt váy.</li><li><b>Đăng lại clip mới lên story</b>, thêm sticker hỏi “váy nào hợp mình nhất?”.</li></ul></div>
   </div>
-  <details class="more" open><summary>Luật khi quay · 5 dòng</summary><ul class="rl"><li><b>Tripod cố định trước gương showroom</b>, né logo. <b>Bỏ rèm vàng.</b></li><li><b>Giấu mặt theo 5 cách ở mục ②</b> — <b>không cầm điện thoại che mặt</b>.</li><li><b>Mỗi clip 3 váy × 7 giây</b>, tiêu đề <b>“Series đi thử váy cưới của mình · Tập N”</b>.</li><li><b>Kết bằng câu hỏi</b>: “váy nào hợp mình nhất?”, “chọn giúp mình 1 hay 2?”. Xưng “mình”.</li><li><b>Quay gộp 1 buổi 30 phút = 5 clip cho 5 ngày.</b> Chọn bạn có <b>dáng đẹp nhất, không cần mặt</b>.</li></ul></details>
-  <details class="more"><summary>Thư mục nộp file · 2 thư mục</summary>
+  <div class="two">
+    <div class="fact bio"><span class="lbl">Bio dưới avatar phải đúng câu này</span><div class="val mono">Nơi mỗi cô dâu tìm thấy phiên bản đẹp nhất của mình</div><button class="copy" type="button" data-url="Nơi mỗi cô dâu tìm thấy phiên bản đẹp nhất của mình">Chép bio</button></div>
+    <div class="fact"><span class="lbl">Cách nộp</span><div class="val" style="font-weight:500">Chọn clip mẫu bên dưới → <b>Xem clip</b> → quay giống → <b>Nộp source</b> (tải file gốc vào thư mục mở ra) → dựng xong <b>Nộp clip xong</b>. Nút bấm rồi sẽ <span class="okx">✓ đổi màu xanh</span> để biết đã làm.<div class="cact one"><a class="open duyet" href="https://docs.google.com/spreadsheets/d/1lgvircnKIQE9TrOsaEIFj7bdLSTESNr8beIjP0HhxXU/edit" target="_blank" rel="noopener">Quản lý duyệt ✓ — mở bảng duyệt</a></div></div></div>
+  </div>
+  <details class="more"><summary>Thư mục nộp file của kênh · 2 thư mục</summary>
     <div class="two fold">
       <div class="fact"><span class="lbl">① Nộp source (file gốc chưa dựng)</span><div class="val">TikTok source – 3. Váy cưới xinh (HCM)</div><div class="cact"><a class="open" href="https://drive.google.com/drive/folders/1nGC8-MZm4EM0LU3ZBCuIcd7W626_OmNl" target="_blank" rel="noopener">Mở thư mục</a><button class="copy" type="button" data-url="https://drive.google.com/drive/folders/1nGC8-MZm4EM0LU3ZBCuIcd7W626_OmNl">Chép link</button></div></div>
       <div class="fact"><span class="lbl">② Nộp clip hoàn thành (đã dựng)</span><div class="val">VÁY XINH (thư mục có sẵn)</div><div class="cact"><a class="open" href="https://drive.google.com/drive/folders/1IQlJBzADXVxG6o4SH2iG9MyaVHZXqLg9" target="_blank" rel="noopener">Mở thư mục</a><button class="copy" type="button" data-url="https://drive.google.com/drive/folders/1IQlJBzADXVxG6o4SH2iG9MyaVHZXqLg9">Chép link</button></div></div>
     </div>
+    <p class="hint"><button class="reset" type="button" data-k="hcm">Xoá hết dấu ✓ của kênh này trên máy này</button></p>
   </details>
-  <details class="more all"><summary>Tất cả clip mẫu · 19 clip · xem khi muốn đổi kiểu</summary>
+  <div class="sec-head sub"><h2>Clip mẫu · 19 clip · chọn cái nào cũng được</h2></div>
   <div class="grp"><h3>① Series thử váy</h3><p class="gnote">5 clip/tuần. Format chính của kênh.</p><div class="clips"><div class="clip">
   <img src="data:image/jpeg;base64,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" alt="" loading="lazy">
   <div class="cbody">
@@ -864,9 +873,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">1.6M view · 129K tim · 6K lưu · 23s</p>
     <p class="chow"><b>Học đầu tiên.</b> Tripod cố định, 3 váy × 7 giây, chữ tiêu đề 3 giây đầu “Series đi thử váy cưới của mình · Tập 1”.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@miituu.bridal/video/7561308561876192530" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1nGC8-MZm4EM0LU3ZBCuIcd7W626_OmNl" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1IQlJBzADXVxG6o4SH2iG9MyaVHZXqLg9" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@miituu.bridal/video/7561308561876192530" target="_blank" rel="noopener" data-m="hcm|7561308561876192530|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1nGC8-MZm4EM0LU3ZBCuIcd7W626_OmNl" target="_blank" rel="noopener" data-m="hcm|7561308561876192530|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1IQlJBzADXVxG6o4SH2iG9MyaVHZXqLg9" target="_blank" rel="noopener" data-m="hcm|7561308561876192530|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -876,9 +885,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">1.3M view · 96K tim · 4K lưu · 22s</p>
     <p class="chow">Hôm sau đăng tiếp cùng góc máy. Series quan trọng hơn ý tưởng mới.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@miituu.bridal/video/7561841853306359047" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1nGC8-MZm4EM0LU3ZBCuIcd7W626_OmNl" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1IQlJBzADXVxG6o4SH2iG9MyaVHZXqLg9" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@miituu.bridal/video/7561841853306359047" target="_blank" rel="noopener" data-m="hcm|7561841853306359047|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1nGC8-MZm4EM0LU3ZBCuIcd7W626_OmNl" target="_blank" rel="noopener" data-m="hcm|7561841853306359047|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1IQlJBzADXVxG6o4SH2iG9MyaVHZXqLg9" target="_blank" rel="noopener" data-m="hcm|7561841853306359047|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -888,9 +897,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">928K view · 70K tim · 3K lưu · 28s</p>
     <p class="chow">Caption 1 câu nói với người xem như bạn bè.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@miituu.bridal/video/7585434887289687303" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1nGC8-MZm4EM0LU3ZBCuIcd7W626_OmNl" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1IQlJBzADXVxG6o4SH2iG9MyaVHZXqLg9" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@miituu.bridal/video/7585434887289687303" target="_blank" rel="noopener" data-m="hcm|7585434887289687303|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1nGC8-MZm4EM0LU3ZBCuIcd7W626_OmNl" target="_blank" rel="noopener" data-m="hcm|7585434887289687303|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1IQlJBzADXVxG6o4SH2iG9MyaVHZXqLg9" target="_blank" rel="noopener" data-m="hcm|7585434887289687303|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -900,9 +909,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">451K view · 11K tim · 2K lưu · 9s</p>
     <p class="chow">9 giây, 3 váy, kết bằng “chọn giúp mình 1, 2 hay 3?”</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@unibridal.vn/video/7515036375801138450" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1nGC8-MZm4EM0LU3ZBCuIcd7W626_OmNl" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1IQlJBzADXVxG6o4SH2iG9MyaVHZXqLg9" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@unibridal.vn/video/7515036375801138450" target="_blank" rel="noopener" data-m="hcm|7515036375801138450|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1nGC8-MZm4EM0LU3ZBCuIcd7W626_OmNl" target="_blank" rel="noopener" data-m="hcm|7515036375801138450|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1IQlJBzADXVxG6o4SH2iG9MyaVHZXqLg9" target="_blank" rel="noopener" data-m="hcm|7515036375801138450|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div></div></div><div class="grp"><h3>② 5 cách giấu mặt</h3><p class="gnote">Chọn 1 cách cho mỗi buổi quay.</p><div class="clips"><div class="clip">
@@ -912,9 +921,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">636K view · 4K lưu · 19s</p>
     <p class="chow"><b>Khung từ cằm xuống / quay nghiêng, quay lưng.</b> Dễ nhất, không cần dựng.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@khabibbridal/video/7337491834886819080" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1nGC8-MZm4EM0LU3ZBCuIcd7W626_OmNl" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1IQlJBzADXVxG6o4SH2iG9MyaVHZXqLg9" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@khabibbridal/video/7337491834886819080" target="_blank" rel="noopener" data-m="hcm|7337491834886819080|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1nGC8-MZm4EM0LU3ZBCuIcd7W626_OmNl" target="_blank" rel="noopener" data-m="hcm|7337491834886819080|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1IQlJBzADXVxG6o4SH2iG9MyaVHZXqLg9" target="_blank" rel="noopener" data-m="hcm|7337491834886819080|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -924,9 +933,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">1.4M view · 56K tim · 2K lưu · 51s</p>
     <p class="chow"><b>Che bằng chính chiếc váy hoặc tùng</b> giơ trước mặt.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@miituu.bridal/video/7340289387336322312" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1nGC8-MZm4EM0LU3ZBCuIcd7W626_OmNl" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1IQlJBzADXVxG6o4SH2iG9MyaVHZXqLg9" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@miituu.bridal/video/7340289387336322312" target="_blank" rel="noopener" data-m="hcm|7340289387336322312|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1nGC8-MZm4EM0LU3ZBCuIcd7W626_OmNl" target="_blank" rel="noopener" data-m="hcm|7340289387336322312|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1IQlJBzADXVxG6o4SH2iG9MyaVHZXqLg9" target="_blank" rel="noopener" data-m="hcm|7340289387336322312|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -936,9 +945,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">1.8M view · 183K tim · 11K lưu · 8s</p>
     <p class="chow"><b>Voan phủ mặt</b>, quay cận.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@khabibbridal/video/7333055427279736082" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1nGC8-MZm4EM0LU3ZBCuIcd7W626_OmNl" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1IQlJBzADXVxG6o4SH2iG9MyaVHZXqLg9" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@khabibbridal/video/7333055427279736082" target="_blank" rel="noopener" data-m="hcm|7333055427279736082|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1nGC8-MZm4EM0LU3ZBCuIcd7W626_OmNl" target="_blank" rel="noopener" data-m="hcm|7333055427279736082|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1IQlJBzADXVxG6o4SH2iG9MyaVHZXqLg9" target="_blank" rel="noopener" data-m="hcm|7333055427279736082|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -948,9 +957,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">604K view · 16K tim · 3K lưu · 14s</p>
     <p class="chow"><b>Làm mờ mặt trong CapCut</b> (sticker Mosaic tự bám mặt), quay bình thường.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@nguyenshe1/video/7650785289354366228" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1nGC8-MZm4EM0LU3ZBCuIcd7W626_OmNl" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1IQlJBzADXVxG6o4SH2iG9MyaVHZXqLg9" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@nguyenshe1/video/7650785289354366228" target="_blank" rel="noopener" data-m="hcm|7650785289354366228|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1nGC8-MZm4EM0LU3ZBCuIcd7W626_OmNl" target="_blank" rel="noopener" data-m="hcm|7650785289354366228|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1IQlJBzADXVxG6o4SH2iG9MyaVHZXqLg9" target="_blank" rel="noopener" data-m="hcm|7650785289354366228|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -960,9 +969,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">136K view · 762 lưu · 18s</p>
     <p class="chow">Cũng làm mờ mặt, chữ hook “hot trend 2026”.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@nguyenshe1/video/7673167055423573268" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1nGC8-MZm4EM0LU3ZBCuIcd7W626_OmNl" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1IQlJBzADXVxG6o4SH2iG9MyaVHZXqLg9" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@nguyenshe1/video/7673167055423573268" target="_blank" rel="noopener" data-m="hcm|7673167055423573268|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1nGC8-MZm4EM0LU3ZBCuIcd7W626_OmNl" target="_blank" rel="noopener" data-m="hcm|7673167055423573268|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1IQlJBzADXVxG6o4SH2iG9MyaVHZXqLg9" target="_blank" rel="noopener" data-m="hcm|7673167055423573268|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div></div></div><div class="grp"><h3>③ Trend TikTok</h3><p class="gnote">1 clip/tuần. Chỉ trend biến hình / chuyển cảnh, không nhảy, không hát nhép.</p><div class="clips"><div class="clip">
@@ -972,9 +981,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">2.7M view · 227K tim · 1K lưu · 33s</p>
     <p class="chow"><b>Trend biến hình:</b> búng tay hoặc quay lưng rồi đổi váy theo nhịp nhạc. Tự giấu mặt.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@miituu.bridal/video/6971053445579099394" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1nGC8-MZm4EM0LU3ZBCuIcd7W626_OmNl" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1IQlJBzADXVxG6o4SH2iG9MyaVHZXqLg9" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@miituu.bridal/video/6971053445579099394" target="_blank" rel="noopener" data-m="hcm|6971053445579099394|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1nGC8-MZm4EM0LU3ZBCuIcd7W626_OmNl" target="_blank" rel="noopener" data-m="hcm|6971053445579099394|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1IQlJBzADXVxG6o4SH2iG9MyaVHZXqLg9" target="_blank" rel="noopener" data-m="hcm|6971053445579099394|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -984,9 +993,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">2.9M view · 39K tim · 1K lưu · 14s</p>
     <p class="chow">Trend nhạc + hiệu ứng, 14 giây, chỉ đứng xoay váy. Chọn nhạc trong tab Trending lúc đăng.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@unibridal.vn/video/7379587169674874120" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1nGC8-MZm4EM0LU3ZBCuIcd7W626_OmNl" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1IQlJBzADXVxG6o4SH2iG9MyaVHZXqLg9" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@unibridal.vn/video/7379587169674874120" target="_blank" rel="noopener" data-m="hcm|7379587169674874120|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1nGC8-MZm4EM0LU3ZBCuIcd7W626_OmNl" target="_blank" rel="noopener" data-m="hcm|7379587169674874120|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1IQlJBzADXVxG6o4SH2iG9MyaVHZXqLg9" target="_blank" rel="noopener" data-m="hcm|7379587169674874120|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div></div></div><div class="grp"><h3>④ Giọng cô dâu tự quay</h3><p class="gnote">Xem để bắt chước cách nói, cách hỏi.</p><div class="clips"><div class="clip">
@@ -996,9 +1005,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">143K view · 2K tim · 432 lưu · 151s</p>
     <p class="chow">Cô dâu tự quay series “mấy bà chọn dùm”. Học cách nói.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@nghienminodey/video/7677572869781474580" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1nGC8-MZm4EM0LU3ZBCuIcd7W626_OmNl" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1IQlJBzADXVxG6o4SH2iG9MyaVHZXqLg9" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@nghienminodey/video/7677572869781474580" target="_blank" rel="noopener" data-m="hcm|7677572869781474580|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1nGC8-MZm4EM0LU3ZBCuIcd7W626_OmNl" target="_blank" rel="noopener" data-m="hcm|7677572869781474580|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1IQlJBzADXVxG6o4SH2iG9MyaVHZXqLg9" target="_blank" rel="noopener" data-m="hcm|7677572869781474580|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -1008,9 +1017,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat"></p>
     <p class="chow">“Thử mãi chưa chốt được váy nào, chọn giúp tụi tui”. Giọng bạn bè, không quảng cáo.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@lulureview_/video/7677809989494394130" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1nGC8-MZm4EM0LU3ZBCuIcd7W626_OmNl" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1IQlJBzADXVxG6o4SH2iG9MyaVHZXqLg9" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@lulureview_/video/7677809989494394130" target="_blank" rel="noopener" data-m="hcm|7677809989494394130|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1nGC8-MZm4EM0LU3ZBCuIcd7W626_OmNl" target="_blank" rel="noopener" data-m="hcm|7677809989494394130|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1IQlJBzADXVxG6o4SH2iG9MyaVHZXqLg9" target="_blank" rel="noopener" data-m="hcm|7677809989494394130|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -1020,9 +1029,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat"></p>
     <p class="chow">“Trốn chú rể đi thử váy first look, chấm chọn cho tui”. Kịch bản có cớ để hỏi.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@baebaonhu/video/7677929296182414613" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1nGC8-MZm4EM0LU3ZBCuIcd7W626_OmNl" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1IQlJBzADXVxG6o4SH2iG9MyaVHZXqLg9" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@baebaonhu/video/7677929296182414613" target="_blank" rel="noopener" data-m="hcm|7677929296182414613|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1nGC8-MZm4EM0LU3ZBCuIcd7W626_OmNl" target="_blank" rel="noopener" data-m="hcm|7677929296182414613|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1IQlJBzADXVxG6o4SH2iG9MyaVHZXqLg9" target="_blank" rel="noopener" data-m="hcm|7677929296182414613|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div></div></div><div class="grp"><h3>⑤ Reel Instagram viral để học</h3><p class="gnote">Đăng chéo clip lên IG của kênh. Format “chọn giúp mình” trên IG cũng nổ.</p><div class="clips"><div class="clip">
@@ -1032,9 +1041,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">256K view · 2K tim · 15s · IG</p>
     <p class="chow"><b>256K, 15 giây.</b> Chou Bridal: “Which dress will you choose?” — 2 váy, hỏi người xem chọn. Đúng format kênh HCM.</p>
     <div class="cact">
-      <a class="open" href="https://www.instagram.com/reel/C-nAmhSvacv/" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1nGC8-MZm4EM0LU3ZBCuIcd7W626_OmNl" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1IQlJBzADXVxG6o4SH2iG9MyaVHZXqLg9" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.instagram.com/reel/C-nAmhSvacv/" target="_blank" rel="noopener" data-m="hcm|C-nAmhSvacv|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1nGC8-MZm4EM0LU3ZBCuIcd7W626_OmNl" target="_blank" rel="noopener" data-m="hcm|C-nAmhSvacv|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1IQlJBzADXVxG6o4SH2iG9MyaVHZXqLg9" target="_blank" rel="noopener" data-m="hcm|C-nAmhSvacv|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -1044,9 +1053,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">167K view · 5K tim · 19s · IG</p>
     <p class="chow"><b>167K, 19 giây.</b> Lecia: “Which one is your favorite look?” — 3 look liên tiếp, cắt theo nhịp.</p>
     <div class="cact">
-      <a class="open" href="https://www.instagram.com/reel/DYWfTd2R44q/" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1nGC8-MZm4EM0LU3ZBCuIcd7W626_OmNl" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1IQlJBzADXVxG6o4SH2iG9MyaVHZXqLg9" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.instagram.com/reel/DYWfTd2R44q/" target="_blank" rel="noopener" data-m="hcm|DYWfTd2R44q|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1nGC8-MZm4EM0LU3ZBCuIcd7W626_OmNl" target="_blank" rel="noopener" data-m="hcm|DYWfTd2R44q|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1IQlJBzADXVxG6o4SH2iG9MyaVHZXqLg9" target="_blank" rel="noopener" data-m="hcm|DYWfTd2R44q|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -1056,9 +1065,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">55K view · 317 tim · 26s · IG</p>
     <p class="chow"><b>55K.</b> Lecia: “Random bridal look pick” — rút ngẫu nhiên một váy, thử luôn. Ý tưởng series hằng ngày.</p>
     <div class="cact">
-      <a class="open" href="https://www.instagram.com/reel/Dbsjcy5iPtb/" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1nGC8-MZm4EM0LU3ZBCuIcd7W626_OmNl" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1IQlJBzADXVxG6o4SH2iG9MyaVHZXqLg9" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.instagram.com/reel/Dbsjcy5iPtb/" target="_blank" rel="noopener" data-m="hcm|Dbsjcy5iPtb|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1nGC8-MZm4EM0LU3ZBCuIcd7W626_OmNl" target="_blank" rel="noopener" data-m="hcm|Dbsjcy5iPtb|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1IQlJBzADXVxG6o4SH2iG9MyaVHZXqLg9" target="_blank" rel="noopener" data-m="hcm|Dbsjcy5iPtb|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -1068,9 +1077,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">107K view · 2K tim · 68s · IG</p>
     <p class="chow"><b>107K, 68 giây.</b> IDY “Her Bloom Collection”: lookbook nhiều mẫu, cắt nhanh, chữ giữ vắt qua cảnh.</p>
     <div class="cact">
-      <a class="open" href="https://www.instagram.com/reel/DbYL0IFiWyg/" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1nGC8-MZm4EM0LU3ZBCuIcd7W626_OmNl" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1IQlJBzADXVxG6o4SH2iG9MyaVHZXqLg9" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.instagram.com/reel/DbYL0IFiWyg/" target="_blank" rel="noopener" data-m="hcm|DbYL0IFiWyg|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1nGC8-MZm4EM0LU3ZBCuIcd7W626_OmNl" target="_blank" rel="noopener" data-m="hcm|DbYL0IFiWyg|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1IQlJBzADXVxG6o4SH2iG9MyaVHZXqLg9" target="_blank" rel="noopener" data-m="hcm|DbYL0IFiWyg|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -1080,32 +1089,32 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">386K view · 5K tim · 11s · IG</p>
     <p class="chow"><b>385K, 11 giây.</b> Milla Nova: váy đính sequin xoay dưới ánh sáng. Quay nghiêng/lưng vẫn đủ.</p>
     <div class="cact">
-      <a class="open" href="https://www.instagram.com/reel/DcemLclOJtZ/" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1nGC8-MZm4EM0LU3ZBCuIcd7W626_OmNl" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1IQlJBzADXVxG6o4SH2iG9MyaVHZXqLg9" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.instagram.com/reel/DcemLclOJtZ/" target="_blank" rel="noopener" data-m="hcm|DcemLclOJtZ|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1nGC8-MZm4EM0LU3ZBCuIcd7W626_OmNl" target="_blank" rel="noopener" data-m="hcm|DcemLclOJtZ|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1IQlJBzADXVxG6o4SH2iG9MyaVHZXqLg9" target="_blank" rel="noopener" data-m="hcm|DcemLclOJtZ|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div></div></div>
-  </details>
 </section>
   <section id="life" class="kenh k-life tab">
   <div class="sec-head"><span class="dot"></span><h2>Nupakachi Life</h2><span class="who">@nupakachilifeeee · 1 clip/ngày</span></div>
   <p class="role">Kênh vệ tinh của Nupakachi: <b>vlog đi làm + hài hước</b> để phủ sóng thương hiệu. Nhân vật là nhân viên, không phải cô dâu.</p>
-  <div class="today">
-    <div class="fact hero"><span class="lbl">1 · Hôm nay quay clip này</span><div class="clips one" id="hero-life"></div><p class="hint">Mẫu tự đổi mỗi ngày, không cần chọn. Xem clip → quay giống → bấm Nộp source.</p></div>
-    <div class="two">
-      <div class="fact"><span class="lbl">2 · Story hôm nay (1 cái, không cần dựng)</span><div class="val" id="story-life"></div><ul class="rl story-all" hidden><li><b>Mở ca</b>: “hôm nay có N khách, đoán xem mấy giờ về” — chữ trên ảnh showroom.</li><li><b>Sticker hỏi</b>: “các vợ hỏi gì nhân viên tiệm cưới cũng trả lời”. <b>Câu trả lời thành clip hôm sau.</b></li><li><b>Ảnh hậu trường buổi chụp</b>: máy, đèn, ekip đứng chờ trời nắng.</li><li><b>Đăng lại clip mới lên story</b> + poll “sếp có nên thưởng không?”.</li></ul></div>
-      <div class="fact bio"><span class="lbl">3 · Bio dưới avatar phải đúng câu này</span><div class="val mono">xông lượng nắng cùng @Nupakachi Wedding Film</div><button class="copy" type="button" data-url="xông lượng nắng cùng @Nupakachi Wedding Film">Chép bio</button></div>
-    </div>
+  <div class="two">
+    <div class="fact"><span class="lbl">Luật khi quay</span><ul class="rl"><li><b>Có nhân vật cố định</b>: 1–2 bạn nhân viên xưng hô riêng (kiểu “chồng/các vợ” của JEJU). Người xem theo dõi vì quen nhân vật.</li><li><b>Mặt dán sticker cartoon</b> hoặc quay lưng/tay — <b>không cần lộ mặt, không cần xinh</b>.</li><li><b>Một dòng POV giữ suốt clip</b>: “POV: …” nói đúng một tình huống đi làm.</li><li>Quay bằng <b>điện thoại cầm tay</b>, đi giữa giá váy/set chụp. <b>Không dựng cầu kỳ.</b></li><li><b>7–20 giây</b> cho tình huống hài; <b>60–120 giây</b> cho vlog một buổi. Nhạc trend trong app.</li><li><b>Không nói giá, không quay mặt khách khi chưa xin phép.</b></li></ul></div>
+    <div class="fact"><span class="lbl">Story — mỗi ngày 1 cái, chọn 1 trong đây</span><ul class="rl"><li><b>Mở ca</b>: “hôm nay có N khách, đoán xem mấy giờ về” — chữ trên ảnh showroom.</li><li><b>Sticker hỏi</b>: “các vợ hỏi gì nhân viên tiệm cưới cũng trả lời”. <b>Câu trả lời thành clip hôm sau.</b></li><li><b>Ảnh hậu trường buổi chụp</b>: máy, đèn, ekip đứng chờ trời nắng.</li><li><b>Đăng lại clip mới lên story</b> + poll “sếp có nên thưởng không?”.</li></ul></div>
   </div>
-  <details class="more" open><summary>Luật khi quay · 6 dòng</summary><ul class="rl"><li><b>Có nhân vật cố định</b>: 1–2 bạn nhân viên xưng hô riêng (kiểu “chồng/các vợ” của JEJU). Người xem theo dõi vì quen nhân vật.</li><li><b>Mặt dán sticker cartoon</b> hoặc quay lưng/tay — <b>không cần lộ mặt, không cần xinh</b>.</li><li><b>Một dòng POV giữ suốt clip</b>: “POV: …” nói đúng một tình huống đi làm.</li><li>Quay bằng <b>điện thoại cầm tay</b>, đi giữa giá váy/set chụp. <b>Không dựng cầu kỳ.</b></li><li><b>7–20 giây</b> cho tình huống hài; <b>60–120 giây</b> cho vlog một buổi. Nhạc trend trong app.</li><li><b>Không nói giá, không quay mặt khách khi chưa xin phép.</b></li></ul></details>
-  <details class="more"><summary>Thư mục nộp file · 2 thư mục</summary>
+  <div class="two">
+    <div class="fact bio"><span class="lbl">Bio dưới avatar phải đúng câu này</span><div class="val mono">xông lượng nắng cùng @Nupakachi Wedding Film</div><button class="copy" type="button" data-url="xông lượng nắng cùng @Nupakachi Wedding Film">Chép bio</button></div>
+    <div class="fact"><span class="lbl">Cách nộp</span><div class="val" style="font-weight:500">Chọn clip mẫu bên dưới → <b>Xem clip</b> → quay giống → <b>Nộp source</b> (tải file gốc vào thư mục mở ra) → dựng xong <b>Nộp clip xong</b>. Nút bấm rồi sẽ <span class="okx">✓ đổi màu xanh</span> để biết đã làm.<div class="cact one"><a class="open duyet" href="https://docs.google.com/spreadsheets/d/1lgvircnKIQE9TrOsaEIFj7bdLSTESNr8beIjP0HhxXU/edit" target="_blank" rel="noopener">Quản lý duyệt ✓ — mở bảng duyệt</a></div></div></div>
+  </div>
+  <details class="more"><summary>Thư mục nộp file của kênh · 2 thư mục</summary>
     <div class="two fold">
       <div class="fact"><span class="lbl">① Nộp source (file gốc chưa dựng)</span><div class="val">TikTok source – 4. Nupakachi Life</div><div class="cact"><a class="open" href="https://drive.google.com/drive/folders/1BHEQgmDHlAcepje4Dn3Zt7hfwlnpKLa5" target="_blank" rel="noopener">Mở thư mục</a><button class="copy" type="button" data-url="https://drive.google.com/drive/folders/1BHEQgmDHlAcepje4Dn3Zt7hfwlnpKLa5">Chép link</button></div></div>
       <div class="fact"><span class="lbl">② Nộp clip hoàn thành (đã dựng)</span><div class="val">NU LIFE (thư mục có sẵn)</div><div class="cact"><a class="open" href="https://drive.google.com/drive/folders/1a7ChZWAfkMZpmSFlEtSPEMU5YlQT8xM7" target="_blank" rel="noopener">Mở thư mục</a><button class="copy" type="button" data-url="https://drive.google.com/drive/folders/1a7ChZWAfkMZpmSFlEtSPEMU5YlQT8xM7">Chép link</button></div></div>
     </div>
+    <p class="hint"><button class="reset" type="button" data-k="life">Xoá hết dấu ✓ của kênh này trên máy này</button></p>
   </details>
-  <details class="more all"><summary>Tất cả clip mẫu · 15 clip · xem khi muốn đổi kiểu</summary>
+  <div class="sec-head sub"><h2>Clip mẫu · 15 clip · chọn cái nào cũng được</h2></div>
   <div class="grp"><h3>① POV một buổi đi làm (3 clip/tuần)</h3><p class="gnote">Học kênh “Hướng nội làm saleee” của JEJU Wedding: 853 follower, clip 88K–220K.</p><div class="clips"><div class="clip">
   <img src="data:image/jpeg;base64,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" alt="" loading="lazy">
   <div class="cbody">
@@ -1113,9 +1122,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">220K view · 8K tim · 223 lưu · 93s</p>
     <p class="chow"><b>Học đầu tiên.</b> Kênh nhân viên sale của JEJU Wedding, 853 follower mà 220K view. POV chữ giữ suốt clip “sống trong nhung lụa là cảm giác như thế nào”, đi giữa giá váy, mặt dán sticker.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@huongnoilamsale.jeju/video/7638580303786790164" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1BHEQgmDHlAcepje4Dn3Zt7hfwlnpKLa5" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1a7ChZWAfkMZpmSFlEtSPEMU5YlQT8xM7" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@huongnoilamsale.jeju/video/7638580303786790164" target="_blank" rel="noopener" data-m="life|7638580303786790164|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1BHEQgmDHlAcepje4Dn3Zt7hfwlnpKLa5" target="_blank" rel="noopener" data-m="life|7638580303786790164|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1a7ChZWAfkMZpmSFlEtSPEMU5YlQT8xM7" target="_blank" rel="noopener" data-m="life|7638580303786790164|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -1125,9 +1134,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">216K view · 7K tim · 176 lưu · 105s</p>
     <p class="chow">POV “đưa khách đi thử váy nhưng khách vẫn chưa biết thích mẫu nào” — 105 giây kể một buổi làm việc, mặt sticker, chữ nói chuyện với người xem.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@huongnoilamsale.jeju/video/7654930020326067476" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1BHEQgmDHlAcepje4Dn3Zt7hfwlnpKLa5" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1a7ChZWAfkMZpmSFlEtSPEMU5YlQT8xM7" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@huongnoilamsale.jeju/video/7654930020326067476" target="_blank" rel="noopener" data-m="life|7654930020326067476|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1BHEQgmDHlAcepje4Dn3Zt7hfwlnpKLa5" target="_blank" rel="noopener" data-m="life|7654930020326067476|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1a7ChZWAfkMZpmSFlEtSPEMU5YlQT8xM7" target="_blank" rel="noopener" data-m="life|7654930020326067476|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -1137,9 +1146,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">167K view · 3K tim · 61 lưu · 101s</p>
     <p class="chow">“Ngày không khách thì chồng làm gì?” — gọi đồng nghiệp là “chồng”, người xem là “các vợ”. Nhân vật có tên gọi riêng là có kênh.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@huongnoilamsale.jeju/video/7640077401858329876" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1BHEQgmDHlAcepje4Dn3Zt7hfwlnpKLa5" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1a7ChZWAfkMZpmSFlEtSPEMU5YlQT8xM7" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@huongnoilamsale.jeju/video/7640077401858329876" target="_blank" rel="noopener" data-m="life|7640077401858329876|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1BHEQgmDHlAcepje4Dn3Zt7hfwlnpKLa5" target="_blank" rel="noopener" data-m="life|7640077401858329876|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1a7ChZWAfkMZpmSFlEtSPEMU5YlQT8xM7" target="_blank" rel="noopener" data-m="life|7640077401858329876|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -1149,9 +1158,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">157K view · 4K tim · 505 lưu · 116s</p>
     <p class="chow">“Trung bình 01 buổi của sà lé hướng nội” — tự trào, kể thật việc mỗi ngày → 157K.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@huongnoilamsale.jeju/video/7638943399898270996" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1BHEQgmDHlAcepje4Dn3Zt7hfwlnpKLa5" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1a7ChZWAfkMZpmSFlEtSPEMU5YlQT8xM7" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@huongnoilamsale.jeju/video/7638943399898270996" target="_blank" rel="noopener" data-m="life|7638943399898270996|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1BHEQgmDHlAcepje4Dn3Zt7hfwlnpKLa5" target="_blank" rel="noopener" data-m="life|7638943399898270996|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1a7ChZWAfkMZpmSFlEtSPEMU5YlQT8xM7" target="_blank" rel="noopener" data-m="life|7638943399898270996|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -1161,9 +1170,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">88K view · 2K tim · 136 lưu · 167s</p>
     <p class="chow">“Cái gì khó quá thì mình cứ đẩy cho chồng” — 167 giây vẫn 88K vì có nhân vật + tình huống.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@huongnoilamsale.jeju/video/7638217996699454740" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1BHEQgmDHlAcepje4Dn3Zt7hfwlnpKLa5" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1a7ChZWAfkMZpmSFlEtSPEMU5YlQT8xM7" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@huongnoilamsale.jeju/video/7638217996699454740" target="_blank" rel="noopener" data-m="life|7638217996699454740|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1BHEQgmDHlAcepje4Dn3Zt7hfwlnpKLa5" target="_blank" rel="noopener" data-m="life|7638217996699454740|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1a7ChZWAfkMZpmSFlEtSPEMU5YlQT8xM7" target="_blank" rel="noopener" data-m="life|7638217996699454740|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div></div></div><div class="grp"><h3>② Tình huống hài 7–20 giây (3 clip/tuần)</h3><p class="gnote">Một câu, một tình huống, kết bất ngờ. Studio nhỏ vẫn triệu view.</p><div class="clips"><div class="clip">
@@ -1173,9 +1182,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">9.4M view · 411K tim · 18K lưu · 7s</p>
     <p class="chow"><b>9.4M view, 7 giây.</b> Tiệm áo cưới: “Khi nhân viên đi làm giàu hơn chủ” — một tình huống, một câu, hết. Kiểu này quay 5 phút là xong.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@dinkyhoang/video/7309371475931204872" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1BHEQgmDHlAcepje4Dn3Zt7hfwlnpKLa5" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1a7ChZWAfkMZpmSFlEtSPEMU5YlQT8xM7" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@dinkyhoang/video/7309371475931204872" target="_blank" rel="noopener" data-m="life|7309371475931204872|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1BHEQgmDHlAcepje4Dn3Zt7hfwlnpKLa5" target="_blank" rel="noopener" data-m="life|7309371475931204872|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1a7ChZWAfkMZpmSFlEtSPEMU5YlQT8xM7" target="_blank" rel="noopener" data-m="life|7309371475931204872|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -1185,9 +1194,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">3.7M view · 322K tim · 15K lưu · 22s</p>
     <p class="chow">3.7M, 22 giây, #officelife #anhtrainghesales — chuyện sale đi làm, 11K follower vẫn nổ.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@anh.trai.vt.tui.3/video/7664610127143636232" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1BHEQgmDHlAcepje4Dn3Zt7hfwlnpKLa5" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1a7ChZWAfkMZpmSFlEtSPEMU5YlQT8xM7" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@anh.trai.vt.tui.3/video/7664610127143636232" target="_blank" rel="noopener" data-m="life|7664610127143636232|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1BHEQgmDHlAcepje4Dn3Zt7hfwlnpKLa5" target="_blank" rel="noopener" data-m="life|7664610127143636232|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1a7ChZWAfkMZpmSFlEtSPEMU5YlQT8xM7" target="_blank" rel="noopener" data-m="life|7664610127143636232|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -1197,9 +1206,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">559K view · 15K tim · 3K lưu · 18s</p>
     <p class="chow">“Nỗi khổ của người hướng nội làm social” — 559K, 18 giây, kênh 4K follower. Nhân viên truyền thông Nupakachi làm được y hệt.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@maxeagle2024/video/7369056186592808199" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1BHEQgmDHlAcepje4Dn3Zt7hfwlnpKLa5" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1a7ChZWAfkMZpmSFlEtSPEMU5YlQT8xM7" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@maxeagle2024/video/7369056186592808199" target="_blank" rel="noopener" data-m="life|7369056186592808199|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1BHEQgmDHlAcepje4Dn3Zt7hfwlnpKLa5" target="_blank" rel="noopener" data-m="life|7369056186592808199|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1a7ChZWAfkMZpmSFlEtSPEMU5YlQT8xM7" target="_blank" rel="noopener" data-m="life|7369056186592808199|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -1209,9 +1218,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">80K view · 2K tim · 117 lưu · 15s</p>
     <p class="chow">Studio cưới: “POV khi sếp và nhân viên chung tần số” — 15 giây, 80K.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@hebestudio_2023/video/7625452558177340689" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1BHEQgmDHlAcepje4Dn3Zt7hfwlnpKLa5" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1a7ChZWAfkMZpmSFlEtSPEMU5YlQT8xM7" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@hebestudio_2023/video/7625452558177340689" target="_blank" rel="noopener" data-m="life|7625452558177340689|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1BHEQgmDHlAcepje4Dn3Zt7hfwlnpKLa5" target="_blank" rel="noopener" data-m="life|7625452558177340689|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1a7ChZWAfkMZpmSFlEtSPEMU5YlQT8xM7" target="_blank" rel="noopener" data-m="life|7625452558177340689|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -1221,9 +1230,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">88K view · 3K tim · 212 lưu · 19s</p>
     <p class="chow">Studio cưới: “Trung bình 1 buổi chụp, content bị hỏi thăm mẹ quá trời” — 19 giây, 88K, tháng 8/2026.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@libewedding/video/7678259003004046613" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1BHEQgmDHlAcepje4Dn3Zt7hfwlnpKLa5" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1a7ChZWAfkMZpmSFlEtSPEMU5YlQT8xM7" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@libewedding/video/7678259003004046613" target="_blank" rel="noopener" data-m="life|7678259003004046613|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1BHEQgmDHlAcepje4Dn3Zt7hfwlnpKLa5" target="_blank" rel="noopener" data-m="life|7678259003004046613|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1a7ChZWAfkMZpmSFlEtSPEMU5YlQT8xM7" target="_blank" rel="noopener" data-m="life|7678259003004046613|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div></div></div><div class="grp"><h3>③ Theo chân ekip / cô dâu (1 clip/tuần)</h3><p class="gnote">Vlog dài hơn, có cô dâu thật hoặc buổi chụp thật.</p><div class="clips"><div class="clip">
@@ -1233,9 +1242,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">204K view · 3K tim · 416 lưu · 41s</p>
     <p class="chow">“Theo chân chúng tui đi làm và gặp cô dâu” — 41 giây, 204K. Vlog có cô dâu thật là có cảm xúc.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@duongthuythai/video/7356947678690807056" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1BHEQgmDHlAcepje4Dn3Zt7hfwlnpKLa5" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1a7ChZWAfkMZpmSFlEtSPEMU5YlQT8xM7" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@duongthuythai/video/7356947678690807056" target="_blank" rel="noopener" data-m="life|7356947678690807056|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1BHEQgmDHlAcepje4Dn3Zt7hfwlnpKLa5" target="_blank" rel="noopener" data-m="life|7356947678690807056|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1a7ChZWAfkMZpmSFlEtSPEMU5YlQT8xM7" target="_blank" rel="noopener" data-m="life|7356947678690807056|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -1245,9 +1254,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">179K view · 10K tim · 183 lưu · 54s</p>
     <p class="chow">“Làm việc tại studio áo cưới” — 54 giây, 179K. Một ngày ở tiệm, cắt nhanh.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@kimsignature__/video/7103725490506059034" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1BHEQgmDHlAcepje4Dn3Zt7hfwlnpKLa5" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1a7ChZWAfkMZpmSFlEtSPEMU5YlQT8xM7" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@kimsignature__/video/7103725490506059034" target="_blank" rel="noopener" data-m="life|7103725490506059034|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1BHEQgmDHlAcepje4Dn3Zt7hfwlnpKLa5" target="_blank" rel="noopener" data-m="life|7103725490506059034|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1a7ChZWAfkMZpmSFlEtSPEMU5YlQT8xM7" target="_blank" rel="noopener" data-m="life|7103725490506059034|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -1257,9 +1266,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">432K view · 18K tim · 489 lưu · 148s</p>
     <p class="chow">“Vlog đi mầnnn ngày nắng” — 148 giây, 432K. Vlog đi làm kiểu gen Z, nhạc trend, chữ nhỏ.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@khanhchiinee/video/7625124162880900372" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1BHEQgmDHlAcepje4Dn3Zt7hfwlnpKLa5" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1a7ChZWAfkMZpmSFlEtSPEMU5YlQT8xM7" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@khanhchiinee/video/7625124162880900372" target="_blank" rel="noopener" data-m="life|7625124162880900372|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1BHEQgmDHlAcepje4Dn3Zt7hfwlnpKLa5" target="_blank" rel="noopener" data-m="life|7625124162880900372|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1a7ChZWAfkMZpmSFlEtSPEMU5YlQT8xM7" target="_blank" rel="noopener" data-m="life|7625124162880900372|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -1269,9 +1278,9 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">296K view · 8K tim · 2K lưu · 63s</p>
     <p class="chow">Khách kể “vlog 1 ngày đi chụp ảnh cưới cùng tui” — 296K. Nupakachi kể lại từ phía ekip.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@chichihwaa/video/7570322707632442645" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1BHEQgmDHlAcepje4Dn3Zt7hfwlnpKLa5" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1a7ChZWAfkMZpmSFlEtSPEMU5YlQT8xM7" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@chichihwaa/video/7570322707632442645" target="_blank" rel="noopener" data-m="life|7570322707632442645|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1BHEQgmDHlAcepje4Dn3Zt7hfwlnpKLa5" target="_blank" rel="noopener" data-m="life|7570322707632442645|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1a7ChZWAfkMZpmSFlEtSPEMU5YlQT8xM7" target="_blank" rel="noopener" data-m="life|7570322707632442645|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div><div class="clip">
@@ -1281,29 +1290,24 @@ details.more.all .grp{margin-top:16px}
     <p class="cstat">104K view · 4K tim · 648 lưu · 60s</p>
     <p class="chow">KOC 361K follower vlog 1 ngày chụp pre-wedding, tag studio → 104K. Mời KOC đến chụp rồi họ tự đăng.</p>
     <div class="cact">
-      <a class="open" href="https://www.tiktok.com/@peoo__/video/7653342455689006356" target="_blank" rel="noopener">Xem clip</a>
-      <a class="submit" href="https://drive.google.com/drive/folders/1BHEQgmDHlAcepje4Dn3Zt7hfwlnpKLa5" target="_blank" rel="noopener">Nộp source</a>
-      <a class="submit done" href="https://drive.google.com/drive/folders/1a7ChZWAfkMZpmSFlEtSPEMU5YlQT8xM7" target="_blank" rel="noopener">Nộp clip xong</a>
+      <a class="open" href="https://www.tiktok.com/@peoo__/video/7653342455689006356" target="_blank" rel="noopener" data-m="life|7653342455689006356|xem" data-ok="✓ Đã xem">Xem clip</a>
+      <a class="submit" href="https://drive.google.com/drive/folders/1BHEQgmDHlAcepje4Dn3Zt7hfwlnpKLa5" target="_blank" rel="noopener" data-m="life|7653342455689006356|src" data-ok="✓ Đã up source">Nộp source</a>
+      <a class="submit done" href="https://drive.google.com/drive/folders/1a7ChZWAfkMZpmSFlEtSPEMU5YlQT8xM7" target="_blank" rel="noopener" data-m="life|7653342455689006356|clip" data-ok="✓ Đã nộp clip">Nộp clip xong</a>
     </div>
   </div>
 </div></div></div>
-  </details>
 </section>
 </div>
 <script>
 function bindCopy(){document.querySelectorAll('button.copy').forEach(function(b){if(b.dataset.b)return;b.dataset.b='1';b.addEventListener('click',function(){navigator.clipboard.writeText(b.dataset.url).then(function(){b.textContent='Đã chép';b.dataset.done='1';setTimeout(function(){b.textContent='Chép';b.dataset.done='';},1800);});});});}
 bindCopy();
 var TABS=['chinh','hn','hcm','life','luat'];
-function ngayThu(){var d=new Date();return Math.floor((d-new Date(d.getFullYear(),0,0))/864e5);}
-TABS.slice(0,4).forEach(function(k){
-  var sec=document.getElementById(k); if(!sec)return;
-  var all=[].slice.call(sec.querySelectorAll('details.all .clip'));
-  var g1=[].slice.call(sec.querySelectorAll('details.all .grp')); var pool=g1.length?[].slice.call(g1[0].querySelectorAll('.clip')):[];
-  all.forEach(function(c){if(pool.indexOf(c)<0&&c.querySelector('.tag'))pool.push(c);}); if(!pool.length)pool=all;
-  if(pool.length){var c=pool[ngayThu()%pool.length]; var h=document.getElementById('hero-'+k); var g=c.closest('.grp'); var t=g?g.querySelector('h3').textContent:'';
-    if(t)h.insertAdjacentHTML('beforebegin','<p class="gname">'+t+'</p>'); h.appendChild(c.cloneNode(true));}
-  var st=[].slice.call(sec.querySelectorAll('.story-all li')); if(st.length){document.getElementById('story-'+k).innerHTML=st[ngayThu()%st.length].innerHTML;}
-});
+var MK='dla_tt_mark'; function docMk(){try{return JSON.parse(localStorage.getItem(MK)||'{}');}catch(e){return {};}}
+function veMk(){var m=docMk();document.querySelectorAll('[data-m]').forEach(function(a){var on=!!m[a.dataset.m];a.classList.toggle('did',on);a.textContent=on?a.dataset.ok:(a.dataset.goc||a.textContent);if(!a.dataset.goc)a.dataset.goc=a.textContent;
+  if(a.dataset.m.slice(-3)==='src'){var c=a.closest('.clip');if(c)c.classList.toggle('did',on);}});}
+document.querySelectorAll('[data-m]').forEach(function(a){a.dataset.goc=a.textContent;a.addEventListener('click',function(){var m=docMk();m[a.dataset.m]=Date.now();try{localStorage.setItem(MK,JSON.stringify(m));}catch(e){}veMk();});});
+document.querySelectorAll('button.reset').forEach(function(b){b.addEventListener('click',function(){if(!confirm('Xoá hết dấu ✓ của kênh này trên máy này?'))return;var m=docMk();Object.keys(m).forEach(function(x){if(x.indexOf(b.dataset.k+'|')===0)delete m[x];});try{localStorage.setItem(MK,JSON.stringify(m));}catch(e){}veMk();});});
+veMk();
 
 function moTab(k,scroll){if(TABS.indexOf(k)<0)k='luat';
   document.querySelectorAll('.tab').forEach(function(el){el.classList.remove('on');});
