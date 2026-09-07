@@ -424,7 +424,7 @@ body.zpad{padding-top:96px}
 <body>
 <div class="wrap">
   <header>
-    <div class="kicker">Dolinhanh Bridal · nội bộ · cập nhật 07/09/2026 · bản 31</div>
+    <div class="kicker">Dolinhanh Bridal · nội bộ · cập nhật 07/09/2026 · bản 32</div>
     <h1>Bảng điều khiển TikTok</h1>
     <p class="lede">Mỗi ngày: <b>quay 1 clip theo mẫu</b> + <b>đăng 1 story</b>. Bấm tên kênh của bạn.</p>
     <div class="nav"><a class="n-chinh" href="#chinh" data-tab="chinh">● Kênh chính</a><a class="n-hn" href="#hn" data-tab="hn">● Vệ tinh HN</a><a class="n-hcm" href="#hcm" data-tab="hcm">● Vệ tinh HCM</a><a class="n-life" href="#life" data-tab="life">● Nupakachi Life</a><a class="n-luat" href="#luat" data-tab="luat">Luật chung</a><a class="n-gui" href="https://dolinhanh-bridal.github.io/camnangnhanvien/gui-clip.html" target="_blank" rel="noopener">✎ Gửi clip hay</a></div>
@@ -1795,17 +1795,18 @@ function dungLichTuan(){
     }).filter(function(o){return o.v;});
     var now=new Date(); var dow=now.getDay(); var lech=(dow===0?-6:1-dow);
     var t2=new Date(now.getFullYear(),now.getMonth(),now.getDate()+lech);
-    var html='<h4>Lịch tuần này</h4><p class="tsub">Chị chọn clip mẫu cho từng buổi rồi bấm Duyệt. Nhân viên mở ra là biết hôm đó quay gì.</p>';
+    var rows='';var dem=0;
     for(var i=0;i<7;i++){
       var d=new Date(t2.getFullYear(),t2.getMonth(),t2.getDate()+i);
       if(l.ngay.indexOf(d.getDay())<0)continue;
       var key=k+'|tuan|'+d.getFullYear()+'-'+hai(d.getMonth()+1)+'-'+hai(d.getDate());
-      html+='<div class="slot" data-key="'+key+'"><div class="d">'+TEN_THU[d.getDay()]+' · '+l.gio+'<small>'+hai(d.getDate())+'/'+hai(d.getMonth()+1)+'</small></div>'+
+      dem++;rows+='<div class="slot" data-key="'+key+'"><div class="d">'+TEN_THU[d.getDay()]+' · '+l.gio+'<small>'+hai(d.getDate())+'/'+hai(d.getMonth()+1)+'</small></div>'+
         '<select data-key="'+key+'"><option value="">— chọn clip mẫu —</option>'+
         ops.map(function(o){return '<option value="'+o.v+'">'+o.t.replace(/</g,'&lt;')+'</option>';}).join('')+
         '</select><button class="ql" type="button" data-d="'+key+'">Duyệt</button></div>';
     }
-    box.innerHTML=html;
+    box.innerHTML='<details class="more"><summary>Lịch tuần này · '+dem+' buổi</summary>'+
+      '<p class="tsub">Chị chọn clip mẫu cho từng buổi rồi bấm Duyệt. Nhân viên mở ra là biết hôm đó quay gì.</p>'+rows+'</details>';
   });
 }
 dungLichTuan();
