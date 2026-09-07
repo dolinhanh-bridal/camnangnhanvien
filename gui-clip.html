@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="theme-color" content="#FFFFFF">
+<title>Gửi clip hay</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap">
+<style>
+:root{--paper:#FFF;--ink:#31232A;--ink-soft:#6E5C60;--rose:#9E4458;--rose-deep:#7C3346;--champagne:#B4677A;--line:#E3D5C6;--blush:#F5E3DE;--ok:#2E7D4F;color-scheme:light}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#fff;color:var(--ink);font-family:'Be Vietnam Pro',-apple-system,'Segoe UI',sans-serif;font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:560px;margin:0 auto;padding:34px 18px 60px}
+.kicker{font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--champagne)}
+h1{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:34px;line-height:1.1;margin:6px 0 10px}
+.lede{font-family:'Cormorant Garamond',Georgia,serif;font-size:17px;color:var(--ink-soft);margin-bottom:22px}
+label{display:block;font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:17px;color:var(--rose-deep);margin:16px 0 6px}
+textarea,input{width:100%;padding:12px 14px;font:inherit;font-size:14px;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:12px}
+textarea{min-height:110px;resize:vertical}
+textarea:focus,input:focus{outline:2px solid var(--rose);outline-offset:1px}
+.hint{font-size:12.5px;color:var(--ink-soft);margin-top:6px}
+button.go{display:block;width:100%;margin-top:20px;padding:15px;font:inherit;font-size:16px;font-weight:600;color:#fff;background:var(--rose);border:none;border-radius:999px;cursor:pointer}
+button.go:active{background:var(--rose-deep)}
+button.go[disabled]{opacity:.55}
+.kq{margin-top:16px;padding:14px 16px;border-radius:12px;font-size:14px;display:none}
+.kq.on{display:block}
+.kq.tot{background:#EFF7F1;color:var(--ok);font-weight:600}
+.kq.loi{background:var(--blush);color:var(--rose-deep);font-weight:600}
+.tail{margin-top:26px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--ink-soft)}
+.tail a{color:var(--rose-deep)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kicker">Dolinhanh Bridal · nội bộ</div>
+  <h1>Gửi clip hay</h1>
+  <p class="lede">Chị thấy clip nào hay thì dán link vào đây. Em xem rồi xếp vào đúng kênh trong bảng điều khiển.</p>
+
+  <label for="lk">Link clip</label>
+  <textarea id="lk" placeholder="Dán link TikTok / Instagram vào đây" autocomplete="off"></textarea>
+  <p class="hint">Dán được nhiều link một lúc, mỗi link một dòng.</p>
+
+  <label for="gc">Chị muốn dặn gì thêm (không bắt buộc)</label>
+  <input id="gc" placeholder="Ví dụ: cho kênh HCM, kiểu giấu mặt" autocomplete="off">
+
+  <button class="go" id="go" type="button">Gửi cho em</button>
+  <div class="kq" id="kq"></div>
+
+  <p class="tail">Xong rồi chị mở <a href="https://dolinhanh-bridal.github.io/camnangnhanvien/tiktok.html">Bảng điều khiển TikTok</a> để xem clip đã được xếp vào kênh nào.</p>
+</div>
+<script>
+var URL_APP='https://script.google.com/macros/s/AKfycbwlmpyoY3b-iCmO9ZoVeUhm0wYJb4CrQ6I9ezsadk4UhDx1JS3qAEN7MWNOL_DGgkiV/exec';
+function jsonp(u,cb){var n='cb'+Math.random().toString(36).slice(2);window[n]=function(d){delete window[n];s.remove();cb(d);};var s=document.createElement('script');s.src=u+(u.indexOf('?')>0?'&':'?')+'cb='+n;s.onerror=function(){delete window[n];cb(null);};document.body.appendChild(s);}
+var go=document.getElementById('go'),lk=document.getElementById('lk'),gc=document.getElementById('gc'),kq=document.getElementById('kq');
+function bao(txt,tot){kq.textContent=txt;kq.className='kq on '+(tot?'tot':'loi');}
+go.addEventListener('click',function(){
+  var ds=lk.value.split('\n').map(function(x){return x.trim();}).filter(function(x){return x.length>8;});
+  if(!ds.length){bao('Chị dán link vào ô trên đã nhé.',false);return;}
+  go.disabled=true;bao('Đang gửi…',true);
+  var xong=0,trung=0,loi=0;
+  ds.forEach(function(u){
+    jsonp(URL_APP+'?guiclip='+encodeURIComponent(u)+'&ghi='+encodeURIComponent(gc.value||'')+'&_='+Date.now(),function(r){
+      if(!r||!r.ok)loi++;else if(r.trung)trung++;else xong++;
+      if(xong+trung+loi===ds.length){
+        go.disabled=false;
+        var t='Đã nhận '+xong+' clip.';
+        if(trung)t+=' '+trung+' clip chị gửi rồi.';
+        if(loi)t+=' '+loi+' clip chưa gửi được, chị thử lại.';
+        bao(t,loi===0);
+        if(loi===0){lk.value='';gc.value='';}
+      }
+    });
+  });
+});
+lk.addEventListener('keydown',function(e){if((e.metaKey||e.ctrlKey)&&e.key==='Enter')go.click();});
+</script>
+</body>
+</html>
