@@ -399,6 +399,9 @@ body.zpad{padding-top:96px}
 @media (max-width:620px){body.zpad{padding-top:150px}}
 .zbar b{color:#6B4A05}
 .zbar button{margin-top:6px;background:#6B4A05;color:#fff;border:0;border-radius:8px;padding:7px 14px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer}
+.btop{display:none;position:fixed;right:14px;bottom:16px;z-index:180;background:var(--rose,#9E4458);color:#fff;border:0;border-radius:999px;padding:12px 18px;font-family:"Be Vietnam Pro",sans-serif;font-size:14px;font-weight:600;box-shadow:0 6px 18px rgba(0,0,0,.22);cursor:pointer}
+.btop.on{display:block}
+.lb .lbtip{max-width:340px;margin:0;color:#FFE2A8;font-family:"Be Vietnam Pro",sans-serif;font-size:12.5px;text-align:center;line-height:1.5}
 .lb .lbw{display:none;max-width:340px;margin:0;color:#FFD98A;font-family:"Be Vietnam Pro",sans-serif;font-size:12.5px;text-align:center;line-height:1.5}
 .lb.wv .lbw{display:block}
 </style>
@@ -406,7 +409,7 @@ body.zpad{padding-top:96px}
 <body>
 <div class="wrap">
   <header>
-    <div class="kicker">Dolinhanh Bridal · nội bộ · cập nhật 07/09/2026 · bản 21</div>
+    <div class="kicker">Dolinhanh Bridal · nội bộ · cập nhật 07/09/2026 · bản 22</div>
     <h1>Bảng điều khiển TikTok</h1>
     <p class="lede">Mỗi ngày: <b>quay 1 clip theo mẫu</b> + <b>đăng 1 story</b>. Bấm tên kênh của bạn.</p>
     <div class="nav"><a class="n-chinh" href="#chinh" data-tab="chinh">● Kênh chính</a><a class="n-hn" href="#hn" data-tab="hn">● Vệ tinh HN</a><a class="n-hcm" href="#hcm" data-tab="hcm">● Vệ tinh HCM</a><a class="n-life" href="#life" data-tab="life">● Nupakachi Life</a><a class="n-luat" href="#luat" data-tab="luat">Luật chung</a></div>
@@ -1654,12 +1657,14 @@ body.zpad{padding-top:96px}
 </div></div></div>
 </section>
 </div>
+<button class="btop" id="btop" type="button">⟵ Về đầu trang</button>
 <div class="zbar" id="zbar">Bạn đang mở trang trong <b>Zalo/Messenger</b> — clip mẫu sẽ không chạy được ở đây. Bấm <b>⋯</b> (hoặc <b>la bàn</b>) ở góc màn hình rồi chọn <b>Mở bằng Safari / trình duyệt</b>, clip sẽ xem được ngay.<br><button class="copy" type="button" data-url="https://dolinhanh-bridal.github.io/camnangnhanvien/tiktok.html">Chép link trang này</button></div>
 <div class="lb" id="lb">
   <button class="lbx" type="button">✕ Đóng</button>
   <iframe id="lbf" src="about:blank" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
   <a class="lbo" id="lba" href="#" target="_blank" rel="noopener">Mở trong app TikTok / Instagram</a>
   <p class="lbw">Đang mở trong Zalo/Messenger nên clip không chạy được. Bấm <b>⋯</b> ở góc trên → <b>Mở bằng Safari</b> rồi xem lại.</p>
+  <p class="lbtip">Nếu clip nhảy sang app TikTok: bấm <b>◀ Safari</b> ở góc trên bên trái màn hình là về lại đây ngay.</p>
 </div>
 <script>
 function bindCopy(){document.querySelectorAll('button.copy').forEach(function(b){if(b.dataset.b)return;b.dataset.b='1';b.addEventListener('click',function(){navigator.clipboard.writeText(b.dataset.url).then(function(){b.textContent='Đã chép';b.dataset.done='1';setTimeout(function(){b.textContent='Chép';b.dataset.done='';},1800);});});});}
@@ -1712,6 +1717,12 @@ window.addEventListener('hashchange',function(){moTab(location.hash.replace('#',
   });
   LB.addEventListener('click',function(e){if(e.target===LB||e.target.classList.contains('lbx'))dong();});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')dong();});
+  var bt=document.getElementById('btop');
+  if(bt){
+    bt.addEventListener('click',function(){var n=document.querySelector('.nav');window.scrollTo({top:n?Math.max(0,n.offsetTop-4):0,behavior:'smooth'});});
+    var xet=function(){if(window.pageYOffset>500)bt.classList.add('on');else bt.classList.remove('on');};
+    window.addEventListener('scroll',xet,{passive:true}); xet();
+  }
   var ua=navigator.userAgent||'';
   var wv=/(FBAN|FBAV|FB_IAB|Zalo|Instagram|Line\/|MicroMessenger)/i.test(ua)||(/iPhone|iPad|iPod/i.test(ua)&&!/Safari/i.test(ua))||(/Android/i.test(ua)&&/wv/i.test(ua));
   if(wv){LB.classList.add('wv');var zb=document.getElementById('zbar');if(zb){zb.classList.add('on');document.body.classList.add('zpad');setTimeout(function(){document.body.style.paddingTop=(zb.offsetHeight+10)+'px';},60);window.addEventListener('resize',function(){document.body.style.paddingTop=(zb.offsetHeight+10)+'px';});}}
