@@ -419,12 +419,13 @@ body.zpad{padding-top:96px}
 @media (max-width:620px){.tuan .slot{grid-template-columns:1fr auto;row-gap:6px}.tuan .slot select{grid-column:1/-1;order:3}}
 .nav a.n-gui{background:var(--rose);border-color:var(--rose);color:#fff;font-weight:600}
 .nav a.n-gui:hover{background:var(--rose-deep);border-color:var(--rose-deep)}
+.clip.daDung{{display:none}} .grp.rong{{display:none}}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <div class="kicker">Dolinhanh Bridal · nội bộ · cập nhật 07/09/2026 · bản 32</div>
+    <div class="kicker">Dolinhanh Bridal · nội bộ · cập nhật 07/09/2026 · bản 33</div>
     <h1>Bảng điều khiển TikTok</h1>
     <p class="lede">Mỗi ngày: <b>quay 1 clip theo mẫu</b> + <b>đăng 1 story</b>. Bấm tên kênh của bạn.</p>
     <div class="nav"><a class="n-chinh" href="#chinh" data-tab="chinh">● Kênh chính</a><a class="n-hn" href="#hn" data-tab="hn">● Vệ tinh HN</a><a class="n-hcm" href="#hcm" data-tab="hcm">● Vệ tinh HCM</a><a class="n-life" href="#life" data-tab="life">● Nupakachi Life</a><a class="n-luat" href="#luat" data-tab="luat">Luật chung</a><a class="n-gui" href="https://dolinhanh-bridal.github.io/camnangnhanvien/gui-clip.html" target="_blank" rel="noopener">✎ Gửi clip hay</a></div>
@@ -1818,7 +1819,35 @@ document.querySelectorAll('button.reset').forEach(function(b){b.addEventListener
 var QL_URL='https://script.google.com/macros/s/AKfycbwlmpyoY3b-iCmO9ZoVeUhm0wYJb4CrQ6I9ezsadk4UhDx1JS3qAEN7MWNOL_DGgkiV/exec';
 var QL_DS={};
 function jsonp(url,cb){var n='cb'+Math.random().toString(36).slice(2);window[n]=function(d){delete window[n];s.remove();cb(d);};var s=document.createElement('script');s.src=url+(url.indexOf('?')>0?'&':'?')+'cb='+n;s.onerror=function(){delete window[n];cb(null);};document.body.appendChild(s);}
-function veQL(){document.querySelectorAll('.tuan .slot').forEach(function(sl){var d=QL_DS[sl.dataset.key];var se=sl.querySelector('select');if(d&&se&&d[1])se.value=d[1];sl.classList.toggle('xong',!!d);});document.querySelectorAll('button.ql').forEach(function(b){var d=QL_DS[b.dataset.d];var c=b.closest('.clip');b.classList.toggle('on',!!d);if(c)c.classList.toggle('qlon',!!d);var old=c&&c.querySelector('.qlnote');if(old)old.remove();
+function donClipDaDung(){
+  var h=new Date(); var homNay=h.getFullYear()+'-'+hai(h.getMonth()+1)+'-'+hai(h.getDate());
+  var daDung={};
+  Object.keys(QL_DS).forEach(function(k){
+    if(k.indexOf('|tuan|')<0)return;
+    var ngay=k.split('|tuan|')[1]; if(ngay>homNay)return;
+    var lk=(QL_DS[k]||[])[1]; if(lk)daDung[lk]=true;
+  });
+  document.querySelectorAll('.clip').forEach(function(c){
+    var a=c.querySelector('a.open'); if(!a)return;
+    c.classList.toggle('daDung',!!daDung[a.getAttribute('href')]);
+  });
+  document.querySelectorAll('.grp').forEach(function(g){
+    g.classList.toggle('rong',g.querySelectorAll('.clip:not(.daDung)').length===0);
+  });
+  document.querySelectorAll('.tuan select').forEach(function(se){
+    [].slice.call(se.options).forEach(function(o){
+      if(o.value&&daDung[o.value]&&o.value!==se.value)o.remove();
+    });
+  });
+  TABS.slice(0,4).forEach(function(k){
+    var sec=document.getElementById(k); if(!sec)return;
+    var h2=sec.querySelector('.sec-head.sub h2'); if(!h2)return;
+    if(!h2.dataset.goc)h2.dataset.goc=h2.textContent;
+    var n=sec.querySelectorAll('.clip.daDung').length;
+    h2.textContent=h2.dataset.goc+(n?' · đã ẩn '+n+' clip đã đăng':'');
+  });
+}
+function veQL(){document.querySelectorAll('.tuan .slot').forEach(function(sl){var d=QL_DS[sl.dataset.key];var se=sl.querySelector('select');if(d&&se&&d[1])se.value=d[1];sl.classList.toggle('xong',!!d);});setTimeout(donClipDaDung,0);document.querySelectorAll('button.ql').forEach(function(b){var d=QL_DS[b.dataset.d];var c=b.closest('.clip');b.classList.toggle('on',!!d);if(c)c.classList.toggle('qlon',!!d);var old=c&&c.querySelector('.qlnote');if(old)old.remove();
   var ngan=!!b.closest('.tuan');if(d){b.textContent='✓ Đã duyệt';var p=document.createElement('p');p.className='qlnote';p.textContent='Quản lý đã duyệt, clip lên kênh · '+d[0];b.parentNode.appendChild(p);}else b.textContent=ngan?'Duyệt':'Quản lý duyệt';});}
 function taiQL(){jsonp(QL_URL+'?dsduyet=1&_='+Date.now(),function(d){if(d&&typeof d==='object'){QL_DS=d;veQL();}});}
 document.querySelectorAll('button.ql').forEach(function(b){b.addEventListener('click',function(){
