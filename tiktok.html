@@ -433,7 +433,7 @@ button.gcGui[disabled]{{opacity:.55}}
 <body>
 <div class="wrap">
   <header>
-    <div class="kicker">Dolinhanh Bridal · nội bộ · cập nhật 07/09/2026 · bản 34</div>
+    <div class="kicker">Dolinhanh Bridal · nội bộ · cập nhật 07/09/2026 · bản 35</div>
     <h1>Bảng điều khiển TikTok</h1>
     <p class="lede">Mỗi ngày: <b>quay 1 clip theo mẫu</b> + <b>đăng 1 story</b>. Bấm tên kênh của bạn.</p>
     <div class="nav"><a class="n-chinh" href="#chinh" data-tab="chinh">● Kênh chính</a><a class="n-hn" href="#hn" data-tab="hn">● Vệ tinh HN</a><a class="n-hcm" href="#hcm" data-tab="hcm">● Vệ tinh HCM</a><a class="n-life" href="#life" data-tab="life">● Nupakachi Life</a><a class="n-luat" href="#luat" data-tab="luat">Luật chung</a><a class="n-gui" href="#gui" data-tab="gui">✎ Gửi clip hay</a></div>
@@ -1889,8 +1889,7 @@ taiQL();
   var lk=document.getElementById('gcLink'),gh=document.getElementById('gcGhi'),kq=document.getElementById('gcKq');
   function bao(t,tot){kq.textContent=t;kq.className='gcKq on '+(tot?'tot':'loi');}
   b.addEventListener('click',function(){
-    var ds=lk.value.split('
-').map(function(x){return x.trim();}).filter(function(x){return x.length>8;});
+    var ds=lk.value.split('\n').map(function(x){return x.trim();}).filter(function(x){return x.length>8;});
     if(!ds.length){bao('Chị dán link vào ô trên đã nhé.',false);return;}
     b.disabled=true;bao('Đang gửi…',true);
     var ok=0,trung=0,loi=0;
