@@ -455,6 +455,17 @@ button.gcGui[disabled]{opacity:.55}
 .tl .b .ai{font-size:12px;color:var(--ink-3)}
 .tl .b p{margin:2px 0 0;font-size:13.5px;line-height:1.55}
 .tl .b p .kn{font-weight:600;color:var(--ink)}
+.tl .b .ngay{font-size:12.5px;font-weight:600;color:var(--ink-3)}
+.np{margin:11px 0 0;border-top:1px dashed var(--line);padding-top:11px}
+.np .lbl{display:block;font-family:'Be Vietnam Pro',sans-serif;font-size:12px;font-weight:700;color:var(--accent-ink);margin:0 0 4px}
+.np input,.np textarea{width:100%;box-sizing:border-box;font-family:'Be Vietnam Pro',sans-serif;font-size:13.5px;line-height:1.5;color:var(--ink);border:1px solid var(--line-strong);border-radius:9px;padding:9px 11px;background:#fff;margin:0 0 9px}
+.np textarea{resize:vertical;min-height:78px}
+.np .hg{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.np button{font-family:'Be Vietnam Pro',sans-serif;font-size:13.5px;font-weight:600;color:#fff;background:var(--accent);border:0;border-radius:999px;padding:9px 18px;cursor:pointer}
+.np button[disabled]{opacity:.5}
+.np .kq{font-size:12.5px;font-weight:600}
+.np .kq.tot{color:#2E7D4F} .np .kq.loi{color:#B23A48}
+.np .gc{font-size:12px;color:var(--ink-3);margin:6px 0 0;line-height:1.5}
 .cap{margin:0 0 12px}
 .cap .val{white-space:pre-wrap;font-size:13px;line-height:1.6}
 </style>
@@ -462,7 +473,7 @@ button.gcGui[disabled]{opacity:.55}
 <body>
 <div class="wrap">
   <header>
-    <div class="kicker">Dolinhanh Bridal · nội bộ · cập nhật 10/09/2026 · bản 42</div>
+    <div class="kicker">Dolinhanh Bridal · nội bộ · cập nhật 10/09/2026 · bản 43</div>
     <h1>Chiến lược truyền thông Dolinhanh</h1>
     <p class="lede">Ba mảng: <b>TikTok</b> (4 kênh) · <b>Instagram</b> (2 kênh) · <b>Facebook</b> (2 page + quảng cáo). Bấm phần việc của bạn.</p>
     <div class="nav"><a class="n-cong" href="#cong" data-tab="cong">&#10229; Trang chủ</a><a class="n-chinh" href="#chinh" data-tab="chinh">● Kênh chính</a><a class="n-hn" href="#hn" data-tab="hn">● Vệ tinh HN</a><a class="n-hcm" href="#hcm" data-tab="hcm">● Vệ tinh HCM</a><a class="n-life" href="#life" data-tab="life">● Nupakachi Life</a><a class="n-luat" href="#luat" data-tab="luat">Luật clip</a><a class="n-ig" href="#ig" data-tab="ig">◎ Instagram</a><a class="n-ads" href="#ads" data-tab="ads">◆ Facebook · Ads</a><a class="n-gui" href="#gui" data-tab="gui">✎ Gửi clip hay</a></div>
@@ -1858,7 +1869,7 @@ button.gcGui[disabled]{opacity:.55}
 
   <div class="sec-head sub"><h2>Lịch đăng — 20:00 thứ 2 · thứ 4 · thứ 6</h2></div>
   <div class="flag warn">Cả <b>2 kênh Instagram</b> đăng cùng khung <b>20:00 thứ 2 · thứ 4 · thứ 6</b>, trùng giờ với kênh TikTok chính. Nội dung từng buổi dưới đây là gợi ý — thiếu ảnh loại này thì lấy loại khác, <b>miễn đúng giờ và đủ 3 buổi</b>.</div>
-  <div class="tl"><div class="b"><div class="d"><span class="thu">Thứ 2</span><span class="gio">20:00</span><span class="ai">cả 2 kênh IG</span></div><p><b>Mẫu váy đẹp nhất tuần.</b> <span class="kn">@dolinhanh.bridal</span> 1 ảnh editorial mẫu váy — caption công thức <b>B</b>. · <span class="kn">@dolinhanh_bridal</span> 3-5 ảnh cùng một mẫu (chính diện · cận ren · lưng váy).</p></div><div class="b"><div class="d"><span class="thu">Thứ 4</span><span class="gio">20:00</span><span class="ai">cả 2 kênh IG</span></div><p><b>Cô dâu thật.</b> <span class="kn">@dolinhanh.bridal</span> ảnh cô dâu vừa cưới hoặc vừa chốt váy — caption công thức <b>C</b>. · <span class="kn">@dolinhanh_bridal</span> mẫu váy khác, cùng cách chụp thứ 2.</p></div><div class="b"><div class="d"><span class="thu">Thứ 6</span><span class="gio">20:00</span><span class="ai">cả 2 kênh IG</span></div><p><b>Reel.</b> <span class="kn">@dolinhanh.bridal</span> đăng chéo clip TikTok kênh chính vừa lên tuần này. · <span class="kn">@dolinhanh_bridal</span> reel “chọn giúp mình 1 hay 2” lấy từ kênh HCM.</p></div></div>
+  <div class="tl"><div class="b" data-mang="ig" data-thu="2"><div class="d"><span class="thu">Thứ 2</span><span class="gio">20:00</span><span class="ngay"></span><span class="ai">cả 2 kênh IG</span></div><p><b>Mẫu váy đẹp nhất tuần.</b> <span class="kn">@dolinhanh.bridal</span> 1 ảnh editorial mẫu váy — caption công thức <b>B</b>. · <span class="kn">@dolinhanh_bridal</span> 3-5 ảnh cùng một mẫu (chính diện · cận ren · lưng váy).</p><div class="np"><span class="lbl">Link ảnh / clip trên Drive</span><input class="np-drive" placeholder="Dán link thư mục hoặc file Drive"><span class="lbl">Caption đăng bài</span><textarea class="np-cap" placeholder="Viết sẵn caption, tới giờ đăng đúng nội dung này"></textarea><div class="hg"><button class="np-luu" type="button">Lưu nội dung</button><span class="np-kq"></span></div><p class="gc">Nhập sẵn trước, tới 20:00 là có nội dung để đăng. Cần <b>mã quản lý</b> mới lưu được; nội dung lưu chung, máy nào cũng thấy.</p></div></div><div class="b" data-mang="ig" data-thu="4"><div class="d"><span class="thu">Thứ 4</span><span class="gio">20:00</span><span class="ngay"></span><span class="ai">cả 2 kênh IG</span></div><p><b>Cô dâu thật.</b> <span class="kn">@dolinhanh.bridal</span> ảnh cô dâu vừa cưới hoặc vừa chốt váy — caption công thức <b>C</b>. · <span class="kn">@dolinhanh_bridal</span> mẫu váy khác, cùng cách chụp thứ 2.</p><div class="np"><span class="lbl">Link ảnh / clip trên Drive</span><input class="np-drive" placeholder="Dán link thư mục hoặc file Drive"><span class="lbl">Caption đăng bài</span><textarea class="np-cap" placeholder="Viết sẵn caption, tới giờ đăng đúng nội dung này"></textarea><div class="hg"><button class="np-luu" type="button">Lưu nội dung</button><span class="np-kq"></span></div><p class="gc">Nhập sẵn trước, tới 20:00 là có nội dung để đăng. Cần <b>mã quản lý</b> mới lưu được; nội dung lưu chung, máy nào cũng thấy.</p></div></div><div class="b" data-mang="ig" data-thu="6"><div class="d"><span class="thu">Thứ 6</span><span class="gio">20:00</span><span class="ngay"></span><span class="ai">cả 2 kênh IG</span></div><p><b>Reel.</b> <span class="kn">@dolinhanh.bridal</span> đăng chéo clip TikTok kênh chính vừa lên tuần này. · <span class="kn">@dolinhanh_bridal</span> reel “chọn giúp mình 1 hay 2” lấy từ kênh HCM.</p><div class="np"><span class="lbl">Link ảnh / clip trên Drive</span><input class="np-drive" placeholder="Dán link thư mục hoặc file Drive"><span class="lbl">Caption đăng bài</span><textarea class="np-cap" placeholder="Viết sẵn caption, tới giờ đăng đúng nội dung này"></textarea><div class="hg"><button class="np-luu" type="button">Lưu nội dung</button><span class="np-kq"></span></div><p class="gc">Nhập sẵn trước, tới 20:00 là có nội dung để đăng. Cần <b>mã quản lý</b> mới lưu được; nội dung lưu chung, máy nào cũng thấy.</p></div></div></div>
   <div class="sec-head sub"><h2>Hai tài khoản</h2></div>
   <div class="rows">
   <div class="row"><p class="name">Instagram chính — @dolinhanh.bridal</p><p class="when">Ảnh editorial, mỗi bài một tấm đẹp nhất. Khách nước ngoài hay xem kênh này trước khi nhắn.</p><div class="actions"><a class="open" href="https://www.instagram.com/dolinhanh.bridal/" target="_blank" rel="noopener">Mở</a><button class="copy" type="button" data-url="https://www.instagram.com/dolinhanh.bridal/">Chép</button></div><p class="url">instagram.com/dolinhanh.bridal</p></div><div class="row"><p class="name">Instagram catalogue — @dolinhanh_bridal</p><p class="when">Ảnh từng mẫu váy, gửi kèm khi tư vấn khách chọn mẫu. Ở đây được đăng nhiều ảnh một mẫu.</p><div class="actions"><a class="open" href="https://www.instagram.com/dolinhanh_bridal/" target="_blank" rel="noopener">Mở</a><button class="copy" type="button" data-url="https://www.instagram.com/dolinhanh_bridal/">Chép</button></div><p class="url">instagram.com/dolinhanh_bridal</p></div>
@@ -1900,7 +1911,7 @@ DOLINHANH BRIDAL
 
   <div class="sec-head sub"><h2>① Đăng bài page — 20:00 thứ 2 · thứ 4 · thứ 6</h2></div>
   <div class="flag warn">Đăng <b>cùng khung giờ và cùng nội dung với Instagram</b>, chỉ viết caption dài hơn. Bài nào đã lên IG thì hôm đó lên luôn cả 2 page Facebook.</div>
-  <div class="tl"><div class="b"><div class="d"><span class="thu">Thứ 2</span><span class="gio">20:00</span><span class="ai">cả 2 page HN &amp; HCM</span></div><p><b>Mẫu váy đẹp nhất tuần.</b> Cùng bộ ảnh đã đăng Instagram, viết lại caption dài hơn theo mẫu <b>A</b> hoặc <b>B</b>, có đủ khối địa chỉ 2 showroom ở cuối bài.</p></div><div class="b"><div class="d"><span class="thu">Thứ 4</span><span class="gio">20:00</span><span class="ai">cả 2 page HN &amp; HCM</span></div><p><b>Cô dâu thật.</b> Album ảnh cô dâu vừa cưới — caption mẫu <b>C</b>. Ghi rõ cơ sở HN hay HCM ở cuối bài.</p></div><div class="b"><div class="d"><span class="thu">Thứ 6</span><span class="gio">20:00</span><span class="ai">cả 2 page HN &amp; HCM</span></div><p><b>Reel / hậu trường.</b> Đăng chéo clip TikTok kênh chính, hoặc album hậu trường buổi fitting trong tuần.</p></div></div>
+  <div class="tl"><div class="b" data-mang="fb" data-thu="2"><div class="d"><span class="thu">Thứ 2</span><span class="gio">20:00</span><span class="ngay"></span><span class="ai">cả 2 page HN &amp; HCM</span></div><p><b>Mẫu váy đẹp nhất tuần.</b> Cùng bộ ảnh đã đăng Instagram, viết lại caption dài hơn theo mẫu <b>A</b> hoặc <b>B</b>, có đủ khối địa chỉ 2 showroom ở cuối bài.</p><div class="np"><span class="lbl">Link ảnh / clip trên Drive</span><input class="np-drive" placeholder="Dán link thư mục hoặc file Drive"><span class="lbl">Caption đăng bài</span><textarea class="np-cap" placeholder="Viết sẵn caption, tới giờ đăng đúng nội dung này"></textarea><div class="hg"><button class="np-luu" type="button">Lưu nội dung</button><span class="np-kq"></span></div><p class="gc">Nhập sẵn trước, tới 20:00 là có nội dung để đăng. Cần <b>mã quản lý</b> mới lưu được; nội dung lưu chung, máy nào cũng thấy.</p></div></div><div class="b" data-mang="fb" data-thu="4"><div class="d"><span class="thu">Thứ 4</span><span class="gio">20:00</span><span class="ngay"></span><span class="ai">cả 2 page HN &amp; HCM</span></div><p><b>Cô dâu thật.</b> Album ảnh cô dâu vừa cưới — caption mẫu <b>C</b>. Ghi rõ cơ sở HN hay HCM ở cuối bài.</p><div class="np"><span class="lbl">Link ảnh / clip trên Drive</span><input class="np-drive" placeholder="Dán link thư mục hoặc file Drive"><span class="lbl">Caption đăng bài</span><textarea class="np-cap" placeholder="Viết sẵn caption, tới giờ đăng đúng nội dung này"></textarea><div class="hg"><button class="np-luu" type="button">Lưu nội dung</button><span class="np-kq"></span></div><p class="gc">Nhập sẵn trước, tới 20:00 là có nội dung để đăng. Cần <b>mã quản lý</b> mới lưu được; nội dung lưu chung, máy nào cũng thấy.</p></div></div><div class="b" data-mang="fb" data-thu="6"><div class="d"><span class="thu">Thứ 6</span><span class="gio">20:00</span><span class="ngay"></span><span class="ai">cả 2 page HN &amp; HCM</span></div><p><b>Reel / hậu trường.</b> Đăng chéo clip TikTok kênh chính, hoặc album hậu trường buổi fitting trong tuần.</p><div class="np"><span class="lbl">Link ảnh / clip trên Drive</span><input class="np-drive" placeholder="Dán link thư mục hoặc file Drive"><span class="lbl">Caption đăng bài</span><textarea class="np-cap" placeholder="Viết sẵn caption, tới giờ đăng đúng nội dung này"></textarea><div class="hg"><button class="np-luu" type="button">Lưu nội dung</button><span class="np-kq"></span></div><p class="gc">Nhập sẵn trước, tới 20:00 là có nội dung để đăng. Cần <b>mã quản lý</b> mới lưu được; nội dung lưu chung, máy nào cũng thấy.</p></div></div></div>
   <div class="rows">
   <div class="row"><p class="name">Fanpage HCM — Dolinhanh Bridal</p><p class="when">Page nhận inbox khách từ quảng cáo. Đăng bài + trả lời khách.</p><div class="actions"><a class="open" href="https://www.facebook.com/Dolinhanhbridalhcm/" target="_blank" rel="noopener">Mở</a><button class="copy" type="button" data-url="https://www.facebook.com/Dolinhanhbridalhcm/">Chép</button></div><p class="url">facebook.com/Dolinhanhbridalhcm</p></div><div class="row"><p class="name">Fanpage HN — Dolinhanh Bridal</p><p class="when">Page cơ sở Hà Nội. Cùng lịch đăng, ghi rõ địa chỉ 75 Nguyễn Thị Định ở cuối bài.</p><div class="actions"><a class="open" href="https://www.facebook.com/Dolinhanhbridalhn/" target="_blank" rel="noopener">Mở</a><button class="copy" type="button" data-url="https://www.facebook.com/Dolinhanhbridalhn/">Chép</button></div><p class="url">facebook.com/Dolinhanhbridalhn</p></div>
   </div>
@@ -2082,6 +2093,81 @@ window.addEventListener('hashchange',function(){moTab(location.hash.replace('#',
   var wv=/(FBAN|FBAV|FB_IAB|Zalo|Instagram|Line\/|MicroMessenger)/i.test(ua)||(/iPhone|iPad|iPod/i.test(ua)&&!/Safari/i.test(ua))||(/Android/i.test(ua)&&/wv/i.test(ua));
   if(wv){LB.classList.add('wv');var zb=document.getElementById('zbar');if(zb){zb.classList.add('on');document.body.classList.add('zpad');setTimeout(function(){document.body.style.paddingTop=(zb.offsetHeight+10)+'px';},60);window.addEventListener('resize',function(){document.body.style.paddingTop=(zb.offsetHeight+10)+'px';});}}
 })();
+
+/* ===== Lich dang IG/FB: nhap san link Drive + caption ===== */
+(function(){
+  var API='https://script.google.com/macros/s/AKfycbzBi3onTG6EuezrBf2QUTm1YqYSReOOig5x-vdo-nNJ6TtJoE8kENDHVahQTg2FyXsK/exec';
+  var TEN_THU2=['Chủ nhật','Thứ 2','Thứ 3','Thứ 4','Thứ 5','Thứ 6','Thứ 7'];
+  var o=document.querySelectorAll('.tl .b[data-mang]');
+  if(!o.length)return;
+  function hai(n){return (n<10?'0':'')+n;}
+  function ngayCua(thu){
+    var now=new Date();
+    var d=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+    var cach=(thu-d.getDay()+7)%7;
+    d.setDate(d.getDate()+cach);
+    if(cach===0 && now.getHours()>=20) d.setDate(d.getDate()+7);
+    return d;
+  }
+  var map={};
+  [].forEach.call(o,function(b){
+    var thu=parseInt(b.dataset.thu,10), d=ngayCua(thu);
+    var k=b.dataset.mang+'|'+d.getFullYear()+'-'+hai(d.getMonth()+1)+'-'+hai(d.getDate());
+    b.dataset.k=k; map[k]=b;
+    var sp=b.querySelector('.ngay'); if(sp)sp.textContent='· '+hai(d.getDate())+'/'+hai(d.getMonth()+1);
+  });
+  function jsonp(u,xong){
+    var cb='lc'+Math.random().toString(36).slice(2);
+    window[cb]=function(r){try{xong(r);}catch(e){} delete window[cb]; if(sc.parentNode)sc.parentNode.removeChild(sc);};
+    var sc=document.createElement('script');
+    sc.src=u+(u.indexOf('?')<0?'?':'&')+'cb='+cb+'&_='+Date.now();
+    sc.onerror=function(){xong({ok:0,loi:'mang'});};
+    document.head.appendChild(sc);
+  }
+  function nap(){
+    jsonp(API,function(r){
+      if(!r||!r.ok||!r.ds)return;
+      r.ds.forEach(function(x){
+        var b=map[x.k]; if(!b)return;
+        var i=b.querySelector('.np-drive'), c=b.querySelector('.np-cap');
+        if(i&&!i.value)i.value=x.drive||'';
+        if(c&&!c.value)c.value=x.cap||'';
+        if(x.drive||x.cap){var kq=b.querySelector('.np-kq');if(kq){kq.textContent='Đã có nội dung';kq.className='kq tot';}}
+      });
+    });
+  }
+  nap();
+  function ma(){
+    var m='';
+    try{m=localStorage.getItem('dla_ma_ql')||'';}catch(e){}
+    if(!m){
+      m=window.prompt('Nhập mã quản lý để lưu nội dung:')||'';
+      m=m.trim();
+      if(m){try{localStorage.setItem('dla_ma_ql',m);}catch(e){}}
+    }
+    return m;
+  }
+  [].forEach.call(document.querySelectorAll('.np-luu'),function(nut){
+    nut.addEventListener('click',function(){
+      var b=nut.closest('.b'); if(!b)return;
+      var kq=b.querySelector('.np-kq');
+      var m=ma(); if(!m){if(kq){kq.textContent='Chưa nhập mã';kq.className='kq loi';}return;}
+      var drive=b.querySelector('.np-drive').value.trim();
+      var cap=b.querySelector('.np-cap').value;
+      nut.disabled=true; if(kq){kq.textContent='Đang lưu…';kq.className='kq';}
+      jsonp(API+'?luu=1&ma='+encodeURIComponent(m)+'&k='+encodeURIComponent(b.dataset.k)
+            +'&drive='+encodeURIComponent(drive)+'&cap='+encodeURIComponent(cap),function(r){
+        nut.disabled=false;
+        if(r&&r.ok){if(kq){kq.textContent='Đã lưu';kq.className='kq tot';}}
+        else{
+          if(r&&r.loi==='sai-ma'){try{localStorage.removeItem('dla_ma_ql');}catch(e){}}
+          if(kq){kq.textContent=(r&&r.loi==='sai-ma')?'Sai mã quản lý':'Chưa lưu được, thử lại';kq.className='kq loi';}
+        }
+      });
+    });
+  });
+})();
+
 </script>
 </body>
 </html>
