@@ -467,6 +467,11 @@ table.lich td.ngay{white-space:nowrap;font-weight:600}
 table.lich td.ngay small{display:block;font-weight:400;font-size:11.5px;color:var(--ink-3)}
 table.lich input,table.lich select,table.lich textarea{width:100%;box-sizing:border-box;font-family:'Be Vietnam Pro',sans-serif;font-size:13px;line-height:1.5;color:var(--ink);border:1px solid var(--line);border-radius:7px;padding:7px 8px;background:#fff}
 table.lich textarea{resize:vertical;min-height:60px}
+table.lich .cot-kenh{width:150px}
+table.lich .kn{display:flex;flex-direction:column;gap:5px}
+table.lich .kn label{display:flex;align-items:center;gap:6px;font-size:12.5px;line-height:1.3;cursor:pointer;color:var(--ink)}
+table.lich .kn input[type=checkbox]{width:15px;height:15px;flex:0 0 auto;accent-color:var(--accent);margin:0;padding:0}
+table.lich .kn small{display:block;font-size:11px;color:var(--ink-3);margin-left:21px;margin-top:-3px}
 table.lich .cot-loai{width:120px} table.lich .cot-link{width:210px} table.lich .cot-cap{width:330px} table.lich .cot-luuy{width:200px} table.lich .cot-luu{width:82px}
 table.lich button.np-luu{width:100%;font-family:'Be Vietnam Pro',sans-serif;font-size:12.5px;font-weight:600;color:#fff;background:var(--accent);border:0;border-radius:999px;padding:8px 6px;cursor:pointer}
 table.lich button.np-luu[disabled]{opacity:.5}
@@ -500,7 +505,7 @@ table.lich .np-kq.tot{color:#2E7D4F} table.lich .np-kq.loi{color:#B23A48}
 <body>
 <div class="wrap">
   <header>
-    <div class="kicker">Dolinhanh Bridal · nội bộ · cập nhật 10/09/2026 · bản 48</div>
+    <div class="kicker">Dolinhanh Bridal · nội bộ · cập nhật 10/09/2026 · bản 49</div>
     <h1>Chiến lược truyền thông Dolinhanh</h1>
     <p class="lede">Ba mảng: <b>TikTok</b> (4 kênh) · <b>Instagram</b> (2 kênh) · <b>Facebook</b> (2 page + quảng cáo). Bấm phần việc của bạn.</p>
     <div class="nav"><a class="n-cong" href="#cong" data-tab="cong">&#10229; Trang chủ</a><a class="n-chinh" href="#chinh" data-tab="chinh">● Kênh chính</a><a class="n-hn" href="#hn" data-tab="hn">● Vệ tinh HN</a><a class="n-hcm" href="#hcm" data-tab="hcm">● Vệ tinh HCM</a><a class="n-life" href="#life" data-tab="life">● Nupakachi Life</a><a class="n-luat" href="#luat" data-tab="luat">Luật clip</a><a class="n-ig" href="#ig" data-tab="ig">◎ Instagram</a><a class="n-ads" href="#ads" data-tab="ads">◆ Facebook · Ads</a><a class="n-gui" href="#gui" data-tab="gui">✎ Gửi clip hay</a></div>
@@ -2127,6 +2132,8 @@ window.addEventListener('hashchange',function(){moTab(location.hash.replace('#',
   var GOI={"ig": {"2": "<b>Mẫu váy đẹp nhất tuần.</b> <span class=\"kn\">@dolinhanh.bridal</span> 1 ảnh editorial mẫu váy — caption công thức <b>B</b>. · <span class=\"kn\">@dolinhanh_bridal</span> 3-5 ảnh cùng một mẫu (chính diện · cận ren · lưng váy).", "4": "<b>Cô dâu thật.</b> <span class=\"kn\">@dolinhanh.bridal</span> ảnh cô dâu vừa cưới hoặc vừa chốt váy — caption công thức <b>C</b>. · <span class=\"kn\">@dolinhanh_bridal</span> mẫu váy khác, cùng cách chụp thứ 2.", "6": "<b>Reel.</b> <span class=\"kn\">@dolinhanh.bridal</span> đăng chéo clip TikTok kênh chính vừa lên tuần này. · <span class=\"kn\">@dolinhanh_bridal</span> reel “chọn giúp mình 1 hay 2” lấy từ kênh HCM."}, "fb": {"2": "<b>Mẫu váy đẹp nhất tuần.</b> Cùng bộ ảnh đã đăng Instagram, viết lại caption dài hơn theo mẫu <b>A</b> hoặc <b>B</b>, có đủ khối địa chỉ 2 showroom ở cuối bài.", "4": "<b>Cô dâu thật.</b> Album ảnh cô dâu vừa cưới — caption mẫu <b>C</b>. Ghi rõ cơ sở HN hay HCM ở cuối bài.", "6": "<b>Reel / hậu trường.</b> Đăng chéo clip TikTok kênh chính, hoặc album hậu trường buổi fitting trong tuần."}};
   var TEN_THU={2:'Thứ 2',4:'Thứ 4',6:'Thứ 6'};
   var AI={ig:'cả 2 kênh IG',fb:'cả 2 page HN &amp; HCM'};
+  var KENH={ig:[['IG chính','@dolinhanh.bridal'],['IG phụ','@dolinhanh_bridal']],
+            fb:[['Page HCM','Dolinhanhbridalhcm'],['Page HN','Dolinhanhbridalhn']]};
   var khung=document.querySelectorAll('.tl[data-mang]');
   if(!khung.length)return;
   var DL={};      /* khoa -> {drive,cap} */
@@ -2159,7 +2166,7 @@ window.addEventListener('hashchange',function(){moTab(location.hash.replace('#',
       return;
     }
     var h='<div class="tlwrap"><table class="lich"><thead><tr>'
-      +'<th>Thứ</th><th>Ngày</th><th class="cot-loai">Ảnh lướt / clip</th>'
+      +'<th>Thứ</th><th>Ngày</th><th class="cot-kenh">Kênh</th><th class="cot-loai">Ảnh lướt / clip</th>'
       +'<th class="cot-link">Link lấy</th><th class="cot-cap">Caption</th>'
       +'<th class="cot-luuy">Lưu ý</th><th class="cot-luu">Lưu</th></tr></thead><tbody>';
     ds.forEach(function(b){
@@ -2170,6 +2177,10 @@ window.addEventListener('hashchange',function(){moTab(location.hash.replace('#',
       h+='<tr'+(cocn?' class="co"':'')+' data-k="'+k+'" data-thu="'+TEN_THU[b.thu]+'">'
         +'<td class="thu">'+TEN_THU[b.thu]+'</td>'
         +'<td class="ngay">'+hai(b.ngay.getDate())+'/'+hai(b.ngay.getMonth()+1)+'<small>20:00</small></td>'
+        +'<td><div class="kn">'+KENH[mang].map(function(kk,ix){
+            var ck=(x.kenh===undefined||x.kenh===''||String(x.kenh).indexOf(kk[0])>=0)?' checked':'';
+            return '<label><input type="checkbox" class="np-kenh" value="'+kk[0]+'"'+ck+'>'+kk[0]+'</label><small>'+kk[1]+'</small>';
+          }).join('')+'</div></td>'
         +'<td><select class="np-loai">'
         +'<option value=""'+(loai?'':' selected')+'>— chọn —</option>'
         +'<option'+(loai==='Ảnh lướt'?' selected':'')+'>Ảnh lướt</option>'
@@ -2212,6 +2223,7 @@ window.addEventListener('hashchange',function(){moTab(location.hash.replace('#',
       nut.addEventListener('click',function(){
         var tr=nut.closest('tr'),kq=tr.querySelector('.np-kq');
         var m=ma(); if(!m){kq.textContent='Chưa nhập mã';kq.className='np-kq loi';return;}
+        var kenh=[].slice.call(tr.querySelectorAll('.np-kenh:checked')).map(function(c){return c.value;}).join(', ');
         var loai=tr.querySelector('.np-loai').value;
         var drive=tr.querySelector('.np-drive').value.trim();
         var cap=tr.querySelector('.np-cap').value;
@@ -2219,12 +2231,12 @@ window.addEventListener('hashchange',function(){moTab(location.hash.replace('#',
         nut.disabled=true; kq.textContent='Đang lưu…'; kq.className='np-kq';
         jsonp(API+'?lichdang=luu&ma='+encodeURIComponent(m)+'&k='+encodeURIComponent(tr.dataset.k)
               +'&thu='+encodeURIComponent(tr.dataset.thu)
-              +'&loai='+encodeURIComponent(loai)
+              +'&kenh='+encodeURIComponent(kenh)+'&loai='+encodeURIComponent(loai)
               +'&drive='+encodeURIComponent(drive)+'&cap='+encodeURIComponent(cap)
               +'&luuy='+encodeURIComponent(luuy),function(r){
           nut.disabled=false;
           if(r&&r.ok){
-            DL[tr.dataset.k]={loai:loai,drive:drive,cap:cap,luuy:luuy};
+            DL[tr.dataset.k]={kenh:kenh,loai:loai,drive:drive,cap:cap,luuy:luuy};
             kq.textContent='Đã lưu'; kq.className='np-kq tot';
             tr.classList.toggle('co',!!(loai+drive+cap+luuy));
             var bang=tr.closest('.tl');
@@ -2253,7 +2265,7 @@ window.addEventListener('hashchange',function(){moTab(location.hash.replace('#',
   });
   jsonp(API+'?lichdang=ds',function(r){
     if(!r||!r.ok||!r.ds)return;
-    r.ds.forEach(function(x){DL[x.k]={loai:x.loai||'',drive:x.drive||'',cap:x.cap||'',luuy:x.luuy||''};});
+    r.ds.forEach(function(x){DL[x.k]={kenh:x.kenh||'',loai:x.loai||'',drive:x.drive||'',cap:x.cap||'',luuy:x.luuy||''};});
     for(var mang in moc)ve(mang);
   });
 })();
