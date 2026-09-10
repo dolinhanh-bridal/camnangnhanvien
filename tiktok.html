@@ -473,7 +473,7 @@ button.gcGui[disabled]{opacity:.55}
 <body>
 <div class="wrap">
   <header>
-    <div class="kicker">Dolinhanh Bridal · nội bộ · cập nhật 10/09/2026 · bản 43</div>
+    <div class="kicker">Dolinhanh Bridal · nội bộ · cập nhật 10/09/2026 · bản 44</div>
     <h1>Chiến lược truyền thông Dolinhanh</h1>
     <p class="lede">Ba mảng: <b>TikTok</b> (4 kênh) · <b>Instagram</b> (2 kênh) · <b>Facebook</b> (2 page + quảng cáo). Bấm phần việc của bạn.</p>
     <div class="nav"><a class="n-cong" href="#cong" data-tab="cong">&#10229; Trang chủ</a><a class="n-chinh" href="#chinh" data-tab="chinh">● Kênh chính</a><a class="n-hn" href="#hn" data-tab="hn">● Vệ tinh HN</a><a class="n-hcm" href="#hcm" data-tab="hcm">● Vệ tinh HCM</a><a class="n-life" href="#life" data-tab="life">● Nupakachi Life</a><a class="n-luat" href="#luat" data-tab="luat">Luật clip</a><a class="n-ig" href="#ig" data-tab="ig">◎ Instagram</a><a class="n-ads" href="#ads" data-tab="ads">◆ Facebook · Ads</a><a class="n-gui" href="#gui" data-tab="gui">✎ Gửi clip hay</a></div>
@@ -2096,7 +2096,7 @@ window.addEventListener('hashchange',function(){moTab(location.hash.replace('#',
 
 /* ===== Lich dang IG/FB: nhap san link Drive + caption ===== */
 (function(){
-  var API='https://script.google.com/macros/s/AKfycbzBi3onTG6EuezrBf2QUTm1YqYSReOOig5x-vdo-nNJ6TtJoE8kENDHVahQTg2FyXsK/exec';
+  var API='https://script.google.com/macros/s/AKfycbwlmpyoY3b-iCmO9ZoVeUhm0wYJb4CrQ6I9ezsadk4UhDx1JS3qAEN7MWNOL_DGgkiV/exec';
   var TEN_THU2=['Chủ nhật','Thứ 2','Thứ 3','Thứ 4','Thứ 5','Thứ 6','Thứ 7'];
   var o=document.querySelectorAll('.tl .b[data-mang]');
   if(!o.length)return;
@@ -2125,7 +2125,7 @@ window.addEventListener('hashchange',function(){moTab(location.hash.replace('#',
     document.head.appendChild(sc);
   }
   function nap(){
-    jsonp(API,function(r){
+    jsonp(API+'?lichdang=ds',function(r){
       if(!r||!r.ok||!r.ds)return;
       r.ds.forEach(function(x){
         var b=map[x.k]; if(!b)return;
@@ -2155,7 +2155,7 @@ window.addEventListener('hashchange',function(){moTab(location.hash.replace('#',
       var drive=b.querySelector('.np-drive').value.trim();
       var cap=b.querySelector('.np-cap').value;
       nut.disabled=true; if(kq){kq.textContent='Đang lưu…';kq.className='kq';}
-      jsonp(API+'?luu=1&ma='+encodeURIComponent(m)+'&k='+encodeURIComponent(b.dataset.k)
+      jsonp(API+'?lichdang=luu&ma='+encodeURIComponent(m)+'&k='+encodeURIComponent(b.dataset.k)
             +'&drive='+encodeURIComponent(drive)+'&cap='+encodeURIComponent(cap),function(r){
         nut.disabled=false;
         if(r&&r.ok){if(kq){kq.textContent='Đã lưu';kq.className='kq tot';}}
