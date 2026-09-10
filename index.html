@@ -4174,12 +4174,16 @@ QUIZ[26] = [
     }
     err.classList.remove('show');
     var btn = document.getElementById('btnDone');
-    btn.disabled = true; btn.textContent = 'Đang kiểm tra…';
+    btn.disabled = true; btn.textContent = 'Đang kiểm tra… (mạng chậm thì hơi lâu)';
     function xong(){ btn.disabled = false; btn.textContent = 'Mở cẩm nang 🤍'; }
-    trakTen(em, function(ten, maSheet, bp){
+    trakTen(em, function(ten, maSheet, bp, loiM){
       if(!ten && !maSheet){
         xong();
-        loi('Không tìm thấy email này trong hệ thống (hoặc mạng đang chậm). Bạn kiểm tra lại email — chưa điền form thì bấm nút bên trên điền trước nha.');
+        if(loiM === 'mang'){
+          loi('Mạng đang chậm nên chưa kiểm tra được. Bạn chờ vài giây rồi bấm "Mở cẩm nang" lần nữa nha — nếu đang dùng 4G thì bật wifi cho nhanh hơn.');
+        } else {
+          loi('Không tìm thấy email này trong hệ thống. Bạn kiểm tra lại email — chưa điền form thì bấm nút bên trên điền trước nha.');
+        }
         return;
       }
       if(!maSheet){
@@ -4234,7 +4238,7 @@ QUIZ[26] = [
   /* ---- tra ten (+ ma da chon, neu co) theo email (JSONP, khong dinh CORS) ---- */
   function trakTen(email, cb){
     var xong = false;
-    function ket(ten, ma, bp){ if(xong) return; xong = true; cb(ten || '', ma || '', bp || ''); }
+    function ket(ten, ma, bp, loiM){ if(xong) return; xong = true; cb(ten || '', ma || '', bp || '', loiM || ''); }
     var fn = 'dlaTraTen' + Date.now();
     window[fn] = function(data){
       ket(data && data.ten ? data.ten : '', data && data.ma ? data.ma : '', data && data.bp ? data.bp : '');
@@ -4243,9 +4247,9 @@ QUIZ[26] = [
     };
     var sTag = document.createElement('script');
     sTag.src = FORM_URL + '?tra=' + encodeURIComponent(email) + '&cb=' + fn;
-    sTag.onerror = function(){ ket('', '', ''); };
+    sTag.onerror = function(){ ket('', '', '', 'mang'); };
     document.body.appendChild(sTag);
-    setTimeout(function(){ ket('', '', ''); }, 4000);
+    setTimeout(function(){ ket('', '', '', 'mang'); }, 15000);
   }
   /* ---- nhan vien tu dat ma dang nhap 4 so (JSONP) ---- */
   function datMa(ma, em, cb){
@@ -4261,7 +4265,7 @@ QUIZ[26] = [
     sTag.src = FORM_URL + '?datma=' + encodeURIComponent(ma) + '&em=' + encodeURIComponent(em) + '&cb=' + fn;
     sTag.onerror = function(){ ket(false, 'Lỗi mạng, thử lại nha.'); };
     document.body.appendChild(sTag);
-    setTimeout(function(){ ket(false, 'Mạng chậm quá, thử lại nha.'); }, 4000);
+    setTimeout(function(){ ket(false, 'Mạng chậm quá, thử lại nha.'); }, 15000);
   }
   /* ---- tra email+ten theo ma dang nhap (JSONP) ---- */
   function traTheoMa(ma, cb){
@@ -4277,7 +4281,7 @@ QUIZ[26] = [
     sTag.src = FORM_URL + '?ma=' + encodeURIComponent(ma) + '&cb=' + fn;
     sTag.onerror = function(){ ket('', ''); };
     document.body.appendChild(sTag);
-    setTimeout(function(){ ket('', ''); }, 4000);
+    setTimeout(function(){ ket('', ''); }, 15000);
   }
   /* ---- chao moi ngay + nhac cau sai bai test gan nhat ---- */
   var LOI_CHAO = [
