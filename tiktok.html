@@ -482,7 +482,7 @@ button.gcGui[disabled]{opacity:.55}
 <body>
 <div class="wrap">
   <header>
-    <div class="kicker">Dolinhanh Bridal · nội bộ · cập nhật 10/09/2026 · bản 45</div>
+    <div class="kicker">Dolinhanh Bridal · nội bộ · cập nhật 10/09/2026 · bản 46</div>
     <h1>Chiến lược truyền thông Dolinhanh</h1>
     <p class="lede">Ba mảng: <b>TikTok</b> (4 kênh) · <b>Instagram</b> (2 kênh) · <b>Facebook</b> (2 page + quảng cáo). Bấm phần việc của bạn.</p>
     <div class="nav"><a class="n-cong" href="#cong" data-tab="cong">&#10229; Trang chủ</a><a class="n-chinh" href="#chinh" data-tab="chinh">● Kênh chính</a><a class="n-hn" href="#hn" data-tab="hn">● Vệ tinh HN</a><a class="n-hcm" href="#hcm" data-tab="hcm">● Vệ tinh HCM</a><a class="n-life" href="#life" data-tab="life">● Nupakachi Life</a><a class="n-luat" href="#luat" data-tab="luat">Luật clip</a><a class="n-ig" href="#ig" data-tab="ig">◎ Instagram</a><a class="n-ads" href="#ads" data-tab="ads">◆ Facebook · Ads</a><a class="n-gui" href="#gui" data-tab="gui">✎ Gửi clip hay</a></div>
@@ -2134,11 +2134,16 @@ window.addEventListener('hashchange',function(){moTab(location.hash.replace('#',
     var bar=document.querySelector('.thbar[data-mang="'+mang+'"]');
     var d0=moc[mang];
     bar.querySelector('.th-ten').textContent='Tháng '+(d0.getMonth()+1)+'/'+d0.getFullYear();
-    var ds=buoiTrongThang(d0),h='',co=0;
+    var ds=buoiTrongThang(d0).filter(function(b){return !daQua(b.ngay);}),h='',co=0;
+    if(!ds.length){
+      box.innerHTML='<p class="hint" style="margin:8px 0 2px">Tháng này đăng xong hết rồi. Bấm <b>&#9654;</b> để nhập nội dung cho tháng sau.</p>';
+      bar.querySelector('.th-dem').textContent='';
+      return;
+    }
     ds.forEach(function(b){
       var k=khoa(mang,b.ngay),x=DL[k]||{},cocn=!!((x.drive||'')+(x.cap||''));
       if(cocn)co++;
-      h+='<div class="b'+(cocn?' co':'')+(daQua(b.ngay)?' qua':'')+'" data-k="'+k+'">'
+      h+='<div class="b'+(cocn?' co':'')+'" data-k="'+k+'">'
         +'<div class="d"><span class="thu">'+TEN_THU[b.thu]+'</span><span class="gio">20:00</span>'
         +'<span class="ngay">· '+hai(b.ngay.getDate())+'/'+hai(b.ngay.getMonth()+1)+'</span>'
         +'<span class="ai">'+AI[mang]+'</span><span class="tt">'+(cocn?'Đã có nội dung':'Chưa nhập')+'</span></div>'
