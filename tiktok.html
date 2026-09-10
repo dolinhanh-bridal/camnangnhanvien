@@ -430,6 +430,18 @@ button.gcGui[disabled]{opacity:.55}
 .gcKq.on{display:block} .gcKq.tot{color:#2E7D4F} .gcKq.loi{color:var(--rose-deep)}
 #gui .fact textarea,#gui .fact input{width:100%!important;display:block!important;box-sizing:border-box}
 #gui button.gcGui{display:block!important;width:100%!important;float:none!important}
+.cong{display:flex;flex-direction:column;gap:14px;margin:6px 0 4px}
+.cong .cg{display:flex;align-items:center;gap:14px;text-decoration:none;border:1px solid var(--line-strong);border-radius:14px;background:#fff;padding:18px 18px}
+.cong .cg:hover{border-color:var(--accent)}
+.cong .cg .ico{flex:0 0 auto;width:42px;height:42px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff;background:var(--accent)}
+.cong .cg-if .ico{background:#A15C86}
+.cong .cg .tx{flex:1 1 auto;min-width:0}
+.cong .cg .tx b{display:block;font-family:'Cormorant Garamond',Georgia,serif;font-size:25px;font-weight:600;line-height:1.15;color:var(--ink)}
+.cong .cg .tx i{display:block;font-style:normal;font-size:13px;line-height:1.5;color:var(--ink-3);margin-top:3px}
+.cong .cg .ar{flex:0 0 auto;font-size:22px;font-weight:700;color:var(--accent)}
+.cong .cg-if .ar{color:#A15C86}
+.nav.an{display:none}
+.nav a.n-cong{border-color:var(--line-strong);color:var(--ink-3);font-weight:500}
 .nav a.n-ig{color:#A15C86;border-color:#A15C86} .nav a.n-ig.on{background:#A15C86;border-color:#A15C86;color:#fff}
 .nav a.n-ads{color:#3A6EA5;border-color:#3A6EA5} .nav a.n-ads.on{background:#3A6EA5;border-color:#3A6EA5;color:#fff}
 .tl{display:flex;flex-direction:column;gap:10px;margin:10px 0 4px}
@@ -447,11 +459,19 @@ button.gcGui[disabled]{opacity:.55}
 <body>
 <div class="wrap">
   <header>
-    <div class="kicker">Dolinhanh Bridal · nội bộ · cập nhật 10/09/2026 · bản 40</div>
+    <div class="kicker">Dolinhanh Bridal · nội bộ · cập nhật 10/09/2026 · bản 41</div>
     <h1>Chiến lược truyền thông Dolinhanh</h1>
     <p class="lede">Ba mảng: <b>TikTok</b> (4 kênh) · <b>Instagram</b> (2 kênh) · <b>Facebook</b> (2 page + quảng cáo). Bấm phần việc của bạn.</p>
-    <div class="nav"><a class="n-chinh" href="#chinh" data-tab="chinh">● Kênh chính</a><a class="n-hn" href="#hn" data-tab="hn">● Vệ tinh HN</a><a class="n-hcm" href="#hcm" data-tab="hcm">● Vệ tinh HCM</a><a class="n-life" href="#life" data-tab="life">● Nupakachi Life</a><a class="n-luat" href="#luat" data-tab="luat">Luật clip</a><a class="n-ig" href="#ig" data-tab="ig">◎ Instagram</a><a class="n-ads" href="#ads" data-tab="ads">◆ Facebook · Ads</a><a class="n-gui" href="#gui" data-tab="gui">✎ Gửi clip hay</a></div>
+    <div class="nav"><a class="n-cong" href="#cong" data-tab="cong">&#10229; Mảng khác</a><a class="n-chinh" href="#chinh" data-tab="chinh">● Kênh chính</a><a class="n-hn" href="#hn" data-tab="hn">● Vệ tinh HN</a><a class="n-hcm" href="#hcm" data-tab="hcm">● Vệ tinh HCM</a><a class="n-life" href="#life" data-tab="life">● Nupakachi Life</a><a class="n-luat" href="#luat" data-tab="luat">Luật clip</a><a class="n-ig" href="#ig" data-tab="ig">◎ Instagram</a><a class="n-ads" href="#ads" data-tab="ads">◆ Facebook · Ads</a><a class="n-gui" href="#gui" data-tab="gui">✎ Gửi clip hay</a></div>
   </header>
+
+  <div id="tab-cong" class="tab">
+    <p class="lede" style="margin-top:2px">Chọn mảng bạn phụ trách:</p>
+    <div class="cong">
+      <a class="cg cg-tt" href="#chinh" data-tab="chinh"><span class="ico">&#9654;</span><span class="tx"><b>TikTok</b><i>4 kênh · 95 clip mẫu để xem và quay theo · nộp source, nộp clip, chờ duyệt rồi lên kênh</i></span><span class="ar">&#8594;</span></a>
+      <a class="cg cg-if" href="#ig" data-tab="ig"><span class="ico">&#9678;</span><span class="tx"><b>Instagram &amp; Facebook</b><i>2 kênh IG · 2 page FB · quảng cáo — đăng 20:00 thứ 2 · thứ 4 · thứ 6</i></span><span class="ar">&#8594;</span></a>
+    </div>
+  </div>
 
   <div id="tab-luat" class="tab">
   <section>
@@ -1910,7 +1930,8 @@ DOLINHANH BRIDAL
 <script>
 function bindCopy(){document.querySelectorAll('button.copy').forEach(function(b){if(b.dataset.b)return;b.dataset.b='1';b.addEventListener('click',function(){navigator.clipboard.writeText(b.dataset.url).then(function(){b.textContent='Đã chép';b.dataset.done='1';setTimeout(function(){b.textContent='Chép';b.dataset.done='';},1800);});});});}
 bindCopy();
-var TABS=['chinh','hn','hcm','life','luat','gui','ig','ads'];
+var TABS=['chinh','hn','hcm','life','luat','gui','ig','ads','cong'];
+var NHOM={chinh:'tiktok',hn:'tiktok',hcm:'tiktok',life:'tiktok',luat:'tiktok',gui:'tiktok',ig:'igfb',ads:'igfb'};
 var LICH_KENH={chinh:{ngay:[1,3,5],gio:'20:00'},hn:{ngay:[1,3,5],gio:'12:00'},hcm:{ngay:[0,1,2,3,4,5,6],gio:'19:30'},life:{ngay:[0,1,2,3,4,5,6],gio:'12:30'}};
 var TEN_THU=['Chủ nhật','Thứ 2','Thứ 3','Thứ 4','Thứ 5','Thứ 6','Thứ 7'];
 function hai(n){return (n<10?'0':'')+n;}
@@ -2015,16 +2036,23 @@ taiQL();
 })();
 veMk();
 
-function moTab(k,scroll){if(TABS.indexOf(k)<0)k='luat';
+function moTab(k,scroll){if(TABS.indexOf(k)<0)k='cong';
   document.querySelectorAll('.tab').forEach(function(el){el.classList.remove('on');});
-  var el=document.getElementById(k==='luat'?'tab-luat':k); if(el)el.classList.add('on');
-  document.querySelectorAll('.nav a[data-tab]').forEach(function(a){a.classList.toggle('on',a.dataset.tab===k);});
+  var id=(k==='luat'?'tab-luat':(k==='cong'?'tab-cong':k));
+  var el=document.getElementById(id); if(el)el.classList.add('on');
+  var nav=document.querySelector('.nav'); if(nav)nav.classList.toggle('an',k==='cong');
+  var m=NHOM[k]||'';
+  document.querySelectorAll('.nav a[data-tab]').forEach(function(a){
+    var t=a.dataset.tab;
+    a.style.display=(t==='cong'||NHOM[t]===m)?'':'none';
+    a.classList.toggle('on',t===k);
+  });
   try{localStorage.setItem('dla_tt_kenh',k);}catch(e){}
   if(history.replaceState)history.replaceState(null,'','#'+k);
   if(scroll)window.scrollTo({top:document.querySelector('.nav').offsetTop-4,behavior:'smooth'});
 }
-document.querySelectorAll('.nav a[data-tab]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();moTab(a.dataset.tab,true);});});
-(function(){var h=location.hash.replace('#',''); var k=h; if(TABS.indexOf(k)<0){try{k=localStorage.getItem('dla_tt_kenh')||'luat';}catch(e){k='luat';}} moTab(k,false);})();
+document.querySelectorAll('.nav a[data-tab],.cong a[data-tab]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();moTab(a.dataset.tab,true);});});
+(function(){var h=location.hash.replace('#',''); var k=h; if(TABS.indexOf(k)<0){try{k=localStorage.getItem('dla_tt_kenh')||'cong';}catch(e){k='cong';}} moTab(k,false);})();
 window.addEventListener('hashchange',function(){moTab(location.hash.replace('#',''),false);});
 /* xem clip ngay trong trang, khong phai roi web */
 (function(){
