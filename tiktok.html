@@ -481,7 +481,7 @@ table.lich .xem button{font-family:'Be Vietnam Pro',sans-serif;font-size:12px;fo
 table.lich .xem a{font-size:12px;color:var(--ink-3);text-decoration:underline}
 table.lich .kn{display:flex;flex-direction:column;gap:5px}
 table.lich .kn label{display:flex;align-items:center;gap:6px;font-size:12.5px;line-height:1.3;cursor:pointer;color:var(--ink)}
-table.lich .kn input[type=checkbox]{width:15px;height:15px;flex:0 0 auto;accent-color:var(--accent);margin:0;padding:0}
+table.lich .kn input[type=checkbox],table.lich .kn input[type=radio]{width:15px;height:15px;flex:0 0 auto;accent-color:var(--accent);margin:0;padding:0}
 table.lich .kn small{display:block;font-size:11px;color:var(--ink-3);margin-left:21px;margin-top:-3px}
 table.lich .cot-loai{width:120px} table.lich .cot-link{width:210px} table.lich .cot-cap{width:330px} table.lich .cot-luuy{width:200px} table.lich .cot-luu{width:82px}
 table.lich button.np-luu{width:100%;font-family:'Be Vietnam Pro',sans-serif;font-size:12.5px;font-weight:600;color:#fff;background:var(--accent);border:0;border-radius:999px;padding:8px 6px;cursor:pointer}
@@ -516,7 +516,7 @@ table.lich .np-kq.tot{color:#2E7D4F} table.lich .np-kq.loi{color:#B23A48}
 <body>
 <div class="wrap">
   <header>
-    <div class="kicker">Dolinhanh Bridal · nội bộ · cập nhật 10/09/2026 · bản 50</div>
+    <div class="kicker">Dolinhanh Bridal · nội bộ · cập nhật 10/09/2026 · bản 51</div>
     <h1>Chiến lược truyền thông Dolinhanh</h1>
     <p class="lede">Ba mảng: <b>TikTok</b> (4 kênh) · <b>Instagram</b> (2 kênh) · <b>Facebook</b> (2 page + quảng cáo). Bấm phần việc của bạn.</p>
     <div class="nav"><a class="n-cong" href="#cong" data-tab="cong">&#10229; Trang chủ</a><a class="n-chinh" href="#chinh" data-tab="chinh">● Kênh chính</a><a class="n-hn" href="#hn" data-tab="hn">● Vệ tinh HN</a><a class="n-hcm" href="#hcm" data-tab="hcm">● Vệ tinh HCM</a><a class="n-life" href="#life" data-tab="life">● Nupakachi Life</a><a class="n-luat" href="#luat" data-tab="luat">Luật clip</a><a class="n-ig" href="#ig" data-tab="ig">◎ Instagram</a><a class="n-ads" href="#ads" data-tab="ads">◆ Facebook · Ads</a><a class="n-gui" href="#gui" data-tab="gui">✎ Gửi clip hay</a></div>
@@ -2188,9 +2188,14 @@ window.addEventListener('hashchange',function(){moTab(location.hash.replace('#',
       h+='<tr'+(cocn?' class="co"':'')+' data-k="'+k+'" data-thu="'+TEN_THU[b.thu]+'">'
         +'<td class="thu">'+TEN_THU[b.thu]+'</td>'
         +'<td class="ngay">'+hai(b.ngay.getDate())+'/'+hai(b.ngay.getMonth()+1)+'<small>20:00</small></td>'
-        +'<td><div class="kn">'+KENH[mang].map(function(kk,ix){
-            var ck=(x.kenh===undefined||x.kenh===''||String(x.kenh).indexOf(kk[0])>=0)?' checked':'';
-            return '<label><input type="checkbox" class="np-kenh" value="'+kk[0]+'"'+ck+'>'+kk[0]+'</label><small>'+kk[1]+'</small>';
+        +'<td><div class="kn">'+KENH[mang].map(function(kk){
+            var mot=(mang==='ig');
+            var ck;
+            if(mot){ ck=(String(x.kenh||'')===kk[0])?' checked':''; }
+            else{ ck=(x.kenh===undefined||x.kenh===''||String(x.kenh).indexOf(kk[0])>=0)?' checked':''; }
+            var loai=mot?'radio':'checkbox';
+            var ten=mot?(' name="kn-'+k+'"'):'';
+            return '<label><input type="'+loai+'"'+ten+' class="np-kenh" value="'+kk[0]+'"'+ck+'>'+kk[0]+'</label><small>'+kk[1]+'</small>';
           }).join('')+'</div></td>'
         +'<td><select class="np-loai">'
         +'<option value=""'+(loai?'':' selected')+'>— chọn —</option>'
