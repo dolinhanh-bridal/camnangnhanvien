@@ -455,6 +455,24 @@ button.gcGui[disabled]{opacity:.55}
 .tl .b .ai{font-size:12px;color:var(--ink-3)}
 .tl .b p{margin:2px 0 0;font-size:13.5px;line-height:1.55}
 .tl .b p .kn{font-weight:600;color:var(--ink)}
+.tlwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:12px;background:#fff;margin:10px 0 4px}
+table.lb{border-collapse:collapse;width:100%;min-width:900px;font-size:13.5px}
+table.lb th{background:var(--blush,#F5E3DE);color:var(--accent-ink);font-family:'Be Vietnam Pro',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-align:left;padding:10px 10px;border-bottom:1px solid var(--line);white-space:nowrap;position:sticky;top:0;z-index:2}
+table.lb td{border-bottom:1px solid var(--line);border-left:1px solid var(--line);padding:8px 9px;vertical-align:top}
+table.lb td:first-child{border-left:0}
+table.lb tr:last-child td{border-bottom:0}
+table.lb tr.co td{background:#F7FBF8}
+table.lb td.thu{font-family:'Cormorant Garamond',Georgia,serif;font-size:18px;font-weight:600;color:var(--accent-ink);white-space:nowrap}
+table.lb td.ngay{white-space:nowrap;font-weight:600}
+table.lb td.ngay small{display:block;font-weight:400;font-size:11.5px;color:var(--ink-3)}
+table.lb input,table.lb select,table.lb textarea{width:100%;box-sizing:border-box;font-family:'Be Vietnam Pro',sans-serif;font-size:13px;line-height:1.5;color:var(--ink);border:1px solid var(--line);border-radius:7px;padding:7px 8px;background:#fff}
+table.lb textarea{resize:vertical;min-height:60px}
+table.lb .cot-loai{width:120px} table.lb .cot-link{width:210px} table.lb .cot-cap{width:330px} table.lb .cot-luuy{width:200px} table.lb .cot-luu{width:82px}
+table.lb button.np-luu{width:100%;font-family:'Be Vietnam Pro',sans-serif;font-size:12.5px;font-weight:600;color:#fff;background:var(--accent);border:0;border-radius:999px;padding:8px 6px;cursor:pointer}
+table.lb button.np-luu[disabled]{opacity:.5}
+table.lb .np-kq{display:block;margin-top:5px;font-size:11.5px;font-weight:600;text-align:center}
+table.lb .np-kq.tot{color:#2E7D4F} table.lb .np-kq.loi{color:#B23A48}
+.lbnote{font-size:12.5px;color:var(--ink-3);margin:6px 2px 0}
 .thbar{display:flex;align-items:center;gap:10px;margin:12px 0 2px;flex-wrap:wrap}
 .thbar button{width:34px;height:34px;border-radius:999px;border:1px solid var(--line-strong);background:#fff;color:var(--ink);font-size:12px;cursor:pointer}
 .thbar button:hover{border-color:var(--accent);color:var(--accent-ink)}
@@ -482,7 +500,7 @@ button.gcGui[disabled]{opacity:.55}
 <body>
 <div class="wrap">
   <header>
-    <div class="kicker">Dolinhanh Bridal · nội bộ · cập nhật 10/09/2026 · bản 46</div>
+    <div class="kicker">Dolinhanh Bridal · nội bộ · cập nhật 10/09/2026 · bản 47</div>
     <h1>Chiến lược truyền thông Dolinhanh</h1>
     <p class="lede">Ba mảng: <b>TikTok</b> (4 kênh) · <b>Instagram</b> (2 kênh) · <b>Facebook</b> (2 page + quảng cáo). Bấm phần việc của bạn.</p>
     <div class="nav"><a class="n-cong" href="#cong" data-tab="cong">&#10229; Trang chủ</a><a class="n-chinh" href="#chinh" data-tab="chinh">● Kênh chính</a><a class="n-hn" href="#hn" data-tab="hn">● Vệ tinh HN</a><a class="n-hcm" href="#hcm" data-tab="hcm">● Vệ tinh HCM</a><a class="n-life" href="#life" data-tab="life">● Nupakachi Life</a><a class="n-luat" href="#luat" data-tab="luat">Luật clip</a><a class="n-ig" href="#ig" data-tab="ig">◎ Instagram</a><a class="n-ads" href="#ads" data-tab="ads">◆ Facebook · Ads</a><a class="n-gui" href="#gui" data-tab="gui">✎ Gửi clip hay</a></div>
@@ -2134,33 +2152,42 @@ window.addEventListener('hashchange',function(){moTab(location.hash.replace('#',
     var bar=document.querySelector('.thbar[data-mang="'+mang+'"]');
     var d0=moc[mang];
     bar.querySelector('.th-ten').textContent='Tháng '+(d0.getMonth()+1)+'/'+d0.getFullYear();
-    var ds=buoiTrongThang(d0).filter(function(b){return !daQua(b.ngay);}),h='',co=0;
+    var ds=buoiTrongThang(d0).filter(function(b){return !daQua(b.ngay);}),co=0;
     if(!ds.length){
       box.innerHTML='<p class="hint" style="margin:8px 0 2px">Tháng này đăng xong hết rồi. Bấm <b>&#9654;</b> để nhập nội dung cho tháng sau.</p>';
       bar.querySelector('.th-dem').textContent='';
       return;
     }
+    var h='<div class="tlwrap"><table class="lb"><thead><tr>'
+      +'<th>Thứ</th><th>Ngày</th><th class="cot-loai">Ảnh lướt / clip</th>'
+      +'<th class="cot-link">Link lấy</th><th class="cot-cap">Caption</th>'
+      +'<th class="cot-luuy">Lưu ý</th><th class="cot-luu">Lưu</th></tr></thead><tbody>';
     ds.forEach(function(b){
-      var k=khoa(mang,b.ngay),x=DL[k]||{},cocn=!!((x.drive||'')+(x.cap||''));
+      var k=khoa(mang,b.ngay),x=DL[k]||{};
+      var cocn=!!((x.drive||'')+(x.cap||'')+(x.loai||'')+(x.luuy||''));
       if(cocn)co++;
-      h+='<div class="b'+(cocn?' co':'')+'" data-k="'+k+'">'
-        +'<div class="d"><span class="thu">'+TEN_THU[b.thu]+'</span><span class="gio">20:00</span>'
-        +'<span class="ngay">· '+hai(b.ngay.getDate())+'/'+hai(b.ngay.getMonth()+1)+'</span>'
-        +'<span class="ai">'+AI[mang]+'</span><span class="tt">'+(cocn?'Đã có nội dung':'Chưa nhập')+'</span></div>'
-        +'<p>'+GOI[mang][b.thu]+'</p>'
-        +'<div class="np">'
-        +'<span class="lbl">Link ảnh / clip trên Drive</span>'
-        +'<input class="np-drive" placeholder="Dán link thư mục hoặc file Drive" value="'+String(x.drive||'').replace(/"/g,'&quot;')+'">'
-        +'<span class="lbl">Caption đăng bài</span>'
-        +'<textarea class="np-cap" placeholder="Viết sẵn caption, tới giờ đăng đúng nội dung này"></textarea>'
-        +'<div class="hg"><button class="np-luu" type="button">Lưu nội dung</button><span class="np-kq"></span></div>'
-        +'</div></div>';
+      var loai=x.loai||'';
+      h+='<tr'+(cocn?' class="co"':'')+' data-k="'+k+'" data-thu="'+TEN_THU[b.thu]+'">'
+        +'<td class="thu">'+TEN_THU[b.thu]+'</td>'
+        +'<td class="ngay">'+hai(b.ngay.getDate())+'/'+hai(b.ngay.getMonth()+1)+'<small>20:00</small></td>'
+        +'<td><select class="np-loai">'
+        +'<option value=""'+(loai?'':' selected')+'>— chọn —</option>'
+        +'<option'+(loai==='Ảnh lướt'?' selected':'')+'>Ảnh lướt</option>'
+        +'<option'+(loai==='Clip'?' selected':'')+'>Clip</option>'
+        +'<option'+(loai==='Ảnh đơn'?' selected':'')+'>Ảnh đơn</option>'
+        +'</select></td>'
+        +'<td><input class="np-drive" placeholder="Link Drive lấy ảnh / clip"></td>'
+        +'<td><textarea class="np-cap" placeholder="Caption đăng bài"></textarea></td>'
+        +'<td><textarea class="np-luuy" placeholder="Nhắc gì thêm"></textarea></td>'
+        +'<td><button class="np-luu" type="button">Lưu</button><span class="np-kq"></span></td></tr>';
     });
+    h+='</tbody></table></div><p class="lbnote">Vuốt ngang để xem đủ cột. Nhập xong từng dòng bấm <b>Lưu</b> — nội dung lưu chung, máy nào mở cũng thấy.</p>';
     box.innerHTML=h;
-    /* dat caption bang value de khong vo HTML */
-    [].forEach.call(box.querySelectorAll('.b'),function(b){
-      var x=DL[b.dataset.k]||{};
-      b.querySelector('.np-cap').value=x.cap||'';
+    [].forEach.call(box.querySelectorAll('tr[data-k]'),function(tr){
+      var x=DL[tr.dataset.k]||{};
+      tr.querySelector('.np-drive').value=x.drive||'';
+      tr.querySelector('.np-cap').value=x.cap||'';
+      tr.querySelector('.np-luuy').value=x.luuy||'';
     });
     bar.querySelector('.th-dem').textContent='đã nhập '+co+'/'+ds.length+' buổi';
     gan(box);
@@ -2183,29 +2210,33 @@ window.addEventListener('hashchange',function(){moTab(location.hash.replace('#',
   function gan(box){
     [].forEach.call(box.querySelectorAll('.np-luu'),function(nut){
       nut.addEventListener('click',function(){
-        var b=nut.closest('.b'),kq=b.querySelector('.np-kq');
-        var m=ma(); if(!m){kq.textContent='Chưa nhập mã';kq.className='kq loi';return;}
-        var drive=b.querySelector('.np-drive').value.trim(), cap=b.querySelector('.np-cap').value;
-        nut.disabled=true; kq.textContent='Đang lưu…'; kq.className='kq';
-        jsonp(API+'?lichdang=luu&ma='+encodeURIComponent(m)+'&k='+encodeURIComponent(b.dataset.k)
-              +'&drive='+encodeURIComponent(drive)+'&cap='+encodeURIComponent(cap),function(r){
+        var tr=nut.closest('tr'),kq=tr.querySelector('.np-kq');
+        var m=ma(); if(!m){kq.textContent='Chưa nhập mã';kq.className='np-kq loi';return;}
+        var loai=tr.querySelector('.np-loai').value;
+        var drive=tr.querySelector('.np-drive').value.trim();
+        var cap=tr.querySelector('.np-cap').value;
+        var luuy=tr.querySelector('.np-luuy').value;
+        nut.disabled=true; kq.textContent='Đang lưu…'; kq.className='np-kq';
+        jsonp(API+'?lichdang=luu&ma='+encodeURIComponent(m)+'&k='+encodeURIComponent(tr.dataset.k)
+              +'&thu='+encodeURIComponent(tr.dataset.thu)
+              +'&loai='+encodeURIComponent(loai)
+              +'&drive='+encodeURIComponent(drive)+'&cap='+encodeURIComponent(cap)
+              +'&luuy='+encodeURIComponent(luuy),function(r){
           nut.disabled=false;
           if(r&&r.ok){
-            DL[b.dataset.k]={drive:drive,cap:cap};
-            kq.textContent='Đã lưu'; kq.className='kq tot';
-            var cocn=!!(drive+cap);
-            b.classList.toggle('co',cocn);
-            b.querySelector('.tt').textContent=cocn?'Đã có nội dung':'Chưa nhập';
-            var bar=b.closest('.tl').previousElementSibling;
-            var box2=b.closest('.tl');
+            DL[tr.dataset.k]={loai:loai,drive:drive,cap:cap,luuy:luuy};
+            kq.textContent='Đã lưu'; kq.className='np-kq tot';
+            tr.classList.toggle('co',!!(loai+drive+cap+luuy));
+            var bang=tr.closest('.tl');
+            var bar=bang.previousElementSibling;
             if(bar&&bar.classList.contains('thbar')){
-              var tong=box2.querySelectorAll('.b').length, dem=box2.querySelectorAll('.b.co').length;
+              var tong=bang.querySelectorAll('tr[data-k]').length, dem=bang.querySelectorAll('tr.co').length;
               bar.querySelector('.th-dem').textContent='đã nhập '+dem+'/'+tong+' buổi';
             }
           }else{
             if(r&&r.loi==='sai-ma'){try{localStorage.removeItem('dla_ma_ql');}catch(e){}}
-            kq.textContent=(r&&r.loi==='sai-ma')?'Sai mã quản lý':'Chưa lưu được, thử lại';
-            kq.className='kq loi';
+            kq.textContent=(r&&r.loi==='sai-ma')?'Sai mã':'Chưa lưu được';
+            kq.className='np-kq loi';
           }
         });
       });
@@ -2222,7 +2253,7 @@ window.addEventListener('hashchange',function(){moTab(location.hash.replace('#',
   });
   jsonp(API+'?lichdang=ds',function(r){
     if(!r||!r.ok||!r.ds)return;
-    r.ds.forEach(function(x){DL[x.k]={drive:x.drive||'',cap:x.cap||''};});
+    r.ds.forEach(function(x){DL[x.k]={loai:x.loai||'',drive:x.drive||'',cap:x.cap||'',luuy:x.luuy||''};});
     for(var mang in moc)ve(mang);
   });
 })();
