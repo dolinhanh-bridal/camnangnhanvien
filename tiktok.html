@@ -477,6 +477,7 @@ table.lich .cot-kenh{width:150px}
 .mabar.xong{background:#F7FBF8;border-color:#CFE4D6}
 table.lich .xem{display:flex;align-items:center;gap:8px;margin-top:6px}
 table.lich .xem img{cursor:pointer;width:54px;height:54px;object-fit:cover;border-radius:7px;border:1px solid var(--line);background:var(--paper-deep,#F4EAE0);display:block}
+table.lich .xem .khung{cursor:pointer;width:54px;height:54px;flex:0 0 54px;border-radius:7px;border:1px solid var(--line);background:var(--blush,#F5E3DE);display:flex;align-items:center;justify-content:center;font-size:19px;color:var(--accent-ink)}
 table.lich .xem button{font-family:'Be Vietnam Pro',sans-serif;font-size:12px;font-weight:600;color:var(--accent-ink);background:var(--blush,#F5E3DE);border:0;border-radius:999px;padding:6px 12px;cursor:pointer;white-space:nowrap}
 table.lich .xem a{font-size:12px;color:var(--ink-3);text-decoration:underline}
 table.lich .kn{display:flex;flex-direction:column;gap:5px}
@@ -516,7 +517,7 @@ table.lich .np-kq.tot{color:#2E7D4F} table.lich .np-kq.loi{color:#B23A48}
 <body>
 <div class="wrap">
   <header>
-    <div class="kicker">Dolinhanh Bridal · nội bộ · cập nhật 10/09/2026 · bản 51</div>
+    <div class="kicker">Dolinhanh Bridal · nội bộ · cập nhật 10/09/2026 · bản 52</div>
     <h1>Chiến lược truyền thông Dolinhanh</h1>
     <p class="lede">Ba mảng: <b>TikTok</b> (4 kênh) · <b>Instagram</b> (2 kênh) · <b>Facebook</b> (2 page + quảng cáo). Bấm phần việc của bạn.</p>
     <div class="nav"><a class="n-cong" href="#cong" data-tab="cong">&#10229; Trang chủ</a><a class="n-chinh" href="#chinh" data-tab="chinh">● Kênh chính</a><a class="n-hn" href="#hn" data-tab="hn">● Vệ tinh HN</a><a class="n-hcm" href="#hcm" data-tab="hcm">● Vệ tinh HCM</a><a class="n-life" href="#life" data-tab="life">● Nupakachi Life</a><a class="n-luat" href="#luat" data-tab="luat">Luật clip</a><a class="n-ig" href="#ig" data-tab="ig">◎ Instagram</a><a class="n-ads" href="#ads" data-tab="ads">◆ Facebook · Ads</a><a class="n-gui" href="#gui" data-tab="gui">✎ Gửi clip hay</a></div>
@@ -2290,8 +2291,15 @@ window.addEventListener('hashchange',function(){moTab(location.hash.replace('#',
       box.innerHTML='<img src="https://drive.google.com/thumbnail?id='+id+'&sz=w160" alt="" loading="lazy" title="Bấm để xem clip">'
         +'<button type="button" class="xem-nut">▶ Xem clip</button>'
         +'<a href="'+u.replace(/"/g,'&quot;')+'" target="_blank" rel="noopener">Mở Drive</a>';
+      var im=box.querySelector('img');
+      im.addEventListener('click',function(){moXem(id,u);});
+      im.addEventListener('error',function(){
+        var kh=document.createElement('div');
+        kh.className='khung'; kh.textContent='▶'; kh.title='Bấm để xem clip';
+        kh.addEventListener('click',function(){moXem(id,u);});
+        im.replaceWith(kh);
+      });
       box.querySelector('.xem-nut').addEventListener('click',function(){moXem(id,u);});
-      box.querySelector('img').addEventListener('click',function(){moXem(id,u);});
     }else{
       box.innerHTML='<a href="'+u.replace(/"/g,'&quot;')+'" target="_blank" rel="noopener">Mở thư mục Drive</a>';
     }
