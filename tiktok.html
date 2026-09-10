@@ -468,6 +468,17 @@ table.lich td.ngay small{display:block;font-weight:400;font-size:11.5px;color:va
 table.lich input,table.lich select,table.lich textarea{width:100%;box-sizing:border-box;font-family:'Be Vietnam Pro',sans-serif;font-size:13px;line-height:1.5;color:var(--ink);border:1px solid var(--line);border-radius:7px;padding:7px 8px;background:#fff}
 table.lich textarea{resize:vertical;min-height:60px}
 table.lich .cot-kenh{width:150px}
+.mabar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0 2px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff}
+.mabar b{font-size:13px}
+.mabar input{font-family:'Be Vietnam Pro',sans-serif;font-size:14px;letter-spacing:2px;text-align:center;width:120px;padding:8px 10px;border:1px solid var(--line-strong);border-radius:8px;background:#fff;color:var(--ink)}
+.mabar button{font-family:'Be Vietnam Pro',sans-serif;font-size:13px;font-weight:600;color:#fff;background:var(--accent);border:0;border-radius:999px;padding:8px 16px;cursor:pointer}
+.mabar .kq{font-size:12.5px;font-weight:600}
+.mabar .kq.tot{color:#2E7D4F} .mabar .kq.loi{color:#B23A48}
+.mabar.xong{background:#F7FBF8;border-color:#CFE4D6}
+table.lich .xem{display:flex;align-items:center;gap:8px;margin-top:6px}
+table.lich .xem img{cursor:pointer;width:54px;height:54px;object-fit:cover;border-radius:7px;border:1px solid var(--line);background:var(--paper-deep,#F4EAE0);display:block}
+table.lich .xem button{font-family:'Be Vietnam Pro',sans-serif;font-size:12px;font-weight:600;color:var(--accent-ink);background:var(--blush,#F5E3DE);border:0;border-radius:999px;padding:6px 12px;cursor:pointer;white-space:nowrap}
+table.lich .xem a{font-size:12px;color:var(--ink-3);text-decoration:underline}
 table.lich .kn{display:flex;flex-direction:column;gap:5px}
 table.lich .kn label{display:flex;align-items:center;gap:6px;font-size:12.5px;line-height:1.3;cursor:pointer;color:var(--ink)}
 table.lich .kn input[type=checkbox]{width:15px;height:15px;flex:0 0 auto;accent-color:var(--accent);margin:0;padding:0}
@@ -505,7 +516,7 @@ table.lich .np-kq.tot{color:#2E7D4F} table.lich .np-kq.loi{color:#B23A48}
 <body>
 <div class="wrap">
   <header>
-    <div class="kicker">Dolinhanh Bridal · nội bộ · cập nhật 10/09/2026 · bản 49</div>
+    <div class="kicker">Dolinhanh Bridal · nội bộ · cập nhật 10/09/2026 · bản 50</div>
     <h1>Chiến lược truyền thông Dolinhanh</h1>
     <p class="lede">Ba mảng: <b>TikTok</b> (4 kênh) · <b>Instagram</b> (2 kênh) · <b>Facebook</b> (2 page + quảng cáo). Bấm phần việc của bạn.</p>
     <div class="nav"><a class="n-cong" href="#cong" data-tab="cong">&#10229; Trang chủ</a><a class="n-chinh" href="#chinh" data-tab="chinh">● Kênh chính</a><a class="n-hn" href="#hn" data-tab="hn">● Vệ tinh HN</a><a class="n-hcm" href="#hcm" data-tab="hcm">● Vệ tinh HCM</a><a class="n-life" href="#life" data-tab="life">● Nupakachi Life</a><a class="n-luat" href="#luat" data-tab="luat">Luật clip</a><a class="n-ig" href="#ig" data-tab="ig">◎ Instagram</a><a class="n-ads" href="#ads" data-tab="ads">◆ Facebook · Ads</a><a class="n-gui" href="#gui" data-tab="gui">✎ Gửi clip hay</a></div>
@@ -2201,7 +2212,12 @@ window.addEventListener('hashchange',function(){moTab(location.hash.replace('#',
       tr.querySelector('.np-luuy').value=x.luuy||'';
     });
     bar.querySelector('.th-dem').textContent='đã nhập '+co+'/'+ds.length+' buổi';
+    [].forEach.call(box.querySelectorAll('tr[data-k]'),function(tr){
+      veXem(tr);
+      tr.querySelector('.np-drive').addEventListener('change',function(){veXem(tr);});
+    });
     gan(box);
+    veMaBar();
   }
   function jsonp(u,xong){
     var cb='lc'+Math.random().toString(36).slice(2);
@@ -2214,15 +2230,79 @@ window.addEventListener('hashchange',function(){moTab(location.hash.replace('#',
   function ma(){
     var m='';
     try{m=localStorage.getItem('dla_ma_ql')||'';}catch(e){}
-    if(!m){m=(window.prompt('Nhập mã quản lý để lưu nội dung:')||'').trim();
-      if(m){try{localStorage.setItem('dla_ma_ql',m);}catch(e){}}}
     return m;
+  }
+  function veMaBar(){
+    [].forEach.call(document.querySelectorAll('.tl[data-mang]'),function(box){
+      var bar=box.parentNode.querySelector('.mabar[data-mang="'+box.dataset.mang+'"]');
+      if(!bar){
+        bar=document.createElement('div');
+        bar.className='mabar'; bar.dataset.mang=box.dataset.mang;
+        box.parentNode.insertBefore(bar,box);
+      }
+      var m=ma();
+      if(m){
+        bar.className='mabar xong';
+        bar.innerHTML='<b>Mã quản lý đã nhập</b> <span class="kq tot">✓ lưu được rồi</span> <button type="button" class="ma-doi">Đổi mã</button>';
+        bar.querySelector('.ma-doi').addEventListener('click',function(){
+          try{localStorage.removeItem('dla_ma_ql');}catch(e){} veMaBar();
+        });
+      }else{
+        bar.className='mabar';
+        bar.innerHTML='<b>Nhập mã quản lý để lưu được nội dung:</b>'
+          +'<input class="ma-o" type="text" placeholder="mã" autocomplete="off">'
+          +'<button type="button" class="ma-ok">Xong</button><span class="kq"></span>';
+        var o=bar.querySelector('.ma-o');
+        bar.querySelector('.ma-ok').addEventListener('click',function(){
+          var v=(o.value||'').trim();
+          if(!v){bar.querySelector('.kq').textContent='Chưa nhập mã';bar.querySelector('.kq').className='kq loi';return;}
+          try{localStorage.setItem('dla_ma_ql',v);}catch(e){}
+          veMaBar();
+        });
+        o.addEventListener('keydown',function(e){if(e.key==='Enter')bar.querySelector('.ma-ok').click();});
+      }
+    });
+  }
+  function idDrive(u){
+    if(!u)return '';
+    var m=u.match(/\/file\/d\/([A-Za-z0-9_-]{10,})/)||u.match(/[?&]id=([A-Za-z0-9_-]{10,})/);
+    return m?m[1]:'';
+  }
+  function moXem(id,link){
+    var LB=document.getElementById('lb'),F=document.getElementById('lbf'),A=document.getElementById('lba');
+    if(!LB||!F)return;
+    F.src='https://drive.google.com/file/d/'+id+'/preview';
+    if(A){A.href=link;A.textContent='Mở trong Google Drive';}
+    LB.classList.add('on'); document.body.style.overflow='hidden';
+  }
+  function veXem(tr){
+    var o=tr.querySelector('.np-drive'), td=o.parentNode;
+    var cu=td.querySelector('.xem'); if(cu)cu.remove();
+    var u=o.value.trim(); if(!u)return;
+    var id=idDrive(u);
+    var box=document.createElement('div'); box.className='xem';
+    if(id){
+      box.innerHTML='<img src="https://drive.google.com/thumbnail?id='+id+'&sz=w160" alt="" loading="lazy" title="Bấm để xem clip">'
+        +'<button type="button" class="xem-nut">▶ Xem clip</button>'
+        +'<a href="'+u.replace(/"/g,'&quot;')+'" target="_blank" rel="noopener">Mở Drive</a>';
+      box.querySelector('.xem-nut').addEventListener('click',function(){moXem(id,u);});
+      box.querySelector('img').addEventListener('click',function(){moXem(id,u);});
+    }else{
+      box.innerHTML='<a href="'+u.replace(/"/g,'&quot;')+'" target="_blank" rel="noopener">Mở thư mục Drive</a>';
+    }
+    td.appendChild(box);
   }
   function gan(box){
     [].forEach.call(box.querySelectorAll('.np-luu'),function(nut){
       nut.addEventListener('click',function(){
         var tr=nut.closest('tr'),kq=tr.querySelector('.np-kq');
-        var m=ma(); if(!m){kq.textContent='Chưa nhập mã';kq.className='np-kq loi';return;}
+        var m=ma();
+        if(!m){
+          kq.textContent='Nhập mã ở trên'; kq.className='np-kq loi';
+          var mb=tr.closest('.tl').parentNode.querySelector('.mabar[data-mang]');
+          if(mb){mb.scrollIntoView({block:'center',behavior:'smooth'});var oo=mb.querySelector('.ma-o');if(oo)oo.focus();}
+          return;
+        }
         var kenh=[].slice.call(tr.querySelectorAll('.np-kenh:checked')).map(function(c){return c.value;}).join(', ');
         var loai=tr.querySelector('.np-loai').value;
         var drive=tr.querySelector('.np-drive').value.trim();
@@ -2238,6 +2318,7 @@ window.addEventListener('hashchange',function(){moTab(location.hash.replace('#',
           if(r&&r.ok){
             DL[tr.dataset.k]={kenh:kenh,loai:loai,drive:drive,cap:cap,luuy:luuy};
             kq.textContent='Đã lưu'; kq.className='np-kq tot';
+            veXem(tr);
             tr.classList.toggle('co',!!(loai+drive+cap+luuy));
             var bang=tr.closest('.tl');
             var bar=bang.previousElementSibling;
