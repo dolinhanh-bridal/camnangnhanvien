@@ -402,6 +402,9 @@ body.zpad{padding-top:96px}
 .bnv{position:fixed;left:12px;bottom:16px;z-index:180;background:#31232A;color:#fff;text-decoration:none;border-radius:999px;padding:12px 16px;font-family:"Be Vietnam Pro",sans-serif;font-size:13.5px;font-weight:600;box-shadow:0 6px 18px rgba(0,0,0,.22)}
 .btop{display:none;position:fixed;right:14px;bottom:16px;z-index:180;background:var(--rose,#9E4458);color:#fff;border:0;border-radius:999px;padding:12px 18px;font-family:"Be Vietnam Pro",sans-serif;font-size:14px;font-weight:600;box-shadow:0 6px 18px rgba(0,0,0,.22);cursor:pointer}
 .btop.on{display:block}
+.bhome{display:none;position:fixed;right:14px;bottom:16px;z-index:181;background:#fff;color:var(--ink,#31232A);border:1px solid var(--line-strong,#E3D5C6);border-radius:999px;padding:12px 18px;font-family:"Be Vietnam Pro",sans-serif;font-size:14px;font-weight:600;box-shadow:0 6px 18px rgba(0,0,0,.16);cursor:pointer}
+.bhome.on{display:block}
+.btop.on.day{bottom:70px}
 .lb .lbtip{max-width:340px;margin:0;color:#FFE2A8;font-family:"Be Vietnam Pro",sans-serif;font-size:12.5px;text-align:center;line-height:1.5}
 .lb .lbw{display:none;max-width:340px;margin:0;color:#FFD98A;font-family:"Be Vietnam Pro",sans-serif;font-size:12.5px;text-align:center;line-height:1.5}
 .lb.wv .lbw{display:block}
@@ -459,10 +462,10 @@ button.gcGui[disabled]{opacity:.55}
 <body>
 <div class="wrap">
   <header>
-    <div class="kicker">Dolinhanh Bridal · nội bộ · cập nhật 10/09/2026 · bản 41</div>
+    <div class="kicker">Dolinhanh Bridal · nội bộ · cập nhật 10/09/2026 · bản 42</div>
     <h1>Chiến lược truyền thông Dolinhanh</h1>
     <p class="lede">Ba mảng: <b>TikTok</b> (4 kênh) · <b>Instagram</b> (2 kênh) · <b>Facebook</b> (2 page + quảng cáo). Bấm phần việc của bạn.</p>
-    <div class="nav"><a class="n-cong" href="#cong" data-tab="cong">&#10229; Mảng khác</a><a class="n-chinh" href="#chinh" data-tab="chinh">● Kênh chính</a><a class="n-hn" href="#hn" data-tab="hn">● Vệ tinh HN</a><a class="n-hcm" href="#hcm" data-tab="hcm">● Vệ tinh HCM</a><a class="n-life" href="#life" data-tab="life">● Nupakachi Life</a><a class="n-luat" href="#luat" data-tab="luat">Luật clip</a><a class="n-ig" href="#ig" data-tab="ig">◎ Instagram</a><a class="n-ads" href="#ads" data-tab="ads">◆ Facebook · Ads</a><a class="n-gui" href="#gui" data-tab="gui">✎ Gửi clip hay</a></div>
+    <div class="nav"><a class="n-cong" href="#cong" data-tab="cong">&#10229; Trang chủ</a><a class="n-chinh" href="#chinh" data-tab="chinh">● Kênh chính</a><a class="n-hn" href="#hn" data-tab="hn">● Vệ tinh HN</a><a class="n-hcm" href="#hcm" data-tab="hcm">● Vệ tinh HCM</a><a class="n-life" href="#life" data-tab="life">● Nupakachi Life</a><a class="n-luat" href="#luat" data-tab="luat">Luật clip</a><a class="n-ig" href="#ig" data-tab="ig">◎ Instagram</a><a class="n-ads" href="#ads" data-tab="ads">◆ Facebook · Ads</a><a class="n-gui" href="#gui" data-tab="gui">✎ Gửi clip hay</a></div>
   </header>
 
   <div id="tab-cong" class="tab">
@@ -1919,6 +1922,7 @@ DOLINHANH BRIDAL
 </div>
 <a class="bnv" href="https://dolinhanh-bridal.github.io/camnangnhanvien/link.html">⟵ Link nhân viên</a>
 <button class="btop" id="btop" type="button">↑ Đầu trang</button>
+<button class="bhome" id="bhome" type="button">&#8962; Trang chủ</button>
 <div class="zbar" id="zbar">Bạn đang mở trang trong <b>Zalo/Messenger</b> — clip mẫu sẽ không chạy được ở đây. Bấm <b>⋯</b> (hoặc <b>la bàn</b>) ở góc màn hình rồi chọn <b>Mở bằng Safari / trình duyệt</b>, clip sẽ xem được ngay.<br><button class="copy" type="button" data-url="https://dolinhanh-bridal.github.io/camnangnhanvien/tiktok.html">Chép link trang này</button></div>
 <div class="lb" id="lb">
   <button class="lbx" type="button">✕ Đóng</button>
@@ -2041,6 +2045,8 @@ function moTab(k,scroll){if(TABS.indexOf(k)<0)k='cong';
   var id=(k==='luat'?'tab-luat':(k==='cong'?'tab-cong':k));
   var el=document.getElementById(id); if(el)el.classList.add('on');
   var nav=document.querySelector('.nav'); if(nav)nav.classList.toggle('an',k==='cong');
+  var bh=document.getElementById('bhome'); if(bh)bh.classList.toggle('on',k!=='cong');
+  var bt=document.getElementById('btop'); if(bt)bt.classList.toggle('day',k!=='cong');
   var m=NHOM[k]||'';
   document.querySelectorAll('.nav a[data-tab]').forEach(function(a){
     var t=a.dataset.tab;
@@ -2064,6 +2070,8 @@ window.addEventListener('hashchange',function(){moTab(location.hash.replace('#',
   });
   LB.addEventListener('click',function(e){if(e.target===LB||e.target.classList.contains('lbx'))dong();});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')dong();});
+  var bh=document.getElementById('bhome');
+  if(bh){bh.addEventListener('click',function(){moTab('cong',false);window.scrollTo({top:0,behavior:'smooth'});});}
   var bt=document.getElementById('btop');
   if(bt){
     bt.addEventListener('click',function(){var n=document.querySelector('.nav');window.scrollTo({top:n?Math.max(0,n.offsetTop-4):0,behavior:'smooth'});});
