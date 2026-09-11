@@ -4383,12 +4383,13 @@ QUIZ[26] = [
     });
   });
 
-  /* ---- search ---- (11/09/2026: tìm cả bước quy trình, mẫu tin, mốc, đoạn chữ thường — không chỉ tiêu đề + hỏi đáp) */
+  /* ---- search ---- (11/09/2026: lục TOÀN BỘ cẩm nang — mọi dòng chữ trong mọi chương đều nằm trong 1 mục tìm được) */
   var input = document.getElementById('q');
   var hits = document.getElementById('hits');
   var index = [];
   var n = 0;
   function sach(t){ return (t || '').replace(/\s*—\s*bấm để mở\s*$/i, '').replace(/\s+/g, ' ').trim(); }
+  function ngan(t){ return t.length > 90 ? t.slice(0, 88).replace(/\s+\S*$/, '') + '…' : t; }
   function chuKhoi(el, boQua){
     /* lấy chữ của 1 khối, bỏ nút Copy + nhãn "Mẫu tin gửi khách", bỏ các khối con đã index riêng */
     var c = el.cloneNode(true);
@@ -4396,12 +4397,20 @@ QUIZ[26] = [
     return c.textContent.replace(/[ \t]+/g, ' ').replace(/\s*\n\s*/g, '\n').trim();
   }
   function them(el, label, text, ans, loai, chap, sec){
+    el.setAttribute('data-ix', '1');
     if(!label) return;
     if(!el.id){ el.id = 'ix-' + (++n); }
-    index.push({label:label, text:text, chapter:chap, secId:sec.id, targetId:el.id, ans:ans || '', loai:loai});
+    index.push({el:el, label:label, text:text, chapter:chap, secId:sec.id, targetId:el.id, ans:ans || '', loai:loai});
   }
+  /* chữ dùng để so khớp = tiêu đề + chữ RIÊNG của mục (bỏ các mục con đã có mục riêng) — ô lớn chứa cả chục mốc không chen lên đầu nữa */
+  function chuRieng(e){ return e.loai === 'h3' ? e.label : e.label + ' ' + chuKhoi(e.el, '[data-ix]'); }
+  /* khối "thẻ": gom cả thẻ thành 1 mục · khối "dòng": từng đoạn / gạch đầu dòng · chữ nằm ngoài cả hai thì lấy thẻ cha gần nhất */
+  var KHOI_THE = '.vd, .vd-photo, .rm-q, .rm-tn, .rm-cuoi, .qa2, .sod, .doc-row, .bg, .qrow, .flow, .chain, .rulebox, .tpl, tr, .creed .ci, .quote, .chotket';
+  var KHOI_DONG = 'p, li, pre, blockquote, h1, h2, h4, h5, td, th, figcaption, .clips a, .linkrow a, .bigcards a, label';
+  var BO_QUA = 'script, style, button, .tpl-head, .pager, [id^="qbody-"]';
   document.querySelectorAll('.view[data-title]').forEach(function(sec){
     var chap = sec.getAttribute('data-title');
+    var batDau = index.length;
     sec.querySelectorAll('h3').forEach(function(el){
       var t = sach(el.textContent); them(el, t, t, '', 'h3', chap, sec);
     });
@@ -4425,11 +4434,12 @@ QUIZ[26] = [
       var ans = sv ? chuKhoi(sv, 'details') : '';
       them(el, label, label + ' ' + el.textContent, ans, 'step', chap, sec);
     });
-    sec.querySelectorAll('details.mini, details.moc').forEach(function(el){
+    /* mọi ô bấm-mở còn lại: mẫu tin, mốc gói chụp, 5 giác quan, thẻ ngày học việc… */
+    sec.querySelectorAll('details:not(.qa)').forEach(function(el){
       var sm = el.querySelector('summary');
       var label = sach(sm ? sm.textContent : '');
-      var cha = el.parentNode && el.parentNode.closest('.step, details.moc');
-      if(cha){
+      var cha = el.parentNode && el.parentNode.closest('.step, details');
+      if(cha && (cha.matches('.step') || label.length < 30)){
         var chaTen = cha.matches('.step') ? (cha.querySelector('.sk') || {}).textContent : (cha.querySelector('summary') || {}).textContent;
         if(chaTen && sach(chaTen) !== label){ label = sach(chaTen) + ' · ' + label; }
       }
@@ -4437,24 +4447,50 @@ QUIZ[26] = [
       var ans = chuKhoi(c, '');
       them(el, label, label + ' ' + el.textContent, ans, el.classList.contains('moc') ? 'moc' : 'mini', chap, sec);
     });
-    /* đoạn chữ thường (rulebox, gạch đầu dòng…) nằm ngoài các khối trên — trước đây không tìm được */
-    sec.querySelectorAll('p, li').forEach(function(el){
-      if(el.closest('details, .step, .toc, .tpl, .clips, .linkrow, [id^="qbody-"]')) return;
-      if(el.querySelector('p, li')) return;
-      var t = el.textContent.replace(/\s+/g, ' ').trim();
-      if(t.length < 25) return;
-      var label = t.length > 90 ? t.slice(0, 88).replace(/\s+\S*$/, '') + '…' : t;
-      them(el, label, t, t.length > 90 ? t : '', 'p', chap, sec);
+    /* phần chữ còn lại (đoạn văn, rulebox, ví dụ sai/đúng, danh ngôn, bảng giá, sơ đồ, link clip…):
+       đi qua TỪNG dòng chữ, dòng nào chưa thuộc mục nào thì gom vào khối gần nhất → không sót chữ nào */
+    var khoi = [];
+    var tw = document.createTreeWalker(sec, NodeFilter.SHOW_TEXT, null);
+    for(var nd = tw.nextNode(); nd; nd = tw.nextNode()){
+      if(!/\S/.test(nd.nodeValue)) continue;
+      var p = nd.parentElement;
+      if(!p || p.closest(BO_QUA) || p.closest('[data-ix]')) continue;
+      var k = p.closest(KHOI_THE) || p.closest(KHOI_DONG) || p;
+      if(!sec.contains(k)) k = p;
+      if(!k.hasAttribute('data-ix-k')){ k.setAttribute('data-ix-k', '1'); khoi.push(k); }
+    }
+    khoi.forEach(function(k){ k.setAttribute('data-ix', '1'); });
+    khoi.forEach(function(k){
+      var t = chuKhoi(k, '[data-ix]');
+      k.removeAttribute('data-ix-k');
+      if(!/[0-9A-Za-zÀ-ỹđĐ]/.test(t)) return;
+      var tieuDe = k.querySelector('.tinh, blockquote, .q, .sod-t, .rb-t, .dk, .k');
+      var label = tieuDe ? sach(tieuDe.textContent) : '';
+      if(!label || label.length > 140) label = sach(t);
+      if(k.classList.contains('tpl')){ label = 'Mẫu tin · ' + label; }
+      label = ngan(label);
+      them(k, label, t, sach(t).length > label.length + 5 ? t : '', 'khoi', chap, sec);
     });
+    for(var i = batDau; i < index.length; i++){ index[i].text = chuRieng(index[i]); }
+    /* ghi thêm tiêu đề mục (h3 gần nhất phía trên) để biết kết quả nằm ở đâu */
+    var h3s = sec.querySelectorAll('h3');
+    for(var i = batDau; i < index.length; i++){
+      var e = index[i], muc = '';
+      for(var j = 0; j < h3s.length; j++){
+        if(h3s[j] === e.el) break;
+        if(h3s[j].compareDocumentPosition(e.el) & Node.DOCUMENT_POSITION_FOLLOWING){ muc = sach(h3s[j].textContent); } else { break; }
+      }
+      e.muc = (muc && muc !== e.label) ? muc : '';
+    }
   });
   function norm(s){
-    return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d');
+    return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').replace(/(\d)[.,](?=\d{3}(?!\d))/g, '$1');
   }
   function dem(s){ return ' ' + norm(s).replace(/[^a-z0-9]+/g, ' ').trim() + ' '; }
   index.forEach(function(e){ e.nt = dem(e.text); e.nl = dem(e.label); });
   /* từ đệm hay gõ nhưng không mang nghĩa tìm kiếm */
   var TU_DEM = ['cho','cua','va','la','thi','minh','ban','em','chi','anh','khach','nao','gi','sao','the','nhu','voi','o','nha','a','ah','oi','nhe','roi','mot','cac','nhung','nay','de','ve','ra','vao','bi','se','da','dang','khong','ko','k','duoc','phai','can','lam','hoi','ay','ak','vs','ntn','kieu','neu','hay','luc','khi','toi','may'];
-  var LOAI_DIEM = {qa:3, step:3, moc:3, mini:2, h3:2, p:0};
+  var LOAI_DIEM = {qa:3, step:3, moc:3, mini:2, h3:2, khoi:1};
   var cuoiQ = null;
   function timKiem(){
     var raw = input.value.trim();
@@ -4474,11 +4510,13 @@ QUIZ[26] = [
     var dangGo = !/\s$/.test(input.value) && words.length && words[words.length-1] === cuoi;
     var can = keys.length <= 3 ? keys.length : Math.max(2, Math.ceil(keys.length * 0.6));
     var ketQua = [], goiY = [];
+    var dk = laDinhKet();
     for(var i = 0; i < index.length; i++){
       var e = index[i], khop = 0, diem = 0;
+      if(dk && CHUONG_DINH_KET.indexOf(e.secId) === -1) continue; /* Đính kết không thấy chương nghiệp vụ */
       for(var k = 0; k < keys.length; k++){
         var kk = ' ' + keys[k] + ' ';
-        var co = e.nt.indexOf(kk) !== -1 || (dangGo && keys[k] === cuoi && keys[k].length >= 2 && e.nt.indexOf(' ' + keys[k]) !== -1);
+        var co = e.nt.indexOf(kk) !== -1 || (/^\d{3,}$/.test(keys[k]) && e.nt.indexOf(' ' + keys[k]) !== -1) || (dangGo && keys[k] === cuoi && keys[k].length >= 2 && e.nt.indexOf(' ' + keys[k]) !== -1);
         if(co){ khop++; diem += 10; if(e.nl.indexOf(kk) !== -1){ diem += 6; } }
       }
       if(!khop) continue;
@@ -4501,7 +4539,8 @@ QUIZ[26] = [
       var a = document.createElement('a');
       a.href = '#' + e.secId + '::' + e.targetId;
       var dl = document.createElement('div'); dl.textContent = e.label;
-      var h = '<small>' + e.chapter + '</small><b style="display:block">' + dl.innerHTML + '</b>';
+      var dm = document.createElement('div'); dm.textContent = e.chapter + (e.muc ? ' · ' + e.muc : '');
+      var h = '<small>' + dm.innerHTML + '</small><b style="display:block">' + dl.innerHTML + '</b>';
       if(e.ans){
         var d = document.createElement('div');
         d.textContent = e.ans;
