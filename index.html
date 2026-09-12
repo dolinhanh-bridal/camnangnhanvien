@@ -423,6 +423,10 @@ details.mini.big > summary{font-family:"Cormorant Garamond",Georgia,serif;font-s
 .chao-hi{font-family:'Cormorant Garamond',Georgia,serif;font-size:22px;font-weight:600;line-height:1.4;color:var(--ink)}
 .chao-loi{margin-top:14px;padding:14px 16px;background:var(--blush);border-radius:14px;font-size:13.5px;line-height:1.6;color:#463A40;text-align:left}
 .chao-loi b{color:var(--rose-deep)}
+.chao-ran{border-left:3px solid var(--rose);padding-left:12px;margin:0 0 4px}
+.chao-ran span{display:block;font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--rose);margin-bottom:4px}
+.chao-ran blockquote{margin:0;font-family:'Cormorant Garamond',Georgia,serif;font-size:19px;font-style:italic;line-height:1.35;color:var(--ink)}
+.chao-ran cite{display:block;margin-top:4px;font-size:12px;font-style:normal;color:var(--ink-soft)}
 .chao-loi ul{margin:8px 0 0;padding-left:20px}
 .chao-loi li{margin-bottom:5px}
 .chao-ok{display:inline-block;margin-top:18px;padding:11px 28px;font:inherit;font-size:14.5px;font-weight:600;color:#fff;background:var(--rose);border:none;border-radius:999px;cursor:pointer}
@@ -4367,30 +4371,56 @@ QUIZ[26] = [
     '"Cống hiến tài năng — thế nào cũng có ngày hái ra tiền." — Chân lý kinh doanh 💸',
     '"Đi làm chăm chỉ mỗi ngày không phải để hơn thua ai, mà để thắng cái lười của chính mình hôm qua." — Tự nhắc bản thân 💪'
   ];
+  /* ── DÙNG CHUNG VỚI LỊCH TOÀN NĂNG (chị Linh 12/09/2026) ──────────────────
+     Cùng mảng, cùng công thức chọn theo NGÀY → mở cẩm nang hay mở Lịch toàn năng
+     đều thấy ĐÚNG MỘT câu, cả team giống nhau, mai đổi câu khác.
+     ⚠️ Sửa ở đây thì sửa luôn mảng CHUC / RAN trong duan/DauCaTrang.html. */
+  var CHUC_DLA = [
+    "Chào ngày mới! Hôm nay cứ làm tốt một việc thôi cũng đã hơn hôm qua rồi.",
+    "Ngày mới nhẹ nhàng nha — cô dâu nào bước vào cũng mong gặp một người tươi tỉnh như bạn.",
+    "Chúc bạn một ca làm êm: khách dễ thương, váy vừa vặn, mọi thứ đúng giờ.",
+    "Sáng nay hít một hơi thật sâu rồi bắt đầu. Bạn làm được mà.",
+    "Hôm nay có thể là ngày cưới trong mơ của ai đó — và bạn là người giữ phần đầu tiên của giấc mơ ấy.",
+    "Chúc bạn ngày làm việc thật vui. Mệt thì nghỉ một nhịp, đừng nghỉ luôn nha 😌",
+    "Ngày mới rồi! Việc hôm qua chưa xong thì hôm nay làm tiếp, không sao cả.",
+    "Chúc bạn hôm nay gặp một cô dâu cười thật tươi khi soi gương.",
+    "Bắt đầu ngày mới bằng một nụ cười — thứ rẻ nhất mà khách nhớ lâu nhất.",
+    "Chúc ca làm hôm nay của bạn trôi thật mượt 🤍"
+  ];
+  var RAN_DLA = [
+    ["Kỷ luật là chiếc cầu nối giữa mục tiêu và thành quả.","Jim Rohn"],
+    ["Chúng ta là những gì mình làm đi làm lại mỗi ngày. Vậy nên xuất sắc không phải một hành động, mà là một thói quen.","Aristotle"],
+    ["Thà mất tiền còn hơn mất uy tín.","Tục ngữ Việt Nam"],
+    ["Một lần bất tín, vạn lần bất tin.","Tục ngữ Việt Nam"],
+    ["Hãy làm điều đúng, kể cả khi không ai nhìn thấy.","C.S. Lewis"],
+    ["Uy tín xây mất hai mươi năm, phá chỉ mất năm phút.","Warren Buffett"],
+    ["Giấy rách phải giữ lấy lề.","Tục ngữ Việt Nam"],
+    ["Kỷ luật là chọn giữa cái bạn muốn BÂY GIỜ và cái bạn muốn NHẤT.","Abraham Lincoln"],
+    ["Ăn cây nào rào cây nấy.","Tục ngữ Việt Nam"],
+    ["Người thành công là người có thói quen làm những việc mà người thất bại không thích làm.","Albert Gray"],
+    ["Đừng hứa khi đang vui, đừng trả lời khi đang giận.","Ngạn ngữ"],
+    ["Chữ tín còn quý hơn vàng.","Tục ngữ Việt Nam"]
+  ];
+  function soNgayDLA(n){ var d = new Date();
+    return (d.getFullYear()*372 + d.getMonth()*31 + d.getDate()) % n; }
   function escChao(t){ var d = document.createElement('div'); d.textContent = t; return d.innerHTML; }
   function thuChaoMoiNgay(){
     if(!isUnlocked()) return;
     var wrap = document.getElementById('chaoWrap');
     if(!wrap) return;
     var homNay; try{ var n = new Date(); homNay = n.getFullYear() + '-' + (n.getMonth()+1) + '-' + n.getDate(); }catch(e){ return; }
-    try{
-      if(localStorage.getItem('dla_chao_ngay') === homNay) return;
-      localStorage.setItem('dla_chao_ngay', homNay);
-    }catch(e){ return; }
+    /* 12/09/2026 — chị Linh: "mỗi lần click vào cẩm nang hay lịch toàn năng là hiện ra luôn".
+       Bỏ khoá 1 lần/ngày (localStorage dla_chao_ngay) — mở lần nào cũng chào. */
     var ten = ''; try{ ten = localStorage.getItem('dla_syll_name') || ''; }catch(e){}
     var emCuaToi = ''; try{ emCuaToi = localStorage.getItem('dla_syll_email') || ''; }catch(e){}
     var maCuaToi = ''; try{ maCuaToi = localStorage.getItem('dla_syll_ma') || ''; }catch(e){}
-    /* câu chào cố định theo từng người (hash email), không xoay vòng ngẫu nhiên nữa */
-    var chiSoLoi = Math.floor(Math.random() * LOI_CHAO.length);
-    if(emCuaToi){
-      var h = 5381, s = normMail(emCuaToi);
-      for (var ci = 0; ci < s.length; ci++) { h = ((h * 33) ^ s.charCodeAt(ci)) >>> 0; }
-      chiSoLoi = h % LOI_CHAO.length;
-    }
-    var loi = LOI_CHAO[chiSoLoi];
-    document.getElementById('chaoHi').textContent = (ten ? 'Xin chào ' + ten + '! ' : 'Xin chào! ') + loi;
+    /* Câu chúc chọn theo NGÀY: cả team cùng một câu, mai đổi câu khác — giống Lịch toàn năng. */
+    var loi = CHUC_DLA[soNgayDLA(CHUC_DLA.length)];
+    var ran = RAN_DLA[soNgayDLA(RAN_DLA.length)];
+    document.getElementById('chaoHi').textContent = (ten ? 'Chào ' + ten + '! ' : 'Chào bạn! ') + loi;
     var loiEl = document.getElementById('chaoLoi');
-    var nhacHtml = '';
+    var nhacHtml = '<div class="chao-ran"><span>Câu răn mình hôm nay</span>'
+      + '<blockquote>' + escChao(ran[0]) + '</blockquote><cite>— ' + escChao(ran[1]) + '</cite></div>';
     try{
       var raw = localStorage.getItem('dla_nhac_loi');
       if(raw){
