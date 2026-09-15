@@ -521,7 +521,7 @@ details.mini.big > summary{font-family:"Cormorant Garamond",Georgia,serif;font-s
 
   <div class="syll" id="gateCard">
     <p class="f-title">Hồ sơ &amp; thỏa thuận làm việc</p>
-    <p class="f-note"><b>Bạn đã điền hồ sơ rồi?</b> Không phải khai lại đâu — chỉ cần nhập email và mã 4 số bên dưới là vào cẩm nang được ngay.<br><br><b>Bạn mới vào?</b> Bấm nút dưới đây làm <b>3 bước</b> trên điện thoại: <b>① Bắt đầu</b> — tên, số điện thoại, email, bộ phận (Sale Marketing / Đính kết · full time / part time) → <b>② Sơ yếu lý lịch</b> → <b>③ Đọc &amp; ký thỏa thuận làm việc</b>. Chuẩn bị sẵn trong điện thoại: <b>ảnh 2 mặt CCCD</b>, <b>ảnh/file CV</b>, và thông tin gia đình (bố mẹ, anh chị em — nghề nghiệp, nơi làm, SĐT).</p>
+    <p class="f-note"><b>Bạn đã điền hồ sơ rồi?</b> Không phải khai lại đâu — chỉ cần nhập email và mã 4 số bên dưới là vào cẩm nang được ngay.<br><br><b>Bạn mới vào?</b> Bấm nút dưới đây làm <b>3 bước</b> trên điện thoại: <b>① Bắt đầu</b> — tên, số điện thoại, email, bộ phận (Sale Marketing / Đính kết · full time / part time) → <b>② Sơ yếu lý lịch</b> → <b>③ Đọc &amp; ký thỏa thuận làm việc</b> → <b>④ Chờ quản lý xác nhận</b> — xác nhận xong bạn nhận email báo, lúc đó mới mở được cẩm nang. Chuẩn bị sẵn trong điện thoại: <b>ảnh 2 mặt CCCD</b>, <b>ảnh/file CV</b>, và thông tin gia đình (bố mẹ, anh chị em — nghề nghiệp, nơi làm, SĐT).</p>
     <a class="btn" id="btnForm" href="#" target="_blank" rel="noopener" style="text-align:center;text-decoration:none">Người mới: điền hồ sơ &amp; ký thỏa thuận →</a>
     <label style="margin-top:22px">Email cá nhân của bạn (email đã khai trong form)</label>
     <input type="email" id="unlockEmail" placeholder="email@cua-ban.com" autocomplete="email">
@@ -4309,7 +4309,7 @@ QUIZ[26] = [
     var btn = document.getElementById('btnDone');
     btn.disabled = true; btn.textContent = 'Đang kiểm tra… (mạng chậm thì hơi lâu)';
     function xong(){ btn.disabled = false; btn.textContent = 'Mở cẩm nang 🤍'; }
-    trakTen(em, function(ten, maSheet, bp, loiM){
+    trakTen(em, function(ten, maSheet, bp, loiM, dv){
       if(!ten && !maSheet){
         xong();
         if(loiM === 'mang'){
@@ -4317,6 +4317,12 @@ QUIZ[26] = [
         } else {
           loi('Không tìm thấy email này trong hệ thống. Bạn kiểm tra lại email — chưa điền form thì bấm nút bên trên điền trước nha.');
         }
+        return;
+      }
+      /* ho so moi: phai cho quan ly xac nhan (cot "Duyet vao cam nang" = Cho duyet) moi vao duoc — quan ly 15/09/2026 */
+      if(dv === '0'){
+        xong();
+        loi('Hồ sơ của bạn đã tới quản lý và đang chờ xác nhận ⏳ Quản lý xác nhận xong bạn sẽ nhận email báo — lúc đó quay lại đây nhập email + mã là vào được nha.');
         return;
       }
       if(!maSheet){
@@ -4371,10 +4377,10 @@ QUIZ[26] = [
   /* ---- tra ten (+ ma da chon, neu co) theo email (JSONP, khong dinh CORS) ---- */
   function trakTen(email, cb){
     var xong = false;
-    function ket(ten, ma, bp, loiM){ if(xong) return; xong = true; cb(ten || '', ma || '', bp || '', loiM || ''); }
+    function ket(ten, ma, bp, loiM, dv){ if(xong) return; xong = true; cb(ten || '', ma || '', bp || '', loiM || '', dv || ''); }
     var fn = 'dlaTraTen' + Date.now();
     window[fn] = function(data){
-      ket(data && data.ten ? data.ten : '', data && data.ma ? data.ma : '', data && data.bp ? data.bp : '');
+      ket(data && data.ten ? data.ten : '', data && data.ma ? data.ma : '', data && data.bp ? data.bp : '', '', data && data.dv != null ? String(data.dv) : '');
       try{ delete window[fn]; }catch(e){}
       if(sTag && sTag.parentNode){ sTag.parentNode.removeChild(sTag); }
     };
