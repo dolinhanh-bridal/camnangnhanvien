@@ -384,6 +384,15 @@ details.qa .a p:last-child{margin-bottom:0}
 .cklist{list-style:none;margin:8px 0 4px;padding:0}
 .cklist li{position:relative;padding:4px 0 4px 27px;font-size:13.5px;line-height:1.55}
 .cklist li::before{content:"";position:absolute;left:0;top:8px;width:13px;height:13px;border:1.5px solid var(--champagne);border-radius:3px}
+.cktick{list-style:none;margin:4px 0 6px;padding:0}
+.cktick li{padding:3px 0;font-size:13.5px;line-height:1.5}
+.cktick label{display:flex;gap:9px;align-items:flex-start;cursor:pointer}
+.cktick input{flex:none;width:17px;height:17px;margin:2px 0 0;accent-color:var(--rose)}
+.cktick input:checked+span{color:var(--ink-soft);text-decoration:line-through}
+.cktick i,.ck-note i{font-weight:300;color:var(--ink-soft)}
+.ck-nhom{margin:14px 0 2px;font-weight:700;font-size:14px;color:var(--rose)}
+.ck-note{font-size:13.5px;margin:8px 0 0}
+.ck-reset{margin-top:12px;background:#fff;border:1px solid var(--rose);color:var(--rose);border-radius:999px;padding:6px 14px;font-size:13px;cursor:pointer}
 details.mini{margin:9px 0 2px}
 details.mini summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:13.5px;color:var(--ink)}
 details.mini summary::-webkit-details-marker{display:none}
@@ -1888,18 +1897,79 @@ Mỗi khách mời điền form xác nhận thành công, anh chị sẽ nhận 
     </div>
     </details>
   </div></div>
-  <div class="step tl"><div class="sk">Trước nhận váy 1 tuần</div><div class="sv">Hỏi khách <b>đến lấy hay ship</b> (ship thì xin địa chỉ và người nhận) và báo số tiền <b>thanh toán lần cuối + cọc thế chân 5.000.000đ</b>. Sau đó chuẩn bị váy theo checklist:
-    <details class="mini"><summary>Checklist chuẩn bị váy trước khi giao — bấm để mở</summary>
-    <ul class="cklist">
-      <li><b>Check chân váy có bẩn không?</b> → giặt qua → phơi khô → cho vào <b>túi vải</b> → <b>xịt thơm</b></li>
-      <li><b>Báo đính kết:</b> may mút ngực · đáp lưng · để sẵn <b>dây váy dài</b> cho khách.<br>
-        ⚠️ Cô dâu mập thì cẩn thận, <b>phải đáp lưng lớn</b>.<br>
-        Check luôn váy có bị <b>tước chỉ</b>, <b>mất hoa / hoạ tiết</b> hay <b>rơi đá</b> không.</li>
-      <li><b>Là ủi kỹ</b> váy và voan</li>
-      <li><b>Block váy</b> — không cho khách khác thử nữa</li>
-      <li><b>Đóng vali đen</b> đủ đồ cho khách</li>
-      <li>Mời thêm <b>Take Care ngày cưới 1.500.000đ/2 tiếng</b> (mặc váy, chỉnh váy, cài voan, theo sát cô dâu)</li>
+  <div class="step tl"><div class="sk">Trước nhận váy 1 tuần</div><div class="sv">Hỏi khách <b>đến lấy hay ship</b> (ship thì xin địa chỉ và người nhận) và báo số tiền <b>thanh toán lần cuối + cọc thế chân 5.000.000đ</b>. Sau đó chuẩn bị đồ theo checklist:
+    <details class="mini"><summary>Checklist chuẩn bị đồ cho cô dâu chú rể (váy · vest · áo dài) — bấm để mở</summary>
+    <p class="ck-note"><i>Làm xong mục nào tick mục đó. Mục ghi "nếu có" mà đơn không có thì bỏ qua.</i></p>
+    <p class="ck-nhom">① Trước khi chuẩn bị đồ</p>
+    <ul class="cktick">
+      <li><label><input type="checkbox"><span><b>Đúng tên cô dâu, đúng ngày cưới</b></span></label></li>
+      <li><label><input type="checkbox"><span><b>Đủ số lượng đồ theo hợp đồng</b> <i>— xem lại tin nhắn, khách có đổi gì không</i></span></label></li>
+      <li><label><input type="checkbox"><span><b>Đủ phụ kiện: voan · găng tay · nơ…</b> <i>— đúng loại chưa</i></span></label></li>
     </ul>
+    <p class="ck-nhom">② Hộp đen</p>
+    <ul class="cktick">
+      <li><label><input type="checkbox"><span><b>2 mút · 2 dây buộc · kim chỉ · giấy cảm ơn</b></span></label></li>
+      <li><label><input type="checkbox"><span><b>Dây buộc đủ dài</b></span></label></li>
+      <li><label><input type="checkbox"><span><b>Chụp hình bên trong hộp đen</b></span></label></li>
+      <li><label><input type="checkbox"><span><b>Buộc nơ</b></span></label></li>
+    </ul>
+    <p class="ck-nhom">③ Váy</p>
+    <ul class="cktick">
+      <li><label><input type="checkbox"><span><b>Đúng phom dáng · kiểu · màu</b> <i>— check trước khi xếp</i></span></label></li>
+      <li><label><input type="checkbox"><span><b>Đủ chi tiết / phụ kiện tháo rời</b> <i>— nếu có</i></span></label></li>
+      <li><label><input type="checkbox"><span><b>Khoá kéo · nút · móc cài chạy tốt</b></span></label></li>
+      <li><label><input type="checkbox"><span><b>Đã có mút ngực</b> <i>— chưa có thì báo đính kết may</i></span></label></li>
+      <li><label><input type="checkbox"><span><b>Đã có đáp lưng, đáp vừa</b> <i>— cô dâu người đầy đặn thì đáp lưng lớn</i></span></label></li>
+      <li><label><input type="checkbox"><span><b>Dây treo váy không cũ, không tuột</b></span></label></li>
+      <li><label><input type="checkbox"><span><b>Không rơi đá, không tuột chỉ</b> <i>— không mất hoa, hoạ tiết</i></span></label></li>
+      <li><label><input type="checkbox"><span><b>Không bẩn</b> <i>— chân váy bẩn: giặt qua → phơi khô</i></span></label></li>
+      <li><label><input type="checkbox"><span><b>Khách yêu cầu chỉnh sửa gì? Đã sửa chưa</b> <i>— nếu có</i></span></label></li>
+      <li><label><input type="checkbox"><span><b>Ủi</b></span></label></li>
+      <li><label><input type="checkbox"><span><b>Xếp gọn vào túi trắng</b></span></label></li>
+      <li><label><input type="checkbox"><span><b>Chụp hình</b></span></label></li>
+      <li><label><input type="checkbox"><span><b>Xịt thơm</b></span></label></li>
+      <li><label><input type="checkbox"><span><b>Tùng váy: đúng loại · đủ số lượng · tùng số mấy</b></span></label></li>
+    </ul>
+    <p class="ck-nhom">④ Vest</p>
+    <ul class="cktick">
+      <li><label><input type="checkbox"><span><b>Đúng vest: mẫu · màu · phom dáng · nút áo</b></span></label></li>
+      <li><label><input type="checkbox"><span><b>Quần đi kèm: màu · phom dáng · size</b></span></label></li>
+      <li><label><input type="checkbox"><span><b>Khoá kéo · nút · móc cài chạy tốt</b></span></label></li>
+      <li><label><input type="checkbox"><span><b>Đủ bộ: áo vest · sơ mi · quần · phụ kiện</b> <i>— phụ kiện nếu có</i></span></label></li>
+      <li><label><input type="checkbox"><span><b>Có chỉnh sửa, lên lai gì? Đã sửa chưa</b> <i>— nếu có</i></span></label></li>
+      <li><label><input type="checkbox"><span><b>Treo bằng móc đen lớn</b></span></label></li>
+      <li><label><input type="checkbox"><span><b>Ủi</b></span></label></li>
+      <li><label><input type="checkbox"><span><b>Xếp gọn vào túi trắng</b></span></label></li>
+      <li><label><input type="checkbox"><span><b>Chụp hình</b></span></label></li>
+      <li><label><input type="checkbox"><span><b>Xịt thơm</b></span></label></li>
+    </ul>
+    <p class="ck-nhom">⑤ Áo dài</p>
+    <ul class="cktick">
+      <li><label><input type="checkbox"><span><b>Đúng áo dài: màu · kiểu đính · size</b></span></label></li>
+      <li><label><input type="checkbox"><span><b>Quần áo dài: đúng màu · đúng size</b></span></label></li>
+      <li><label><input type="checkbox"><span><b>Khoá kéo · nút · móc cài chạy tốt</b></span></label></li>
+      <li><label><input type="checkbox"><span><b>Có chỉnh sửa, lên lai gì? Đã sửa chưa</b> <i>— nếu có</i></span></label></li>
+      <li><label><input type="checkbox"><span><b>Ủi</b></span></label></li>
+      <li><label><input type="checkbox"><span><b>Xếp gọn vào túi trắng</b></span></label></li>
+      <li><label><input type="checkbox"><span><b>Chụp hình</b></span></label></li>
+      <li><label><input type="checkbox"><span><b>Xịt thơm</b></span></label></li>
+    </ul>
+    <p class="ck-nhom">⑥ Đóng vali & giao đồ</p>
+    <ul class="cktick">
+      <li><label><input type="checkbox"><span><b>Kiểm tra lại toàn bộ đồ + phụ kiện lần cuối</b></span></label></li>
+      <li><label><input type="checkbox"><span><b>Block váy</b> <i>— không cho khách khác thử nữa</i></span></label></li>
+      <li><label><input type="checkbox"><span><b>Gửi hình xác nhận cho cô dâu</b></span></label></li>
+      <li><label><input type="checkbox"><span><b>Xếp vào vali</b></span></label></li>
+      <li><label><input type="checkbox"><span><b>Vali đã dán logo DLA bên ngoài</b></span></label></li>
+      <li><label><input type="checkbox"><span><b>Chụp hình vali sau khi đóng</b></span></label></li>
+      <li><label><input type="checkbox"><span><b>Gọi cô dâu xác nhận</b> <i>— hỏi lại địa chỉ, nhờ cô dâu để ý điện thoại</i></span></label></li>
+      <li><label><input type="checkbox"><span><b>Book ship</b> <i>— khách đến lấy thì bỏ qua</i></span></label></li>
+      <li><label><input type="checkbox"><span><b>Gửi link tracking cho cô dâu</b> <i>— khách đến lấy thì bỏ qua</i></span></label></li>
+      <li><label><input type="checkbox"><span><b>Cô dâu nhận → gọi/nhắn kiểm tra</b> <i>— đúng đồ, đủ đồ, đúng màu, không sai sót</i></span></label></li>
+      <li><label><input type="checkbox"><span><b>Cô dâu xác nhận đã nhận đủ, đúng đồ</b></span></label></li>
+    </ul>
+    <button type="button" class="ck-reset" onclick="this.closest('details').querySelectorAll('input[type=checkbox]').forEach(function(c){c.checked=false})">↺ Bỏ tick hết (làm đơn mới)</button>
+    <p class="ck-note" style="margin-top:12px">💡 <b>Mời thêm Take Care ngày cưới 1.500.000đ/2 tiếng</b> <i>— mặc váy, chỉnh váy, cài voan, theo sát cô dâu</i></p>
     <p class="clip-label" style="margin-top:14px">Clip hướng dẫn đóng vali</p>
     <div class="clips"><a href="https://drive.google.com/file/d/1WajC2djMpse1skyN-VmXH2VbXpC1sVld/view" target="_blank" rel="noopener">🎬 Xem clip: Chuẩn bị váy không tùng</a><a href="https://drive.google.com/file/d/18dljcZUBZaaM4kVC2t_wIAhKaJ0Z45PD/view" target="_blank" rel="noopener">🎬 Xem clip: Chuẩn bị váy tiệc xoè</a></div>
     </details>
@@ -3821,7 +3891,7 @@ QUIZ[19] = [
 ["Vì sao phải chủ động hẹn fitting lại sớm?",["Không hẹn sớm dễ mất khách — khách cọc ít rất hay bùng", "Để thu tiền cho đủ chỉ tiêu tháng", "Để giải phóng váy cho khách khác", "Vì lịch shop kín"],0],
 ["Món quà miễn phí tặng khách sau khi cọc là gì?",["Thiệp cưới online thiết kế riêng", "Một khăn voan", "Ảnh phóng ép gỗ", "Voucher 500k"],0],
 ["Trước ngày nhận váy 1 tuần phải làm những gì?",["Hỏi khách đến lấy hay ship, báo thanh toán lần cuối + cọc thế chân, chuẩn bị váy và đóng vali", "Chỉ nhắc ngày nhận váy", "Chờ khách liên hệ", "Gửi lại hợp đồng"],0],
-["Chân váy bị bẩn thì xử lý theo thứ tự nào?",["Giặt qua → phơi khô → cho vào túi vải → xịt thơm", "Giặt qua rồi đóng vali luôn", "Lau bằng khăn ướt là được", "Gửi tiệm giặt khô rồi thôi"],0],
+["Chân váy bị bẩn thì xử lý theo thứ tự nào?",["Giặt qua → phơi khô → xếp vào túi trắng → xịt thơm", "Giặt qua rồi đóng vali luôn", "Lau bằng khăn ướt là được", "Gửi tiệm giặt khô rồi thôi"],0],
 ["Báo đính kết chuẩn bị váy gồm những gì?",["May mút ngực · đáp lưng · để sẵn dây váy dài; check tước chỉ, mất hoa hoạ tiết, rơi đá", "Chỉ may mút ngực", "Chỉ đáp lưng", "Chỉ check đá rơi"],0],
 ["Cô dâu mập thì lưu ý gì khi báo đính kết?",["Phải đáp lưng lớn", "Nới eo ra", "Bỏ mút ngực", "Không cần lưu ý gì"],0],
 ["\"Block váy\" nghĩa là gì?",["Không cho khách khác thử chiếc váy đó nữa", "Khoá váy trong tủ", "Đánh dấu váy hỏng", "Ngừng đăng mẫu váy đó"],0],
@@ -3842,7 +3912,12 @@ QUIZ[19] = [
 ["Khách đã nhận tin giữ quyền lợi mà vẫn xác nhận huỷ HĐ. Làm gì tiếp?", ["Mở Lịch toàn năng, bấm vào khách → Việc khác → ❌ Khách huỷ HĐ", "Tự xoá sự kiện HĐ trên Google Lịch", "Hứa hoàn cọc cho khách cho nhanh", "Chờ khách tự huỷ"],0],
 ["Khách không huỷ mà muốn đổi HĐ sang vest hay dịch vụ khác thì bấm nút nào trên Lịch toàn năng?", ["🔁 Khách chuyển đổi HĐ", "❌ Khách huỷ HĐ", "✖️ Khách huỷ lịch", "👗 Khách chốt váy"],0],
 ["Khách chọn ship váy mà chưa chuyển cọc thế chân. Làm gì?", ["Gửi tin nhắc chuyển khoản cọc thế chân 5.000.000đ trước hạn — chuyển đủ rồi mới ship", "Cứ ship trước, thu cọc sau", "Thu cọc khi khách trả váy", "Bỏ qua cọc nếu khách quen"], 0],
-["Theo tin nhắc cọc thế chân, khách phải tránh để váy dính những gì?", ["Rượu vang, nến, pháo, phẩm màu, đất bùn", "Chỉ nước lọc", "Bụi đường thông thường", "Không cần tránh gì"], 0]
+["Theo tin nhắc cọc thế chân, khách phải tránh để váy dính những gì?", ["Rượu vang, nến, pháo, phẩm màu, đất bùn", "Chỉ nước lọc", "Bụi đường thông thường", "Không cần tránh gì"], 0],
+["Trước khi chuẩn bị đồ cho cô dâu chú rể, kiểm tra gì đầu tiên?", ["Đúng tên cô dâu, ngày cưới; đủ đồ theo hợp đồng; xem lại tin nhắn khách có đổi gì không", "Ủi váy ngay cho kịp", "Đóng vali trước rồi kiểm sau", "Book ship trước"], 0],
+["Hộp đen gửi khách gồm những gì?", ["2 mút · 2 dây buộc · kim chỉ · giấy cảm ơn", "Chỉ có kim chỉ", "Voan và găng tay", "Váy và tùng váy"], 0],
+["Vest được treo bằng gì?", ["Móc đen lớn", "Móc nhựa trắng nhỏ", "Gấp vào vali, không cần móc", "Móc nào cũng được"], 0],
+["Váy, vest, áo dài ủi xong thì làm gì tiếp?", ["Xếp gọn vào túi trắng → chụp hình → xịt thơm", "Cho thẳng vào vali", "Treo lên giá là xong", "Gửi giặt"], 0],
+["Ship đồ đi rồi, việc cuối cùng là gì?", ["Gọi/nhắn cô dâu kiểm tra đúng, đủ, đúng màu — chờ cô dâu xác nhận đã nhận đủ", "Không cần làm gì nữa", "Gửi link tracking là xong", "Chờ tới ngày trả váy"], 0]
 ];
 QUIZ[20] = [
 ["Khi nhận lại váy về, phải soi kỹ 3 tình trạng nào của váy và voan?",["Vết bẩn bùn đất không giặt được · vết rượu vang · vết rách", "Vết son · mùi lạ · nhăn", "Thiếu cúc · tuột chỉ · phai màu", "Ố vàng · mốc · sờn"],0],
