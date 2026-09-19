@@ -72,6 +72,12 @@ ul.ck input:checked+span{color:var(--soft);text-decoration:line-through}
 .kyo .nen.an{display:none}
 .kyo .gach{position:absolute;left:18px;right:18px;bottom:34px;border-bottom:1px solid var(--line);pointer-events:none}
 .kybar{display:flex;justify-content:space-between;align-items:center;margin-top:6px;font-size:12.5px;color:var(--soft)}
+.anhs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.anhs .o{position:relative;aspect-ratio:4/5;border-radius:10px;overflow:hidden;background:var(--deep);border:1px solid var(--line)}
+.anhs .o img{width:100%;height:100%;object-fit:cover;display:block}
+.anhs .o button{position:absolute;top:4px;right:4px;width:26px;height:26px;border-radius:50%;border:none;background:rgba(49,35,42,.72);color:#fff;font-size:15px;line-height:1;cursor:pointer}
+.themanh{display:flex;align-items:center;justify-content:center;gap:6px;border:1px dashed var(--rose);border-radius:12px;padding:12px;color:var(--rose-deep);font-weight:600;font-size:14px;cursor:pointer;background:#FFFDFD}
+.themanh input{display:none}
 .kybar button{font:inherit;font-size:12.5px;font-weight:600;color:var(--rose-deep);background:var(--blush);border:none;border-radius:999px;padding:5px 12px;cursor:pointer}
 </style>
 </head>
@@ -80,7 +86,7 @@ ul.ck input:checked+span{color:var(--soft);text-decoration:line-through}
   <div class="top">
     <img src="logo-ngang.png" alt="Dolinhanh Bridal">
     <h1>Checklist chuẩn bị đồ</h1>
-    <p class="lede">Điền khách → thêm đồ → tick từng việc → <b>tạo ảnh gửi khách</b>.<br><i>Đang làm dở thoát ra vẫn giữ nguyên, mở lại làm tiếp.</i></p>
+    <p class="lede">Điền khách → thêm đồ → tick từng việc → up ảnh → ký → <b>tạo ảnh gửi khách</b>.<br><i>Đang làm dở thoát ra vẫn giữ nguyên, mở lại làm tiếp.</i></p>
   </div>
 
   <div class="card">
@@ -113,6 +119,13 @@ ul.ck input:checked+span{color:var(--soft);text-decoration:line-through}
     <h2>📸 Gửi ảnh checklist cho khách</h2>
     <p style="font-size:13.5px">Tick đủ các bước trên rồi bấm nút. Mục <i>"nếu có"</i> mà đơn không có thì bỏ qua.</p>
     <div class="tien"><i id="tienBar"></i></div><p class="tienso" id="tienSo"></p>
+    <div class="ky">
+      <h3>📷 Ảnh đồ đã chuẩn bị <span style="color:var(--rose)">*</span></h3>
+      <p class="goi">Chụp từng món, hộp đen… (1–9 ảnh). <i>Ảnh in lên ảnh gửi khách.</i></p>
+      <div class="anhs" id="anhs"></div>
+      <label class="themanh" style="margin-top:10px"><input type="file" id="chonAnh" accept="image/*" multiple>+ Thêm ảnh (chụp hoặc chọn từ máy)</label>
+      <p class="goi" id="anhTt" style="margin-top:6px"></p>
+    </div>
     <div class="ky">
       <h3>✍️ Người kiểm tra ký xác nhận <span style="color:var(--rose)">*</span></h3>
       <p class="goi">Người kiểm tra xem lại đồ, gõ tên rồi ký bằng ngón tay. <i>Chữ ký in lên ảnh gửi khách.</i></p>
@@ -252,6 +265,7 @@ function thuThap(){
     if(!x.m.kh)return;var g=x.m.g||x.n.loai;if(nhomKh[g])nhomKh[g].push(x.m.kh);
   });
   if(!$('kt').value.trim())thieu.push('Tên người kiểm tra');
+  if(!ANH.length)thieu.push('Chưa up ảnh đồ đã chuẩn bị');
   if(!S.ky)thieu.push('Chữ ký người kiểm tra');
   return {thieu:thieu,items:items,nhom:nhomKh};
 }
@@ -259,7 +273,7 @@ function thuThap(){
 var TEN_NHOM={vay:'Váy',vest:'Vest',aodai:'Áo dài',hopden:'Hộp đen',chung:'Kiểm tra chung'};
 var F='"Be Vietnam Pro",-apple-system,"Segoe UI",sans-serif';
 var C={ink:'#31232A',soft:'#6E5C60',rose:'#9E4458',deep:'#7C3346',blush:'#F5E3DE',line:'#E3D5C6',bg:'#FFFFFF'};
-var LOGO=new Image();LOGO.src='logo-ngang.png';var KYIMG=null;
+var LOGO=new Image();LOGO.src='logo-ngang.png';var KYIMG=null,ANH=[],MAXANH=9;
 
 function dong(x,text,font,maxW){ // cắt chữ thành nhiều dòng
   x.font=font;var w=String(text).split(' '),out=[],cur='';
@@ -292,6 +306,13 @@ function ve(x,d,W,draw){
     y=y0+(n-1)*36+22;line(y);
   });
   y+=58;
+  if(d.anh&&d.anh.length){
+    T('HÌNH ĐỒ ĐÃ CHUẨN BỊ',25,700,C.rose,P);y+=22;
+    var n=d.anh.length,cot=n<=4?2:3,gap=14,cw=(IW-gap*(cot-1))/cot,ch=cw*1.25;
+    d.anh.forEach(function(im,i){var cx=P+(i%cot)*(cw+gap),cy=y+Math.floor(i/cot)*(ch+gap);
+      if(draw&&im.naturalWidth){x.save();rr(x,cx,cy,cw,ch,16);x.clip();var s=Math.max(cw/im.naturalWidth,ch/im.naturalHeight),iw=im.naturalWidth*s,ih=im.naturalHeight*s;x.drawImage(im,cx+(cw-iw)/2,cy+(ch-ih)/2,iw,ih);x.restore();}});
+    y+=Math.ceil(n/cot)*(ch+gap)-gap+64;
+  }
   // các nhóm đã kiểm tra
   ['vay','vest','aodai','hopden','chung'].forEach(function(g){
     var ds=d.nhom[g];if(!ds||!ds.length)return;
@@ -330,22 +351,23 @@ $('tao').addEventListener('click',function(){
     box.classList.add('on');anKq();box.scrollIntoView({behavior:'smooth',block:'center'});return;
   }
   box.classList.remove('on');
-  var d={cd:$('cd').value.trim(),cr:$('cr').value.trim(),ngay:ngayVN($('ngay').value),nv:$('nv').value.trim(),kt:$('kt').value.trim(),nhan:S.nhan,items:r.items,nhom:r.nhom};
+  var d={cd:$('cd').value.trim(),cr:$('cr').value.trim(),ngay:ngayVN($('ngay').value),nv:$('nv').value.trim(),kt:$('kt').value.trim(),nhan:S.nhan,items:r.items,nhom:r.nhom,anh:[]};
   var chay=function(){
     var W=1080,cv=document.createElement('canvas'),x=cv.getContext('2d');cv.width=W;cv.height=4000;
     var H=ve(x,d,W,false);cv.height=Math.ceil(H);x=cv.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,W,cv.height);ve(x,d,W,true);
-    $('anh').src=cv.toDataURL('image/png');
-    TENFILE='checklist-'+khongDau(d.cd)+'-'+d.ngay.replace(/\//g,'')+'.png';
-    cv.toBlob(function(b){BLOB=b;},'image/png');
+    $('anh').src=cv.toDataURL('image/jpeg',0.9);
+    TENFILE='checklist-'+khongDau(d.cd)+'-'+d.ngay.replace(/\//g,'')+'.jpg';
+    cv.toBlob(function(b){BLOB=b;},'image/jpeg',0.9);
     $('kq').classList.add('on');$('kq').scrollIntoView({behavior:'smooth',block:'start'});
   };
   var cho=[];if(document.fonts&&document.fonts.load){['400','600','700','italic 400'].forEach(function(w){cho.push(document.fonts.load(w+' 27px "Be Vietnam Pro"'));});}
   if(!(LOGO.complete))cho.push(new Promise(function(ok){LOGO.onload=LOGO.onerror=ok;}));
+  ANH.forEach(function(src){var im=new Image();cho.push(new Promise(function(ok){im.onload=im.onerror=ok;}));im.src=src;d.anh.push(im);});
   KYIMG=new Image();cho.push(new Promise(function(ok){KYIMG.onload=KYIMG.onerror=ok;}));KYIMG.src=S.ky;
   Promise.all(cho).then(chay,chay);
 });
 $('luu').addEventListener('click',function(){
-  if(!BLOB)return;var f;try{f=new File([BLOB],TENFILE,{type:'image/png'});}catch(e){}
+  if(!BLOB)return;var f;try{f=new File([BLOB],TENFILE,{type:'image/jpeg'});}catch(e){}
   if(f&&navigator.canShare&&navigator.canShare({files:[f]})){navigator.share({files:[f]}).catch(function(){});return;}
   var a=document.createElement('a');a.href=URL.createObjectURL(BLOB);a.download=TENFILE;document.body.appendChild(a);a.click();a.remove();
 });
@@ -358,6 +380,7 @@ $('chep').addEventListener('click',function(){
 $('moi').addEventListener('click',function(){
   if(!confirm('Xoá hết để làm đơn mới?'))return;
   S={items:[],tick:{}};try{localStorage.removeItem(KEY);}catch(e){}
+  ANH=[];luuAnh();veAnh();
   nap();veDo();veBuoc();kyXoa();anKq();$('thieu').classList.remove('on');window.scrollTo(0,0);
 });
 
@@ -375,7 +398,27 @@ function kyXoa(){S.ky='';kx.clearRect(0,0,kc.width,kc.height);luu();kyTt();}
 $('kyLai').addEventListener('click',function(){kyXoa();anKq();});
 window.addEventListener('resize',function(){kyCo();});
 
-nap();veNut();veDo();veBuoc();kyCo();
+/* ---- ảnh đồ: thu nhỏ còn cạnh dài 1200px, lưu nháp trong IndexedDB ---- */
+function moDb(){return new Promise(function(ok,loi){try{var q=indexedDB.open('dla_ck_do',1);q.onupgradeneeded=function(){q.result.createObjectStore('kv');};q.onsuccess=function(){ok(q.result);};q.onerror=function(){loi(q.error);};}catch(e){loi(e);}});}
+function luuAnh(){moDb().then(function(db){try{db.transaction('kv','readwrite').objectStore('kv').put(ANH,'anh');}catch(e){}},function(){});}
+function napAnh(){moDb().then(function(db){try{var q=db.transaction('kv').objectStore('kv').get('anh');q.onsuccess=function(){if(Array.isArray(q.result)){ANH=q.result;veAnh();}};}catch(e){}},function(){});}
+function veAnh(){
+  $('anhs').innerHTML=ANH.map(function(src,i){return '<div class="o"><img src="'+src+'" alt=""><button type="button" data-i="'+i+'" aria-label="Xoá ảnh">×</button></div>';}).join('');
+  $('anhTt').textContent=ANH.length?('Đã có '+ANH.length+'/'+MAXANH+' ảnh'):'Chưa có ảnh nào';
+}
+function thuNho(file){return new Promise(function(ok){
+  var u=URL.createObjectURL(file),im=new Image();
+  im.onload=function(){var k=Math.min(1,1200/Math.max(im.naturalWidth,im.naturalHeight)),c=document.createElement('canvas');c.width=Math.round(im.naturalWidth*k);c.height=Math.round(im.naturalHeight*k);c.getContext('2d').drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);ok(c.toDataURL('image/jpeg',0.85));};
+  im.onerror=function(){URL.revokeObjectURL(u);ok(null);};im.src=u;});}
+$('chonAnh').addEventListener('change',function(){
+  var fs=[].slice.call(this.files||[]),con=MAXANH-ANH.length;this.value='';
+  if(fs.length>con){alert('Tối đa '+MAXANH+' ảnh — em lấy '+Math.max(con,0)+' ảnh đầu.');fs=fs.slice(0,Math.max(con,0));}
+  $('anhTt').textContent='Đang xử lý ảnh…';
+  Promise.all(fs.map(thuNho)).then(function(ds){ds.forEach(function(x){if(x)ANH.push(x);});luuAnh();veAnh();anKq();});
+});
+$('anhs').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;ANH.splice(+b.dataset.i,1);luuAnh();veAnh();anKq();});
+
+nap();veNut();veDo();veBuoc();kyCo();veAnh();napAnh();
 })();
 </script>
 </body>
