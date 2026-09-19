@@ -4827,7 +4827,11 @@ QUIZ[26] = [
     index.push({el:el, label:label, text:text, chapter:chap, secId:sec.id, targetId:el.id, ans:ans || '', loai:loai});
   }
   /* chữ dùng để so khớp = tiêu đề + chữ RIÊNG của mục (bỏ các mục con đã có mục riêng) — ô lớn chứa cả chục mốc không chen lên đầu nữa */
-  function chuRieng(e){ return e.loai === 'h3' ? e.label : e.label + ' ' + chuKhoi(e.el, '[data-ix]'); }
+  function chuRieng(e){
+    if(e.loai === 'h3') return e.label;
+    var dau = [].filter.call(e.el.querySelectorAll('.tpl-head span'), function(s){ return s.closest('[data-ix]') === e.el; }).map(function(s){ return s.textContent; }).join(' ');
+    return e.label + ' ' + dau + ' ' + chuKhoi(e.el, '[data-ix]');
+  }
   /* khối "thẻ": gom cả thẻ thành 1 mục · khối "dòng": từng đoạn / gạch đầu dòng · chữ nằm ngoài cả hai thì lấy thẻ cha gần nhất */
   var KHOI_THE = '.vd, .vd-photo, .rm-q, .rm-tn, .rm-cuoi, .qa2, .sod, .doc-row, .bg, .qrow, .flow, .chain, .rulebox, .tpl, tr, .creed .ci, .quote, .chotket';
   var KHOI_DONG = 'p, li, pre, blockquote, h1, h2, h4, h5, td, th, figcaption, .clips a, .linkrow a, .bigcards a, label';
@@ -4911,43 +4915,128 @@ QUIZ[26] = [
     return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').replace(/(\d)[.,](?=\d{3}(?!\d))/g, '$1');
   }
   function dem(s){ return ' ' + norm(s).replace(/[^a-z0-9]+/g, ' ').trim() + ' '; }
-  index.forEach(function(e){ e.nt = dem(e.text); e.nl = dem(e.label); });
+  function demDau(s){ return ' ' + (s || '').toLowerCase().normalize('NFC').replace(/[^0-9a-zà-ỹđ]+/g, ' ').trim() + ' '; }
+  index.forEach(function(e){ e.nt = dem(e.text); e.nl = dem(e.label); e.td = demDau(e.text); e.ld = demDau(e.label); });
   /* từ đệm hay gõ nhưng không mang nghĩa tìm kiếm */
   var TU_DEM = ['cho','cua','va','la','thi','minh','ban','em','chi','anh','khach','nao','gi','sao','the','nhu','voi','o','nha','a','ah','oi','nhe','roi','mot','cac','nhung','nay','de','ve','ra','vao','bi','se','da','dang','khong','ko','k','duoc','phai','can','lam','hoi','ay','ak','vs','ntn','kieu','neu','hay','luc','khi','toi','may'];
   var LOAI_DIEM = {qa:3, step:3, moc:3, mini:2, h3:2, khoi:1};
+  /* 19/09/2026: gõ chữ nào cũng phải ra — từ viết tắt / đồng nghĩa + "chữ hiếm" (vd koc) là chữ chính */
+  var TU_THAY = {kol:['koc','kol'], koc:['koc','kol'], rep:['rep','tra loi','phan hoi'], ib:['ib','inbox','nhan tin'], inbox:['inbox','ib','nhan tin'],
+    ck:['ck','chuyen khoan'], hd:['hd','hop dong'], cd:['cd','co dau'], cr:['cr','chu re'], sdt:['sdt','so dien thoai','hotline'], phi:['phi','bao gia','bang phi'], tien:['tien','phi'],
+    zalo:['zalo'], tiktok:['tiktok','tik tok'], ig:['ig','instagram'], fb:['fb','facebook']};
+  var CUM_THAY = [['tik tok',['tiktok']], ['cap cut',['capcut']], ['face book',['facebook','fb']], ['insta',['instagram','ig']], ['lien he',['lien he','nhan tin','inbox','moi','goi']], ['lien lac',['lien lac','nhan tin','inbox','goi']],
+    ['nhan tin',['nhan tin','inbox','nhan']], ['doi tien',['doi tien','xin phi','phi','bao gia']], ['doi phi',['doi phi','xin phi','phi','bao gia']], ['tra loi',['tra loi','rep','phan hoi']], ['phan hoi',['phan hoi','tra loi','rep']]];
+  var dfNho = {};
+  /* gõ sai 1–2 chữ cái (kco, chams cong, giao vay) vẫn ra: lấy chữ gần nhất có trong cẩm nang */
+  var TU_VUNG = null;
+  function tuVung(){
+    if(!TU_VUNG){ TU_VUNG = {}; index.forEach(function(e){ e.nt.split(' ').forEach(function(w){ if(w.length >= 2){ TU_VUNG[w] = (TU_VUNG[w] || 0) + 1; } }); }); }
+    return TU_VUNG;
+  }
+  function kc(a, b, max){
+    if(Math.abs(a.length - b.length) > max) return max + 1;
+    var d = [];
+    for(var i = 0; i <= a.length; i++){ d[i] = [i]; }
+    for(var j = 0; j <= b.length; j++){ d[0][j] = j; }
+    for(i = 1; i <= a.length; i++){
+      var nho = 99;
+      for(j = 1; j <= b.length; j++){
+        var cost = a[i-1] === b[j-1] ? 0 : 1;
+        d[i][j] = Math.min(d[i-1][j] + 1, d[i][j-1] + 1, d[i-1][j-1] + cost);
+        if(i > 1 && j > 1 && a[i-1] === b[j-2] && a[i-2] === b[j-1]){ d[i][j] = Math.min(d[i][j], d[i-2][j-2] + 1); }
+        if(d[i][j] < nho){ nho = d[i][j]; }
+      }
+      if(nho > max) return max + 1;
+    }
+    return d[a.length][b.length];
+  }
+  function suaChu(w, dangGoW){
+    if(w.length < 3 || /^\d+$/.test(w)) return null;
+    var v = tuVung();
+    if(v[w]) return null;
+    if(dangGoW){ for(var x0 in v){ if(x0.indexOf(w) === 0) return null; } }
+    var gon = w.replace(/(.)\1+/g, '$1'); if(gon !== w && v[gon]) return gon; /* gõ lặp chữ: kooc → koc */
+    var max = w.length >= 6 ? 2 : 1, tot = null, dTot = max + 1, fTot = 0;
+    var lTot = 9;
+    for(var x in v){
+      if(x.length < 3) continue;
+      var d = kc(w, x, max), l = Math.abs(x.length - w.length);
+      if(d < dTot || (d === dTot && (l < lTot || (l === lTot && v[x] > fTot)))){ dTot = d; tot = x; fTot = v[x]; lTot = l; }
+    }
+    return dTot <= max ? tot : null;
+  }
+  function coTu(e, key, dangGoKey){
+    for(var a = 0; a < key.alts.length; a++){
+      var al = key.alts[a], kk = ' ' + al + ' ';
+      if(e.nt.indexOf(kk) !== -1) return 1;
+      if(/^\d{3,}$/.test(al) && e.nt.indexOf(' ' + al) !== -1) return 1;
+      if(dangGoKey && al.length >= 2 && e.nt.indexOf(' ' + al) !== -1) return 1;
+    }
+    return 0;
+  }
+  function trongNhan(e, key){ for(var a = 0; a < key.alts.length; a++){ if(e.nl.indexOf(' ' + key.alts[a] + ' ') !== -1) return 1; } return 0; }
+  function df(key){
+    var id = key.alts.join('|');
+    if(dfNho[id] == null){ var d = 0; index.forEach(function(e){ d += coTu(e, key, false); }); dfNho[id] = d; }
+    return dfNho[id];
+  }
   var cuoiQ = null;
   function timKiem(){
     var raw = input.value.trim();
     var q = norm(raw);
-    if(q === cuoiQ && hits.classList.contains('show')) return;
-    cuoiQ = q;
+    var qRaw = raw.toLowerCase();
+    if(qRaw === cuoiQ && hits.classList.contains('show')) return;
+    cuoiQ = qRaw;
     hits.innerHTML = '';
     if(q.length < 2){ hits.classList.remove('show'); return; }
     var words = q.replace(/[^a-z0-9]+/g, ' ').trim().split(' ').filter(Boolean);
-    var keys = [];
-    words.forEach(function(w){ if(TU_DEM.indexOf(w) === -1 && keys.indexOf(w) === -1){ keys.push(w); } });
-    if(!keys.length){ keys = words.filter(function(w, i){ return words.indexOf(w) === i; }); }
+    var keys = [], daCo = {};
+    var conLai = ' ' + words.join(' ') + ' ';
+    CUM_THAY.forEach(function(ct){
+      if(conLai.indexOf(' ' + ct[0] + ' ') !== -1){ keys.push({w:ct[0], alts:ct[1]}); daCo[ct[0]] = 1; conLai = conLai.replace(' ' + ct[0] + ' ', ' '); }
+    });
+    conLai.trim().split(' ').filter(Boolean).forEach(function(w){
+      if(TU_DEM.indexOf(w) === -1 && !daCo[w]){ keys.push({w:w, alts:TU_THAY[w] || [w]}); daCo[w] = 1; }
+    });
+    if(!keys.length){ words.forEach(function(w){ if(!daCo[w]){ keys.push({w:w, alts:TU_THAY[w] || [w]}); daCo[w] = 1; } }); }
+    var daSua = [];
+    var goCuoi = !/\s$/.test(input.value) ? words[words.length - 1] : '';
+    keys.forEach(function(k){
+      if(k.alts.length !== 1) return;
+      var s = suaChu(k.w, k.w === goCuoi);
+      if(s){ k.alts = [k.w, s]; daSua.push(s); }
+    });
+    var tuDau = raw.toLowerCase().normalize('NFC').replace(/[^0-9a-zà-ỹđ]+/g, ' ').trim().split(' ').filter(function(w){ return w && norm(w) !== w; });
     var cum = ' ' + words.join(' ') + ' ';
     var capCum = [];
-    for(var i = 0; i + 1 < keys.length; i++){ capCum.push(' ' + keys[i] + ' ' + keys[i+1] + ' '); }
-    var cuoi = keys[keys.length - 1];
-    var dangGo = !/\s$/.test(input.value) && words.length && words[words.length-1] === cuoi;
-    var can = keys.length <= 3 ? keys.length : Math.max(2, Math.ceil(keys.length * 0.6));
+    for(var i = 0; i + 1 < keys.length; i++){ capCum.push(' ' + keys[i].w + ' ' + keys[i+1].w + ' '); }
+    var cuoi = words[words.length - 1];
+    var dangGo = !/\s$/.test(input.value) && words.length > 0;
+    var can = keys.length <= 2 ? keys.length : Math.max(2, Math.ceil(keys.length * 0.6));
+    /* chữ hiếm (ít mục có) = chữ chính: mục nào có đủ chữ chính là ra, chữ thường chỉ cộng điểm */
+    var hiem = Math.max(20, Math.round(index.length * 0.015));
+    var chinh = keys.filter(function(k){ return df(k) > 0 && df(k) <= hiem; });
+    var dungChinh = chinh.length > 0 && chinh.length < keys.length;
     var ketQua = [], goiY = [];
     var dk = laDinhKet();
     for(var i = 0; i < index.length; i++){
-      var e = index[i], khop = 0, diem = 0;
+      var e = index[i], khop = 0, diem = 0, khopChinh = 0;
       if(dk && CHUONG_DINH_KET.indexOf(e.secId) === -1) continue; /* Đính kết không thấy chương nghiệp vụ */
       for(var k = 0; k < keys.length; k++){
-        var kk = ' ' + keys[k] + ' ';
-        var co = e.nt.indexOf(kk) !== -1 || (/^\d{3,}$/.test(keys[k]) && e.nt.indexOf(' ' + keys[k]) !== -1) || (dangGo && keys[k] === cuoi && keys[k].length >= 2 && e.nt.indexOf(' ' + keys[k]) !== -1);
-        if(co){ khop++; diem += 10; if(e.nl.indexOf(kk) !== -1){ diem += 6; } }
+        if(coTu(e, keys[k], dangGo && keys[k].w === cuoi)){
+          khop++; diem += 10; if(trongNhan(e, keys[k])){ diem += 6; }
+          if(chinh.indexOf(keys[k]) !== -1){ khopChinh++; diem += 6; }
+        }
       }
       if(!khop) continue;
       if(words.length > 1 && e.nt.indexOf(cum) !== -1){ diem += 30; if(e.nl.indexOf(cum) !== -1){ diem += 30; } }
       capCum.forEach(function(c){ if(e.nt.indexOf(c) !== -1){ diem += 8; if(e.nl.indexOf(c) !== -1){ diem += 8; } } });
       diem += LOAI_DIEM[e.loai] || 0;
-      if(khop >= can){ ketQua.push([diem, i, e]); } else { goiY.push([diem + khop * 5, i, e]); }
+      /* gõ có dấu thì mục đúng dấu lên trước (nhạc ≠ nhắc, giặt ≠ giật) */
+      tuDau.forEach(function(w){ if(e.td.indexOf(' ' + w + ' ') !== -1){ diem += 12; if(e.ld.indexOf(' ' + w + ' ') !== -1){ diem += 6; } } });
+      diem -= 25 * (chinh.length - khopChinh); /* thiếu chữ chính (vd koc) thì xếp sau */
+      var du = khop >= can || (dungChinh && khopChinh === chinh.length) || (chinh.length > 1 && chinh.length === keys.length && khopChinh >= chinh.length - 1);
+      if(du){ ketQua.push([diem, i, e]); } else { goiY.push([diem + khop * 5, i, e]); }
     }
     function xep(a, b){ return b[0] - a[0] || a[1] - b[1]; }
     ketQua.sort(xep); goiY.sort(xep);
@@ -4956,8 +5045,12 @@ QUIZ[26] = [
     var out = ketQua.filter(function(x){ return x[0] >= nguong; }).slice(0, 8).map(function(x){ return x[2]; });
     var gan = false;
     if(!out.length && goiY.length){ out = goiY.slice(0, 5).map(function(x){ return x[2]; }); gan = true; }
+    if(daSua.length && out.length){
+      var gy = document.createElement('div'); gy.className = 'none'; gy.textContent = 'Tìm theo: ' + daSua.join(', ');
+      hits.appendChild(gy);
+    }
     if(!out.length || gan){
-      hits.innerHTML = '<div class="none">' + (gan ? 'Chưa thấy đúng câu này — mấy mục gần nhất ở dưới.' : 'Chưa có trong cẩm nang.') + ' <button type="button" id="baoLinh" class="tpl-copy" style="margin-left:8px">📩 Gửi câu hỏi cho quản lý</button></div>';
+      hits.innerHTML += '<div class="none">' + (gan ? 'Chưa thấy đúng câu này — mấy mục gần nhất ở dưới.' : 'Chưa có trong cẩm nang.') + ' <button type="button" id="baoLinh" class="tpl-copy" style="margin-left:8px">📩 Gửi câu hỏi cho quản lý</button></div>';
     }
     out.forEach(function(e){
       var a = document.createElement('a');
