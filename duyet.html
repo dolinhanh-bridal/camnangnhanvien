@@ -3,84 +3,28 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow, noarchive">
-<title>Duyệt nhân viên vào Cẩm nang</title>
+<meta name="robots" content="noindex, nofollow">
+<title>Cẩm nang DLA</title>
 <style>
-:root{--paper:#FFFFFF;--ground:#F7F6F4;--ink:#141110;--soft:#6E6A66;--rose:#8E5A5F;--rosed:#6E4449;--line:#E3E0DC;--blush:#F6EFEE;--ok:#2F6B45;--okw:#E8F3EC}
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--ground);color:var(--ink);font-family:-apple-system,"Segoe UI",Roboto,sans-serif;font-size:16px;line-height:1.55;padding:32px 16px 60px}
-.w{max-width:480px;margin:0 auto}
-.brand{text-align:center;font-size:11px;letter-spacing:.18em;color:var(--soft);font-weight:600}
-h1{font-family:Georgia,serif;font-weight:500;font-size:26px;text-align:center;margin:6px 0 20px}
-.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:22px 20px}
-.row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14.5px}
-.row:last-of-type{border-bottom:none}
-.row span:first-child{color:var(--soft)}
-.row span:last-child{text-align:right;font-weight:600;word-break:break-word}
-.tt{display:inline-block;border-radius:999px;padding:3px 11px;font-size:13px;font-weight:700}
-.tt.cho{background:var(--blush);color:var(--rosed)}
-.tt.da{background:var(--okw);color:var(--ok)}
-.btn{display:block;width:100%;margin-top:18px;padding:15px;font:inherit;font-size:15.5px;font-weight:700;color:#fff;background:var(--rose);border:none;border-radius:999px;cursor:pointer}
-.btn:disabled{opacity:.55}
-.msg{margin-top:16px;padding:12px 14px;border-radius:12px;font-size:14.5px}
-.msg.ok{background:var(--okw);color:var(--ok)}
-.msg.loi{background:var(--blush);color:var(--rosed)}
-.note{margin-top:14px;font-size:12.5px;color:var(--soft);text-align:center}
+  body{margin:0;min-height:100vh;display:grid;place-items:center;background:#fff;
+       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;color:#2b2b2b}
+  .h{text-align:center;padding:28px 22px;max-width:420px}
+  .t{font-size:19px;font-weight:600;color:#7B2D3B;margin:0 0 10px}
+  .p{font-size:15px;line-height:1.6;margin:0 0 20px;color:#555}
+  .b{display:inline-block;background:#7B2D3B;color:#fff;text-decoration:none;
+      padding:13px 26px;border-radius:999px;font-size:15px;font-weight:600}
 </style>
 </head>
 <body>
-<div class="w">
-  <p class="brand">DOLINHANH BRIDAL × NUPAKACHI</p>
-  <h1>Duyệt vào Cẩm nang</h1>
-  <div class="card" id="card"><p style="text-align:center;color:var(--soft)">Đang tải hồ sơ…</p></div>
-  <p class="note">Trang dành cho quản lý. Xác nhận xong, hệ thống tự gửi email báo cho bạn nhân viên.</p>
+<div class="h">
+  <p class="t">Đã chuyển sang địa chỉ mới</p>
+  <p class="p">Đang mở giúp bạn… Trang mới nhanh hơn nhiều.<br>Nhớ lưu lại link mới nhé.</p>
+  <a class="b" id="di" href="https://dolinhanhbridal.com/nv-k9m3x7/duyet.html">Mở trang →</a>
 </div>
 <script>
-(function(){
-  var FORM_URL = 'https://script.google.com/macros/s/AKfycbwlmpyoY3b-iCmO9ZoVeUhm0wYJb4CrQ6I9ezsadk4UhDx1JS3qAEN7MWNOL_DGgkiV/exec';
-  var q = new URLSearchParams(location.search);
-  var em = (q.get('em') || '').trim().toLowerCase(), k = (q.get('k') || '').trim();
-  var card = document.getElementById('card');
-  function esc(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
-  function goi(them, cb){
-    var xong = false, fn = 'dlaDuyet' + Date.now(), s = document.createElement('script');
-    function ket(d){ if(xong) return; xong = true; cb(d); try{ delete window[fn]; }catch(e){} if(s.parentNode) s.parentNode.removeChild(s); }
-    window[fn] = ket;
-    s.src = FORM_URL + '?duyet=' + encodeURIComponent(em) + '&k=' + encodeURIComponent(k) + them + '&cb=' + fn;
-    s.onerror = function(){ ket({ ok:false, loi:'Lỗi mạng, chị tải lại trang thử nhé.' }); };
-    document.body.appendChild(s);
-    setTimeout(function(){ ket({ ok:false, loi:'Mạng chậm quá, chị tải lại trang thử nhé.' }); }, 20000);
-  }
-  function ve(d, thongBao){
-    if(!d || !d.ok){ card.innerHTML = '<div class="msg loi">' + esc(d && d.loi ? d.loi : 'Không đọc được hồ sơ.') + '</div>'; return; }
-    var h = ''
-      + '<div class="row"><span>Họ tên</span><span>' + esc(d.ten || '—') + '</span></div>'
-      + '<div class="row"><span>Email</span><span>' + esc(d.em) + '</span></div>'
-      + '<div class="row"><span>Cơ sở</span><span>' + esc(d.coso || '—') + '</span></div>'
-      + '<div class="row"><span>Bộ phận</span><span>' + esc((d.bp || '—') + (d.ht ? ' · ' + d.ht : '')) + '</span></div>'
-      + '<div class="row"><span>Thỏa thuận</span><span>' + esc(d.ky ? 'Đã ký' : 'Chưa ký') + '</span></div>'
-      + '<div class="row"><span>Trạng thái</span><span><span class="tt ' + (d.da ? 'da">Đã duyệt' : 'cho">Chờ duyệt') + '</span></span></div>';
-    if(!d.da){
-      h += '<button class="btn" id="nutDuyet">✅ Xác nhận cho vào Cẩm nang</button>';
-    }
-    if(thongBao) h += thongBao;
-    card.innerHTML = h;
-    var nut = document.getElementById('nutDuyet');
-    if(nut) nut.onclick = function(){
-      nut.disabled = true; nut.textContent = 'Đang xác nhận…';
-      goi('', function(r){
-        if(r && r.ok){
-          ve(r, '<div class="msg ok">' + (r.daTruoc ? 'Bạn này đã được duyệt từ trước rồi.' : 'Đã duyệt ✓ Hệ thống đã gửi email báo cho ' + esc(r.ten || 'bạn ấy') + ' — giờ bạn ấy mở Cẩm nang được rồi.') + '</div>');
-        } else {
-          nut.disabled = false; nut.textContent = '✅ Xác nhận cho vào Cẩm nang';
-          var m = document.createElement('div'); m.className = 'msg loi'; m.textContent = r && r.loi ? r.loi : 'Có lỗi, thử lại nhé.'; card.appendChild(m);
-        }
-      });
-    };
-  }
-  if(!em || !k){ ve({ ok:false, loi:'Link thiếu thông tin. Chị mở đúng link trong email hồ sơ nhé.' }); return; }
-  goi('&xem=1', function(d){ ve(d, d && d.ok && d.da ? '<div class="msg ok">Bạn này đã được duyệt' + (d.tt ? ' (' + esc(d.tt) + ')' : '') + ' — mở Cẩm nang được rồi.</div>' : ''); });
-})();
+  var d = "https://dolinhanhbridal.com/nv-k9m3x7/duyet.html" + location.search + location.hash;
+  document.getElementById('di').href = d;
+  location.replace(d);
 </script>
 </body>
 </html>

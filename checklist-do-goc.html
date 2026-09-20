@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Checklist chuẩn bị đồ — DLA</title>
+<link rel="icon" href="logo-dla-favicon.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+<style>
+:root{--paper:#fff;--ink:#31232A;--soft:#6E5C60;--rose:#9E4458;--rose-deep:#7C3346;--blush:#F5E3DE;--line:#E3D5C6;--deep:#F4EAE0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:'Be Vietnam Pro',-apple-system,'Segoe UI',sans-serif;font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:640px;margin:0 auto;padding:18px 16px 110px}
+.top{text-align:center;padding:6px 0 14px}
+.top img{height:34px;width:auto}
+h1{font-size:22px;font-weight:700;margin:10px 0 4px}
+.lede{color:var(--soft);font-size:13.5px}
+.card{border:1px solid var(--line);border-radius:16px;padding:16px;margin:14px 0}
+.card h2{font-size:15px;font-weight:700;color:var(--rose);margin-bottom:10px}
+.card h2 .so{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--rose);color:#fff;font-size:12px;margin-right:7px;vertical-align:1px}
+label.f{display:block;font-size:12.5px;font-weight:600;color:var(--rose-deep);margin:10px 0 4px}
+label.f .req{color:var(--rose)}
+input[type=text],input[type=date],input[type=number]{width:100%;font:inherit;font-size:15px;color:var(--ink);padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;-webkit-appearance:none;appearance:none}
+input:focus{outline:2px solid var(--rose);outline-offset:1px}
+.two{display:flex;gap:10px}.two>div{flex:1;min-width:0}
+.seg{display:flex;gap:8px;margin-top:4px}
+.seg label{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;border:1px solid var(--line);border-radius:10px;padding:9px;font-size:14px;cursor:pointer}
+.seg input{accent-color:var(--rose)}
+.seg label:has(input:checked){border-color:var(--rose);background:var(--blush);color:var(--rose-deep);font-weight:600}
+.add{display:flex;flex-wrap:wrap;gap:7px;margin:4px 0 10px}
+.add button{font:inherit;font-size:13px;font-weight:600;color:var(--rose-deep);background:var(--blush);border:none;border-radius:999px;padding:7px 12px;cursor:pointer}
+.items{display:flex;flex-direction:column;gap:9px}
+.item{border:1px solid var(--line);border-radius:12px;padding:10px;display:grid;grid-template-columns:1fr 64px 34px;gap:7px;align-items:center}
+.item .ten{grid-column:1}
+.item .sl{grid-column:2}
+.item .xoa{grid-column:3;font:inherit;font-size:18px;line-height:1;color:var(--soft);background:none;border:1px solid var(--line);border-radius:8px;height:40px;cursor:pointer}
+.item .gc{grid-column:1 / 4}
+.item input{padding:8px 10px;font-size:14.5px}
+.item .ten{font-weight:600}
+.trong{font-size:13px;color:var(--soft);font-style:italic}
+ul.ck{list-style:none}
+ul.ck li{padding:5px 0}
+ul.ck label{display:flex;gap:10px;align-items:flex-start;cursor:pointer;font-size:14.5px}
+ul.ck input{flex:none;width:20px;height:20px;margin-top:1px;accent-color:var(--rose)}
+ul.ck b{font-weight:600}
+ul.ck i{font-weight:400;color:var(--soft)}
+ul.ck input:checked+span{color:var(--soft);text-decoration:line-through}
+.tag{display:inline-block;font-size:11px;font-weight:600;color:var(--soft);border:1px solid var(--line);border-radius:999px;padding:0 7px;margin-left:4px;text-decoration:none}
+.card.sau{background:#FCFAF8}
+.gui{border:2px solid var(--rose);background:#fff}
+.btn{display:block;width:100%;font:inherit;font-size:15.5px;font-weight:700;color:#fff;background:var(--rose);border:none;border-radius:999px;padding:13px;cursor:pointer;margin-top:10px}
+.btn.phu{background:var(--blush);color:var(--rose-deep)}
+.btn.vien{background:#fff;color:var(--rose);border:1px solid var(--rose)}
+.thieu{display:none;margin-top:10px;background:#FBEDEA;border-radius:10px;padding:10px 12px;font-size:13.5px;color:var(--rose-deep)}
+.thieu.on{display:block}
+.thieu ul{margin:6px 0 0 18px}
+#kq{display:none;margin-top:12px}
+#kq.on{display:block}
+#kq img{width:100%;border:1px solid var(--line);border-radius:10px;display:block}
+.meo{font-size:12.5px;color:var(--soft);margin-top:8px;text-align:center}
+.tien{height:6px;background:var(--deep);border-radius:99px;overflow:hidden;margin-top:8px}
+.tien i{display:block;height:100%;width:0;background:var(--rose);transition:width .2s}
+.tienso{font-size:12px;color:var(--soft);margin-top:4px}
+.moi{margin-top:26px}
+.ky{border:1px dashed var(--rose);border-radius:12px;background:#FFFDFD;margin-top:12px;padding:12px}
+.ky h3{font-size:14px;font-weight:700;color:var(--rose-deep);margin-bottom:2px}
+.ky .goi{font-size:12.5px;color:var(--soft)}
+.kyo{position:relative;margin-top:8px}
+#kyCv{display:block;width:100%;height:150px;background:#fff;border:1px solid var(--line);border-radius:10px;touch-action:none;cursor:crosshair}
+.kyo .nen{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;font-size:13px;color:#C9B8B0;pointer-events:none}
+.kyo .nen.an{display:none}
+.kyo .gach{position:absolute;left:18px;right:18px;bottom:34px;border-bottom:1px solid var(--line);pointer-events:none}
+.kybar{display:flex;justify-content:space-between;align-items:center;margin-top:6px;font-size:12.5px;color:var(--soft)}
+.anhs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.anhs .o{position:relative;aspect-ratio:4/5;border-radius:10px;overflow:hidden;background:var(--deep);border:1px solid var(--line)}
+.anhs .o img{width:100%;height:100%;object-fit:cover;display:block}
+.anhs .o button{position:absolute;top:4px;right:4px;width:26px;height:26px;border-radius:50%;border:none;background:rgba(49,35,42,.72);color:#fff;font-size:15px;line-height:1;cursor:pointer}
+.themanh{display:flex;align-items:center;justify-content:center;gap:6px;border:1px dashed var(--rose);border-radius:12px;padding:12px;color:var(--rose-deep);font-weight:600;font-size:14px;cursor:pointer;background:#FFFDFD}
+.themanh input{display:none}
+.kybar button{font:inherit;font-size:12.5px;font-weight:600;color:var(--rose-deep);background:var(--blush);border:none;border-radius:999px;padding:5px 12px;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <img src="logo-ngang.png" alt="Dolinhanh Bridal">
+    <h1>Checklist chuẩn bị đồ</h1>
+    <p class="lede">Điền khách → thêm đồ → tick từng việc → up ảnh → ký → <b>tạo ảnh gửi khách</b>.<br><i>Đang làm dở thoát ra vẫn giữ nguyên, mở lại làm tiếp.</i></p>
+  </div>
+
+  <div class="card">
+    <h2><span class="so">1</span>Thông tin khách</h2>
+    <div class="two">
+      <div><label class="f">Tên cô dâu <span class="req">*</span></label><input type="text" id="cd" placeholder="VD: Ngọc Ánh" autocomplete="off"></div>
+      <div><label class="f">Tên chú rể</label><input type="text" id="cr" placeholder="VD: Minh Khang" autocomplete="off"></div>
+    </div>
+    <div class="two">
+      <div><label class="f">Ngày cưới <span class="req">*</span></label><input type="date" id="ngay"></div>
+      <div><label class="f">Mã HĐ</label><input type="text" id="ma" placeholder="VD: DLA-HN-06082026-23" autocomplete="off"></div>
+    </div>
+    <div class="two">
+      <div><label class="f">Nhân viên chuẩn bị <span class="req">*</span></label><input type="text" id="nv" placeholder="Tên bạn" autocomplete="off"></div>
+    </div>
+    <label class="f">Khách nhận đồ</label>
+    <div class="seg">
+      <label><input type="radio" name="nhan" value="ship" checked> Ship</label>
+      <label><input type="radio" name="nhan" value="lay"> Đến shop lấy</label>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2><span class="so">2</span>Đồ chuẩn bị cho khách</h2>
+    <div class="add" id="add"></div>
+    <div class="items" id="items"></div>
+    <p class="trong" id="trong">Bấm các nút trên để thêm đồ. Ghi mã váy, màu, size, tùng số… vào ô chi tiết.</p>
+  </div>
+
+  <div id="truoc"></div>
+
+  <div class="card gui">
+    <h2>📸 Gửi ảnh checklist cho khách</h2>
+    <p style="font-size:13.5px">Tick đủ các bước trên rồi bấm nút. Mục <i>"nếu có"</i> mà đơn không có thì bỏ qua.</p>
+    <div class="tien"><i id="tienBar"></i></div><p class="tienso" id="tienSo"></p>
+    <div class="ky">
+      <h3>📷 Ảnh đồ đã chuẩn bị <span style="color:var(--rose)">*</span></h3>
+      <p class="goi">Chụp từng món, hộp đen… (1–9 ảnh). <i>Ảnh in lên ảnh gửi khách.</i></p>
+      <div class="anhs" id="anhs"></div>
+      <label class="themanh" style="margin-top:10px"><input type="file" id="chonAnh" accept="image/*" multiple>+ Thêm ảnh (chụp hoặc chọn từ máy)</label>
+      <p class="goi" id="anhTt" style="margin-top:6px"></p>
+    </div>
+    <div class="ky">
+      <h3>✍️ Người kiểm tra ký xác nhận <span style="color:var(--rose)">*</span></h3>
+      <p class="goi">Người kiểm tra xem lại đồ, gõ tên rồi ký bằng ngón tay. <i>Chữ ký in lên ảnh gửi khách.</i></p>
+      <label class="f">Tên người kiểm tra</label><input type="text" id="kt" placeholder="VD: Thanh Hà" autocomplete="off">
+      <div class="kyo"><canvas id="kyCv"></canvas><div class="gach"></div><div class="nen" id="kyNen">Ký vào đây</div></div>
+      <div class="kybar"><span id="kyTt">Chưa ký</span><button type="button" id="kyLai">Ký lại</button></div>
+    </div>
+    <button type="button" class="btn" id="tao">Tạo ảnh gửi khách</button>
+    <div class="thieu" id="thieu"></div>
+    <div id="kq">
+      <img id="anh" alt="Ảnh checklist gửi khách">
+      <button type="button" class="btn" id="luu">Lưu / gửi ảnh</button>
+      <button type="button" class="btn phu" id="chep">Chép tin nhắn gửi kèm</button>
+      <p class="meo">iPhone: nhấn giữ ảnh → <b>Lưu vào Ảnh</b>, rồi gửi khách qua Zalo.</p>
+    </div>
+  </div>
+
+  <div id="sau"></div>
+
+  <button type="button" class="btn vien moi" id="moi">Làm đơn mới (xoá hết)</button>
+</div>
+
+<a href="#" id="dlaLui" style="display:none;position:fixed;left:12px;bottom:14px;z-index:71;background:#fff;color:#9E4458;text-decoration:none;border:1px solid #9E4458;border-radius:999px;padding:10px 16px;font-family:-apple-system,BlinkMacSystemFont,'Be Vietnam Pro',sans-serif;font-size:13.5px;font-weight:600;box-shadow:0 6px 18px rgba(0,0,0,.18)">&#8592; Quay lại</a>
+<script>(function(){var b=document.getElementById('dlaLui');if(!b)return;if(document.referrer||history.length>1){b.style.display='inline-flex';}b.addEventListener('click',function(e){e.preventDefault();history.back();});})();</script>
+
+<script>
+(function(){
+var NHOM = [{"id": "doi", "ten": "Đối chiếu đơn", "muc": [{"t": "Đúng tên cô dâu chú rể, đúng ngày cưới", "p": "so với hợp đồng"}, {"t": "Đủ số lượng đồ theo hợp đồng", "p": "xem lại tin nhắn, khách có đổi gì không", "kh": "Đủ số lượng đồ theo hợp đồng", "g": "chung"}, {"t": "Phụ kiện đúng loại, đủ số lượng", "p": "voan · găng tay · nơ…", "kh": "Phụ kiện đúng loại, đủ số lượng", "g": "chung"}]}, {"id": "vay", "loai": "vay", "ten": "Váy", "muc": [{"t": "Đúng phom dáng · kiểu · màu", "p": "check trước khi xếp", "kh": "Đúng mẫu, phom dáng, màu sắc"}, {"t": "Đủ chi tiết / phụ kiện tháo rời", "p": "nếu váy có", "tuy": 1, "kh": "Đủ chi tiết tháo rời"}, {"t": "Đã có mút ngực", "p": "chưa có thì báo đính kết may", "kh": "Đã may mút ngực"}, {"t": "Đã có đáp lưng, đáp vừa", "p": "cô dâu người đầy đặn thì đáp lưng lớn", "kh": "Đã đáp lưng vừa người"}, {"t": "Dây treo váy không cũ, không tuột", "kh": "Dây treo váy chắc chắn"}, {"t": "Không rơi đá, không tuột chỉ, không mất hoa hoạ tiết", "kh": "Không rơi đá, không tuột chỉ"}, {"t": "Không bẩn", "p": "chân váy bẩn: giặt qua → phơi khô", "kh": "Váy sạch sẽ"}, {"t": "Tùng váy đúng loại, đủ số lượng", "p": "nếu có · ghi tùng số ở danh sách đồ", "tuy": 1, "kh": "Tùng váy đúng loại, đủ số lượng"}]}, {"id": "vest", "loai": "vest", "ten": "Vest", "muc": [{"t": "Đúng vest: mẫu · màu · phom dáng · nút áo", "kh": "Đúng mẫu, màu, phom dáng, nút áo"}, {"t": "Quần đi kèm: màu · phom dáng · size", "kh": "Quần đúng màu, đúng size"}, {"t": "Đủ bộ: áo vest · sơ mi · quần · phụ kiện", "p": "phụ kiện nếu có", "kh": "Đủ bộ: áo vest, sơ mi, quần"}, {"t": "Treo bằng móc đen lớn"}]}, {"id": "aodai", "loai": "aodai", "ten": "Áo dài", "muc": [{"t": "Đúng áo dài: màu · kiểu đính · size", "kh": "Đúng màu, kiểu đính, size"}, {"t": "Quần áo dài: đúng màu · đúng size", "kh": "Quần đúng màu, đúng size"}]}, {"id": "hoanthien", "ten": "Hoàn thiện — làm cho TỪNG món", "muc": [{"t": "Khoá kéo · nút · móc cài chạy tốt", "kh": "Khoá kéo, nút, móc cài hoạt động tốt", "g": "chung"}, {"t": "Đồ khách nhờ sửa, lên lai: đã sửa xong", "p": "nếu có", "tuy": 1, "kh": "Đã chỉnh sửa theo yêu cầu của anh chị", "g": "chung"}, {"t": "Ủi", "kh": "Ủi phẳng", "g": "chung"}, {"t": "Xếp gọn vào túi trắng", "kh": "Xếp gọn vào túi", "g": "chung"}, {"t": "Chụp hình từng món"}, {"t": "Xịt thơm", "kh": "Xịt thơm", "g": "chung"}]}, {"id": "hopden", "ten": "Hộp đen", "muc": [{"t": "2 mút · 2 dây buộc · kim chỉ · giấy cảm ơn", "kh": "2 mút · 2 dây buộc · kim chỉ · giấy cảm ơn", "g": "hopden"}, {"t": "Dây buộc đủ dài"}, {"t": "Chụp hình bên trong hộp đen"}, {"t": "Buộc nơ"}]}, {"id": "cuoi", "ten": "Kiểm tra lần cuối", "muc": [{"t": "Kiểm tra lại toàn bộ đồ + phụ kiện lần cuối", "kh": "Kiểm tra lại toàn bộ lần cuối trước khi đóng vali", "g": "chung"}, {"t": "Block váy", "p": "không cho khách khác thử nữa"}]}, {"id": "vali", "ten": "Đóng vali", "sau": 1, "muc": [{"t": "Xếp đồ + hộp đen vào vali"}, {"t": "Vali đã dán logo DLA bên ngoài"}, {"t": "Chụp hình vali sau khi đóng"}]}, {"id": "giao", "ten": "Giao đồ", "sau": 1, "muc": [{"t": "Gọi cô dâu xác nhận", "p": "hỏi lại địa chỉ, nhờ cô dâu để ý điện thoại"}, {"t": "Book ship", "ship": 1}, {"t": "Gửi link tracking cho cô dâu", "ship": 1}, {"t": "Cô dâu nhận → gọi/nhắn kiểm tra", "p": "đúng đồ, đủ đồ, đúng màu, không sai sót"}, {"t": "Cô dâu xác nhận đã nhận đủ, đúng đồ"}]}];
+var NUT = [
+  {ten:'Váy cưới',loai:'vay',gc:'Mã váy · màu'},
+  {ten:'Váy tiệc',loai:'vay',gc:'Mã váy · màu'},
+  {ten:'Vest',loai:'vest',gc:'Mẫu · màu · size áo/quần'},
+  {ten:'Áo dài',loai:'aodai',gc:'Màu · kiểu đính · size'},
+  {ten:'Voan',loai:'pk',gc:'Loại voan'},
+  {ten:'Găng tay',loai:'pk',gc:'Loại'},
+  {ten:'Nơ',loai:'pk',gc:'Loại / màu'},
+  {ten:'Tùng váy',loai:'pk',gc:'Tùng số …'},
+  {ten:'Món khác',loai:'khac',gc:'Chi tiết'}
+];
+// Mỗi khách một bản nháp riêng. Mở từ Lịch toàn năng (?cd=&ngay=&ma=&vay=&voan=&pk=) → vào đúng bản nháp của khách đó.
+var P=new URLSearchParams(location.search),TUBANG=!!(P.get('ma')||P.get('cd'));
+function khoaTu(){try{return localStorage.getItem('dla_ck_do_cur')||'k:mac-dinh';}catch(e){return 'k:mac-dinh';}}
+var KHOA=TUBANG?'k:'+khongDau(P.get('ma')||((P.get('cd')||'')+'-'+(P.get('ngay')||''))):khoaTu();
+var KEY='dla_ck_do_v2:'+KHOA;
+function dsNhap(){try{return JSON.parse(localStorage.getItem('dla_ck_do_ds')||'{}')||{};}catch(e){return {};}}
+function ghiDs(ds){try{localStorage.setItem('dla_ck_do_ds',JSON.stringify(ds));localStorage.setItem('dla_ck_do_cur',KHOA);}catch(e){}}
+(function donCu(){ // bản nháp quá 30 ngày thì xoá (cả ảnh)
+  var ds=dsNhap(),h=Date.now(),doi=false;
+  Object.keys(ds).forEach(function(k){if(h-ds[k]>30*864e5){try{localStorage.removeItem('dla_ck_do_v2:'+k);}catch(e){}xoaAnhKhoa(k);delete ds[k];doi=true;}});
+  try{localStorage.removeItem('dla_ck_do_v1');}catch(e){}
+  if(doi)ghiDs(ds);
+})();
+var $=function(id){return document.getElementById(id);};
+var S={items:[],tick:{}};
+
+function luu(){
+  S.cd=$('cd').value;S.ma=$('ma').value;S.cr=$('cr').value;S.ngay=$('ngay').value;S.nv=$('nv').value;S.kt=$('kt').value;
+  S.nhan=(document.querySelector('input[name=nhan]:checked')||{}).value||'ship';
+  try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}
+  var ds=dsNhap();ds[KHOA]=Date.now();ghiDs(ds);
+}
+function nap(){
+  var co=false;try{var t=localStorage.getItem(KEY);if(t){S=JSON.parse(t)||S;S.items=S.items||[];S.tick=S.tick||{};co=true;}}catch(e){}
+  if(!co&&TUBANG){ // bản nháp mới: điền sẵn từ Lịch toàn năng
+    S={items:[],tick:{},cd:P.get('cd')||'',ngay:P.get('ngay')||'',ma:P.get('ma')||'',nhan:'ship'};
+    if(P.get('vay'))S.items.push({ten:'Váy cưới',loai:'vay',gc:P.get('vay'),sl:1,ph:'Mã váy · màu'});
+    if(P.get('voan'))S.items.push({ten:'Voan',loai:'pk',gc:P.get('voan'),sl:1,ph:'Loại voan'});
+    if(P.get('pk'))S.items.push({ten:'Phụ kiện',loai:'pk',gc:P.get('pk'),sl:1,ph:'Chi tiết'});
+  }
+  $('cd').value=S.cd||'';$('ma').value=S.ma||'';$('cr').value=S.cr||'';$('ngay').value=S.ngay||'';$('nv').value=S.nv||'';$('kt').value=S.kt||'';
+  var r=document.querySelector('input[name=nhan][value="'+(S.nhan||'ship')+'"]');if(r)r.checked=true;
+}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function coLoai(l){return S.items.some(function(it){return it.loai===l;});}
+function nhomHien(n){return !n.loai||coLoai(n.loai);}
+function mucHien(m){return !(m.ship&&S.nhan==='lay');}
+
+/* ---- danh sách đồ ---- */
+function veNut(){
+  $('add').innerHTML=NUT.map(function(n,i){return '<button type="button" data-i="'+i+'">+ '+esc(n.ten)+'</button>';}).join('');
+}
+function veDo(){
+  $('items').innerHTML=S.items.map(function(it,i){
+    return '<div class="item" data-i="'+i+'">'+
+      '<input class="ten" type="text" data-k="ten" value="'+esc(it.ten)+'" aria-label="Món đồ">'+
+      '<input class="sl" type="number" min="1" inputmode="numeric" data-k="sl" value="'+esc(it.sl||1)+'" aria-label="Số lượng">'+
+      '<button type="button" class="xoa" aria-label="Xoá">×</button>'+
+      '<input class="gc" type="text" data-k="gc" value="'+esc(it.gc)+'" placeholder="'+esc(it.ph||'Chi tiết')+'">'+
+    '</div>';}).join('');
+  $('trong').style.display=S.items.length?'none':'block';
+}
+$('add').addEventListener('click',function(e){
+  var b=e.target.closest('button');if(!b)return;var n=NUT[+b.dataset.i];
+  S.items.push({ten:n.loai==='khac'?'':n.ten,loai:n.loai,gc:'',sl:1,ph:n.gc});
+  veDo();veBuoc();luu();
+  var o=$('items').lastElementChild;if(o){var ip=o.querySelector(n.loai==='khac'?'.ten':'.gc');if(ip)ip.focus();}
+});
+$('items').addEventListener('input',function(e){
+  var row=e.target.closest('.item');if(!row)return;S.items[+row.dataset.i][e.target.dataset.k]=e.target.value;luu();anKq();
+});
+$('items').addEventListener('click',function(e){
+  if(!e.target.classList.contains('xoa'))return;var i=+e.target.closest('.item').dataset.i;
+  S.items.splice(i,1);veDo();veBuoc();luu();anKq();
+});
+
+/* ---- các bước tick ---- */
+function veBuoc(){
+  var so=0,a='',b='';
+  NHOM.forEach(function(n){
+    if(!nhomHien(n))return;so++;
+    var h='<div class="card'+(n.sau?' sau':'')+'"><h2><span class="so">'+(so+2)+'</span>'+esc(n.ten)+'</h2><ul class="ck">';
+    n.muc.forEach(function(m,j){
+      if(!mucHien(m))return;var id=n.id+'-'+j;
+      h+='<li><label><input type="checkbox" data-id="'+id+'"'+(S.tick[id]?' checked':'')+'><span><b>'+esc(m.t)+'</b>'+
+        (m.p?' <i>— '+esc(m.p)+'</i>':'')+(m.tuy?'<span class="tag">nếu có</span>':'')+'</span></label></li>';
+    });
+    h+='</ul></div>';
+    if(n.sau)b+=h;else a+=h;
+  });
+  $('truoc').innerHTML=a;$('sau').innerHTML=b;tien();
+}
+function onTick(e){
+  var c=e.target;if(!c.dataset||!c.dataset.id)return;S.tick[c.dataset.id]=c.checked;luu();tien();
+  if(c.closest('#truoc'))anKq();
+}
+$('truoc').addEventListener('change',onTick);$('sau').addEventListener('change',onTick);
+
+function canTick(){ // các mục bắt buộc trước khi gửi ảnh
+  var r=[];NHOM.forEach(function(n){if(n.sau||!nhomHien(n))return;n.muc.forEach(function(m,j){if(!mucHien(m))return;r.push({n:n,m:m,id:n.id+'-'+j});});});return r;
+}
+function tien(){
+  var ds=canTick().filter(function(x){return !x.m.tuy;}),xong=ds.filter(function(x){return S.tick[x.id];}).length;
+  $('tienBar').style.width=(ds.length?Math.round(xong*100/ds.length):0)+'%';
+  $('tienSo').textContent='Đã tick '+xong+'/'+ds.length+' việc bắt buộc';
+}
+
+['cd','cr','ngay','ma','nv','kt'].forEach(function(id){$(id).addEventListener('input',function(){luu();anKq();});});
+document.querySelectorAll('input[name=nhan]').forEach(function(r){r.addEventListener('change',function(){luu();veBuoc();});});
+
+/* ---- tạo ảnh ---- */
+function ngayVN(v){if(!v)return'';var p=v.split('-');return p[2]+'/'+p[1]+'/'+p[0];}
+function homNay(){var d=new Date();return ('0'+d.getDate()).slice(-2)+'/'+('0'+(d.getMonth()+1)).slice(-2)+'/'+d.getFullYear();}
+function khongDau(s){return String(s).normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/đ/g,'d').replace(/Đ/g,'D').replace(/[^a-zA-Z0-9]+/g,'-').replace(/^-|-$/g,'').toLowerCase();}
+function anKq(){$('kq').classList.remove('on');}
+
+function thuThap(){
+  var thieu=[];
+  if(!$('cd').value.trim())thieu.push('Tên cô dâu');
+  if(!$('ngay').value)thieu.push('Ngày cưới');
+  if(!$('nv').value.trim())thieu.push('Tên nhân viên chuẩn bị');
+  var items=S.items.filter(function(it){return (it.ten||'').trim();});
+  if(!items.length)thieu.push('Chưa thêm món đồ nào ở mục 2');
+  var nhomKh={vay:[],vest:[],aodai:[],hopden:[],chung:[]};
+  canTick().forEach(function(x){
+    if(!S.tick[x.id]){if(!x.m.tuy)thieu.push(x.n.ten+': '+x.m.t);return;}
+    if(!x.m.kh)return;var g=x.m.g||x.n.loai;if(nhomKh[g])nhomKh[g].push(x.m.kh);
+  });
+  if(!$('kt').value.trim())thieu.push('Tên người kiểm tra');
+  if(!ANH.length)thieu.push('Chưa up ảnh đồ đã chuẩn bị');
+  if(!S.ky)thieu.push('Chữ ký người kiểm tra');
+  return {thieu:thieu,items:items,nhom:nhomKh};
+}
+
+var TEN_NHOM={vay:'Váy',vest:'Vest',aodai:'Áo dài',hopden:'Hộp đen',chung:'Kiểm tra chung'};
+var F='"Be Vietnam Pro",-apple-system,"Segoe UI",sans-serif';
+var C={ink:'#31232A',soft:'#6E5C60',rose:'#9E4458',deep:'#7C3346',blush:'#F5E3DE',line:'#E3D5C6',bg:'#FFFFFF'};
+var LOGO=new Image();LOGO.src='logo-ngang.png';var KYIMG=null,ANH=[],MAXANH=9;
+
+function dong(x,text,font,maxW){ // cắt chữ thành nhiều dòng
+  x.font=font;var w=String(text).split(' '),out=[],cur='';
+  w.forEach(function(t){var th=cur?cur+' '+t:t;if(x.measureText(th).width>maxW&&cur){out.push(cur);cur=t;}else cur=th;});
+  if(cur)out.push(cur);return out.length?out:[''];
+}
+function ve(x,d,W,draw){
+  var P=64,y=56,IW=W-2*P;
+  function T(t,px,wt,col,cx,al,st){if(!draw)return;x.font=(st||'')+' '+wt+' '+px+'px '+F;x.fillStyle=col;x.textAlign=al||'left';x.textBaseline='alphabetic';x.fillText(t,cx,y);}
+  // logo
+  if(LOGO.complete&&LOGO.naturalWidth){var lw=300,lh=lw*LOGO.naturalHeight/LOGO.naturalWidth;if(draw)x.drawImage(LOGO,(W-lw)/2,y,lw,lh);y+=lh+54;}
+  else{y+=34;T('DOLINHANH BRIDAL',34,700,C.rose,W/2,'center');y+=40;}
+  T('CHECKLIST ĐỒ CƯỚI',40,700,C.ink,W/2,'center');y+=40;
+  T('Đã kiểm tra kỹ từng món trước khi giao',24,400,C.soft,W/2,'center','italic');y+=36;
+  // hộp thông tin
+  var info=[['Cô dâu',d.cd]];if(d.cr)info.push(['Chú rể',d.cr]);info.push(['Ngày cưới',d.ngay]);if(d.ma)info.push(['Mã HĐ',d.ma]);info.push(['Nhận đồ',d.nhan==='lay'?'Đến shop lấy':'Giao tận nơi']);
+  var ih=28+info.length*50+10;
+  if(draw){x.fillStyle=C.blush;rr(x,P,y,IW,ih,22);x.fill();}
+  var iy=y+54;info.forEach(function(r){var yy=y;y=iy;T(r[0],25,500,C.soft,P+32);T(r[1],29,700,C.ink,P+250);y=yy;iy+=50;});
+  y+=ih+56;
+  // bảng đồ
+  T('ĐỒ CHUẨN BỊ CHO ANH CHỊ',25,700,C.rose,P);y+=22;
+  var cM=P+16,cG=P+330,cS=W-P-110,cV=W-P-24,wM=cG-cM-20,wG=cS-cG-20;
+  line(y);y+=40;
+  T('Món đồ',21,600,C.soft,cM);T('Chi tiết',21,600,C.soft,cG);T('SL',21,600,C.soft,cS+14);T('',21,600,C.soft,cV,'right');y+=20;line(y);
+  d.items.forEach(function(it){
+    var a=dong(x,it.ten,'700 27px '+F,wM),b=dong(x,it.gc||'—','400 25px '+F,wG),n=Math.max(a.length,b.length),y0=y+42;
+    for(var k=0;k<n;k++){y=y0+k*36;if(a[k])T(a[k],27,700,C.ink,cM);if(b[k])T(b[k],25,400,b[k]==='—'?C.soft:C.ink,cG);}
+    y=y0;T(String(it.sl||1),27,600,C.ink,cS+22);T('✓',30,700,C.rose,cV,'right');
+    y=y0+(n-1)*36+22;line(y);
+  });
+  y+=58;
+  if(d.anh&&d.anh.length){
+    T('HÌNH ĐỒ ĐÃ CHUẨN BỊ',25,700,C.rose,P);y+=22;
+    var n=d.anh.length,cot=n<=4?2:3,gap=14,cw=(IW-gap*(cot-1))/cot,ch=cw*1.25;
+    d.anh.forEach(function(im,i){var cx=P+(i%cot)*(cw+gap),cy=y+Math.floor(i/cot)*(ch+gap);
+      if(draw&&im.naturalWidth){x.save();rr(x,cx,cy,cw,ch,16);x.clip();var s=Math.max(cw/im.naturalWidth,ch/im.naturalHeight),iw=im.naturalWidth*s,ih=im.naturalHeight*s;x.drawImage(im,cx+(cw-iw)/2,cy+(ch-ih)/2,iw,ih);x.restore();}});
+    y+=Math.ceil(n/cot)*(ch+gap)-gap+64;
+  }
+  // các nhóm đã kiểm tra
+  ['vay','vest','aodai','hopden','chung'].forEach(function(g){
+    var ds=d.nhom[g];if(!ds||!ds.length)return;
+    T(TEN_NHOM[g].toUpperCase()+' — ĐÃ KIỂM TRA',25,700,C.rose,P);y+=16;
+    ds.forEach(function(s){var ls=dong(x,s,'400 27px '+F,IW-52);ls.forEach(function(l,k){y+=40;if(k===0)T('✓',28,700,C.rose,P+4);T(l,27,400,C.ink,P+46);});});
+    y+=54;
+  });
+  line(y-14);y+=40;
+  var cL=W*0.27,cR=W*0.71;
+  T('Người chuẩn bị',22,400,C.soft,cL,'center');T('Người kiểm tra ký xác nhận',22,400,C.soft,cR,'center');
+  var yk=y+14,kh=120,kw=360;
+  if(draw&&KYIMG&&KYIMG.naturalWidth){var bx=catKy(KYIMG),r=Math.min(kw/bx.w,kh/bx.h,1.6),iw=bx.w*r,ih=bx.h*r;x.drawImage(KYIMG,bx.x,bx.y,bx.w,bx.h,cR-iw/2,yk+(kh-ih)/2,iw,ih);}
+  y=yk+kh+34;
+  T(d.nv,28,700,C.ink,cL,'center');T(d.kt,28,700,C.ink,cR,'center');y+=54;
+  T('Kiểm tra ngày '+homNay(),22,400,C.soft,W/2,'center');y+=50;
+  var loi=dong(x,'Anh chị nhận đồ kiểm tra giúp em, có gì chưa đúng nhắn em liền nha ạ 🤍','400 26px '+F,IW);
+  loi.forEach(function(l){T(l,26,400,C.ink,W/2,'center','italic');y+=38;});
+  y+=6;T('dolinhanhbridal.com',22,600,C.rose,W/2,'center');y+=56;
+  return y;
+  function line(yy){if(!draw)return;x.strokeStyle=C.line;x.lineWidth=2;x.beginPath();x.moveTo(P,yy);x.lineTo(W-P,yy);x.stroke();}
+}
+function catKy(im){ // khung bao quanh nét ký, bỏ khoảng trắng
+  var c=document.createElement('canvas'),w=im.naturalWidth,h=im.naturalHeight;c.width=w;c.height=h;var g=c.getContext('2d');g.drawImage(im,0,0);
+  var dt=g.getImageData(0,0,w,h).data,x0=w,y0=h,x1=-1,y1=-1;
+  for(var yy=0;yy<h;yy++)for(var xx=0;xx<w;xx++){if(dt[(yy*w+xx)*4+3]>20){if(xx<x0)x0=xx;if(xx>x1)x1=xx;if(yy<y0)y0=yy;if(yy>y1)y1=yy;}}
+  if(x1<0)return{x:0,y:0,w:w,h:h};var m=6;x0=Math.max(0,x0-m);y0=Math.max(0,y0-m);x1=Math.min(w-1,x1+m);y1=Math.min(h-1,y1+m);
+  return{x:x0,y:y0,w:x1-x0+1,h:y1-y0+1};
+}
+function rr(x,a,b,w,h,r){x.beginPath();x.moveTo(a+r,b);x.arcTo(a+w,b,a+w,b+h,r);x.arcTo(a+w,b+h,a,b+h,r);x.arcTo(a,b+h,a,b,r);x.arcTo(a,b,a+w,b,r);x.closePath();}
+
+var BLOB=null,TENFILE='checklist.png';
+$('tao').addEventListener('click',function(){
+  luu();var r=thuThap(),box=$('thieu');
+  if(r.thieu.length){
+    box.innerHTML='<b>Còn '+r.thieu.length+' chỗ chưa xong:</b><ul>'+r.thieu.slice(0,8).map(function(t){return '<li>'+esc(t)+'</li>';}).join('')+(r.thieu.length>8?'<li>…</li>':'')+'</ul>';
+    box.classList.add('on');anKq();box.scrollIntoView({behavior:'smooth',block:'center'});return;
+  }
+  box.classList.remove('on');
+  var d={cd:$('cd').value.trim(),ma:$('ma').value.trim(),cr:$('cr').value.trim(),ngay:ngayVN($('ngay').value),nv:$('nv').value.trim(),kt:$('kt').value.trim(),nhan:S.nhan,items:r.items,nhom:r.nhom,anh:[]};
+  var chay=function(){
+    var W=1080,cv=document.createElement('canvas'),x=cv.getContext('2d');cv.width=W;cv.height=4000;
+    var H=ve(x,d,W,false);cv.height=Math.ceil(H);x=cv.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,W,cv.height);ve(x,d,W,true);
+    $('anh').src=cv.toDataURL('image/jpeg',0.9);
+    TENFILE='checklist-'+khongDau(d.cd)+'-'+d.ngay.replace(/\//g,'')+'.jpg';
+    cv.toBlob(function(b){BLOB=b;},'image/jpeg',0.9);
+    $('kq').classList.add('on');$('kq').scrollIntoView({behavior:'smooth',block:'start'});
+  };
+  var cho=[];if(document.fonts&&document.fonts.load){['400','600','700','italic 400'].forEach(function(w){cho.push(document.fonts.load(w+' 27px "Be Vietnam Pro"'));});}
+  if(!(LOGO.complete))cho.push(new Promise(function(ok){LOGO.onload=LOGO.onerror=ok;}));
+  ANH.forEach(function(src){var im=new Image();cho.push(new Promise(function(ok){im.onload=im.onerror=ok;}));im.src=src;d.anh.push(im);});
+  KYIMG=new Image();cho.push(new Promise(function(ok){KYIMG.onload=KYIMG.onerror=ok;}));KYIMG.src=S.ky;
+  Promise.all(cho).then(chay,chay);
+});
+$('luu').addEventListener('click',function(){
+  if(!BLOB)return;var f;try{f=new File([BLOB],TENFILE,{type:'image/jpeg'});}catch(e){}
+  if(f&&navigator.canShare&&navigator.canShare({files:[f]})){navigator.share({files:[f]}).catch(function(){});return;}
+  var a=document.createElement('a');a.href=URL.createObjectURL(BLOB);a.download=TENFILE;document.body.appendChild(a);a.click();a.remove();
+});
+var TIN='Dạ em gửi anh chị checklist đồ cưới bên em đã kiểm tra kỹ từng món trước khi giao ạ 🤍 Anh chị nhận đồ kiểm tra giúp em, có gì chưa đúng nhắn em liền nha ạ.';
+$('chep').addEventListener('click',function(){
+  var b=this,ok=function(){b.textContent='Đã chép ✓';setTimeout(function(){b.textContent='Chép tin nhắn gửi kèm';},1600);};
+  try{navigator.clipboard.writeText(TIN).then(ok,function(){cu();});}catch(e){cu();}
+  function cu(){var t=document.createElement('textarea');t.value=TIN;document.body.appendChild(t);t.select();try{document.execCommand('copy');}catch(e){}t.remove();ok();}
+});
+$('moi').addEventListener('click',function(){
+  if(!confirm('Xoá hết để làm đơn mới?'))return;
+  try{localStorage.removeItem(KEY);}catch(e){}xoaAnhKhoa(KHOA);var ds=dsNhap();delete ds[KHOA];
+  KHOA='k:moi-'+Date.now();KEY='dla_ck_do_v2:'+KHOA;TUBANG=false;ghiDs(ds);
+  try{history.replaceState(null,'',location.pathname);}catch(e){}
+  S={items:[],tick:{}};ANH=[];veAnh();
+  nap();veDo();veBuoc();kyXoa();anKq();$('thieu').classList.remove('on');window.scrollTo(0,0);
+});
+
+/* ---- bảng ký bằng ngón tay ---- */
+var kc=$('kyCv'),kx=kc.getContext('2d'),dangKy=false,coNet=false;
+function kyCo(){var r=kc.getBoundingClientRect(),dp=window.devicePixelRatio||1;kc.width=Math.round(r.width*dp);kc.height=Math.round(r.height*dp);kx.setTransform(dp,0,0,dp,0,0);kx.lineWidth=3;kx.lineCap='round';kx.lineJoin='round';kx.strokeStyle='#1f1a3a';
+  if(S.ky){var im=new Image();im.onload=function(){kx.drawImage(im,0,0,r.width,r.height);};im.src=S.ky;}kyTt();}
+function kyTt(){$('kyNen').classList.toggle('an',!!S.ky);$('kyTt').textContent=S.ky?'Đã ký ✓':'Chưa ký';}
+function dd(e){var r=kc.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top};}
+kc.addEventListener('pointerdown',function(e){e.preventDefault();dangKy=true;coNet=false;try{kc.setPointerCapture(e.pointerId);}catch(_){}var p=dd(e);kx.beginPath();kx.moveTo(p.x,p.y);$('kyNen').classList.add('an');});
+kc.addEventListener('pointermove',function(e){if(!dangKy)return;e.preventDefault();var p=dd(e);kx.lineTo(p.x,p.y);kx.stroke();coNet=true;});
+function kyXong(){if(!dangKy)return;dangKy=false;if(coNet){S.ky=kc.toDataURL('image/png');luu();anKq();}kyTt();}
+kc.addEventListener('pointerup',kyXong);kc.addEventListener('pointercancel',kyXong);
+function kyXoa(){S.ky='';kx.clearRect(0,0,kc.width,kc.height);luu();kyTt();}
+$('kyLai').addEventListener('click',function(){kyXoa();anKq();});
+window.addEventListener('resize',function(){kyCo();});
+
+/* ---- ảnh đồ: thu nhỏ còn cạnh dài 1200px, lưu nháp trong IndexedDB ---- */
+function moDb(){return new Promise(function(ok,loi){try{var q=indexedDB.open('dla_ck_do',1);q.onupgradeneeded=function(){q.result.createObjectStore('kv');};q.onsuccess=function(){ok(q.result);};q.onerror=function(){loi(q.error);};}catch(e){loi(e);}});}
+function xoaAnhKhoa(k){moDb().then(function(db){try{db.transaction('kv','readwrite').objectStore('kv').delete('anh:'+k);}catch(e){}},function(){});}
+function luuAnh(){moDb().then(function(db){try{db.transaction('kv','readwrite').objectStore('kv').put(ANH,'anh:'+KHOA);}catch(e){}},function(){});}
+function napAnh(){moDb().then(function(db){try{var q=db.transaction('kv').objectStore('kv').get('anh:'+KHOA);q.onsuccess=function(){if(Array.isArray(q.result)){ANH=q.result;veAnh();}};}catch(e){}},function(){});}
+function veAnh(){
+  $('anhs').innerHTML=ANH.map(function(src,i){return '<div class="o"><img src="'+src+'" alt=""><button type="button" data-i="'+i+'" aria-label="Xoá ảnh">×</button></div>';}).join('');
+  $('anhTt').textContent=ANH.length?('Đã có '+ANH.length+'/'+MAXANH+' ảnh'):'Chưa có ảnh nào';
+}
+function thuNho(file){return new Promise(function(ok){
+  var u=URL.createObjectURL(file),im=new Image();
+  im.onload=function(){var k=Math.min(1,1200/Math.max(im.naturalWidth,im.naturalHeight)),c=document.createElement('canvas');c.width=Math.round(im.naturalWidth*k);c.height=Math.round(im.naturalHeight*k);c.getContext('2d').drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);ok(c.toDataURL('image/jpeg',0.85));};
+  im.onerror=function(){URL.revokeObjectURL(u);ok(null);};im.src=u;});}
+$('chonAnh').addEventListener('change',function(){
+  var fs=[].slice.call(this.files||[]),con=MAXANH-ANH.length;this.value='';
+  if(fs.length>con){alert('Tối đa '+MAXANH+' ảnh — em lấy '+Math.max(con,0)+' ảnh đầu.');fs=fs.slice(0,Math.max(con,0));}
+  $('anhTt').textContent='Đang xử lý ảnh…';
+  Promise.all(fs.map(thuNho)).then(function(ds){ds.forEach(function(x){if(x)ANH.push(x);});luuAnh();veAnh();anKq();});
+});
+$('anhs').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;ANH.splice(+b.dataset.i,1);luuAnh();veAnh();anKq();});
+
+nap();veNut();veDo();veBuoc();kyCo();veAnh();napAnh();
+})();
+</script>
+</body>
+</html>
