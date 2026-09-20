@@ -16,7 +16,7 @@ ADIR = 'anh-cn'
 FTP  = 'ftp://hf61-22156.azdigihost.com/nv-k9m3x7'
 NETRC = str(pathlib.Path.home() / '.dla-azdigi.netrc')
 
-TRANG = ['link', 'tiktok', 'checklist-do', 'form', 'gui-clip', 'duyet']   # <ten>-goc.html -> <ten>.html
+TRANG = ['link', 'tiktok', 'checklist-do', 'gui-clip', 'duyet']   # <ten>-goc.html -> <ten>.html
 EXT = {'jpeg':'jpg','jpg':'jpg','png':'png','gif':'gif','webp':'webp','svg+xml':'svg'}
 
 

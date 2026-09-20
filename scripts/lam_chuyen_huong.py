@@ -3,7 +3,7 @@
 import pathlib
 MOI = 'https://dolinhanhbridal.com/nv-k9m3x7'
 TRANG = {'index.html': '/', 'link.html': '/link.html', 'tiktok.html': '/tiktok.html',
-         'checklist-do.html': '/checklist-do.html', 'form.html': '/form.html',
+         'checklist-do.html': '/checklist-do.html',
          'gui-clip.html': '/gui-clip.html', 'duyet.html': '/duyet.html'}
 MAU = '''<!doctype html>
 <html lang="vi">
