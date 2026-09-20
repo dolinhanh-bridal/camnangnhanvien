@@ -109,6 +109,15 @@ table a:hover{border-bottom-color:var(--accent-ink)}
 .flag.stop{background:var(--stop-wash);color:var(--stop)}
 .rules{display:flex;flex-direction:column;gap:10px}
 
+details.sodo{border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+details.sodo>summary{cursor:pointer;list-style:none;padding:14px 18px;font-weight:600;font-size:16px}
+details.sodo>summary::-webkit-details-marker{display:none}
+details.sodo>summary::after{content:"+";float:right;color:var(--accent-ink);font-weight:700}
+details.sodo[open]>summary::after{content:"−"}
+.linkjump{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.linkjump a{display:inline-block;padding:8px 14px;border-radius:999px;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink-2);text-decoration:none;font-size:14px;font-weight:600}
+.linkjump a:hover{border-color:var(--accent);color:var(--accent-ink)}
+section{scroll-margin-top:16px}
 .two{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
 .fact{background:var(--surface-2);border-radius:10px;padding:16px 18px}
 .fact .lbl{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);display:block;margin-bottom:6px}
@@ -130,14 +139,87 @@ table a:hover{border-bottom-color:var(--accent-ink)}
     <div class="kicker">Dolinhanh Bridal · Nupakachi</div>
     <h1>Link nhân viên Dolinhanh</h1>
     <p class="lede">Lưu trang này lại, khỏi phải hỏi lại link. Bấm <b>Mở</b> để vào, bấm <b>Chép</b> khi cần dán link cho khách.</p>
+    <div class="linkjump">
+      <a href="#nv">Cho nhân viên dùng</a>
+      <a href="#dla">Tư vấn khách DLA</a>
+      <a href="#nu">Tư vấn khách Nupakachi</a>
+    </div>
   </header>
 
-  <section>
+  <section id="nv">
     <div class="sec-head">
-      <h2>Bản đồ công việc</h2>
-      <span class="who">Ô có ↗ bấm là mở thẳng form</span>
+      <h2>1 · Cho nhân viên dùng</h2>
+      <span class="who">Việc của mình — không gửi khách</span>
     </div>
-    <div style="background:#FFFFFF;border:1px solid var(--line);border-radius:12px;padding:14px;">
+    
+
+    <div class="rows">
+      <div class="row">
+        <p class="name">Lịch toàn năng — bắt đầu ở đây</p>
+        <p class="when">Xem cả ngày làm việc và làm luôn mọi việc tại chỗ: khách đã thanh toán, khách chốt váy, khách chốt phát sinh, khách huỷ lịch, đặt hẹn, nhận lịch chụp, tra váy. Bấm vào tên khách là ra hợp đồng, ảnh váy và số điện thoại.</p>
+        <div class="actions">
+          <a class="open" href="https://script.google.com/macros/s/AKfycbwz7vtZc1xvCO--0-VMRYOG6-Bf0TrfBNP3VSky1cWj1-TOejoHMr5hp9fl6bhDaH_zhw/exec" target="_blank" rel="noopener">Mở</a>
+          <button class="copy" type="button" data-url="https://script.google.com/macros/s/AKfycbwz7vtZc1xvCO--0-VMRYOG6-Bf0TrfBNP3VSky1cWj1-TOejoHMr5hp9fl6bhDaH_zhw/exec">Chép</button>
+        </div>
+        <p class="url">Đăng nhập: email cá nhân trong hồ sơ + mã 4 số của cẩm nang</p>
+        <p class="note">Thay cho form điền tay và cho lịch Google. Không phải gõ mã hợp đồng hay tên khách nữa — bảng lấy sẵn, mình chỉ xác nhận. Bạn HN chỉ thấy khách HN, bạn HCM chỉ thấy khách HCM.</p>
+      </div>
+
+      <div class="row">
+        <p class="name">Cẩm nang nhân viên</p>
+        <p class="when">9 chương + bài kiểm tra 26 ngày trong tháng đầu làm việc. Bạn mới đọc trước khi vào ca, vào bằng email CÁ NHÂN đã khai trong form sơ yếu lý lịch. Có ô hỏi–đáp, gõ câu hỏi vào là quản lý nhận được.</p>
+        <div class="actions">
+          <a class="open" href="https://dolinhanh-bridal.github.io/camnangnhanvien/" target="_blank" rel="noopener">Mở</a>
+          <button class="copy" type="button" data-url="https://dolinhanh-bridal.github.io/camnangnhanvien/">Chép</button>
+        </div>
+        <p class="url">dolinhanh-bridal.github.io/camnangnhanvien</p>
+      </div>
+
+      <div class="row">
+        <p class="name">Sheet giao việc &amp; checklist</p>
+        <p class="when">Mỗi bạn một tab riêng. Tick việc trong ngày, xem việc quản lý giao và hạn chót. Ô nào ghi “(dán link ảnh)” thì dán link ảnh làm bằng chứng, không phải ô tick.</p>
+        <div class="actions">
+          <a class="open" href="https://docs.google.com/spreadsheets/d/10Ho1xcq-OdGLhIDs5l0M7WOqg2_KojpfQBSZvgg_Npc/edit" target="_blank" rel="noopener">Mở</a>
+          <button class="copy" type="button" data-url="https://docs.google.com/spreadsheets/d/10Ho1xcq-OdGLhIDs5l0M7WOqg2_KojpfQBSZvgg_Npc/edit">Chép</button>
+        </div>
+        <p class="url">docs.google.com/spreadsheets/d/10Ho1xcq-OdGLhIDs5l0M7WOqg2_KojpfQBSZvgg_Npc/edit</p>
+        <p class="note">Chỉ tick được dòng của đúng ngày hôm nay. Mở ra mà thấy tên file có chữ “ZZ KHÔNG DÙNG” là mình đang vào nhầm file cũ — quay lại bấm link ở đây.</p>
+      </div>
+
+      <div class="row">
+        <p class="name">Checklist chuẩn bị đồ — ảnh gửi khách</p>
+        <p class="when">Trước khi giao đồ: mở từ Lịch toàn năng (ô Giao váy của khách → ✅ Mở checklist chuẩn bị đồ) cho tự điền sẵn, hoặc mở link này điền tay; tick từng việc, bấm "Tạo ảnh gửi khách" rồi lưu ảnh gửi qua Zalo. Làm dở thoát ra vẫn giữ nguyên.</p>
+        <div class="actions">
+          <a class="open" href="https://dolinhanh-bridal.github.io/camnangnhanvien/checklist-do.html" target="_blank" rel="noopener">Mở</a>
+          <button class="copy" type="button" data-url="https://dolinhanh-bridal.github.io/camnangnhanvien/checklist-do.html">Chép</button>
+        </div>
+        <p class="url">dolinhanh-bridal.github.io/camnangnhanvien/checklist-do.html</p>
+      </div>
+
+      <div class="row">
+        <p class="name">Tra soát váy — váy nào đang bận</p>
+        <p class="when">Khách hỏi ngày cưới đó còn váy nào: gõ ngày vào, bảng hiện đúng những mẫu đang ở chỗ khách ngày đó kèm ảnh. Bấm một mẫu là ra tên cô dâu, mã HĐ, ngày nhận – trả. Xem trước khi hứa váy với khách.</p>
+        <div class="actions">
+          <a class="open" href="https://script.google.com/macros/s/AKfycbzxWLDDf4GA9ld6xOS9QwnbgTXaVGW1xqWeHw0trSDnd-A-FZgIlr_sLZJCB4nDKJMv0w/exec" target="_blank" rel="noopener">Mở</a>
+          <button class="copy" type="button" data-url="https://script.google.com/macros/s/AKfycbzxWLDDf4GA9ld6xOS9QwnbgTXaVGW1xqWeHw0trSDnd-A-FZgIlr_sLZJCB4nDKJMv0w/exec">Chép</button>
+        </div>
+        <p class="url">Bảng tra soát váy</p>
+      </div>
+
+      <div class="row">
+        <p class="name">Chiến lược truyền thông Dolinhanh — TikTok · Instagram · Facebook</p>
+        <p class="when">Vào trang chọn 1 trong 2 mảng: <b>TikTok</b> (4 kênh, clip mẫu để bắt chước, ghi rõ cách quay — quay xong bấm “Nộp source” tải file gốc lên) hoặc <b>Instagram &amp; Facebook</b> (2 kênh IG, 2 page FB, lịch đăng 20:00 thứ 2 · 4 · 6).</p>
+        <div class="actions">
+          <a class="open" href="https://dolinhanh-bridal.github.io/camnangnhanvien/tiktok.html?v=74e1204" target="_blank" rel="noopener">Mở</a>
+          <button class="copy" type="button" data-url="https://dolinhanh-bridal.github.io/camnangnhanvien/tiktok.html?v=74e1204">Chép</button>
+        </div>
+        <p class="url">dolinhanh-bridal.github.io/camnangnhanvien/tiktok.html?v=74e1204</p>
+        <p class="note">Dán link nộp source vào ô “(dán link ảnh)” của việc Quay clip TikTok trong sheet checklist.</p>
+      </div>
+    </div>
+    <details class="sodo">
+      <summary>Bản đồ công việc — bấm để xem</summary>
+<div style="background:#FFFFFF;border:1px solid var(--line);border-radius:12px;padding:14px;">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 1196" role="img" aria-label="Bản đồ công việc Dolinhanh" style="width:100%;max-width:520px;height:auto;display:block;margin:0 auto;font-family:'Be Vietnam Pro',sans-serif">
 <defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#9FBFBD" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
 <rect width="420" height="1196" fill="#FFFFFF"/>
@@ -239,95 +321,15 @@ table a:hover{border-bottom-color:var(--accent-ink)}
 <path d="M 210.0 1087 L 210.0 1105" fill="none" stroke="#9FBFBD" stroke-width="2" marker-end="url(#a)"/>
 </svg>
     </div>
+    </details>
   </section>
 
-
-  <section>
+  <section id="dla">
     <div class="sec-head">
-      <h2>Bấm hằng ngày</h2>
-      <span class="who">Việc của mình</span>
-    </div>
-    <div class="rows">
-
-      <div class="row">
-        <p class="name">Lịch toàn năng — bắt đầu ở đây</p>
-        <p class="when">Xem cả ngày làm việc và làm luôn mọi việc tại chỗ: khách đã thanh toán, khách chốt váy, khách chốt phát sinh, khách huỷ lịch, đặt hẹn, nhận lịch chụp, tra váy. Bấm vào tên khách là ra hợp đồng, ảnh váy và số điện thoại.</p>
-        <div class="actions">
-          <a class="open" href="https://script.google.com/macros/s/AKfycbwz7vtZc1xvCO--0-VMRYOG6-Bf0TrfBNP3VSky1cWj1-TOejoHMr5hp9fl6bhDaH_zhw/exec" target="_blank" rel="noopener">Mở</a>
-          <button class="copy" type="button" data-url="https://script.google.com/macros/s/AKfycbwz7vtZc1xvCO--0-VMRYOG6-Bf0TrfBNP3VSky1cWj1-TOejoHMr5hp9fl6bhDaH_zhw/exec">Chép</button>
-        </div>
-        <p class="url">Đăng nhập: email cá nhân trong hồ sơ + mã 4 số của cẩm nang</p>
-        <p class="note">Thay cho form điền tay và cho lịch Google. Không phải gõ mã hợp đồng hay tên khách nữa — bảng lấy sẵn, mình chỉ xác nhận. Bạn HN chỉ thấy khách HN, bạn HCM chỉ thấy khách HCM.</p>
-      </div>
-
-      
-
-      <div class="row">
-        <p class="name">Chiến lược truyền thông Dolinhanh — TikTok · Instagram · Facebook</p>
-        <p class="when">Vào trang chọn 1 trong 2 mảng: <b>TikTok</b> (4 kênh, clip mẫu để bắt chước, ghi rõ cách quay — quay xong bấm “Nộp source” tải file gốc lên) hoặc <b>Instagram &amp; Facebook</b> (2 kênh IG, 2 page FB, lịch đăng 20:00 thứ 2 · 4 · 6).</p>
-        <div class="actions">
-          <a class="open" href="https://dolinhanh-bridal.github.io/camnangnhanvien/tiktok.html?v=74e1204" target="_blank" rel="noopener">Mở</a>
-          <button class="copy" type="button" data-url="https://dolinhanh-bridal.github.io/camnangnhanvien/tiktok.html?v=74e1204">Chép</button>
-        </div>
-        <p class="url">dolinhanh-bridal.github.io/camnangnhanvien/tiktok.html?v=74e1204</p>
-        <p class="note">Dán link nộp source vào ô “(dán link ảnh)” của việc Quay clip TikTok trong sheet checklist.</p>
-      </div>
-
-      
-
-
-      <div class="row">
-        <p class="name">Sheet giao việc &amp; checklist</p>
-        <p class="when">Mỗi bạn một tab riêng. Tick việc trong ngày, xem việc quản lý giao và hạn chót. Ô nào ghi “(dán link ảnh)” thì dán link ảnh làm bằng chứng, không phải ô tick.</p>
-        <div class="actions">
-          <a class="open" href="https://docs.google.com/spreadsheets/d/10Ho1xcq-OdGLhIDs5l0M7WOqg2_KojpfQBSZvgg_Npc/edit" target="_blank" rel="noopener">Mở</a>
-          <button class="copy" type="button" data-url="https://docs.google.com/spreadsheets/d/10Ho1xcq-OdGLhIDs5l0M7WOqg2_KojpfQBSZvgg_Npc/edit">Chép</button>
-        </div>
-        <p class="url">docs.google.com/spreadsheets/d/10Ho1xcq-OdGLhIDs5l0M7WOqg2_KojpfQBSZvgg_Npc/edit</p>
-        <p class="note">Chỉ tick được dòng của đúng ngày hôm nay. Mở ra mà thấy tên file có chữ “ZZ KHÔNG DÙNG” là mình đang vào nhầm file cũ — quay lại bấm link ở đây.</p>
-      </div>
-
-      <div class="row">
-        <p class="name">Cẩm nang nhân viên</p>
-        <p class="when">9 chương + bài kiểm tra 26 ngày trong tháng đầu làm việc. Bạn mới đọc trước khi vào ca, vào bằng email CÁ NHÂN đã khai trong form sơ yếu lý lịch. Có ô hỏi–đáp, gõ câu hỏi vào là quản lý nhận được.</p>
-        <div class="actions">
-          <a class="open" href="https://dolinhanh-bridal.github.io/camnangnhanvien/" target="_blank" rel="noopener">Mở</a>
-          <button class="copy" type="button" data-url="https://dolinhanh-bridal.github.io/camnangnhanvien/">Chép</button>
-        </div>
-        <p class="url">dolinhanh-bridal.github.io/camnangnhanvien</p>
-      </div>
-
-      <div class="row">
-        <p class="name">Checklist chuẩn bị đồ — ảnh gửi khách</p>
-        <p class="when">Trước khi giao đồ: mở từ Lịch toàn năng (ô Giao váy của khách → ✅ Mở checklist chuẩn bị đồ) cho tự điền sẵn, hoặc mở link này điền tay; tick từng việc, bấm "Tạo ảnh gửi khách" rồi lưu ảnh gửi qua Zalo. Làm dở thoát ra vẫn giữ nguyên.</p>
-        <div class="actions">
-          <a class="open" href="https://dolinhanh-bridal.github.io/camnangnhanvien/checklist-do.html" target="_blank" rel="noopener">Mở</a>
-          <button class="copy" type="button" data-url="https://dolinhanh-bridal.github.io/camnangnhanvien/checklist-do.html">Chép</button>
-        </div>
-        <p class="url">dolinhanh-bridal.github.io/camnangnhanvien/checklist-do.html</p>
-      </div>
-
-      <div class="row">
-        <p class="name">Tra soát váy — váy nào đang bận</p>
-        <p class="when">Khách hỏi ngày cưới đó còn váy nào: gõ ngày vào, bảng hiện đúng những mẫu đang ở chỗ khách ngày đó kèm ảnh. Bấm một mẫu là ra tên cô dâu, mã HĐ, ngày nhận – trả. Xem trước khi hứa váy với khách.</p>
-        <div class="actions">
-          <a class="open" href="https://script.google.com/macros/s/AKfycbzxWLDDf4GA9ld6xOS9QwnbgTXaVGW1xqWeHw0trSDnd-A-FZgIlr_sLZJCB4nDKJMv0w/exec" target="_blank" rel="noopener">Mở</a>
-          <button class="copy" type="button" data-url="https://script.google.com/macros/s/AKfycbzxWLDDf4GA9ld6xOS9QwnbgTXaVGW1xqWeHw0trSDnd-A-FZgIlr_sLZJCB4nDKJMv0w/exec">Chép</button>
-        </div>
-        <p class="url">Bảng tra soát váy</p>
-      </div>
-
-
-    </div>
-  </section>
-
-  <section>
-    <div class="sec-head">
-      <h2>Gửi thẳng cho khách</h2>
+      <h2>2 · Tư vấn khách DLA — váy cưới</h2>
       <span class="who">Bấm Chép rồi dán vào Zalo, Messenger</span>
     </div>
     <div class="rows">
-
       <div class="row">
         <p class="name">Catalogue váy tiệc</p>
         <p class="when">Gửi kèm tin xác nhận lịch hẹn, dặn khách chọn trước 5 mẫu để mình chuẩn bị.</p>
@@ -336,16 +338,6 @@ table a:hover{border-bottom-color:var(--accent-ink)}
           <button class="copy" type="button" data-url="https://dolinhanhbridal.com/bo-suu-tap.html">Chép</button>
         </div>
         <p class="url">dolinhanhbridal.com/bo-suu-tap.html</p>
-      </div>
-
-      <div class="row moi">
-        <p class="name">Váy chụp pre-wedding</p>
-        <p class="when">Gửi khách đi chụp (gói chụp Nupakachi) trước buổi fitting váy chụp. Cuối trang có cả váy tiệc.</p>
-        <div class="actions">
-          <a class="open" href="https://dolinhanhbridal.com/pre-wedding-dress.html" target="_blank" rel="noopener">Mở</a>
-          <button class="copy" type="button" data-url="https://dolinhanhbridal.com/pre-wedding-dress.html">Chép</button>
-        </div>
-        <p class="url">dolinhanhbridal.com/pre-wedding-dress.html</p>
       </div>
 
       <div class="row">
@@ -389,24 +381,16 @@ table a:hover{border-bottom-color:var(--accent-ink)}
       </div>
 
       <div class="row">
-        <p class="name">Website Nupakachi — chụp ảnh cưới</p>
-        <p class="when">Khách hỏi chụp ảnh cưới, hỏi gói chụp thì gửi link này. Web tiếng Anh nên khách nước ngoài xem được luôn.</p>
+        <p class="name">Ebook tặng cô dâu — The Bride's Dress Guide</p>
+        <p class="when">Gửi kèm khi báo giá (Bước 2). Sách miễn phí 24 trang hướng dẫn cô dâu chọn váy — gửi xong khách hay nhắn lại hỏi thêm.</p>
         <div class="actions">
-          <a class="open" href="https://nupakachi.com/" target="_blank" rel="noopener">Mở</a>
-          <button class="copy" type="button" data-url="https://nupakachi.com/">Chép</button>
+          <a class="open" href="https://dolinhanhbridal.com/dress-guide.html" target="_blank" rel="noopener">Mở</a>
+          <button class="copy" type="button" data-url="https://dolinhanhbridal.com/dress-guide.html">Chép</button>
         </div>
-        <p class="url">nupakachi.com</p>
+        <p class="url">dolinhanhbridal.com/dress-guide.html</p>
       </div>
-
     </div>
-  </section>
-
-  <section>
-    <div class="sec-head">
-      <h2>Kênh chính thức</h2>
-      <span class="who">Bốn kênh đầu là kênh gửi khách</span>
-    </div>
-    <div class="scroll">
+<div class="scroll">
       <div class="bang-cuon" style="overflow-x:auto;-webkit-overflow-scrolling:touch"><table>
         <thead><tr><th>Kênh</th><th>Dùng khi nào</th></tr></thead>
         <tbody>
@@ -434,14 +418,49 @@ table a:hover{border-bottom-color:var(--accent-ink)}
             <td class="nm">Fanpage Facebook<a class="handle" href="https://www.facebook.com/Dolinhanhbridalhcm/" target="_blank" rel="noopener">facebook.com/Dolinhanhbridalhcm</a></td>
             <td class="use">Inbox khách từ quảng cáo về đây.</td>
           </tr>
-          <tr>
-            <td class="nm">Website Nupakachi<a class="handle" href="https://nupakachi.com/" target="_blank" rel="noopener">nupakachi.com</a></td>
-            <td class="use">Khách hỏi gói chụp ảnh cưới thì gửi web này.</td>
-          </tr>
         </tbody>
       </table></div>
     </div>
     <div class="flag warn">Bên mình có <strong>2 kênh TikTok và 2 kênh Instagram tên gần giống nhau</strong>, chỉ khác dấu chấm với gạch dưới. Gửi khách thì copy ở đây, đừng gõ tay.</div>
+
+  </section>
+
+  <section id="nu">
+    <div class="sec-head">
+      <h2>3 · Tư vấn khách Nupakachi — chụp ảnh cưới</h2>
+      <span class="who">Khách hỏi chụp pre-wedding, chụp tiệc</span>
+    </div>
+    <div class="rows">
+      <div class="row">
+        <p class="name">Website Nupakachi — chụp ảnh cưới</p>
+        <p class="when">Khách hỏi chụp ảnh cưới, hỏi gói chụp thì gửi link này. Web tiếng Anh nên khách nước ngoài xem được luôn.</p>
+        <div class="actions">
+          <a class="open" href="https://nupakachi.com/" target="_blank" rel="noopener">Mở</a>
+          <button class="copy" type="button" data-url="https://nupakachi.com/">Chép</button>
+        </div>
+        <p class="url">nupakachi.com</p>
+      </div>
+
+      <div class="row moi">
+        <p class="name">Váy chụp pre-wedding</p>
+        <p class="when">Gửi khách đi chụp (gói chụp Nupakachi) trước buổi fitting váy chụp. Cuối trang có cả váy tiệc.</p>
+        <div class="actions">
+          <a class="open" href="https://dolinhanhbridal.com/pre-wedding-dress.html" target="_blank" rel="noopener">Mở</a>
+          <button class="copy" type="button" data-url="https://dolinhanhbridal.com/pre-wedding-dress.html">Chép</button>
+        </div>
+        <p class="url">dolinhanhbridal.com/pre-wedding-dress.html</p>
+      </div>
+
+      <div class="row">
+        <p class="name">Gói &amp; báo giá chụp ảnh cưới</p>
+        <p class="when">Khách hỏi gói chụp pre-wedding hay chụp tiệc thì mở trang này cho khách xem. Bảng giá chi tiết trong Canva thì xuất PDF rồi mới gửi, đừng gửi link đang sửa.</p>
+        <div class="actions">
+          <a class="open" href="https://nupakachi.com/collections.html" target="_blank" rel="noopener">Mở</a>
+          <button class="copy" type="button" data-url="https://nupakachi.com/collections.html">Chép</button>
+        </div>
+        <p class="url">nupakachi.com/collections.html</p>
+      </div>
+    </div>
   </section>
 
   <section>
