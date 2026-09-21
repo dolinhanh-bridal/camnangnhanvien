@@ -5149,6 +5149,46 @@ QUIZ[26] = [
   function mail(){ try{ return localStorage.getItem('dla_syll_email') || '(chưa rõ email)'; }catch(e){ return '(chưa rõ email)'; } }
   function doc(d){ try{ return JSON.parse(localStorage.getItem('dla_kt_' + d) || 'null'); }catch(e){ return null; } }
   function luu(d, o){ try{ localStorage.setItem('dla_kt_' + d, JSON.stringify(o)); }catch(e){} }
+
+  /* ---------- LUU BAI LEN MAY CHU theo email (21/09/2026) ----------
+     Truoc day ket qua chi nam trong trinh duyet → doi may / xoa lich su / tab an danh la bai hien lai moi tinh.
+     Nay luu tren Lich toan nang (nhanh ?baikt=), mo cam nang o may nao cung thay bai da lam. */
+  var KT_URL = 'https://script.google.com/macros/s/AKfycbwz7vtZc1xvCO--0-VMRYOG6-Bf0TrfBNP3VSky1cWj1-TOejoHMr5hp9fl6bhDaH_zhw/exec';
+  function goiKT(tham, cb){
+    var em = window.__dlaEm || '', ma = window.__dlaMa || '';
+    if(!em || !ma){ if(cb) cb(null); return; }
+    var xong = false, fn = 'dlaKT' + Date.now() + Math.floor(Math.random() * 1000);
+    function ket(x){ if(xong) return; xong = true; try{ delete window[fn]; }catch(e){} if(s && s.parentNode){ s.parentNode.removeChild(s); } if(cb) cb(x); }
+    window[fn] = function(data){ ket(data && data.ok ? data : null); };
+    var s = document.createElement('script');
+    s.src = KT_URL + '?' + tham + '&em=' + encodeURIComponent(em) + '&ma=' + encodeURIComponent(ma) + '&cb=' + fn;
+    s.onerror = function(){ ket(null); };
+    document.body.appendChild(s);
+    setTimeout(function(){ ket(null); }, 20000);
+  }
+  function napTuMayChu(kq){
+    if(!kq) return;
+    Object.keys(kq).forEach(function(d){ if(kq[d]) luu(d, kq[d]); });
+  }
+  /* dang nhap xong: gui bai dang co tren may nay len (khong mat bai cu), roi lay ban day du ve */
+  function dongBo(){
+    var cuc = {};
+    for(var i = 0; i < NGAY.length; i++){ var r = doc(NGAY[i].n); if(r){ cuc[NGAY[i].n] = r; } }
+    var tham = Object.keys(cuc).length ? 'baikt=luu&v=' + encodeURIComponent(JSON.stringify(cuc)) : 'baikt=doc';
+    goiKT(tham, function(data){
+      if(!data) return;
+      napTuMayChu(data.kq);
+      veBangDiem();
+      for(var i = 0; i < NGAY.length; i++){ var box = document.getElementById('qbody-' + NGAY[i].n); if(box && box.getAttribute('data-ve') === '1' && !box.querySelector('input:checked')){ box.setAttribute('data-ve', '0'); veCauHoi(NGAY[i].n); } }
+    });
+  }
+  function guiLenMayChu(d, o, cb){
+    var v = {}; v[d] = o;
+    goiKT('baikt=luu&v=' + encodeURIComponent(JSON.stringify(v)), function(data){
+      if(data){ napTuMayChu(data.kq); }
+      if(cb) cb(!!data);
+    });
+  }
   /* Đính kết chỉ cần đọc 4 chương đầu (Ngày 1–9) — bộ phận lấy từ form hồ sơ, tra qua ?tra= */
   function boPhan(){ try{ return (localStorage.getItem('dla_syll_bp') || '').trim(); }catch(e){ return ''; } }
   function laDinhKet(){ return boPhan() === 'Đính kết'; }
@@ -5221,17 +5261,17 @@ QUIZ[26] = [
   }
 
   /* ---------- 30 cau hoi cua 1 ngay ---------- */
-  function veCauHoi(d){
+  function veCauHoi(d, lamLai){
     var box = document.getElementById('qbody-' + d);
     if(!box || box.getAttribute('data-ve') === '1') return;
     var qs = QUIZ[d], h = '';
     for(var i = 0; i < qs.length; i++){
       var opts = [];
-      for(var k = 0; k < qs[i][1].length; k++){ opts.push({t: qs[i][1][k], ok: (k === qs[i][2])}); }
+      for(var k = 0; k < qs[i][1].length; k++){ opts.push({t: qs[i][1][k], ok: (k === qs[i][2]), g: k}); }
       opts = tron(opts, d * 1000 + i);
       h += '<div class="qz" id="q-' + d + '-' + i + '"><div class="qn"><i>' + (i + 1) + '.</i>' + esc(qs[i][0]) + '</div>';
       for(var k = 0; k < opts.length; k++){
-        h += '<label><input type="radio" name="q' + d + '_' + i + '" value="' + (opts[k].ok ? '1' : '0') + '"><span>' + esc(opts[k].t) + '</span></label>';
+        h += '<label><input type="radio" name="q' + d + '_' + i + '" value="' + (opts[k].ok ? '1' : '0') + '" data-g="' + opts[k].g + '"><span>' + esc(opts[k].t) + '</span></label>';
       }
       h += '</div>';
     }
@@ -5242,6 +5282,40 @@ QUIZ[26] = [
        + '<div id="kq-' + d + '"></div>';
     box.innerHTML = h;
     box.setAttribute('data-ve', '1');
+    /* bai da lam roi: hien lai dap an da chon + dung/sai, khong de trang tron */
+    var r = lamLai ? null : doc(d);
+    if(r){
+      var tl = String(r.tl || '');
+      if(tl.length === qs.length){
+        for(var i = 0; i < qs.length; i++){
+          var g = tl.charAt(i);
+          var inp = box.querySelector('input[name="q' + d + '_' + i + '"][data-g="' + g + '"]');
+          if(inp){ inp.checked = true; }
+        }
+        danhDau(d);
+      }
+      document.getElementById('kq-' + d).innerHTML = '<div class="chotket">✅ Bạn <b>đã làm bài Ngày ' + d + '</b> — điểm chính thức (lần đầu): <b>' + r.lanDau + '%</b>'
+        + (r.soLan > 1 ? ' · đã làm ' + r.soLan + ' lần, lần gần nhất ' + r.ganNhat + '%' : '')
+        + '.<br>Bài đã lưu, không cần làm lại. Muốn ôn thì bấm <b>Làm lại từ đầu</b> — điểm chính thức vẫn giữ lần đầu.</div>';
+    }
+  }
+
+  /* to dung/sai duoi tung cau theo dap an dang chon */
+  function danhDau(d){
+    var qs = QUIZ[d], dung = 0, sai = [];
+    for(var i = 0; i < qs.length; i++){
+      var el = document.getElementById('q-' + d + '-' + i);
+      var cu = el.querySelector('.kq'); if(cu){ cu.parentNode.removeChild(cu); }
+      var chon = document.querySelector('input[name="q' + d + '_' + i + '"]:checked');
+      if(!chon) continue;
+      var ok = chon.value === '1';
+      if(ok){ dung++; } else { sai.push(i + 1); }
+      var p = document.createElement('p');
+      p.className = 'kq ' + (ok ? 'd' : 's');
+      p.textContent = ok ? '✓ Đúng rồi' : '✗ Chưa đúng — đáp án đúng: ' + qs[i][1][qs[i][2]];
+      el.appendChild(p);
+    }
+    return {dung: dung, sai: sai};
   }
 
   /* ---------- cham diem ---------- */
@@ -5256,26 +5330,22 @@ QUIZ[26] = [
       if(dau){ dau.scrollIntoView({block: 'center'}); }
       return;
     }
-    var dung = 0, sai = [];
-    for(var i = 0; i < qs.length; i++){
-      var el = document.getElementById('q-' + d + '-' + i);
-      var cu = el.querySelector('.kq'); if(cu){ cu.parentNode.removeChild(cu); }
-      var ok = document.querySelector('input[name="q' + d + '_' + i + '"]:checked').value === '1';
-      if(ok){ dung++; } else { sai.push(i + 1); }
-      var p = document.createElement('p');
-      p.className = 'kq ' + (ok ? 'd' : 's');
-      p.textContent = ok ? '✓ Đúng rồi' : '✗ Chưa đúng — đáp án đúng: ' + qs[i][1][qs[i][2]];
-      el.appendChild(p);
-    }
+    var dd = danhDau(d), dung = dd.dung, sai = dd.sai;
     var pt = Math.round(dung * 100 / qs.length);
-    var cu = doc(d);
+    var tl = '';
+    for(var i = 0; i < qs.length; i++){ tl += document.querySelector('input[name="q' + d + '_' + i + '"]:checked').getAttribute('data-g'); }
+    var cu = doc(d), bay = Date.now();
     var moi = {
       lanDau: cu ? cu.lanDau : pt,
       totNhat: cu ? Math.max(cu.totNhat, pt) : pt,
       ganNhat: pt,
-      soLan: cu ? cu.soLan + 1 : 1
+      soLan: cu ? cu.soLan + 1 : 1,
+      t: cu ? (cu.t || bay) : bay,
+      tg: bay,
+      tl: tl
     };
     luu(d, moi);
+
     if(sai.length){
       try{
         var ngayD = new Date();
@@ -5292,10 +5362,15 @@ QUIZ[26] = [
     kq.innerHTML = '<div class="chotket">Ngày ' + d + ' — <b>' + dung + '/' + qs.length + ' câu đúng = ' + pt + '%</b>'
       + (moi.soLan > 1 ? ' (lần làm thứ ' + moi.soLan + ' — điểm chính thức vẫn là lần đầu: <b>' + moi.lanDau + '%</b>)' : '')
       + '<br>' + (sai.length ? 'Câu sai: <b>' + sai.join(', ') + '</b> — kéo lên xem đáp án đúng rồi đọc lại chương nha.' : 'Đúng hết — quá giỏi 🤍')
-      + '<br><span id="gui-' + d + '">Đang gửi kết quả cho quản lý…</span></div>';
+      + '<br><span id="gui-' + d + '">Đang gửi kết quả cho quản lý…</span>'
+      + '<br><span id="luu-' + d + '">Đang lưu bài…</span></div>';
     kq.scrollIntoView({block: 'center'});
     msg.textContent = '';
     guiKetQua(d, dung, qs.length, pt, sai, moi);
+    guiLenMayChu(d, moi, function(ok){
+      var o = document.getElementById('luu-' + d);
+      if(o){ o.textContent = ok ? '✓ Đã lưu bài — mở cẩm nang ở máy nào cũng thấy.' : '⚠ Chưa lưu được lên hệ thống (mạng chậm) — bài vẫn giữ trên máy này, lần sau mở cẩm nang sẽ tự lưu lại.'; }
+    });
     veBangDiem();
   }
 
@@ -5326,7 +5401,7 @@ QUIZ[26] = [
     if(l){
       var d = parseInt(l, 10), box = document.getElementById('qbody-' + d);
       box.setAttribute('data-ve', '0'); box.innerHTML = '';
-      veCauHoi(d);
+      veCauHoi(d, true);
       document.getElementById('ngay-' + d).scrollIntoView({block: 'start'});
     }
   });
@@ -5335,7 +5410,7 @@ QUIZ[26] = [
   veBangDiem();
   /* bo phan (Sale Marketing / Đính kết) chỉ biết được SAU khi nhân viên mở khóa —
      lúc trang vừa tải thì chưa có, phải ve lai khi co su kien nay */
-  document.addEventListener('dla-bo-phan-xong', function(){ veDanhSach(); veBangDiem(); });
+  document.addEventListener('dla-bo-phan-xong', function(){ veDanhSach(); veBangDiem(); dongBo(); });
 })();
 
 </script>
@@ -5475,6 +5550,7 @@ QUIZ[26] = [
     btn.disabled = true; btn.textContent = 'Đang kiểm tra… (mạng chậm thì hơi lâu)';
     function xong(){ btn.disabled = false; btn.textContent = 'Mở cẩm nang 🤍'; }
     trakTen(em, function(ten, maSheet, bp, loiM, dv){
+      window.__dlaEm = em; window.__dlaMa = ma;   /* chi giu trong bo nho de luu bai kiem tra, dong trang la mat */
       if(!ten && !maSheet){
         xong();
         if(loiM === 'mang'){
