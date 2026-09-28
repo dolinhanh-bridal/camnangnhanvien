@@ -249,6 +249,14 @@ details.qa .a p:last-child{margin-bottom:0}
   font-size:14.5px;
 }
 .rulebox .rb-t{font-weight:700;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--rose-deep);margin-bottom:6px}
+/* khẩu hiệu nổi bật — trải nghiệm, không phải lời hứa */
+.tn-hua{background:var(--rose-deep);color:#fff;border-radius:16px;padding:20px 22px;margin:20px 0 24px;box-shadow:0 6px 18px rgba(124,51,70,.18)}
+.tn-hua .tn-t{font-family:'Cormorant Garamond',Georgia,serif;font-size:25px;line-height:1.25;font-weight:700;margin:0 0 12px;color:#fff}
+.tn-hua ul{margin:0;padding-left:18px}
+.tn-hua li{margin:7px 0;font-size:14.5px;color:#fff}
+.tn-hua li b{color:#fff}
+.tn-hua li i{display:block;font-weight:300;opacity:.9}
+.tn-hua.nho .tn-t{font-size:21px}
 .quote{
   font-family:'Cormorant Garamond',Georgia,serif;font-size:21px;font-style:italic;line-height:1.45;
   border-left:2px solid var(--champagne);padding:4px 0 4px 18px;margin:20px 0;color:var(--ink);
@@ -1184,6 +1192,15 @@ Mình rất hy vọng sẽ có cơ hội được kết nối và trao đổi th
     <p class="lede">Hiểu mình là ai thì mới tư vấn đúng chất. Đây là phần nền cho mọi câu trả lời với khách.</p>
   </div>
 
+  <div class="tn-hua">
+    <p class="tn-t">Hãy để khách mua vì TRẢI NGHIỆM — không phải vì LỜI HỨA</p>
+    <ul>
+      <li><b>Lời hứa ai cũng nói được</b><i>"Váy đẹp lắm chị", "chị mặc chắc chắn hợp" — khách nghe nhiều rồi, không còn tin.</i></li>
+      <li><b>Trải nghiệm thì khách tự cảm nhận</b><i>Mặc váy lên người, đứng trước gương, thấy mình đẹp — không cần mình nói thêm.</i></li>
+      <li><b>Việc của mình: mời khách tới thử và làm buổi thử thật chỉn chu</b><i>Đừng hứa trước điều khách chưa được thấy.</i></li>
+    </ul>
+  </div>
+
   <h3>1 · Giới thiệu Nupakachi &amp; Dolinhanh</h3>
   <ul>
     <li><b>Nupakachi Wedding</b> — thương hiệu ảnh cưới <b>hơn 15 năm</b>, sáng lập bởi nhiếp ảnh gia Đỗ Xuân Cường, hơn 3 chi nhánh và dấu chân đã in qua nhiều quốc gia. Không chỉ là một cái tên — là một tinh thần sáng tạo mang tầm quốc tế.</li>
@@ -1312,6 +1329,14 @@ Mình rất hy vọng sẽ có cơ hội được kết nối và trao đổi th
     <p class="eyebrow">Chương 6</p>
     <h2 class="display">Quy trình đón tiếp khách hàng</h2>
     <p class="lede">Private fitting 1:1 — khách đặt hẹn để được chăm riêng. Từ lúc khách bước vào đến lúc ra về, mỗi bước đều có chuẩn.</p>
+  </div>
+
+  <div class="tn-hua nho">
+    <p class="tn-t">Buổi thử váy chính là lời chào hàng</p>
+    <ul>
+      <li><b>Khách mua vì trải nghiệm, không mua vì lời hứa</b><i>Khách chốt vì cảm giác lúc đứng trước gương, không vì câu mình nói.</i></li>
+      <li><b>Làm chỉn chu từng bước bên dưới</b><i>Đó là cách "bán hàng" tốt nhất của DLA.</i></li>
+    </ul>
   </div>
 
   <h3>1/ Khách mới — lần đầu tới thử</h3>
@@ -2364,6 +2389,14 @@ Em cảm ơn chị nhiều lắm ạ 🤍</pre>
     <p class="eyebrow">Chương 5</p>
     <h2 class="display">Tư vấn khách online — các bước reply</h2>
     <p class="lede">Khách nhắn ở kênh nào cũng chung một chuẩn: đọc hiểu — trả lời đúng — nhanh — và luôn kéo khách tới shop.</p>
+  </div>
+
+  <div class="tn-hua nho">
+    <p class="tn-t">Online: đừng hứa — mời khách tới trải nghiệm</p>
+    <ul>
+      <li><b>Tin nhắn chỉ để hẹn khách tới thử</b><i>Váy đẹp cỡ nào, để khách tự thấy khi mặc lên người.</i></li>
+      <li><b>Khách mua vì trải nghiệm, không mua vì lời hứa</b><i>Hứa quá lên, khách tới thấy khác là mất khách.</i></li>
+    </ul>
   </div>
 
 
@@ -4693,7 +4726,10 @@ QUIZ[8] = [
 ["Ở DLA, bán hàng được hiểu là gì?", ["Bán hàng là phục vụ — đồng hành cùng cô dâu tìm ra chiếc váy đẹp nhất cho mình", "Thuyết phục khách mua cho bằng được", "Báo giá thật nhanh để chốt", "Giảm giá để khách đồng ý"],0],
 ["3 nấc phục vụ ở DLA theo thứ tự là gì?", ["Phục vụ → phục vụ tốt hơn cả sự mong đợi của khách → phục vụ tốt hơn bất kỳ ai trên thị trường", "Chào khách → báo giá → chốt cọc", "Nhanh → rẻ → nhiều mẫu", "Online → tại shop → sau cọc"],0],
 ["Khách rời DLA cần mang theo cảm giác gì theo tiêu chuẩn phục vụ cao nhất?", ["Được “mở mắt ra” — thấy những điều chưa từng thấy, nhận giá trị chưa từng nhận ở đâu trước đây", "Thấy giá ở đây rẻ hơn chỗ khác", "Thấy nhân viên nói chuyện nhanh gọn", "Thấy mình đã thử được thật nhiều váy"],0],
-["Tình huống: khách kể đã đi thử váy ở vài nơi khác. Theo tinh thần “bán hàng là phục vụ”, mình làm gì?", ["Chăm sóc chu đáo từng chi tiết để khi so lại, khách thấy DLA là nơi phục vụ mình tốt nhất", "Chê các nơi kia để khách chọn mình", "Giảm giá ngay cho khách khỏi đi chỗ khác", "Hỏi bên kia báo giá bao nhiêu rồi báo thấp hơn"],0]
+["Tình huống: khách kể đã đi thử váy ở vài nơi khác. Theo tinh thần “bán hàng là phục vụ”, mình làm gì?", ["Chăm sóc chu đáo từng chi tiết để khi so lại, khách thấy DLA là nơi phục vụ mình tốt nhất", "Chê các nơi kia để khách chọn mình", "Giảm giá ngay cho khách khỏi đi chỗ khác", "Hỏi bên kia báo giá bao nhiêu rồi báo thấp hơn"],0],
+["Câu nổi bật ở Chương 4: DLA muốn khách mua vì điều gì?", ["Vì trải nghiệm — khách tự cảm nhận khi thử váy", "Vì lời hứa của nhân viên", "Vì giảm giá", "Vì nhân viên nói nhiều"],0],
+["Vì sao cẩm nang dặn “đừng hứa trước điều khách chưa được thấy”?", ["Lời hứa ai cũng nói được, khách không tin; hứa quá lên mà tới thấy khác là mất khách", "Vì hứa thì phải ghi hợp đồng", "Vì quản lý không cho nói chuyện với khách", "Vì khách không thích nghe khen"],0],
+["Tình huống: khách nhắn “váy bên em mặc lên có đẹp như ảnh không?”. Cách trả lời đúng tinh thần DLA?", ["Mời khách qua thử trực tiếp để tự cảm nhận, thay vì hứa suông", "Hứa chắc chắn đẹp hơn ảnh", "Nói “chị cứ cọc đi, đẹp mà”", "Không trả lời câu đó"],0]
 ];
 QUIZ[9] = [
 ["Lotte Mall Hà Nội là ví dụ cho giác quan nào?",["Khứu giác và thính giác", "Thị giác và vị giác", "Xúc giác", "Chỉ thị giác"],0],
