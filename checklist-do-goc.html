@@ -393,7 +393,7 @@ $('luu').addEventListener('click',function(){
   if(f&&navigator.canShare&&navigator.canShare({files:[f]})){navigator.share({files:[f]}).catch(function(){});return;}
   var a=document.createElement('a');a.href=URL.createObjectURL(BLOB);a.download=TENFILE;document.body.appendChild(a);a.click();a.remove();
 });
-var TIN='Dạ em gửi anh chị checklist đồ cưới bên em đã kiểm tra kỹ từng món trước khi giao ạ 🤍 Anh chị nhận đồ kiểm tra giúp em, có gì chưa đúng nhắn em liền nha ạ.';
+var TIN='Dạ em gửi anh chị checklist đồ cưới bên em đã kiểm tra kỹ từng món trước khi giao ạ 🤍 Anh chị nhận đồ kiểm tra giúp em, có gì chưa đúng nhắn em liền nha ạ.\nAnh chị xem lại giúp em lưu ý khi dùng và trả váy (giờ trả, cọc thế chân, giữ váy sạch) tại đây nha: https://dolinhanhbridal.com/luu-y-thue-vay.html';
 $('chep').addEventListener('click',function(){
   var b=this,ok=function(){b.textContent='Đã chép ✓';setTimeout(function(){b.textContent='Chép tin nhắn gửi kèm';},1600);};
   try{navigator.clipboard.writeText(TIN).then(ok,function(){cu();});}catch(e){cu();}
