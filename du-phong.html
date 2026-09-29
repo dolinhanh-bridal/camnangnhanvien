@@ -1990,7 +1990,7 @@ Nhà mình có lễ ăn hỏi thì em gợi ý chị thêm áo dài, còn nếu 
     </ul>
   </div>
   <p class="cs-bao">Dùng điện thoại, đeo tai nghe hoặc bật loa vừa đủ nghe. Cho phép máy ảnh + micro khi máy hỏi.</p>
-  <div class="ka-chon"><button type="button" class="ka-the" data-k="k1"><b>Khách chưa thử ở đâu</b><i>7 câu</i></button><button type="button" class="ka-the" data-k="k3"><b>Khách đã thử ở nhiều nơi</b><i>6 câu</i></button></div>
+  <div class="ka-chon"><button type="button" class="ka-the" data-k="k1"><b>Khách chưa thử ở đâu</b><i>6 câu</i></button><button type="button" class="ka-the" data-k="k3"><b>Khách đã thử ở nhiều nơi</b><i>6 câu</i></button></div>
   <div class="cs-box" id="kaKhung" style="display:none">
     <canvas id="kaCv" width="720" height="1280" class="ka-cv"></canvas>
     <video id="kaXem" class="ka-cv" controls playsinline style="display:none"></video>
@@ -2005,7 +2005,7 @@ Nhà mình có lễ ăn hỏi thì em gợi ý chị thêm áo dài, còn nếu 
   </div>
 <script>
 (function(){
-  var KHACH = {"k1": {"ten": "Khách chưa thử ở đâu", "cau": ["Chào em, chị mới đi thử váy lần đầu, chưa biết gì hết, em chỉ chị với nhé.", "Chị mới thấy bên em trên TikTok thôi. Bên em là bên nào, làm lâu chưa?", "Chị cưới tháng 12. Em nghĩ chị cần mấy váy?", "Chị cũng không biết mình hợp dáng váy nào nữa.", "Sao váy bên em lót toàn màu hồng với màu ghi vậy? Chị tưởng váy cưới phải trắng tinh chứ.", "Thế giá thế nào em? Chị chưa thử chỗ nào nên không biết đắt hay rẻ.", "Chị thử xong chưa chắc chốt hôm nay đâu, chị muốn đi thử thêm vài chỗ nữa."]}, "k3": {"ten": "Khách đã thử ở nhiều nơi", "cau": ["Chị thử năm chỗ rồi, chỗ nào cũng nói váy mình đẹp nhất. Bên em khác gì?", "Chỗ kia váy mới toanh. Váy bên em đã cho thuê nhiều lần chưa?", "Chị nghe nói váy lót hồng lên hình dễ bị tối da, đúng không em?", "Linh Nga, Calla thì chị biết, còn Dolinhanh thì chị chưa nghe bao giờ.", "Lỡ ngày cưới váy bị bẩn, bị rách thì sao em?", "Chị cọc bên kia rồi, giờ chuyển qua bên em thì mất cọc bên kia. Em tính sao?"]}};
+  var KHACH = {"k1": {"ten": "Khách chưa thử ở đâu", "cau": ["Chào em, chị mới đi thử váy lần đầu, chưa biết gì hết, em chỉ chị với nhé.", "Chị mới thấy bên em trên TikTok thôi. Bên em là bên nào, làm lâu chưa?", "Chị cưới tháng 12. Em nghĩ chị cần mấy váy?", "Chị cũng không biết mình hợp dáng váy nào nữa.", "Sao váy bên em lót toàn màu hồng với màu ghi vậy? Chị tưởng váy cưới phải trắng tinh chứ.", "Chị thử xong chưa chắc chốt hôm nay đâu, chị muốn đi thử thêm vài chỗ nữa."]}, "k3": {"ten": "Khách đã thử ở nhiều nơi", "cau": ["Chị thử năm chỗ rồi, chỗ nào cũng nói váy mình đẹp nhất. Bên em khác gì?", "Chỗ kia váy mới toanh. Váy bên em đã cho thuê nhiều lần chưa?", "Chị nghe nói váy lót hồng lên hình dễ bị tối da, đúng không em?", "Linh Nga, Calla thì chị biết, còn Dolinhanh thì chị chưa nghe bao giờ.", "Lỡ ngày cưới váy bị bẩn, bị rách thì sao em?", "Chị cọc bên kia rồi, giờ chuyển qua bên em thì mất cọc bên kia. Em tính sao?"]}};
   function $(i){ return document.getElementById(i); }
   var k = null, cau = -1, ctx = null, dest = null, bufs = [], nguon = null, cam = null, rec = null, manh = [], blob = null, veId = 0, vd = null, chu = '', tuVe = 0;
   function bao(t, loi){ var b = $('kaBao'); b.textContent = t || ''; b.className = 'cs-bao' + (loi ? ' loi' : ''); }
