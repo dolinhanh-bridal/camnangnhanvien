@@ -1976,7 +1976,7 @@ Nhà mình có lễ ăn hỏi thì em gợi ý chị thêm áo dài, còn nếu 
     <ul class="yphu">
       <li><b>Quay dọc, camera trước</b><i>Ngồi chỗ sáng, thấy rõ mặt.</i></li>
       <li><b>Không đọc giấy</b><i>Nói bằng lời của mình, đúng ý trong cẩm nang.</i></li>
-      <li><b>Dài 2–4 phút</b><i>Quay 1080p là đủ, clip nhẹ tải nhanh.</i></li>
+      <li><b>Dài 2–4 phút</b><i>Clip nặng máy tự nén trước khi nộp, rồi gửi về email quản lý và email của bạn.</i></li>
       <li><b>Tải lên bằng wifi</b><i>Đang tải đừng tắt màn hình hay chuyển app.</i></li>
     </ul>
   </div></details>
@@ -2059,10 +2059,59 @@ Nhà mình có lễ ăn hỏi thì em gợi ý chị thêm áo dài, còn nếu 
     put();
   }
 
+  /* NEN CLIP tren may truoc khi nop (30/09/2026): ep duoi ~18MB de mail dinh kem duoc (Gmail toi da 25MB).
+     Phat lai clip vao canvas 540 px roi ghi lai bang MediaRecorder o bitrate tinh theo do dai — mat dung bang do dai clip. */
+  var NGUONG = 18 * 1048576;
+  function nenClip(f, dai, baoFn, thanh, cb){
+    var AC = window.AudioContext || window.webkitAudioContext;
+    if(!window.MediaRecorder || !AC){ cb(f); return; }
+    var ac = new AC(), v = document.createElement('video'), url = URL.createObjectURL(f), xong = false;
+    v.src = url; v.playsInline = true; v.setAttribute('playsinline', ''); v.preload = 'auto';
+    function ket(b){ if(xong) return; xong = true; try{ v.pause(); }catch(e){} URL.revokeObjectURL(url); try{ ac.close(); }catch(e){} cb(b); }
+    v.onerror = function(){ ket(f); };
+    var p = v.play();   /* goi play ngay trong luc bam de Safari cho phep co tieng */
+    if(p && p.catch) p.catch(function(){});
+    v.addEventListener('playing', function batDau(){
+      v.removeEventListener('playing', batDau);
+      v.pause(); v.currentTime = 0;
+      var tg = isFinite(v.duration) && v.duration > 0 ? v.duration : (dai || 180);
+      var vbps = Math.max(250000, Math.min(1200000, Math.floor(NGUONG * 8 * 0.9 / tg) - 64000));
+      var dai0 = Math.max(v.videoWidth, v.videoHeight) || 960, tl = Math.min(1, 960 / dai0);
+      var cv = document.createElement('canvas'); cv.width = Math.round((v.videoWidth || 540) * tl / 2) * 2; cv.height = Math.round((v.videoHeight || 960) * tl / 2) * 2;
+      var g = cv.getContext('2d'), dst = ac.createMediaStreamDestination();
+      try{ ac.createMediaElementSource(v).connect(dst); }catch(e){}
+      var tracks = [cv.captureStream(24).getVideoTracks()[0]].concat(dst.stream.getAudioTracks());
+      var kieu = ['video/mp4', 'video/webm;codecs=vp8,opus', 'video/webm'].filter(function(x){ return MediaRecorder.isTypeSupported && MediaRecorder.isTypeSupported(x); })[0] || '';
+      var opt = { videoBitsPerSecond: vbps, audioBitsPerSecond: 64000 }; if(kieu) opt.mimeType = kieu;
+      var rec = new MediaRecorder(new MediaStream(tracks), opt), manh = [];
+      rec.ondataavailable = function(e){ if(e.data && e.data.size) manh.push(e.data); };
+      rec.onstop = function(){
+        var b = new Blob(manh, { type: (rec.mimeType || kieu || 'video/mp4').split(';')[0] });
+        ket(b.size && b.size < f.size ? b : f);
+      };
+      thanh.style.display = 'block';
+      function ve(){
+        if(xong || rec.state !== 'recording'){ clearInterval(hen); return; }
+        g.drawImage(v, 0, 0, cv.width, cv.height);
+        var t = Math.min(1, v.currentTime / tg);
+        thanh.firstChild.style.width = Math.round(t * 100) + '%';
+        baoFn('Đang nén clip cho nhẹ… ' + Math.round(t * 100) + '% — để màn hình sáng, đừng chuyển app nha.');
+      }
+      var hen = null;
+      v.onended = function(){ clearInterval(hen); if(rec.state === 'recording') rec.stop(); };
+      setTimeout(function(){ rec.start(1000); v.play(); hen = setInterval(ve, 40); }, 150);
+    });
+  }
+
   /* nop 1 clip (file hoac blob) — dung chung cho 'Quay clip' va 'Khach ao' */
-  function nopClip(f, bai, tenbai, baoFn, thanh, cb){
+  function nopClip(f, bai, tenbai, baoFn, thanh, cb, dai){
     if(GOC.indexOf(location.origin) < 0){ baoFn('Mở cẩm nang bản web (dolinhanhbridal.com) để nộp clip nha.', true); cb(false); return; }
     if(!window.__dlaEm && !ql()){ baoFn('Bạn đăng nhập bằng email + mã của mình rồi nộp nha.', true); cb(false); return; }
+    if(f.size > NGUONG && !f.__daNen){
+      baoFn('Clip ' + (f.size/1048576).toFixed(0) + ' MB — đang nén xuống cho gửi email được…');
+      nenClip(f, dai, baoFn, thanh, function(b){ b.__daNen = true; baoFn('Nén xong: ' + (f.size/1048576).toFixed(1) + ' MB → ' + (b.size/1048576).toFixed(1) + ' MB'); if(b.size > NGUONG * 1.3){ baoFn('Clip dài quá, nén vẫn nặng (' + (b.size/1048576).toFixed(0) + ' MB) — vẫn nộp được, mail sẽ gửi link thay vì đính kèm.'); } nopClip(b, bai, tenbai, baoFn, thanh, cb, dai); });
+      return;
+    }
     var kieu = String(f.type || 'video/mp4').split(';')[0];
     baoFn('Đang mở kết nối…');
     goi('clipsale=mo&bai=' + bai + '&tenbai=' + encodeURIComponent(tenbai) + '&size=' + f.size + '&kieu=' + encodeURIComponent(kieu) + '&goc=' + encodeURIComponent(location.origin), function(r){
@@ -2252,7 +2301,7 @@ Nhà mình có lễ ăn hỏi thì em gợi ý chị thêm áo dài, còn nếu 
         var kieu = ['video/mp4', 'video/webm;codecs=vp8,opus', 'video/webm'].filter(function(x){ return MediaRecorder.isTypeSupported && MediaRecorder.isTypeSupported(x); })[0] || '';
         var luong = new MediaStream([$('kaCv').captureStream(24).getVideoTracks()[0], dest.stream.getAudioTracks()[0]]);
         manh = [];
-        rec = new MediaRecorder(luong, kieu ? { mimeType: kieu, videoBitsPerSecond: 2000000 } : { videoBitsPerSecond: 2000000 });
+        rec = new MediaRecorder(luong, kieu ? { mimeType: kieu, videoBitsPerSecond: 550000, audioBitsPerSecond: 64000 } : { videoBitsPerSecond: 550000, audioBitsPerSecond: 64000 });   /* nhe san: ~4 phut < 18MB */
         rec.ondataavailable = function(e){ if(e.data && e.data.size) manh.push(e.data); };
         rec.onstop = xemLai;
         rec.start(1000); tuVe = Date.now();
@@ -2295,11 +2344,12 @@ Nhà mình có lễ ăn hỏi thì em gợi ý chị thêm áo dài, còn nếu 
   $('kaNop').addEventListener('click', function(){
     if(!blob || !window.dlaNopClip) return;
     var btn = this; btn.disabled = true; hien('kaLai', 0);
+    var dai = (Date.now() - tuVe) / 1000;
     window.dlaNopClip(blob, 'khach-ao-' + k, 'Khách ảo: ' + KHACH[k].ten, bao, $('kaThanh'), function(ok){
       btn.disabled = false;
       if(ok){ hien('kaNop', 0); hien('kaLai', 1); }
       else hien('kaLai', 1);
-    });
+    }, dai);
   });
 })();
 </script>
