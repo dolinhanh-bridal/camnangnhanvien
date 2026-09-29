@@ -270,7 +270,7 @@ details.qa .a p:last-child{margin-bottom:0}
 .cs-ql .cs-hang{display:flex;gap:8px;flex-wrap:wrap}
 .yphu li{margin:6px 0}.yphu li i{display:block;font-weight:300;color:var(--ink-soft)}
 .cs-hang{display:flex;gap:8px;flex-wrap:wrap}
-.ka-chon{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+.ka-chon{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:12px 0}
 .ka-the{text-align:left;padding:12px;border:1px solid var(--line);border-radius:14px;background:#fff;font:inherit;cursor:pointer;color:var(--ink)}
 .ka-the b{display:block;font-size:14px;color:var(--rose-deep)}
 .ka-the i{display:block;font-size:12px;font-weight:300;color:var(--ink-soft)}
@@ -1979,13 +1979,13 @@ Nhà mình có lễ ăn hỏi thì em gợi ý chị thêm áo dài, còn nếu 
   <div class="rulebox">
     <p class="rb-t">👰 Khách ảo hỏi — bạn trả lời như khách thật</p>
     <ul class="yphu">
-      <li><b>Chọn 1 kiểu khách → bấm Bắt đầu</b><i>Máy quay mặt bạn, khách hỏi bằng giọng nói và chữ trên màn hình.</i></li>
+      <li><b>Chọn 1 trong 2 kiểu khách → bấm Bắt đầu</b><i>Máy quay mặt bạn, khách hỏi bằng giọng nói và chữ trên màn hình.</i></li>
       <li><b>Trả lời xong bấm "Khách hỏi tiếp"</b><i>Không có đáp án sẵn — dùng đúng những gì cẩm nang dạy.</i></li>
       <li><b>Hết buổi → xem lại → lưu về máy</b><i>Clip có cả câu khách hỏi — xem lại thấy mình trả lời chỗ nào chưa ổn.</i></li>
     </ul>
   </div>
   <p class="cs-bao">Dùng điện thoại, đeo tai nghe hoặc bật loa vừa đủ nghe. Cho phép máy ảnh + micro khi máy hỏi.</p>
-  <div class="ka-chon"><button type="button" class="ka-the" data-k="k1"><b>Khách mới, hỏi kỹ</b><i>6 câu</i></button><button type="button" class="ka-the" data-k="k2"><b>Khách chê đắt</b><i>6 câu</i></button><button type="button" class="ka-the" data-k="k3"><b>Khách đã đi thử nhiều nơi</b><i>6 câu</i></button></div>
+  <div class="ka-chon"><button type="button" class="ka-the" data-k="k1"><b>Khách chưa thử ở đâu</b><i>7 câu</i></button><button type="button" class="ka-the" data-k="k3"><b>Khách đã thử ở nhiều nơi</b><i>6 câu</i></button></div>
   <div class="cs-box" id="kaKhung" style="display:none">
     <canvas id="kaCv" width="720" height="1280" class="ka-cv"></canvas>
     <video id="kaXem" class="ka-cv" controls playsinline style="display:none"></video>
@@ -2000,7 +2000,7 @@ Nhà mình có lễ ăn hỏi thì em gợi ý chị thêm áo dài, còn nếu 
   </div>
 <script>
 (function(){
-  var KHACH = {"k1": {"ten": "Khách mới, hỏi kỹ", "cau": ["Chào em, chị có hẹn thử váy lúc 3 giờ. Chị tới hơi sớm, có sao không em?", "Chị mới thấy bên em trên TikTok thôi. Bên em là bên nào, làm lâu chưa?", "Chị cưới tháng 12. Em nghĩ chị cần mấy váy?", "Sao váy bên em lót toàn màu hồng với màu ghi vậy? Chị tưởng váy cưới phải trắng tinh chứ.", "Thế giá thế nào em? Em nói luôn cho chị nhé.", "Chị thử xong chưa chắc chốt hôm nay đâu nha."]}, "k2": {"ten": "Khách chê đắt", "cau": ["Chị nói trước là chị chỉ cần một váy thôi, em đừng giới thiệu gói gì nhé.", "Bên kia chị thử, người ta cho thuê có ba triệu. Sao bên em đắt thế?", "Váy này người khác mặc rồi mà vẫn giá này à em?", "Em giảm cho chị được bao nhiêu? Chị được bạn giới thiệu tới đấy.", "Combo ba váy thì chị mặc gì hết ba váy, phí tiền lắm.", "Thôi để chị về hỏi ý chồng đã."]}, "k3": {"ten": "Khách đã đi thử nhiều nơi", "cau": ["Chị thử năm chỗ rồi, chỗ nào cũng nói váy mình đẹp nhất. Bên em khác gì?", "Chỗ kia váy mới toanh. Váy bên em đã cho thuê nhiều lần chưa?", "Chị nghe nói váy lót hồng lên hình dễ bị tối da, đúng không em?", "Linh Nga, Calla thì chị biết, còn Dolinhanh thì chị chưa nghe bao giờ.", "Lỡ ngày cưới váy bị bẩn, bị rách thì sao em?", "Chị cọc bên kia rồi, giờ chuyển qua bên em thì mất cọc bên kia. Em tính sao?"]}};
+  var KHACH = {"k1": {"ten": "Khách chưa thử ở đâu", "cau": ["Chào em, chị mới đi thử váy lần đầu, chưa biết gì hết, em chỉ chị với nhé.", "Chị mới thấy bên em trên TikTok thôi. Bên em là bên nào, làm lâu chưa?", "Chị cưới tháng 12. Em nghĩ chị cần mấy váy?", "Chị cũng không biết mình hợp dáng váy nào nữa.", "Sao váy bên em lót toàn màu hồng với màu ghi vậy? Chị tưởng váy cưới phải trắng tinh chứ.", "Thế giá thế nào em? Chị chưa thử chỗ nào nên không biết đắt hay rẻ.", "Chị thử xong chưa chắc chốt hôm nay đâu, chị muốn đi thử thêm vài chỗ nữa."]}, "k3": {"ten": "Khách đã thử ở nhiều nơi", "cau": ["Chị thử năm chỗ rồi, chỗ nào cũng nói váy mình đẹp nhất. Bên em khác gì?", "Chỗ kia váy mới toanh. Váy bên em đã cho thuê nhiều lần chưa?", "Chị nghe nói váy lót hồng lên hình dễ bị tối da, đúng không em?", "Linh Nga, Calla thì chị biết, còn Dolinhanh thì chị chưa nghe bao giờ.", "Lỡ ngày cưới váy bị bẩn, bị rách thì sao em?", "Chị cọc bên kia rồi, giờ chuyển qua bên em thì mất cọc bên kia. Em tính sao?"]}};
   function $(i){ return document.getElementById(i); }
   var k = null, cau = -1, ctx = null, dest = null, bufs = [], nguon = null, cam = null, rec = null, manh = [], blob = null, veId = 0, vd = null, chu = '', tuVe = 0;
   function bao(t, loi){ var b = $('kaBao'); b.textContent = t || ''; b.className = 'cs-bao' + (loi ? ' loi' : ''); }
