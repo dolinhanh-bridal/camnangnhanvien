@@ -250,6 +250,34 @@ details.qa .a p:last-child{margin-bottom:0}
 .tn-hua li{margin:7px 0;font-size:14.5px;color:#fff}
 .tn-hua li b{color:#fff}
 .tn-hua li i{display:block;font-weight:300;opacity:.9}
+/* clip bai noi sale (29/09/2026) */
+.cs-box{border:1px solid var(--line);border-radius:16px;padding:18px;margin:14px 0}
+.cs-btn{display:inline-flex;align-items:center;gap:6px;padding:12px 18px;border-radius:999px;border:none;background:var(--rose);color:#fff;font:inherit;font-weight:600;font-size:15px;cursor:pointer}
+.cs-btn.phu{background:#fff;color:var(--rose-deep);border:1px solid var(--rose)}
+.cs-btn[disabled]{opacity:.5}
+.cs-thanh{height:10px;background:var(--blush);border-radius:99px;overflow:hidden;margin:12px 0 4px;display:none}
+.cs-thanh i{display:block;height:100%;width:0;background:var(--rose);transition:width .3s}
+.cs-bao{font-size:13.5px;margin-top:8px;color:var(--ink-soft)}
+.cs-bao.loi{color:var(--rose-deep);font-weight:600}
+.cs-clip{border-top:1px solid var(--line);padding:12px 0}
+.cs-clip:first-child{border-top:none}
+.cs-tt{display:inline-block;font-size:12px;font-weight:700;border-radius:99px;padding:3px 10px;margin-left:6px}
+.cs-tt.cho{background:#FFF4E0;color:#8A5A00}.cs-tt.dat{background:#EFF7F1;color:#2E7D4F}.cs-tt.lai{background:var(--blush);color:var(--rose-deep)}
+.cs-nx{margin:6px 0 0;font-size:13.5px}
+.cs-nx i{display:block;font-weight:300}
+.cs-xem{width:100%;aspect-ratio:9/16;max-height:70vh;border:0;border-radius:12px;background:#000;margin-top:8px}
+.cs-ql textarea{width:100%;min-height:70px;margin:8px 0;padding:10px;font:inherit;font-size:14px;border:1px solid var(--line);border-radius:10px}
+.cs-ql .cs-hang{display:flex;gap:8px;flex-wrap:wrap}
+.yphu li{margin:6px 0}.yphu li i{display:block;font-weight:300;color:var(--ink-soft)}
+.cs-hang{display:flex;gap:8px;flex-wrap:wrap}
+.ka-chon{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+.ka-the{text-align:left;padding:12px;border:1px solid var(--line);border-radius:14px;background:#fff;font:inherit;cursor:pointer;color:var(--ink)}
+.ka-the b{display:block;font-size:14px;color:var(--rose-deep)}
+.ka-the i{display:block;font-size:12px;font-weight:300;color:var(--ink-soft)}
+.ka-the.on{border-color:var(--rose);background:var(--blush)}
+.ka-cv{display:block;width:100%;max-width:360px;margin:0 auto;aspect-ratio:9/16;border-radius:14px;background:#31232A}
+@media(max-width:480px){.ka-chon{grid-template-columns:1fr}}
+
 .tn-hua.nho .tn-t{font-size:21px}
 .quote{
   font-family:'Cormorant Garamond',Georgia,serif;font-size:21px;font-style:italic;line-height:1.45;
@@ -1916,6 +1944,360 @@ Nhà mình có lễ ăn hỏi thì em gợi ý chị thêm áo dài, còn nếu 
     <p>Trả lời thật 5 câu: ① Mình mở bằng bậc mấy? ② Có nói điều kiện <b>cùng lúc</b> với giá không? ③ Tụt mấy bậc, có nhảy cóc không? ④ Có lần nào tự giảm giá thay vì tụt bậc không? ⑤ Khách về tay không hay có cọc giữ ưu đãi?</p>
     <p>Câu nào trả lời “không” thì đó chính là việc cần sửa ở buổi sau. Tự soi được thì tháng sau chốt khác hẳn.</p>
   </div></details>
+
+
+  <h3 id="quay-clip-sale">6/ Quay clip: đón khách mới — nộp quản lý duyệt</h3>
+  <div class="rulebox">
+    <p class="rb-t">🎥 Học xong phần đón khách thì tự quay clip</p>
+    <ul class="yphu">
+      <li><b>Ngồi quay mình nói lại đoạn đón khách mới</b><i>Nói như đang nói với khách thật trước mặt.</i></li>
+      <li><b>Nộp ngay tại đây</b><i>Quản lý xem, bấm Đạt hoặc Quay lại kèm nhận xét — có mail báo bạn.</i></li>
+      <li><b>Chưa đạt thì quay lại tới khi đạt</b><i>Clip đạt rồi mới đứng đón khách một mình.</i></li>
+      <li><b>Luyện thêm với khách ảo ở mục 7 ngay dưới</b><i>Khách hỏi hóc búa — cũng nộp quản lý duyệt.</i></li>
+    </ul>
+  </div>
+
+  <details class="mini"><summary>Clip phải nói đủ 5 phần này</summary><div class="ln-step">
+    <ol class="yphu">
+      <li><b>Chào &amp; mời khách ngồi</b><i>Nụ cười trước, mời nước.</i></li>
+      <li><b>Giới thiệu về bên mình</b><i>Hệ sinh thái cưới Nupakachi &amp; Dolinhanh, trên 15 năm quay chụp trong và ngoài nước.</i></li>
+      <li><b>Hỏi nhu cầu</b><i>Ngày cưới · số váy · địa điểm · đã chụp pre chưa · đã book chụp tiệc chưa · "Chị đã đi thử váy ở đâu chưa ạ?"</i></li>
+      <li><b>Lời giới thiệu khi tham quan</b><i>Lót hồng nude &amp; ghi — như Linh Nga, Hacchic Couture, Calla, Jolipoly — hợp da người Việt.</i></li>
+      <li><b>Giới thiệu gói</b><i>Mở từ bậc 1, tụt từng bậc, đúng bảng giá cơ sở mình.</i></li>
+    </ol>
+  </div></details>
+
+  <details class="mini"><summary>Cách quay cho đạt</summary><div class="ln-step">
+    <ul class="yphu">
+      <li><b>Quay dọc, camera trước</b><i>Ngồi chỗ sáng, thấy rõ mặt.</i></li>
+      <li><b>Không đọc giấy</b><i>Nói bằng lời của mình, đúng ý trong cẩm nang.</i></li>
+      <li><b>Dài 2–4 phút</b><i>Quay 1080p là đủ, clip nhẹ tải nhanh.</i></li>
+      <li><b>Tải lên bằng wifi</b><i>Đang tải đừng tắt màn hình hay chuyển app.</i></li>
+    </ul>
+  </div></details>
+
+  <div class="cs-box" id="csNop">
+    <p style="margin:0 0 10px"><b>Nộp clip của bạn</b></p>
+    <input type="file" id="csFile" accept="video/*" style="display:none">
+    <button type="button" class="cs-btn" id="csChon">🎥 Quay / chọn clip</button>
+    <p class="cs-bao" id="csTen"></p>
+    <button type="button" class="cs-btn" id="csGui" style="display:none;margin-top:10px">⬆️ Nộp cho quản lý</button>
+    <div class="cs-thanh" id="csThanh"><i></i></div>
+    <p class="cs-bao" id="csBao"></p>
+  </div>
+
+  <div class="cs-box" id="csCua" style="display:none">
+    <p style="margin:0 0 6px"><b id="csCuaT">Clip bạn đã nộp</b></p>
+    <div id="csDs"><p class="cs-bao">Đang tải…</p></div>
+  </div>
+<script>
+(function(){
+  var URL_CS = 'https://script.google.com/macros/s/AKfycbwz7vtZc1xvCO--0-VMRYOG6-Bf0TrfBNP3VSky1cWj1-TOejoHMr5hp9fl6bhDaH_zhw/exec';
+  var BAI = 'don-khach', TENBAI = 'Đón khách mới — giới thiệu thương hiệu & trao đổi với khách';
+  var GOC = ['https://dolinhanhbridal.com','https://dolinhanh-bridal.github.io'];
+  var file = null;
+  function $(i){ return document.getElementById(i); }
+  function esc(t){ var d = document.createElement('div'); d.textContent = t == null ? '' : String(t); return d.innerHTML; }
+  function ql(){ return window.__dlaQL || ''; }
+  function goi(tham, cb){
+    var em = window.__dlaEm || '', ma = ql() || window.__dlaMa || '';
+    if(!ma){ cb(null); return; }
+    var fn = 'dlaCS' + Date.now() + Math.floor(Math.random()*1000), xong = false, s;
+    function ket(x){ if(xong) return; xong = true; try{ delete window[fn]; }catch(e){} if(s && s.parentNode) s.parentNode.removeChild(s); cb(x); }
+    window[fn] = ket;
+    s = document.createElement('script');
+    s.src = URL_CS + '?' + tham + (em && !ql() ? '&em=' + encodeURIComponent(em) : '') + '&ma=' + encodeURIComponent(ma) + '&cb=' + fn;
+    s.onerror = function(){ ket(null); };
+    document.body.appendChild(s);
+    setTimeout(function(){ ket(null); }, 25000);
+  }
+  function bao(t, loi){ var b = $('csBao'); b.textContent = t; b.className = 'cs-bao' + (loi ? ' loi' : ''); }
+  function mb(n){ return (n/1048576).toFixed(1) + ' MB'; }
+  function ngay(t){ var d = new Date(t); return ('0'+d.getDate()).slice(-2) + '/' + ('0'+(d.getMonth()+1)).slice(-2) + ' ' + ('0'+d.getHours()).slice(-2) + ':' + ('0'+d.getMinutes()).slice(-2); }
+  var TT = { cho:['cho','⏳ Chờ duyệt'], dat:['dat','✅ Đạt'], lai:['lai','↩ Quay lại'] };
+
+  $('csChon').addEventListener('click', function(){ $('csFile').click(); });
+  $('csFile').addEventListener('change', function(){
+    file = this.files && this.files[0];
+    if(!file){ return; }
+    $('csTen').textContent = '📎 ' + file.name + ' · ' + mb(file.size);
+    $('csGui').style.display = 'inline-flex'; bao('');
+  });
+
+  /* tai thang len Drive, rot mang thi hoi Drive da nhan toi dau roi tai tiep */
+  function taiLen(url, f, tien, cb){
+    var bao = taiLen.bao || function(){};
+    var size = f.size, tu = 0, thu = 0;
+    function xongX(x){ var id = null; try{ id = JSON.parse(x.responseText).id; }catch(e){} cb(id); }
+    function put(){
+      var x = new XMLHttpRequest(); x.open('PUT', url);
+      if(tu > 0) x.setRequestHeader('Content-Range', 'bytes ' + tu + '-' + (size-1) + '/' + size);
+      x.upload.onprogress = function(e){ tien((tu + e.loaded) / size); };
+      x.onload = function(){ if(x.status === 200 || x.status === 201) xongX(x); else hoi(); };
+      x.onerror = hoi;
+      x.send(tu > 0 ? f.slice(tu) : f);
+    }
+    function hoi(){
+      if(++thu > 8){ cb(null); return; }
+      bao('Mạng chập chờn — đang nối lại (' + thu + ')…', true);
+      setTimeout(function(){
+        var x = new XMLHttpRequest(); x.open('PUT', url);
+        x.setRequestHeader('Content-Range', 'bytes */' + size);
+        x.onload = function(){
+          if(x.status === 200 || x.status === 201){ xongX(x); return; }
+          if(x.status === 308){ var r = x.getResponseHeader('Range'); tu = r ? (parseInt(r.split('-')[1], 10) + 1) : 0; bao('Đang tải tiếp…'); put(); }
+          else hoi();
+        };
+        x.onerror = hoi; x.send();
+      }, 3000 * thu);
+    }
+    put();
+  }
+
+  /* nop 1 clip (file hoac blob) — dung chung cho 'Quay clip' va 'Khach ao' */
+  function nopClip(f, bai, tenbai, baoFn, thanh, cb){
+    if(GOC.indexOf(location.origin) < 0){ baoFn('Mở cẩm nang bản web (dolinhanhbridal.com) để nộp clip nha.', true); cb(false); return; }
+    if(!window.__dlaEm && !ql()){ baoFn('Bạn đăng nhập bằng email + mã của mình rồi nộp nha.', true); cb(false); return; }
+    var kieu = String(f.type || 'video/mp4').split(';')[0];
+    baoFn('Đang mở kết nối…');
+    goi('clipsale=mo&bai=' + bai + '&tenbai=' + encodeURIComponent(tenbai) + '&size=' + f.size + '&kieu=' + encodeURIComponent(kieu) + '&goc=' + encodeURIComponent(location.origin), function(r){
+      if(!r || !r.ok){ baoFn((r && r.loi) || 'Chưa kết nối được, bạn thử lại nha.', true); cb(false); return; }
+      thanh.style.display = 'block';
+      taiLen.bao = baoFn;
+      taiLen(r.url, f, function(t){ thanh.firstChild.style.width = Math.round(t*100) + '%'; baoFn('Đang tải lên… ' + Math.round(t*100) + '%'); }, function(id){
+        if(!id){ baoFn('Tải chưa xong. Bật wifi rồi bấm Nộp lại nha.', true); cb(false); return; }
+        baoFn('Đang gửi cho quản lý…');
+        goi('clipsale=xong&id=' + encodeURIComponent(id), function(k){
+          if(!k || !k.ok){ baoFn((k && k.loi) || 'Clip đã lên nhưng chưa báo được quản lý — bấm Nộp lại nha.', true); cb(false); return; }
+          thanh.style.display = 'none'; thanh.firstChild.style.width = '0';
+          baoFn('✅ Nộp xong! Quản lý duyệt xong sẽ có mail báo bạn.');
+          veDs(); cb(true);
+        });
+      });
+    });
+  }
+  window.dlaNopClip = nopClip;
+
+  $('csGui').addEventListener('click', function(){
+    if(!file) return;
+    var btn = this; btn.disabled = true; $('csChon').disabled = true;
+    nopClip(file, BAI, TENBAI, bao, $('csThanh'), function(ok){
+      btn.disabled = false; $('csChon').disabled = false;
+      if(ok){ file = null; $('csFile').value = ''; $('csTen').textContent = ''; btn.style.display = 'none'; }
+    });
+  });
+
+  function veDs(){
+    var cua = $('csCua');
+    if(!window.__dlaEm && !ql()){ cua.style.display = 'none'; return; }
+    cua.style.display = 'block';
+    $('csCuaT').textContent = ql() ? 'Duyệt clip nhân viên' : 'Clip bạn đã nộp';
+    goi('clipsale=ds', function(r){
+      var box = $('csDs');
+      if(!r || !r.ok){ box.innerHTML = '<p class="cs-bao loi">Chưa tải được danh sách.</p>'; return; }
+      if(!r.ds.length){ box.innerHTML = '<p class="cs-bao">' + (r.ql ? 'Chưa có clip nào.' : 'Bạn chưa nộp clip nào.') + '</p>'; return; }
+      var ds = r.ds.slice();
+      if(r.ql) ds.sort(function(a,b){ return (a.tt === 'cho' ? 0 : 1) - (b.tt === 'cho' ? 0 : 1) || b.t - a.t; });
+      box.innerHTML = ds.map(function(c){
+        var tt = TT[c.tt] || TT.cho;
+        var h = '<div class="cs-clip" data-id="' + esc(c.id) + '">'
+          + '<b>' + esc(r.ql ? c.ten + (c.cs ? ' · ' + c.cs : '') : 'Clip ' + ngay(c.t)) + '</b><span class="cs-tt ' + tt[0] + '">' + tt[1] + '</span>'
+          + '<p class="cs-bao" style="margin:2px 0 0">' + (r.ql ? 'Nộp ' + ngay(c.t) : '') + (c.td ? ' · duyệt ' + ngay(c.td) : '') + '</p>';
+        if(c.nx) h += '<p class="cs-nx"><b>Nhận xét:</b><i>' + esc(c.nx) + '</i></p>';
+        h += '<div class="cs-hang" style="margin-top:8px"><button type="button" class="cs-btn phu cs-mo">▶ Xem clip</button></div><div class="cs-khung"></div>';
+        if(r.ql) h += '<div class="cs-ql"><textarea placeholder="Nhận xét (bắt buộc khi cho quay lại)">' + esc(c.nx) + '</textarea>'
+          + '<div class="cs-hang"><button type="button" class="cs-btn cs-kq" data-kq="dat">✅ Đạt</button><button type="button" class="cs-btn phu cs-kq" data-kq="lai">↩ Quay lại</button></div><p class="cs-bao"></p></div>';
+        return h + '</div>';
+      }).join('');
+    });
+  }
+  $('csDs').addEventListener('click', function(e){
+    var the = e.target.closest('.cs-clip'); if(!the) return;
+    var id = the.getAttribute('data-id');
+    if(e.target.closest('.cs-mo')){
+      var k = the.querySelector('.cs-khung');
+      k.innerHTML = k.innerHTML ? '' : '<iframe class="cs-xem" src="https://drive.google.com/file/d/' + encodeURIComponent(id) + '/preview" allow="autoplay" allowfullscreen></iframe><p class="cs-bao">Clip mới nộp thì Drive cần vài phút xử lý mới xem được. <a href="https://drive.google.com/file/d/' + encodeURIComponent(id) + '/view" target="_blank" rel="noopener">Mở trên Drive</a></p>';
+      return;
+    }
+    var nut = e.target.closest('.cs-kq'); if(!nut) return;
+    var nx = the.querySelector('textarea').value.trim(), b = the.querySelector('.cs-ql .cs-bao');
+    if(nut.getAttribute('data-kq') === 'lai' && !nx){ b.textContent = 'Ghi nhận xét để bạn biết sửa gì nha.'; b.className = 'cs-bao loi'; return; }
+    b.textContent = 'Đang lưu…'; b.className = 'cs-bao';
+    goi('clipsale=duyet&id=' + encodeURIComponent(id) + '&kq=' + nut.getAttribute('data-kq') + '&nx=' + encodeURIComponent(nx), function(r){
+      if(!r || !r.ok){ b.textContent = (r && r.loi) || 'Chưa lưu được, thử lại nha.'; b.className = 'cs-bao loi'; return; }
+      veDs();
+    });
+  });
+  document.addEventListener('dla-bo-phan-xong', function(){ setTimeout(veDs, 300); });
+  window.addEventListener('hashchange', function(){ if(location.hash.indexOf('#trai-nghiem') === 0) veDs(); });
+})();
+</script>
+
+
+  <h3 id="khach-ao">7/ Luyện với khách ảo — khách hỏi hóc búa</h3>
+  <div class="rulebox">
+    <p class="rb-t">👰 Khách ảo hỏi — bạn trả lời như khách thật</p>
+    <ul class="yphu">
+      <li><b>Chọn 1 kiểu khách → bấm Bắt đầu</b><i>Máy quay mặt bạn, khách hỏi bằng giọng nói và chữ trên màn hình.</i></li>
+      <li><b>Trả lời xong bấm "Khách hỏi tiếp"</b><i>Không có đáp án sẵn — dùng đúng những gì cẩm nang dạy.</i></li>
+      <li><b>Hết buổi → xem lại → nộp quản lý duyệt</b><i>Clip có cả câu khách hỏi, quản lý xem là hiểu.</i></li>
+    </ul>
+  </div>
+  <p class="cs-bao">Dùng điện thoại, đeo tai nghe hoặc bật loa vừa đủ nghe. Cho phép máy ảnh + micro khi máy hỏi.</p>
+  <div class="ka-chon"><button type="button" class="ka-the" data-k="k1"><b>Khách mới, hỏi kỹ</b><i>6 câu</i></button><button type="button" class="ka-the" data-k="k2"><b>Khách chê đắt</b><i>6 câu</i></button><button type="button" class="ka-the" data-k="k3"><b>Khách đã đi thử nhiều nơi</b><i>6 câu</i></button></div>
+  <div class="cs-box" id="kaKhung" style="display:none">
+    <canvas id="kaCv" width="720" height="1280" class="ka-cv"></canvas>
+    <video id="kaXem" class="ka-cv" controls playsinline style="display:none"></video>
+    <div class="cs-hang" style="margin-top:10px">
+      <button type="button" class="cs-btn" id="kaTiep">▶ Bắt đầu</button>
+      <button type="button" class="cs-btn phu" id="kaNghe" style="display:none">🔁 Nghe lại câu</button>
+      <button type="button" class="cs-btn" id="kaNop" style="display:none">⬆️ Nộp cho quản lý</button>
+      <button type="button" class="cs-btn phu" id="kaLai" style="display:none">↺ Làm lại</button>
+    </div>
+    <div class="cs-thanh" id="kaThanh"><i></i></div>
+    <p class="cs-bao" id="kaBao"></p>
+  </div>
+<script>
+(function(){
+  var KHACH = {"k1": {"ten": "Khách mới, hỏi kỹ", "cau": ["Chào em, chị có hẹn thử váy lúc 3 giờ. Chị tới hơi sớm, có sao không em?", "Chị mới thấy bên em trên TikTok thôi. Bên em là bên nào, làm lâu chưa?", "Chị cưới tháng 12. Em nghĩ chị cần mấy váy?", "Sao váy bên em lót toàn màu hồng với màu ghi vậy? Chị tưởng váy cưới phải trắng tinh chứ.", "Thế giá thế nào em? Em nói luôn cho chị nhé.", "Chị thử xong chưa chắc chốt hôm nay đâu nha."]}, "k2": {"ten": "Khách chê đắt", "cau": ["Chị nói trước là chị chỉ cần một váy thôi, em đừng giới thiệu gói gì nhé.", "Bên kia chị thử, người ta cho thuê có ba triệu. Sao bên em đắt thế?", "Váy này người khác mặc rồi mà vẫn giá này à em?", "Em giảm cho chị được bao nhiêu? Chị được bạn giới thiệu tới đấy.", "Combo ba váy thì chị mặc gì hết ba váy, phí tiền lắm.", "Thôi để chị về hỏi ý chồng đã."]}, "k3": {"ten": "Khách đã đi thử nhiều nơi", "cau": ["Chị thử năm chỗ rồi, chỗ nào cũng nói váy mình đẹp nhất. Bên em khác gì?", "Chỗ kia váy mới toanh. Váy bên em đã cho thuê nhiều lần chưa?", "Chị nghe nói váy lót hồng lên hình dễ bị tối da, đúng không em?", "Linh Nga, Calla thì chị biết, còn Dolinhanh thì chị chưa nghe bao giờ.", "Lỡ ngày cưới váy bị bẩn, bị rách thì sao em?", "Chị cọc bên kia rồi, giờ chuyển qua bên em thì mất cọc bên kia. Em tính sao?"]}};
+  function $(i){ return document.getElementById(i); }
+  var k = null, cau = -1, ctx = null, dest = null, bufs = [], nguon = null, cam = null, rec = null, manh = [], blob = null, veId = 0, vd = null, chu = '', tuVe = 0;
+  function bao(t, loi){ var b = $('kaBao'); b.textContent = t || ''; b.className = 'cs-bao' + (loi ? ' loi' : ''); }
+  function hien(id, on){ $(id).style.display = on ? 'inline-flex' : 'none'; }
+
+  document.querySelectorAll('.ka-the').forEach(function(b){
+    b.addEventListener('click', function(){
+      if(rec && rec.state === 'recording') return;
+      document.querySelectorAll('.ka-the').forEach(function(x){ x.classList.remove('on'); });
+      b.classList.add('on'); k = b.getAttribute('data-k'); datLai();
+      $('kaKhung').style.display = 'block';
+      $('kaKhung').scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+
+  function datLai(){
+    cau = -1; blob = null; manh = []; chu = '';
+    $('kaCv').style.display = 'block'; $('kaXem').style.display = 'none';
+    $('kaTiep').textContent = '▶ Bắt đầu'; hien('kaTiep', 1); hien('kaNghe', 0); hien('kaNop', 0); hien('kaLai', 0);
+    bao('Khách: ' + KHACH[k].ten + '. Bấm Bắt đầu khi bạn sẵn sàng.');
+    veKhung();
+  }
+
+  /* ve khung: mat nhan vien + o chu cau khach dang hoi */
+  function veKhung(){
+    var c = $('kaCv'), g = c.getContext('2d'), W = c.width, H = c.height;
+    g.fillStyle = '#31232A'; g.fillRect(0, 0, W, H);
+    if(vd && vd.readyState >= 2){
+      var vw = vd.videoWidth, vh = vd.videoHeight, tl = Math.max(W / vw, H / vh);
+      g.save(); g.translate(W, 0); g.scale(-1, 1);
+      g.drawImage(vd, (W - vw * tl) / 2, (H - vh * tl) / 2, vw * tl, vh * tl); g.restore();
+    }
+    if(k){
+      var tong = KHACH[k].cau.length;
+      g.font = '600 26px -apple-system, "Be Vietnam Pro", sans-serif';
+      var nhan = '👰 ' + KHACH[k].ten + (cau >= 0 ? '  ·  câu ' + Math.min(cau + 1, tong) + '/' + tong : '');
+      g.fillStyle = 'rgba(158,68,88,.92)'; var nw = g.measureText(nhan).width + 36;
+      g.beginPath(); g.roundRect ? g.roundRect(28, 28, nw, 50, 25) : g.rect(28, 28, nw, 50); g.fill();
+      g.fillStyle = '#fff'; g.fillText(nhan, 46, 62);
+      if(chu){
+        g.font = '500 36px -apple-system, "Be Vietnam Pro", sans-serif';
+        var tu = chu.split(' '), dong = [], d = '';
+        tu.forEach(function(w){ var th = d ? d + ' ' + w : w; if(g.measureText(th).width > W - 110){ dong.push(d); d = w; } else d = th; });
+        if(d) dong.push(d);
+        var h = dong.length * 50 + 40;
+        g.fillStyle = 'rgba(255,255,255,.94)'; g.beginPath(); g.roundRect ? g.roundRect(28, 96, W - 56, h, 22) : g.rect(28, 96, W - 56, h); g.fill();
+        g.fillStyle = '#31232A'; dong.forEach(function(x, i){ g.fillText(x, 55, 146 + i * 50); });
+      }
+    }
+    if(rec && rec.state === 'recording'){
+      g.fillStyle = '#D93A3A'; g.beginPath(); g.arc(W - 50, 53, 12, 0, 7); g.fill();
+    }
+  }
+  function lap(){ veKhung(); veId = requestAnimationFrame(lap); }
+
+  function taiAm(cb){
+    var ds = KHACH[k].cau, xong = 0, loi = false; bufs = [];
+    ds.forEach(function(_, i){
+      fetch('khach-ao/' + k + '-' + (i + 1) + '.m4a').then(function(r){ if(!r.ok) throw 0; return r.arrayBuffer(); })
+        .then(function(a){ return new Promise(function(ok, no){ ctx.decodeAudioData(a, ok, no); }); })
+        .then(function(b){ bufs[i] = b; }).catch(function(){ loi = true; })
+        .then(function(){ if(++xong === ds.length) cb(!loi); });
+    });
+  }
+  function noi(i){
+    if(nguon){ try{ nguon.stop(); }catch(e){} }
+    chu = KHACH[k].cau[i];
+    if(!bufs[i]) return;
+    nguon = ctx.createBufferSource(); nguon.buffer = bufs[i];
+    nguon.connect(dest); nguon.connect(ctx.destination); nguon.start();
+  }
+
+  function batDau(){
+    if(location.protocol !== 'https:' && location.hostname !== 'localhost'){ bao('Mở cẩm nang bản web để luyện nha.', true); return; }
+    if(!window.MediaRecorder || !navigator.mediaDevices){ bao('Máy này chưa quay được. Bạn dùng điện thoại đời mới hoặc Chrome/Safari bản mới nha.', true); return; }
+    $('kaTiep').disabled = true; bao('Đang mở máy ảnh…');
+    var AC = window.AudioContext || window.webkitAudioContext; ctx = new AC(); dest = ctx.createMediaStreamDestination();
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user', width: { ideal: 720 }, height: { ideal: 1280 } }, audio: true }).then(function(st){
+      cam = st;
+      vd = document.createElement('video'); vd.muted = true; vd.playsInline = true; vd.setAttribute('playsinline', ''); vd.srcObject = st; vd.play();
+      ctx.createMediaStreamSource(st).connect(dest);
+      lap();
+      taiAm(function(ok){
+        if(!ok){ bao('Chưa tải được giọng khách — kiểm tra mạng rồi làm lại nha.', true); dung(); $('kaTiep').disabled = false; return; }
+        var kieu = ['video/mp4', 'video/webm;codecs=vp8,opus', 'video/webm'].filter(function(x){ return MediaRecorder.isTypeSupported && MediaRecorder.isTypeSupported(x); })[0] || '';
+        var luong = new MediaStream([$('kaCv').captureStream(24).getVideoTracks()[0], dest.stream.getAudioTracks()[0]]);
+        manh = [];
+        rec = new MediaRecorder(luong, kieu ? { mimeType: kieu, videoBitsPerSecond: 2000000 } : { videoBitsPerSecond: 2000000 });
+        rec.ondataavailable = function(e){ if(e.data && e.data.size) manh.push(e.data); };
+        rec.onstop = xemLai;
+        rec.start(1000); tuVe = Date.now();
+        $('kaTiep').disabled = false; hien('kaNghe', 1);
+        cau = 0; noi(0); capNut();
+      });
+    }).catch(function(){
+      $('kaTiep').disabled = false;
+      bao('Máy chưa cho mở máy ảnh/micro. Vào Cài đặt cho phép rồi thử lại nha.', true);
+    });
+  }
+  function capNut(){
+    var tong = KHACH[k].cau.length;
+    $('kaTiep').textContent = cau < tong - 1 ? '➡ Khách hỏi tiếp' : '⏹ Kết thúc';
+    bao(cau < tong - 1 ? 'Trả lời khách xong thì bấm "Khách hỏi tiếp".' : 'Câu cuối rồi — trả lời xong bấm Kết thúc.');
+  }
+  function dung(){
+    cancelAnimationFrame(veId);
+    if(nguon){ try{ nguon.stop(); }catch(e){} }
+    if(cam){ cam.getTracks().forEach(function(t){ t.stop(); }); cam = null; }
+  }
+  function xemLai(){
+    dung();
+    blob = new Blob(manh, { type: (rec.mimeType || 'video/mp4').split(';')[0] });
+    var v = $('kaXem'); v.src = URL.createObjectURL(blob);
+    $('kaCv').style.display = 'none'; v.style.display = 'block';
+    hien('kaTiep', 0); hien('kaNghe', 0); hien('kaNop', 1); hien('kaLai', 1);
+    bao('Xem lại clip của bạn (' + (blob.size / 1048576).toFixed(1) + ' MB). Ưng thì nộp, chưa ưng thì làm lại.');
+    if(ctx){ try{ ctx.close(); }catch(e){} ctx = null; }
+  }
+
+  $('kaTiep').addEventListener('click', function(){
+    if(cau < 0){ batDau(); return; }
+    var tong = KHACH[k].cau.length;
+    if(cau < tong - 1){ cau++; noi(cau); capNut(); }
+    else { chu = ''; bao('Đang xử lý clip…'); setTimeout(function(){ rec.stop(); }, 400); }
+  });
+  $('kaNghe').addEventListener('click', function(){ if(cau >= 0) noi(cau); });
+  $('kaLai').addEventListener('click', function(){ datLai(); });
+  $('kaNop').addEventListener('click', function(){
+    if(!blob || !window.dlaNopClip) return;
+    var btn = this; btn.disabled = true; hien('kaLai', 0);
+    window.dlaNopClip(blob, 'khach-ao-' + k, 'Khách ảo: ' + KHACH[k].ten, bao, $('kaThanh'), function(ok){
+      btn.disabled = false;
+      if(ok){ hien('kaNop', 0); hien('kaLai', 1); }
+      else hien('kaLai', 1);
+    });
+  });
+})();
+</script>
 
   <div class="kt-cta">
     <p>Đọc xong chương này rồi — mở <b>26 ngày học việc</b> làm bài của phần vừa học nha 🤍</p>
@@ -4900,7 +5282,10 @@ QUIZ[14] = [
 ["Tình huống: khách tới cùng mẹ và 2 bạn thân. Đón thế nào?", ["Chào đón cả nhóm từ cửa, lấy dép và mời nước đầy đủ mọi người — ai đi cùng cũng là khách", "Chỉ chăm mỗi cô dâu", "Mời nhóm bạn ngồi chờ ngoài", "Hỏi ai là người trả tiền trước"], 0],
 ["Tình huống: khách vừa ngồi xuống đã hỏi ngay “giá thuê nhiêu em?”. Làm gì?", ["Giới thiệu thật ngắn về bên mình rồi vào giá luôn — nụ cười trước, thủ tục sau, không bắt khách chờ", "Đọc ngay bảng giá, khỏi giới thiệu", "Nói “từ từ đã chị”", "Đưa iPad cho khách tự xem"], 0],
 ["Trong 6 thông tin nắm trước giờ hẹn, vì sao cần biết địa điểm tổ chức?", ["Tiệc ở HN/HCM hay tỉnh liên quan tới gói chụp tiệc và công di chuyển — tư vấn đúng ngay từ đầu", "Để hỏi chuyện cho vui", "Không quan trọng lắm", "Chỉ cần khi ký hợp đồng"], 0],
-["Tình huống: khách nói “chị thử 3 chỗ rồi, chị thích dáng đuôi cá”. Tư vấn thế nào?", ["Tập trung ngay vào các mẫu đuôi cá đẹp nhất — khách đã ưng dáng thì không dẫn lại từ đầu", "Vẫn giới thiệu đủ mọi form dáng", "Chê 3 chỗ kia tư vấn sai", "Bảo khách thử lại từ đầu cho chắc"], 0]
+["Tình huống: khách nói “chị thử 3 chỗ rồi, chị thích dáng đuôi cá”. Tư vấn thế nào?", ["Tập trung ngay vào các mẫu đuôi cá đẹp nhất — khách đã ưng dáng thì không dẫn lại từ đầu", "Vẫn giới thiệu đủ mọi form dáng", "Chê 3 chỗ kia tư vấn sai", "Bảo khách thử lại từ đầu cho chắc"], 0],
+["Học xong phần đón khách mới, bạn phải làm gì trước khi đứng đón khách một mình?",["Tự quay clip mình nói lại đoạn đón khách, nộp trên cẩm nang cho quản lý duyệt", "Không cần làm gì", "Nhờ đồng nghiệp đón hộ", "Đọc lại cẩm nang một lần là đủ"],0],
+["Clip đón khách mới phải nói đủ những phần nào?",["Chào & mời ngồi · giới thiệu về bên mình · hỏi nhu cầu · lời giới thiệu khi tham quan · giới thiệu gói", "Chỉ cần báo giá", "Chỉ cần giới thiệu váy đẹp nhất", "Chỉ cần hỏi ngày cưới"],0],
+["Luyện với khách ảo trong cẩm nang thì trả lời thế nào?",["Như đang nói với khách thật, dùng đúng những gì cẩm nang dạy — xong nộp clip cho quản lý duyệt", "Trả lời qua loa vì chỉ là khách ảo", "Bỏ qua câu khó", "Đọc to đáp án có sẵn"],0]
 ];
 QUIZ[15] = [
 ["Giới thiệu gói cho khách theo thứ tự nào?",["Từ gói CAO xuống gói THẤP", "Từ gói rẻ lên gói đắt", "Gói nào khách hỏi thì báo gói đó", "Báo hết một lượt không cần thứ tự"],0],
@@ -5964,6 +6349,7 @@ QUIZ[26] = [
   });
   function adminThu(){
     if(document.getElementById('adminCode').value.trim() === 'DLA888'){
+      window.__dlaQL = 'DLA888';   /* chi trong bo nho: de duyet clip bai noi (29/09/2026) */
       try{ localStorage.setItem('dla_syll_bp', ''); }catch(e){} /* quan ly mo bang ma admin thi xem duoc full */
       setUnlocked(); apDungBoPhan(); location.hash = '#muc-luc'; route();
       document.dispatchEvent(new CustomEvent('dla-bo-phan-xong'));
