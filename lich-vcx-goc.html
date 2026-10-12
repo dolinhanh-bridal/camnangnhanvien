@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="googlebot" content="noindex, nofollow">
+<meta name="theme-color" content="#0D5457">
+<title>Lịch up TikTok VCX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600&family=Be+Vietnam+Pro:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* 1 cột cho điện thoại: luật up ở trên, mỗi ngày 1 thẻ, thứ 4 là bài ảnh lướt */
+:root{
+  --ground:#FAFAFB; --surface:#FFFFFF; --surface-2:#F3F5F6;
+  --ink:#14181C; --ink-2:#4E5964; --ink-3:#7C8794;
+  --line:#E3E7EA; --line-strong:#CFD6DB;
+  --accent:#0D5457; --accent-wash:#E1F0EE;
+  --photo:#A3285F; --photo-wash:#F8E4EC;
+  --today:#8A4B10; --today-wash:#FBEEDF;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0E1114; --surface:#161A1F; --surface-2:#1D2228;
+    --ink:#E9ECEF; --ink-2:#A7B1BB; --ink-3:#7C8794;
+    --line:#262C33; --line-strong:#39424B;
+    --accent:#5FBFC0; --accent-wash:#122C2D;
+    --photo:#E886AE; --photo-wash:#33192A;
+    --today:#E0A967; --today-wash:#2C2116;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0E1114; --surface:#161A1F; --surface-2:#1D2228;
+  --ink:#E9ECEF; --ink-2:#A7B1BB; --ink-3:#7C8794;
+  --line:#262C33; --line-strong:#39424B;
+  --accent:#5FBFC0; --accent-wash:#122C2D;
+  --photo:#E886AE; --photo-wash:#33192A;
+  --today:#E0A967; --today-wash:#2C2116;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:"Be Vietnam Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:680px;margin:0 auto;padding-inline:16px;padding-block:32px 90px;display:flex;flex-direction:column;gap:20px}
+.kicker{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+h1{font-family:Lora,Georgia,serif;font-weight:600;font-size:clamp(28px,6vw,38px);line-height:1.15;margin:6px 0 0;text-wrap:balance}
+.lede{margin:8px 0 0;color:var(--ink-2)}
+.rules{background:var(--accent-wash);border-left:6px solid var(--accent);border-radius:12px;padding:14px 16px;display:grid;gap:6px;font-size:15px}
+.rules b{color:var(--accent)}
+.rules .drive{justify-self:start;margin-top:6px;display:inline-block;padding:10px 16px;border-radius:8px;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;font-size:15px}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .rules .drive{color:#0E1114}}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.bar h2{margin:0;font-family:Lora,Georgia,serif;font-size:22px}
+.bar button{font:inherit;font-size:14px;font-weight:600;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink-2);border-radius:999px;padding:7px 14px;cursor:pointer}
+.list{display:flex;flex-direction:column;gap:12px}
+.card{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:12px;padding:14px 16px;display:grid;gap:8px}
+.card.photo{border-left-color:var(--photo)}
+.card.today{box-shadow:0 0 0 2px var(--today) inset}
+.card.past{opacity:.55}
+.head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.date{font-weight:700;font-size:19px;font-variant-numeric:tabular-nums}
+.dow{color:var(--ink-3);font-size:14px}
+.pill{font-size:12.5px;font-weight:700;padding:2px 10px;border-radius:999px}
+.pill.today{background:var(--today-wash);color:var(--today)}
+.pill.photo{background:var(--photo-wash);color:var(--photo)}
+.file{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12.5px;color:var(--ink-3);word-break:break-word}
+.cap{font-weight:600;font-size:16.5px}
+.hash{font-size:13.5px;color:var(--ink-2);word-break:break-word}
+.note{font-size:14px;color:var(--photo);font-weight:500}
+.copy{justify-self:start;font:inherit;font-size:14.5px;font-weight:600;border-radius:8px;padding:9px 16px;border:1px solid var(--accent);background:var(--surface);color:var(--accent);cursor:pointer}
+.copy[data-done="1"]{background:var(--accent);color:#fff}
+.copy:focus-visible,.bar button:focus-visible,.rules .drive:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.empty{color:var(--ink-3)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="kicker">Dolinhanh Bridal · TikTok @dolinhanh.bridal</div>
+    <h1>Lịch up TikTok VCX</h1>
+    <p class="lede">Mỗi tối up 1 bài lúc <b>20:00</b>, đúng ngày ghi ở đầu tên file. Thứ 4 là bài ảnh lướt.</p>
+  </header>
+
+  <div class="rules">
+    <div><b>Giờ:</b> 20:00 mỗi tối, đăng bằng điện thoại của Thắm</div>
+    <div><b>Bìa:</b> chọn khung có đủ chữ hook</div>
+    <div><b>Vị trí:</b> Dolinhanh Bridal HCM · bật tải lên HD, không nén</div>
+    <div><b>Đăng xong:</b> share bài lên Story ngay. Không dùng nick seeding</div>
+    <a class="drive" href="https://drive.google.com/drive/folders/19q50nO7HCZyeh1fmOZc8T-iJvi1C9G0y" target="_blank" rel="noopener">📁 Mở thư mục clip trên Drive</a>
+  </div>
+
+  <div class="bar">
+    <h2 id="tieu-de-lich">Từ hôm nay</h2>
+    <button type="button" id="xemCu">Xem cả ngày đã qua</button>
+  </div>
+  <div class="list" id="list"></div>
+</div>
+
+<a href="#" id="dlaLui" style="display:none;position:fixed;left:12px;bottom:14px;z-index:71;background:#fff;color:#9E4458;text-decoration:none;border:1px solid #9E4458;border-radius:999px;padding:10px 16px;font-family:-apple-system,BlinkMacSystemFont,'Be Vietnam Pro',sans-serif;font-size:13.5px;font-weight:600;box-shadow:0 6px 18px rgba(0,0,0,.18)">&#8592; Quay lại</a>
+<script>(function(){var b=document.getElementById('dlaLui');if(!b)return;if(document.referrer||history.length>1){b.style.display='inline-flex';}b.addEventListener('click',function(e){e.preventDefault();history.back();});})();</script>
+<script>
+(function(){
+  var HASH = "#dolinhanhbridal #fittingvaycuoi #vaycuoisaigon #vaycuoi #codau";
+  var POSTS = [{"d": "2026-10-12", "f": "12.10 - eo banh mi.mp4", "c": "Eo bánh mì mặc váy cưới gì để giấu bụng? 🤍", "n": ""}, {"d": "2026-10-13", "f": "13.10 - om qua mac gi.mp4", "c": "Chị ốm quá thì mặc váy cưới gì cho đầy đặn? 👗", "n": ""}, {"d": "2026-10-14", "f": "14.10 - anh luot 15 co dau (bai anh)", "c": "Lướt hết 15 bộ rồi chọn giúp em: chị thích váy số mấy? 👰✨", "n": "Bài ẢNH: chọn tab Ảnh, up đúng thứ tự, thêm nhạc \"A Thousand Years\""}, {"d": "2026-10-15", "f": "15.10 - cong thuc vay don gian.mp4", "c": "Váy cưới đơn giản có bị nhạt không? Công thức để vẫn sang ✨", "n": ""}, {"d": "2026-10-16", "f": "16.10 - o tinh ship vay.mp4", "c": "Ở tỉnh thuê váy cưới có ship về được không? 📦", "n": ""}, {"d": "2026-10-17", "f": "17.10 - nganh wedding.mp4", "c": "Làm ngành cưới có màu hồng như mọi người nghĩ không? 🌸", "n": ""}, {"d": "2026-10-18", "f": "18.10 - ru ai di thu.mp4", "c": "Đi thử váy cưới nên rủ ai đi cùng? 👀", "n": ""}, {"d": "2026-10-19", "f": "19.10 - book takecare.mp4", "c": "Take care váy cưới có đáng tiền không? 👰", "n": ""}, {"d": "2026-10-20", "f": "20.10 - biet dang minh.mp4", "c": "Cô dâu biết dáng mình thì chọn váy nhanh gấp đôi 💡", "n": ""}, {"d": "2026-10-21", "f": "(chờ quản lý gửi ảnh)", "c": "Bài ảnh lướt · chờ quản lý gửi ảnh", "n": "Bài ẢNH: quản lý gửi bộ ảnh sau"}, {"d": "2026-10-22", "f": "22.10 - mat moc.mp4", "c": "Mặt mộc đi thử váy cưới có sao không? 🙈", "n": ""}, {"d": "2026-10-23", "f": "23.10 - lung dai chan ngan.mp4", "c": "Lưng dài chân ngắn mặc váy cưới sao cho cao? 📏", "n": ""}, {"d": "2026-10-24", "f": "24.10 - vay thu cong.mp4", "c": "Váy cưới làm thủ công khác gì váy may sẵn? 🪡", "n": ""}, {"d": "2026-10-25", "f": "25.10 - ren thu dong.mp4", "c": "Ren thu đông — chất liệu sang nhất cho mùa cưới cuối năm ❄️", "n": ""}, {"d": "2026-10-26", "f": "26.10 - luu tram anh vay.mp4", "c": "Lưu trăm ảnh váy mà vẫn không biết chọn cái nào? 📸", "n": ""}, {"d": "2026-10-27", "f": "27.10 - dang qua tao.mp4", "c": "Dáng quả táo mặc váy cưới gì cho thon? 🍎", "n": ""}, {"d": "2026-10-28", "f": "(chờ quản lý gửi ảnh)", "c": "Bài ảnh lướt · chờ quản lý gửi ảnh", "n": "Bài ẢNH: quản lý gửi bộ ảnh sau"}, {"d": "2026-10-29", "f": "29.10 - khong can sinh ra da dep.mp4", "c": "Không cần sinh ra đã đẹp — chỉ cần chọn đúng váy 🤍", "n": ""}, {"d": "2026-10-30", "f": "30.10 - co dau nen mac may vay.mp4", "c": "Cô dâu nên mặc mấy váy trong ngày cưới? 👗", "n": ""}, {"d": "2026-10-31", "f": "31.10 - 10 nam sau xem anh van dep.mp4", "c": "10 năm sau xem lại ảnh cưới vẫn thấy đẹp — nhờ đâu? 💍", "n": ""}, {"d": "2026-11-01", "f": "1.11 - vai xuoi mac vay gi.mp4", "c": "Vai xuôi mặc váy cưới gì để vai cân, cổ không bị dài? 👰", "n": ""}, {"d": "2026-11-02", "f": "2.11 - 3 loi mat ve sang.mp4", "c": "Váy đắt tiền vẫn chưa sang? Có thể chị đang mắc 1 trong 3 lỗi này 💎", "n": ""}, {"d": "2026-11-03", "f": "3.11 - thue vay 6 buoc.mp4", "c": "Đừng thuê váy cưới khi chưa xem clip này — 6 bước thuê váy 📝", "n": ""}, {"d": "2026-11-04", "f": "(chờ quản lý gửi ảnh)", "c": "Bài ảnh lướt · chờ quản lý gửi ảnh", "n": "Bài ẢNH: quản lý gửi bộ ảnh sau"}, {"d": "2026-11-05", "f": "5.11 - cong thuc phoi voan.mp4", "c": "Công thức phối voan theo chất liệu váy cưới 👰✨", "n": ""}, {"d": "2026-11-06", "f": "6.11 - cong thuc phoi trang suc.mp4", "c": "Công thức phối trang sức với váy cưới — cúp ngang, cổ V đeo gì? 💍", "n": ""}];
+  var WD = ["Chủ nhật","Thứ 2","Thứ 3","Thứ 4","Thứ 5","Thứ 6","Thứ 7"];
+  var today = new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Ho_Chi_Minh"}).format(new Date());
+  var xemCu = false;
+  function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e;}
+  function dm(s){var p=s.split("-");return (+p[2])+"/"+(+p[1]);}
+  function wd(s){return new Date(s+"T00:00:00Z").getUTCDay();}
+  function chep(text,btn){
+    var ok=function(){btn.textContent="Đã chép";btn.setAttribute("data-done","1");setTimeout(function(){btn.textContent="Chép caption + hashtag";btn.removeAttribute("data-done");},1600);};
+    var tay=function(){var a=document.createElement("textarea");a.value=text;a.setAttribute("readonly","");a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{document.execCommand("copy");ok();}catch(e){btn.textContent="Bấm giữ để chép";}document.body.removeChild(a);};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(ok,tay);}else{tay();}
+  }
+  function ve(){
+    var box=document.getElementById("list");box.textContent="";
+    document.getElementById("tieu-de-lich").textContent = xemCu ? "Tất cả các ngày" : "Từ hôm nay";
+    document.getElementById("xemCu").textContent = xemCu ? "Chỉ xem từ hôm nay" : "Xem cả ngày đã qua";
+    var ds = POSTS.filter(function(p){return xemCu || p.d >= today;});
+    if(!ds.length){box.appendChild(el("p","empty","Chưa có lịch mới. Hỏi quản lý lịch tiếp theo nha."));return;}
+    ds.forEach(function(p){
+      var anh = wd(p.d)===3;
+      var c=el("article","card"+(anh?" photo":"")+(p.d===today?" today":"")+(p.d<today?" past":""));
+      var h=el("div","head");h.appendChild(el("span","date",dm(p.d)));h.appendChild(el("span","dow",WD[wd(p.d)]+" · 20:00"));
+      if(p.d===today)h.appendChild(el("span","pill today","Hôm nay"));
+      if(anh)h.appendChild(el("span","pill photo","Ảnh lướt"));
+      c.appendChild(h);
+      c.appendChild(el("div","file","📁 "+p.f));
+      c.appendChild(el("div","cap",p.c));
+      c.appendChild(el("div","hash",HASH));
+      if(p.n)c.appendChild(el("div","note",p.n));
+      var b=el("button","copy","Chép caption + hashtag");b.type="button";
+      b.addEventListener("click",function(){chep(p.c+" "+HASH,b);});
+      c.appendChild(b);
+      box.appendChild(c);
+    });
+  }
+  document.getElementById("xemCu").addEventListener("click",function(){xemCu=!xemCu;ve();});
+  ve();
+})();
+</script>
+</body>
+</html>
